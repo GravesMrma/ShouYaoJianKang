@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.AppointmentActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:titleText="陪诊服务"
+        app:canBack="true"
+        app:titleBackground="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <android.support.v4.widget.NestedScrollView
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否接送"
+                    android:textStyle="bold"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15"
+                    android:layout_marginTop="@dimen/dp22"
+                    android:layout_marginBottom="@dimen/dp22"
+                    android:paddingLeft="@dimen/dp18"/>
+
+
+                <RelativeLayout
+                    android:layout_width="@dimen/dp81"
+                    android:layout_height="@dimen/dp27"
+                    android:layout_marginLeft="@dimen/dp38">
+
+                    <TextView
+                        android:id="@+id/tvJie"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="接"
+                        android:textColor="@drawable/selector_color_gray_orange"
+                        android:background="@drawable/selector_appoint_check_bg"
+                        android:gravity="center"
+                        android:textSize="@dimen/f13" />
+
+                    <ImageView
+                        android:id="@+id/ivJie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp2"
+                        android:src="@drawable/selector_right_tag"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="@dimen/dp81"
+                    android:layout_height="@dimen/dp27"
+                    android:layout_marginLeft="@dimen/dp21">
+
+                    <TextView
+                        android:id="@+id/tvSong"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="送"
+                        android:textColor="@drawable/selector_color_gray_orange"
+                        android:background="@drawable/selector_appoint_check_bg"
+                        android:gravity="center"
+                        android:textSize="@dimen/f13" />
+
+                    <ImageView
+                        android:id="@+id/ivSong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp2"
+                        android:src="@drawable/selector_right_tag"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp8"
+                android:gravity="center"
+                android:textSize="@dimen/f11"
+                android:textColor="@color/orange"
+                android:text="温馨提示:接送费用按照 ￥50 / 10公里收取，每超出1公里加收五元!"/>
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:paddingLeft="22dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--android:paddingTop="14dp"-->
+                <!--android:paddingBottom="14dp"-->
+                <!--android:orientation="vertical"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:background="@color/white">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="选择服务类型"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="@color/black_33"-->
+                    <!--android:textSize="15sp"/>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="14dp"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/rlHour"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@drawable/selector_zhzh_check1">-->
+
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerInParent="true"-->
+                            <!--android:layout_margin="10dp"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:gravity="center">-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/tvHour"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:textColor="@drawable/selector_zhzh_check_bg"-->
+                                <!--android:gravity="center"-->
+                                <!--android:textSize="14sp" />-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/tvHour1"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:clickable="false"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:textColor="@drawable/selector_zhzh_check_bg"-->
+                                <!--android:gravity="center"-->
+                                <!--android:textSize="12sp" />-->
+
+                        <!--</LinearLayout>-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/ivHour"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:padding="2dp"-->
+                            <!--android:src="@drawable/selector_zhzh_check"-->
+                            <!--android:clickable="false"-->
+                            <!--android:layout_alignParentBottom="true"-->
+                            <!--android:layout_alignParentRight="true"/>-->
+
+                    <!--</RelativeLayout>-->
+
+                    <!--<Space-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="wrap_content" />-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/rlDay"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@drawable/selector_zhzh_check1">-->
+
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerInParent="true"-->
+                            <!--android:layout_margin="10dp"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:gravity="center">-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/tvDay"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:textColor="@drawable/selector_zhzh_check_bg"-->
+                                <!--android:gravity="center"-->
+                                <!--android:textSize="14sp" />-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/tvDay1"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:textColor="@drawable/selector_zhzh_check_bg"-->
+                                <!--android:gravity="center"-->
+                                <!--android:textSize="12sp" />-->
+
+                        <!--</LinearLayout>-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/ivDay"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:padding="2dp"-->
+                            <!--android:src="@drawable/selector_zhzh_check"-->
+                            <!--android:layout_alignParentBottom="true"-->
+                            <!--android:layout_alignParentRight="true"/>-->
+
+                    <!--</RelativeLayout>-->
+                <!--</LinearLayout>-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1px"-->
+                    <!--android:background="@color/line"-->
+                    <!--android:layout_marginTop="14dp"/>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="48dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:orientation="horizontal">-->
+
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="40dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:src="@mipmap/icchlxr"-->
+                        <!--android:scaleType="center"/>-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/edName"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="12dp"-->
+                        <!--android:hint="请输入预约人姓名"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:maxLength="10"-->
+                        <!--android:textColorHint="#999999"-->
+                        <!--android:textColor="@color/black_33"-->
+                        <!--android:textSize="13sp"-->
+                        <!--android:background="@color/tranpt"/>-->
+
+                    <!--<View-->
+                        <!--android:layout_width="1dp"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:background="@color/line"/>-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/edPhone"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="12dp"-->
+                        <!--android:hint="请输入预约人电话"-->
+                        <!--android:textColorHint="#999999"-->
+                        <!--android:textColor="@color/black_33"-->
+                        <!--android:inputType="number"-->
+                        <!--android:maxLength="11"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:textSize="13sp"-->
+                        <!--android:background="@color/tranpt"/>-->
+
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/llAddress"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1px"-->
+                        <!--android:background="@color/line"/>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="48dp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:orientation="horizontal">-->
+
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="40dp"-->
+                            <!--android:layout_height="40dp"-->
+                            <!--android:src="@mipmap/icchadr"-->
+                            <!--android:scaleType="center"/>-->
+
+                        <!--<EditText-->
+                            <!--android:id="@+id/edAddress"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:padding="12dp"-->
+                            <!--android:hint="请输入接送地址"-->
+                            <!--android:maxLines="1"-->
+                            <!--android:ellipsize="end"-->
+                            <!--android:textColorHint="#999999"-->
+                            <!--android:textColor="@color/black_33"-->
+                            <!--android:textSize="13sp"-->
+                            <!--android:background="@color/tranpt"/>-->
+
+                    <!--</LinearLayout>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1px"-->
+                    <!--android:background="@color/line"/>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/llIll"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="48dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="40dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:src="@mipmap/icchjia"-->
+                        <!--android:scaleType="center"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvIll"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="12dp"-->
+                        <!--android:hint="请选择需要陪诊的病症"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:ellipsize="end"-->
+                        <!--android:textColorHint="#999999"-->
+                        <!--android:textColor="@color/black_33"-->
+                        <!--android:textSize="13sp"-->
+                        <!--android:background="@color/tranpt"/>-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@mipmap/icchnexk"/>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1px"-->
+                    <!--android:background="@color/line"/>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/llTime"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="48dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="40dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:src="@mipmap/icchrili"-->
+                        <!--android:scaleType="center"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvTime"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="12dp"-->
+                        <!--android:hint="请选择陪诊的时间"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:ellipsize="end"-->
+                        <!--android:textColorHint="#999999"-->
+                        <!--android:textColor="@color/black_33"-->
+                        <!--android:textSize="13sp"-->
+                        <!--android:background="@color/tranpt"/>-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@mipmap/icchnexk"/>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1px"-->
+                    <!--android:background="@color/line"/>-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:background="#F7F7F9">-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/edContent"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:paddingLeft="10dp"-->
+                        <!--android:paddingRight="10dp"-->
+                        <!--android:paddingTop="10dp"-->
+                        <!--android:paddingBottom="20dp"-->
+                        <!--android:background="@color/tranpt"-->
+                        <!--android:hint="找不到符合您的病状选择？可单独写在这里..."-->
+                        <!--android:minLines="5"-->
+                        <!--android:gravity="start"-->
+                        <!--android:textSize="12sp"-->
+                        <!--android:textColor="#999999"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvTextNum"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="10dp"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:textSize="12sp"-->
+                        <!--android:textColor="#999999"-->
+                        <!--android:text="(0/100)"/>-->
+
+                <!--</RelativeLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:scaleType="center"-->
+                        <!--android:src="@drawable/iccharg"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:textColor="#999999"-->
+                        <!--android:textSize="11sp"-->
+                        <!--android:text="预约服务代表您已同意遵循"/>-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvRule"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="#FFA200"-->
+                        <!--android:textSize="11sp"-->
+                        <!--android:text="《首要健康陪诊服务》"/>-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="#999999"-->
+                        <!--android:textSize="11sp"-->
+                        <!--android:text="相关条款"/>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="24dp"-->
+                <!--android:layout_marginRight="24dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:textSize="11sp"-->
+                <!--android:textColor="#999999"-->
+                <!--android:text="温馨提示：陪诊服务暂时只支持武汉地区，其他城市正在筹备中，敬请期待！"/>-->
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvCommit"-->
+                    <!--android:layout_width="184dp"-->
+                    <!--android:layout_height="36dp"-->
+                    <!--android:background="@drawable/sp_ch1"-->
+                    <!--android:text="立即预约"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:layout_margin="10dp"/>-->
+
+
+            <!--</RelativeLayout>-->
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

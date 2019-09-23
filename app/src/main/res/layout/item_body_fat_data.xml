@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dp24"
+    android:paddingLeft="@dimen/dp14"
+    android:paddingRight="@dimen/dp14"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/sp_white_5">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.wuhanzihai.rbk.ruibeikang.widgets.TrapezoidView
+            android:layout_width="@dimen/dp144"
+            android:layout_height="@dimen/dp34" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:text="2019年8月3日"
+            android:textSize="@dimen/f11"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp29"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="@dimen/dp6"
+        android:paddingBottom="@dimen/dp6"
+        android:background="@drawable/sp_gary_5_stk">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="131/80"
+                android:textSize="@dimen/f15"
+                android:textColor="#9C1C0F"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmhg"
+                android:textSize="@dimen/f10"
+                android:textColor="@color/gray_99"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="心率:60次/每分"
+            android:textSize="@dimen/f11"
+            android:textColor="@color/gray_99"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:drawableRight="@mipmap/ic_right_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="09:10"
+            android:textSize="@dimen/f11"
+            android:textColor="@color/gray_99"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp14"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="@dimen/dp6"
+        android:paddingBottom="@dimen/dp6"
+        android:background="@drawable/sp_gary_5_stk">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="131/80"
+                android:textSize="@dimen/f15"
+                android:textColor="#D33C26"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmhg"
+                android:textSize="@dimen/f10"
+                android:textColor="@color/gray_99"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="心率:60次/每分"
+            android:textSize="@dimen/f11"
+            android:textColor="@color/gray_99"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:drawableRight="@mipmap/ic_right_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="09:10"
+            android:textSize="@dimen/f11"
+            android:textColor="@color/gray_99"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp14"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="@dimen/dp6"
+        android:paddingBottom="@dimen/dp6"
+        android:background="@drawable/sp_gary_5_stk">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="131/80"
+                android:textSize="@dimen/f15"
+                android:textColor="#95E36B"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mmhg"
+                android:textSize="@dimen/f10"
+                android:textColor="@color/gray_99"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:drawableRight="@mipmap/ic_right_tag"
+            android:drawablePadding="@dimen/dp10"
+            android:text="09:10"
+            android:textSize="@dimen/f11"
+            android:textColor="@color/gray_99"/>
+    </RelativeLayout>
+
+</LinearLayout>

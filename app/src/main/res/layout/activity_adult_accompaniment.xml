@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main_bg"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.AdultAccompanimentActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="成人陪诊"
+        app:canBack="true"
+        app:titleBackground="@color/white"/>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/dp14"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.5">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/ivImg"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintDimensionRatio="2.34"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_marginLeft="@dimen/dp12"
+                        android:layout_marginRight="@dimen/dp12"
+                        android:background="@color/red"/>
+
+                    <TextView
+                        android:id="@+id/tvText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginLeft="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp23"
+                        android:text="成人陪诊"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f17"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginRight="@dimen/dp20"
+                        android:layout_marginLeft="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp23"
+                        android:text="188元"
+                        android:textColor="#FFA200"
+                        android:textSize="@dimen/f23"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tvText1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginLeft="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text="服务时间07:00-19:00"
+                        android:textSize="@dimen/f11"
+                        android:textColor="@color/gray_99"/>
+
+                    <TextView
+                        android:id="@+id/tvText3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tvText2"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginLeft="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:text="陪诊基础服务时长为4小时，超出时长按照25元/30分钟进行收费。"
+                        android:textSize="@dimen/f11"
+                        android:textColor="@color/gray_99"/>
+
+                    <LinearLayout
+                        app:layout_constraintTop_toBottomOf="@id/tvText3"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:paddingLeft="@dimen/dp21"
+                        android:paddingRight="@dimen/dp21"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp26"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/ic_check_45"
+                            android:drawablePadding="@dimen/dp5"
+                            android:gravity="center"
+                            android:text="规划流程"
+                            android:textSize="@dimen/f11"
+                            android:textColor="@color/gray_66"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/ic_check_45"
+                            android:drawablePadding="@dimen/dp5"
+                            android:gravity="center"
+                            android:text="放心安全"
+                            android:textSize="@dimen/f11"
+                            android:textColor="@color/gray_66"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/ic_check_45"
+                            android:drawablePadding="@dimen/dp5"
+                            android:gravity="center"
+                            android:text="节省时间"
+                            android:textSize="@dimen/f11"
+                            android:textColor="@color/gray_66"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/ic_check_45"
+                            android:drawablePadding="@dimen/dp5"
+                            android:gravity="center"
+                            android:text="专业服务"
+                            android:textSize="@dimen/f11"
+                            android:textColor="@color/gray_66"/>
+
+
+                    </LinearLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+            <RadioGroup
+                android:id="@+id/mRgRecord"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/mRbInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableBottom="@drawable/selector_coin_indicator"
+                    android:drawablePadding="@dimen/dp9"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="服务详情"
+                    android:textColor="@color/selector_attention_doctor"
+                    android:textSize="@dimen/f17" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="@dimen/dp16"
+                    android:background="@color/line" />
+
+                <RadioButton
+                    android:id="@+id/mRbCall"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableBottom="@drawable/selector_coin_indicator"
+                    android:drawablePadding="@dimen/dp9"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="常见问题"
+                    android:textColor="@color/selector_attention_doctor"
+                    android:textSize="@dimen/f17" />
+
+            </RadioGroup>
+
+            <View
+                android:id="@+id/vLine"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/line" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <com.hhjt.baselibrary.widgets.APSTSViewPager
+            android:id="@+id/vpView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp46"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="72"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="在线咨询"
+                android:textColor="@color/gray_66"
+                android:textSize="@dimen/f12"
+                android:drawableTop="@mipmap/ic_call"
+                android:gravity="center"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="288"
+            android:layout_height="match_parent"
+            android:text="预约成人陪诊"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f17"
+            android:background="@color/orange"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

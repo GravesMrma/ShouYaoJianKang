@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/rlHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/selector_main_home"
+                android:drawablePadding="@dimen/dp2"
+                android:layout_centerInParent="true"
+                android:text="首页"
+                android:gravity="center"
+                android:textSize="@dimen/f11"
+                android:textColor="@drawable/selector_color_black_green" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlHeath"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvHeath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/selector_main_heath"
+                android:drawablePadding="@dimen/dp2"
+                android:layout_centerInParent="true"
+                android:text="健康四步"
+                android:gravity="center"
+                android:textSize="@dimen/f11"
+                android:textColor="@drawable/selector_color_black_green" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlOil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvOil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/selector_main_oil"
+                android:drawablePadding="@dimen/dp2"
+                android:layout_centerInParent="true"
+                android:text="加油站"
+                android:gravity="center"
+                android:textSize="@dimen/f11"
+                android:textColor="@drawable/selector_color_black_green" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlCenter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/selector_main_center"
+                android:drawablePadding="@dimen/dp2"
+                android:layout_centerInParent="true"
+                android:text="我的"
+                android:gravity="center"
+                android:textSize="@dimen/f11"
+                android:textColor="@drawable/selector_color_black_green" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

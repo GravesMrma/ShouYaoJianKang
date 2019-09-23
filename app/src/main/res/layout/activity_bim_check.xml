@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BIMCheckActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="血压自检" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/tvMachine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp149"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@drawable/sp_orange_10"
+        android:gravity="center"
+        android:text="智能设备检测"
+        android:textColor="@color/white"
+        android:textSize="@dimen/f15" />
+
+    <TextView
+        android:id="@+id/tvManual"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp149"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@drawable/sp_orange_10"
+        android:gravity="center"
+        android:text="手动记录数据"
+        android:textColor="@color/white"
+        android:textSize="@dimen/f15" />
+
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp149"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@drawable/sp_orange_10"
+        android:gravity="center"
+        android:text="血压数据查询"
+        android:textColor="@color/white"
+        android:textSize="@dimen/f15" />
+
+</LinearLayout>

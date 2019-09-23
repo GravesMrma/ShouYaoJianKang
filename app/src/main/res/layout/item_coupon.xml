@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rlView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@mipmap/ic_coupon_bg"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintHorizontal_weight="86"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/clView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="@color/selector_orange_gray"
+                    android:textSize="@dimen/f12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100"
+                    android:textColor="@color/selector_orange_gray"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp6"
+                android:text="满800减100"
+                android:textColor="@color/selector_orange_gray"
+                android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/selector_coupon_bg"
+        app:layout_constraintBottom_toBottomOf="@id/rlView"
+        app:layout_constraintHorizontal_weight="188"
+        app:layout_constraintLeft_toRightOf="@id/rlView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/dp1"
+            android:layout_marginBottom="@dimen/dp1"/>
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp11"
+            android:layout_marginRight="@dimen/dp6"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:minLines="2"
+            android:text="限购买软骨营养素使用，购买量不超过2瓶"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f11"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/lView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginRight="@dimen/dp6"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:text="2019.7.15-2019.8.15"
+            android:textColor="@color/gray_66"
+            android:textSize="@dimen/f10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/lView"
+            app:layout_constraintTop_toBottomOf="@id/tvText" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/lView"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <include layout="@layout/item_line_coupon_v" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvText1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginBottom="@dimen/dp5"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:text="使用说明"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/lView" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginBottom="@dimen/dp3"
+            app:layout_constraintBottom_toTopOf="@id/tvText1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/lView">
+
+            <include layout="@layout/item_line_coupon_h" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="0.36"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="1"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/dp5"
+                android:text="立即使用"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp17"
+    android:paddingBottom="@dimen/dp17"
+    android:paddingLeft="@dimen/dp10"
+    android:paddingRight="@dimen/dp10"
+    android:background="@drawable/sp_gary_10">
+
+
+    <RelativeLayout
+        android:id="@+id/rlView"
+        android:layout_width="@dimen/dp38"
+        android:layout_height="@dimen/dp38"
+        android:background="@drawable/sp_green_10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f12"
+        android:text="健康打卡任务标题"
+        app:layout_constraintTop_toTopOf="@id/rlView"
+        app:layout_constraintLeft_toRightOf="@id/rlView"
+        app:layout_constraintBottom_toTopOf="@id/tvDesc"
+        android:layout_marginLeft="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ACACAC"
+        android:textSize="@dimen/f11"
+        android:text="健康打卡任务标题"
+        app:layout_constraintBottom_toBottomOf="@id/rlView"
+        app:layout_constraintLeft_toRightOf="@id/rlView"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:layout_marginLeft="@dimen/dp10"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:gravity="right">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="300币"
+            android:textColor="@color/gray_66"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:minHeight="@dimen/dp18"
+            android:minWidth="@dimen/dp53"
+            android:background="@drawable/sp_green_9"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f10"
+            android:gravity="center"
+            android:text="去评论"/>
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

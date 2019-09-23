@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">首要健康</string>
+
+    <string name="jiuzhengzhunbei">提示您就诊前所需的物品（如医保卡、身份证、病例、既往检查结果等）以及就诊前所需要做的准备（如空腹、憋尿等）。</string>
+    <string name="zhenzhongpeizhen">1、提前到达医院，根据您的情况提前为您规划并介绍就诊流程，为您节约时间。\n\n2、密切观察您的生命体征及病情变化。\n\n3、征求您的意见，帮助您和医生进行有效沟通，解读医生开具的医嘱及检查项目等。\n\n4、陪同协助您缴费、帮您取号、陪您候诊、代您取药、陪同检查、取送化验标本、等候检查结果、协助办理住院手续、整理本次就诊档案。</string>
+    <string name="zhenhoutixing">根据医生开具的医嘱，给予您相应的用药和饮食指导并记录。\n\n提醒您复诊或者预约其他检查项目。</string>
+    <string name="chose">点击\n选择</string>
+    <string name="bind">绑定\n手环</string>
+
+    <string name="time1">子&#8195;时</string>
+    <string name="timedesc1">23:00-01:00</string>
+    <string name="time2">丑&#8195;时</string>
+    <string name="timedesc2">01:00-03:00</string>
+    <string name="time3">寅&#8195;时</string>
+    <string name="timedesc3">03:00-05:00</string>
+    <string name="time4">卯&#8195;时</string>
+    <string name="timedesc4">05:00-07:00</string>
+    <string name="time5">辰&#8195;时</string>
+    <string name="timedesc5">07:00-09:00</string>
+    <string name="time6">巳&#8195;时</string>
+    <string name="timedesc6">09:00-11:00</string>
+    <string name="time7">午&#8195;时</string>
+    <string name="timedesc7">11:00-13:00</string>
+    <string name="time8">未&#8195;时</string>
+    <string name="timedesc8">13:00-15:00</string>
+    <string name="time9">申&#8195;时</string>
+    <string name="timedesc9">15:00-17:00</string>
+    <string name="time10">酉&#8195;时</string>
+    <string name="timedesc10">17:00-19:00</string>
+    <string name="time11">戌&#8195;时</string>
+    <string name="timedesc11">19:00-21:00</string>
+    <string name="time12">亥&#8195;时</string>
+    <string name="timedesc12">21:00-23:00</string>
+
+</resources>

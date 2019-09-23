@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sp_white_5"
+    android:paddingLeft="@dimen/dp14"
+    android:paddingTop="@dimen/dp14"
+    android:paddingBottom="@dimen/dp14">
+
+    <ImageView
+        android:id="@+id/ivTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/selector_check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp5"
+        android:background="@drawable/sp_gary_5_stk"
+        app:layout_constraintDimensionRatio="1.10"
+        app:layout_constraintHorizontal_weight="86"
+        app:layout_constraintLeft_toRightOf="@id/ivTag"
+        app:layout_constraintRight_toLeftOf="@id/clView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="@dimen/dp5" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp32"
+        app:layout_constraintBottom_toBottomOf="@id/ivImg"
+        app:layout_constraintHorizontal_weight="194"
+        app:layout_constraintLeft_toRightOf="@id/ivImg"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivImg">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp4"
+                android:textColor="@color/gray_99"
+                android:textSize="@dimen/f11"
+                app:layout_constraintLeft_toLeftOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+            <TextView
+                android:id="@+id/tvText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@string/rmb"
+                android:textColor="#FFA200"
+                android:textSize="@dimen/f11"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/tvName" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp2"
+                android:maxLines="1"
+                android:textColor="#FFA200"
+                android:textSize="@dimen/f17"
+                app:layout_constraintBottom_toBottomOf="@id/tvText"
+                app:layout_constraintLeft_toRightOf="@id/tvText" />
+
+            <TextView
+                android:id="@+id/tvNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp2"
+                android:layout_marginRight="@dimen/dp92"
+                android:maxLines="1"
+                android:text="x2"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f11"
+                app:layout_constraintBottom_toBottomOf="@id/tvText"
+                app:layout_constraintRight_toRightOf="@id/tvName" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp29"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp29"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f25" />
+
+                <TextView
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:gravity="center"
+                    android:text="2" />
+
+
+                <TextView
+                    android:layout_width="@dimen/dp29"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f25" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

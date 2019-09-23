@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp35"
+    android:layout_height="@dimen/dp35"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="@dimen/dp30"
+        android:layout_height="@dimen/dp30"
+        app:cardElevation="@dimen/dp5"
+        app:cardCornerRadius="@dimen/dp16"
+        app:cardBackgroundColor="@color/white">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_heath_data"/>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

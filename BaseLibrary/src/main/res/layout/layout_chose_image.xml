@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/mIv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:actualImageScaleType="centerCrop"
+        app:placeholderImage="@drawable/rj_tj"
+        app:placeholderImageScaleType="fitXY"
+        app:viewAspectRatio="1" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/image_delete"
+        android:visibility="visible" />
+
+</RelativeLayout>

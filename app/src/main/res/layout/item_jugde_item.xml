@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp12"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+        android:id="@+id/ivImg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="@dimen/dp32"
+        android:layout_height="@dimen/dp32" />
+
+    <TextView
+        android:id="@+id/tvName"
+        app:layout_constraintTop_toTopOf="@id/ivImg"
+        app:layout_constraintLeft_toRightOf="@id/ivImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp8"
+        android:drawableRight="@mipmap/ic_gold_tag"
+        android:drawablePadding="@dimen/dp5"
+        android:text="三分毒"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f13"/>
+
+    <TextView
+        android:id="@+id/tvTime"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintLeft_toLeftOf="@id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:text="2019-05-05  08:30"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11"/>
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTime"
+        app:layout_constraintLeft_toLeftOf="@id/tvName"
+        android:layout_marginTop="@dimen/dp15"
+        android:lineSpacingExtra="@dimen/dp5"
+        android:text="现在虽然但是患病率却呈逐年上升的趋势但是患病率却呈逐年上升的趋势但是患病率却呈逐年上升的趋势人们的生活水平越来越高，但但是患病率却呈逐年上升的趋势是患病率却呈逐年上升的趋势，一旦身体发生什么，后果不堪设想。"
+        android:textSize="@dimen/f12"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:textColor="@color/gray_66"/>
+
+    <TextView
+        android:id="@+id/tvLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="989"
+        android:drawableRight="@drawable/selector_like_bg"
+        android:gravity="center"
+        android:drawablePadding="@dimen/dp3"
+        android:textSize="@dimen/f11"
+        android:textColor="@color/green_08"/>
+
+
+
+</android.support.constraint.ConstraintLayout>

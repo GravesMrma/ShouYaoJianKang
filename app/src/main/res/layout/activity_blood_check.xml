@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BloodCheckActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="血压"
+        app:canBack="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp46"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvBuy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/orange"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f17"
+            android:text="我要买一个"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvConnect"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/green_08"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f17"
+            android:text="去连接"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray_F5">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cdView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="2.70"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/ivImg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:scaleType="center"
+                    app:layout_constraintDimensionRatio="3.50"
+                    android:layout_marginTop="@dimen/dp4"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:src="@mipmap/ic_heath_top"/>
+
+                <ImageView
+                    android:id="@+id/ivLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginBottom="@dimen/dp15"
+                    android:src="@mipmap/ic_heath_left"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/ivLeft"
+                    app:layout_constraintLeft_toRightOf="@id/ivLeft"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:text="人已完成"
+                    android:textSize="@dimen/f10"
+                    android:textColor="@color/gray_66"/>
+
+                <TextView
+                    android:id="@+id/tvNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/tvText"
+                    app:layout_constraintRight_toRightOf="@id/tvText"
+                    app:layout_constraintBottom_toTopOf="@id/tvText"
+                    android:text="8675"
+                    android:textSize="@dimen/f17"
+                    android:textStyle="bold"
+                    android:textColor="@color/gray_66"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/dp12"
+                    android:layout_marginRight="@dimen/dp18">
+
+
+                    <include layout="@layout/item_heath_card_img"/>
+
+
+                </RelativeLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cdView1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp14"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cdView">
+
+                <TextView
+                    android:id="@+id/tvText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="就诊服务"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    app:layout_constraintTop_toTopOf="@id/tvText1"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:src="@drawable/sp_green_9_l" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvText1"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:nestedScrollingEnabled="false"/>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cdView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp17"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cdView1">
+
+                <TextView
+                    android:id="@+id/tvText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="净化之旅"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    app:layout_constraintTop_toTopOf="@id/tvText2"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:src="@drawable/sp_green_9_l" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvText2"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginRight="@dimen/dp12"
+                    app:layout_constraintDimensionRatio="2.35"
+                    app:roundedCornerRadius="@dimen/dp5"
+                    app:roundBottomRight="true"
+                    app:roundBottomLeft="true"
+                    app:roundTopRight="true"
+                    app:roundTopLeft="true"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cdView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp17"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cdView2">
+
+                <TextView
+                    android:id="@+id/tvText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="优选服务"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    app:layout_constraintTop_toTopOf="@id/tvText3"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText3"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:src="@drawable/sp_green_9_l" />
+
+                <com.yarolegovich.discretescrollview.DiscreteScrollView
+                    android:id="@+id/dvView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvText3"
+                    android:layout_marginTop="@dimen/dp13" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cdView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp17"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cdView3">
+
+                <TextView
+                    android:id="@+id/tvText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="健康任务"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    app:layout_constraintTop_toTopOf="@id/tvText4"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText4"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:src="@drawable/sp_green_9_l" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvView1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvText4"
+                    android:layout_marginTop="@dimen/dp13"/>
+
+                <!--<include layout="@layout/item_health_item_item"/>-->
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

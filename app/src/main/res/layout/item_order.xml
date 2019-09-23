@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/dp10"
+    android:paddingLeft="@dimen/dp10"
+    android:paddingBottom="@dimen/dp14"
+    android:paddingTop="@dimen/dp14"
+    android:background="@drawable/sp_white_10">
+
+    <TextView
+        android:id="@+id/tvOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="订单编号：2019072403551311"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f12"/>
+
+    <TextView
+        android:id="@+id/tvState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="等待买家付款"
+        android:textColor="#FFA200"
+        android:textSize="@dimen/f12"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvOrder"
+        android:layout_marginTop="@dimen/dp24"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp14"
+        app:layout_constraintTop_toBottomOf="@id/rvView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/tvMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp26"
+            android:minWidth="@dimen/dp84"
+            android:gravity="center"
+            android:background="@drawable/sp_order_bt_bg"
+            android:text="查看更多"
+            android:textSize="@dimen/f10"
+            android:textColor="#FFA200"/>
+
+        <TextView
+            android:id="@+id/tvCommit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp26"
+            android:minWidth="@dimen/dp84"
+            android:gravity="center"
+            android:background="@drawable/sp_order_bt_bg"
+            android:layout_marginLeft="@dimen/dp10"
+            android:text="立即付款"
+            android:textSize="@dimen/f10"
+            android:textColor="#FFA200"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

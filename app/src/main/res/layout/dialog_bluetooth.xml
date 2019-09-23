@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp10"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/dp38"
+        android:background="@drawable/sp_white_5">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_bluetooth"
+            android:drawablePadding="@dimen/dp10"
+            android:text="智能蓝牙血压计"
+            android:textSize="@dimen/f11"
+            android:textColor="@color/gray_66"
+            android:gravity="center"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp51">
+
+            <RelativeLayout
+                android:id="@+id/rlSearching"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.hhjt.baselibrary.widgets.WaterView
+                    android:layout_width="@dimen/dp160"
+                    android:layout_height="@dimen/dp160"
+                    app:ringRatio="0.7"
+                    app:ringNum="3"
+                    app:centerColor="@color/green_08"
+                    app:spreadColor="@color/green_08"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white"
+                    android:text="查找中..."
+                    android:textSize="@dimen/f11"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/ivNoBluetooth"
+                android:visibility="gone"
+                android:layout_width="@dimen/dp160"
+                android:layout_height="@dimen/dp160"
+                android:src="@mipmap/pic_no_bluetooth"
+                android:scaleType="center"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp70"
+            android:background="@drawable/sp_bluetooth_btm"
+            android:text="取消连接"
+            android:textColor="@color/white"
+            android:padding="@dimen/dp17"
+            android:gravity="center"
+            android:textSize="@dimen/f15"/>
+
+
+        <LinearLayout
+            android:id="@+id/lView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/dp70"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvClose"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sp_bluetooth_btml"
+                android:text="取消连接"
+                android:textColor="@color/white"
+                android:padding="@dimen/dp17"
+                android:gravity="center"
+                android:textSize="@dimen/f15"/>
+
+            <TextView
+                android:id="@+id/tvReconnect"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sp_bluetooth_btmr"
+                android:text="重新连接"
+                android:textColor="@color/white"
+                android:padding="@dimen/dp17"
+                android:gravity="center"
+                android:textSize="@dimen/f15"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

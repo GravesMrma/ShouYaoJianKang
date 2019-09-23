@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp12"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivImg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="@dimen/dp106"
+        android:layout_height="@dimen/dp79"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundedCornerRadius="@dimen/dp5"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/ivImg"
+        android:layout_marginRight="@dimen/dp35"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="是药三分毒，经常吃药的人，身体可能会发生这些变化，要警惕。"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f12"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tvReadNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/ivImg"
+        app:layout_constraintLeft_toRightOf="@id/tvRead"
+        android:layout_marginLeft="@dimen/dp3"
+        android:text="12700"
+        android:textSize="@dimen/f11"
+        android:textColor="@color/green_08"/>
+
+    <TextView
+        android:id="@+id/tvRead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/ivImg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="阅读量"
+        android:textSize="@dimen/f11"
+        android:textColor="@color/gray_66"/>
+
+    <TextView
+        android:id="@+id/tvJudgeNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/ivImg"
+        app:layout_constraintLeft_toRightOf="@id/tvJudge"
+        android:layout_marginLeft="@dimen/dp3"
+        android:text="12700"
+        android:textSize="@dimen/f11"
+        android:textColor="@color/green_08"/>
+
+    <TextView
+        android:id="@+id/tvJudge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/ivImg"
+        app:layout_constraintLeft_toRightOf="@id/tvReadNum"
+        android:layout_marginLeft="@dimen/dp20"
+        android:text="评论"
+        android:textSize="@dimen/f11"
+        android:textColor="@color/gray_66"/>
+
+</android.support.constraint.ConstraintLayout>

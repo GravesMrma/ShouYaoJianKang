@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.QuestionActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="健康自检"
+        app:canBack="true"
+        app:titleBackground="@color/white"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"/>
+
+    <RadioGroup
+        android:id="@+id/mRgRecord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <RadioButton
+            android:id="@+id/mRbOne"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="自测题目"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f17" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="@dimen/dp16"
+            android:background="@color/line" />
+
+        <RadioButton
+            android:id="@+id/mRbTwo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="测试结果"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f17" />
+
+    </RadioGroup>
+
+    <com.hhjt.baselibrary.widgets.APSTSViewPager
+        android:id="@+id/vpView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

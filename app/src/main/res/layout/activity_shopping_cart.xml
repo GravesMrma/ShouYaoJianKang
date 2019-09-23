@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ShoppingCartActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="购物车"
+        app:canBack="true"
+        app:moreText="管理"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingRight="@dimen/dp14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="全选"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f11"
+            android:gravity="center"
+            android:drawablePadding="@dimen/dp9"
+            android:drawableLeft="@drawable/selector_check"/>
+
+        <TextView
+            android:id="@+id/tvCommit"
+            android:layout_width="@dimen/dp96"
+            android:layout_height="@dimen/dp28"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_alignParentRight="true"
+            android:text="去结算"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/selector_shopping_cart_bg"/>
+
+        <LinearLayout
+            android:layout_toLeftOf="@id/tvCommit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:layout_marginRight="@dimen/dp20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="合计:"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f13"
+                android:layout_marginRight="@dimen/dp20"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rmb"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f11"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6545"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f17"/>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

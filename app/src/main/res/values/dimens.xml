@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<dimen name="text_8">8sp</dimen>-->
+    <!--<dimen name="text_8.5">8.5sp</dimen>-->
+    <!--<dimen name="text_9">9sp</dimen>-->
+    <!--<dimen name="text_9.5">9.5sp</dimen>-->
+    <!--<dimen name="text_10">10sp</dimen>-->
+    <!--<dimen name="text_10.5">10.5sp</dimen>-->
+    <!--<dimen name="text_11">11sp</dimen>-->
+    <!--<dimen name="text_11.5">11.5sp</dimen>-->
+    <!--<dimen name="text_12">12sp</dimen>-->
+    <!--<dimen name="text_12.5">12.5sp</dimen>-->
+    <!--<dimen name="text_13">13sp</dimen>-->
+    <!--<dimen name="text_13.5">13.5sp</dimen>-->
+    <!--<dimen name="text_14">14sp</dimen>-->
+    <!--<dimen name="text_14.5">14.5sp</dimen>-->
+    <!--<dimen name="text_15">15sp</dimen>-->
+    <!--<dimen name="text_15.5">15.5sp</dimen>-->
+    <!--<dimen name="text_16">16sp</dimen>-->
+    <!--<dimen name="text_16.5">16.5sp</dimen>-->
+    <!--<dimen name="text_17">17sp</dimen>-->
+    <!--<dimen name="text_17.5">17.5sp</dimen>-->
+    <!--<dimen name="text_18">18sp</dimen>-->
+    <!--<dimen name="text_18.5">18.5sp</dimen>-->
+    <!--<dimen name="text_19">19sp</dimen>-->
+    <!--<dimen name="text_19.5">19.5sp</dimen>-->
+    <!--<dimen name="text_20">20sp</dimen>-->
+    <!--<dimen name="text_20.5">20.5sp</dimen>-->
+    <!--<dimen name="text_21">21sp</dimen>-->
+    <!--<dimen name="text_23">23sp</dimen>-->
+    <!--<dimen name="text_25">25sp</dimen>-->
+    <!--<dimen name="text_43">43sp</dimen>-->
+
+    <dimen name="statusbar_view_height">0dp</dimen>
+
+</resources>

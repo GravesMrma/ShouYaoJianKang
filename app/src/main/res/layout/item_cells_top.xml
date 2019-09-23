@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp42"
+        android:minWidth="@dimen/dp42"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/ivImg"
+        app:layout_constraintRight_toRightOf="@id/ivImg"
+        app:layout_constraintTop_toBottomOf="@id/ivImg"
+        android:layout_marginTop="@dimen/dp10"
+        android:text="内分泌-氨基"
+        android:textSize="@dimen/f12"
+        android:textColor="@color/selector_black_green" />
+
+</android.support.constraint.ConstraintLayout>

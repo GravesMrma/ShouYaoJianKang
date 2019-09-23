@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#4abdd3</color>
+    <color name="red">#FF5C26</color>
+    <color name="redFF">#FF0000</color>
+    <color name="redE8">#EB5555</color>
+    <color name="white">#FFFFFF</color>
+    <color name="line">#DDDDDD</color>
+    <color name="yellow">#FFD772</color>
+    <color name="brown">#454141</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="clarity">#00000000</color>
+    <color name="clarity_10">#05000000</color>
+    <color name="clarity_20">#20000000</color>
+    <color name="clarity_30">#30000000</color>
+    <color name="clarity_40">#40000000</color>
+    <color name="clarity_50">#50000000</color>
+    <color name="clarity_50f">#7fffffff</color>
+    <color name="clarity_60">#60000000</color>
+    <color name="clarity_70">#70000000</color>
+    <color name="clarity_80">#80000000</color>
+    <color name="clarity_90">#90000000</color>
+    <color name="clarity_9C">#99000000</color>
+    <color name="clarity_B2">#B2000000</color>
+
+    <color name="main_bg">#F7F7F9</color>
+
+    <color name="green_08">#08C4AB</color>
+    <color name="green_0899">#9908C4AB</color>
+    <color name="green_07">#07BCA4</color>
+    <color name="green_71">#71D8BC</color>
+    <color name="green_58">#58BDA2</color>
+    <color name="green_1E">#1EA588</color>
+    <color name="gray_99">#999999</color>
+    <color name="gray_66">#666666</color>
+    <color name="gray_F8">#F8F8F8</color>
+    <color name="gray_CC">#cccccc</color>
+    <color name="orange">#FFA200</color>
+    <color name="orange59">#599E26</color>
+    <color name="orangeFFC7">#FFC729</color>
+    <color name="orangeff9c">#FF9C00</color>
+    <color name="gray_F5">#F5F5F5</color>
+    <color name="gray_F6">#F6F6F8</color>
+    <color name="gray_F7">#F7F7F9</color>
+
+    <color name="black_33">#333333</color>
+    <color name="black_33_c5">#7f333333</color>
+
+    <color name="image_bg">#f3f3f3</color>
+    <color name="failure_color">#1f1f1f</color>
+
+    <color name="background">#f7f7f7</color>
+</resources>

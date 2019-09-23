@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp14"
+    android:paddingBottom="@dimen/dp14"
+    android:paddingLeft="@dimen/dp24"
+    android:paddingRight="@dimen/dp14">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f12"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/dp50"
+        app:layout_constraintBottom_toBottomOf="@id/tvName"
+        android:textSize="@dimen/f12"
+        android:textColor="@color/black_33"/>
+
+    <TextView
+        android:id="@+id/tvTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        android:layout_marginTop="@dimen/dp5"
+        android:minWidth="@dimen/dp30"
+        android:minHeight="@dimen/dp14"
+        android:gravity="center"
+        android:text="默认"
+        android:visibility="gone"
+        android:textSize="@dimen/f10"
+        android:textColor="@color/white"
+        android:layout_marginRight="@dimen/dp20"
+        app:layout_constraintRight_toLeftOf="@id/tvAddress"
+        android:background="@drawable/sp_green_7"/>
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:paddingRight="@dimen/dp10"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintLeft_toRightOf="@id/tvTag"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="@dimen/f11"
+        android:textColor="@color/gray_99"
+        android:minLines="2"
+        android:lineSpacingExtra="@dimen/dp1"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@mipmap/ic_more"/>
+
+</android.support.constraint.ConstraintLayout>

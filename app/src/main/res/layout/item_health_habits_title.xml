@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp120"
+    android:layout_height="@dimen/dp38"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawableBottom="@drawable/selector_coin_indicator_select"
+        android:drawablePadding="@dimen/dp7"
+        android:gravity="bottom|center_horizontal"
+        android:textColor="@color/selector_attention_doctor_select"
+        android:textSize="@dimen/f14" />
+
+</RelativeLayout>

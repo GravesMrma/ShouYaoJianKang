@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main_bg"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.OrderActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="我的订单" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"/>
+
+    <RadioGroup
+        android:id="@+id/mRgRecord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <RadioButton
+            android:id="@+id/mRbAll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="全部"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDfk"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="待付款"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDfh"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="待发货"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDsh"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="待收货"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDpj"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="待评价"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"/>
+
+    <com.hhjt.baselibrary.widgets.APSTSViewPager
+        android:id="@+id/vpView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

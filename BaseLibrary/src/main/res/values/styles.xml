@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 加载弹框样式 -->
+    <style name="LightDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan
+        </item>
+    </style>
+
+    <style name="LightProgressDialog" parent="@style/LightDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- 标题模板自定义属性 -->
+    <declare-styleable name="TemplateTitle">
+        <!-- 标题文案 -->
+        <attr name="titleText" format="string" />
+        <!-- 标题文案颜色 -->
+        <attr name="titleTextColor" format="color" />
+        <!-- 标题文案右图 -->
+        <attr name="titleRightImg" format="reference" />
+        <!-- 是否有back按钮 -->
+        <attr name="canBack" format="boolean" />
+        <!-- back按钮文案 -->
+        <attr name="backText" format="string" />
+        <!-- 右侧更多功能按钮图片 -->
+        <attr name="moreImg" format="reference" />
+        <!-- 右侧更多功能按钮文字 -->
+        <attr name="moreText" format="string" />
+        <!-- 右侧更多功能按钮文字右侧图片 -->
+        <attr name="moreTextRightImg" format="reference" />
+        <!-- 背景颜色 -->
+        <attr name="titleBackground" format="color" />
+        <!-- 是否分享 -->
+        <attr name="isShare" format="boolean"/>
+        <!-- 是否分享 -->
+        <attr name="isWhiteBack" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="LevelView">
+        <attr name="maxLevel" format="integer"/>
+        <attr name="levelHeight" format="dimension"/>
+        <attr name="startColor" format="color"/>
+        <attr name="endColor" format="color"/>
+        <attr name="bgColor" format="color"/>
+        <attr name="isGradual" format="boolean"/>
+        <attr name="startText" format="string"/>
+        <attr name="maxScore" format="float"/>
+        <attr name="score" format="float"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="CustomBgView">
+        <attr name="topCorners" format="dimension" />
+        <attr name="fuckColor" format="color" />
+        <attr name="isRound" format="boolean" />
+
+    </declare-styleable>
+
+    <declare-styleable name="WaterView">
+        <attr name="centerColor" format="color"/>
+        <attr name="spreadColor" format="color"/>
+        <attr name="ringNum" format="integer"/>
+        <attr name="ringRatio" format="float"/>
+        <attr name="ringSpeed" format="integer"/>
+
+    </declare-styleable>
+</resources>
