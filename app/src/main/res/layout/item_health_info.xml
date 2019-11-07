@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/dp12"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.facebook.drawee.view.SimpleDraweeView
@@ -26,9 +27,8 @@
         android:layout_marginRight="@dimen/dp35"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="是药三分毒，经常吃药的人，身体可能会发生这些变化，要警惕。"
         android:textColor="@color/black_33"
-        android:textSize="@dimen/f12"
+        android:textSize="@dimen/f15"
         android:maxLines="2"
         android:ellipsize="end"/>
 
@@ -39,7 +39,6 @@
         app:layout_constraintBottom_toBottomOf="@id/ivImg"
         app:layout_constraintLeft_toRightOf="@id/tvRead"
         android:layout_marginLeft="@dimen/dp3"
-        android:text="12700"
         android:textSize="@dimen/f11"
         android:textColor="@color/green_08"/>
 
@@ -60,7 +59,6 @@
         app:layout_constraintBottom_toBottomOf="@id/ivImg"
         app:layout_constraintLeft_toRightOf="@id/tvJudge"
         android:layout_marginLeft="@dimen/dp3"
-        android:text="12700"
         android:textSize="@dimen/f11"
         android:textColor="@color/green_08"/>
 
@@ -71,7 +69,7 @@
         app:layout_constraintBottom_toBottomOf="@id/ivImg"
         app:layout_constraintLeft_toRightOf="@id/tvReadNum"
         android:layout_marginLeft="@dimen/dp20"
-        android:text="评论"
+        android:text="赞"
         android:textSize="@dimen/f11"
         android:textColor="@color/gray_66"/>
 

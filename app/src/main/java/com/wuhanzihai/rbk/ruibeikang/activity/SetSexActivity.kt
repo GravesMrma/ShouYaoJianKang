@@ -2,8 +2,10 @@ package com.wuhanzihai.rbk.ruibeikang.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
+import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.UserInfoReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
@@ -13,6 +15,7 @@ import com.wuhanzihai.rbk.ruibeikang.presenter.view.SetSexView
 import com.wuhanzihai.rbk.ruibeikang.widgets.CustomDatePicker
 import com.wuhanzihai.rbk.ruibeikang.widgets.CustomSinglePicker
 import kotlinx.android.synthetic.main.activity_set_sex.*
+import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -33,12 +36,14 @@ class SetSexActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
 
     override fun onSaveInfoResult() {
         toast("修改成功")
-        startActivity<MainActivity>()
+        startActivity<SetTagActivity>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_sex)
+        StatusBarUtil.setLightMode(act)
+        StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
         initView()
 
@@ -67,27 +72,27 @@ class SetSexActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
             CustomSinglePicker(this, CustomSinglePicker.ResultHandler {
                 weight1 = it
                 tvWeight.text = it
-            }).show(weight,false)
+            }).setData(weight).setIsLoop(false).show()
         }
 
         tvHeight.onClick {
             CustomSinglePicker(this, CustomSinglePicker.ResultHandler {
                 height1 = it
                 tvHeight.text = it
-            }).show(height,false)
+            }).setData(height).setIsLoop(false).show()
         }
         btCommit.onClick {
-            mPresenter.sendCode(UserInfoReq(sex, birthday, "", "", "", "", "180", "65"))
+            mPresenter.saveInfo(UserInfoReq(sex, birthday, "http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png", "", "", "", "180", "65"))
         }
     }
 
     private fun initData() {
         weight = mutableListOf()
-        for (i in 40..100) {
+        for (i in 30..200) {
             weight.add("${i}Kg")
         }
         height = mutableListOf()
-        for (i in 100..200) {
+        for (i in 100..250) {
             height.add("${i}cm")
         }
     }

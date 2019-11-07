@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -8,12 +8,17 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/ivImg"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp200"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="2.26"
+        app:failureImage="@mipmap/ic_nodata"
+        app:failureImageScaleType="center"
+        app:placeholderImage="@mipmap/ic_nodata"
+        app:placeholderImageScaleType="center"
+        android:layout_height="0dp"
         app:roundTopLeft="true"
         app:roundTopRight="true"
         app:roundBottomLeft="true"
         app:roundBottomRight="true"
-        app:roundedCornerRadius="@dimen/dp10"
-        android:background="@color/red"/>
+        app:roundedCornerRadius="@dimen/dp10" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -9,10 +9,7 @@ import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.rx.BaseSubscriber
 import com.wuhanzihai.rbk.ruibeikang.data.entity.AddressBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.AddAddressReq
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.AddressReq
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.GetCodeReq
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.LoginReq
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.*
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.AddressView
 import com.wuhanzihai.rbk.ruibeikang.utils.AES
 import com.wuhanzihai.rbk.ruibeikang.utils.MD5Util
@@ -29,6 +26,20 @@ class AddressPresenter @Inject constructor() : BasePresenter<AddressView>()  {
         }
         mView.showLoading()
         userServiceImpl.addAddress(req)
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
+                        super.onNext(t)
+                        mView.onAddressResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun upAddress(req: UpdateAddressReq){
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.upAddress(req)
                 .excute(object : BaseSubscriber<BaseData>(mView) {
                     override fun onNext(t: BaseData) {
                         super.onNext(t)

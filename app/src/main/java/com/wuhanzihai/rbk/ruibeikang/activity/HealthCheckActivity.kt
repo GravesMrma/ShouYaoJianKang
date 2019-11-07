@@ -2,9 +2,13 @@ package com.wuhanzihai.rbk.ruibeikang.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.facebook.drawee.view.SimpleDraweeView
+import com.hhjt.baselibrary.ext.loadImage
+import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItem12_10_12
 import kotlinx.android.synthetic.main.activity_health_check.*
@@ -19,6 +23,8 @@ class HealthCheckActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_health_check)
+        StatusBarUtil.setLightMode(act)
+        StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
         initView()
 
@@ -27,14 +33,13 @@ class HealthCheckActivity : AppCompatActivity() {
 
     private fun initView() {
         list = mutableListOf()
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-
+        list.add("http://www.hcjiankang.com/androidimg/ic_health1.png")
+        list.add("http://www.hcjiankang.com/androidimg/ic_health2.png")
+        list.add("http://www.hcjiankang.com/androidimg/ic_health3.png")
+        list.add("http://www.hcjiankang.com/androidimg/ic_health4.png")
         adapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_image,list){
             override fun convert(helper: BaseViewHolder?, item: String?) {
-
+                helper!!.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item!!)
             }
         }
         rvView.adapter = adapter
@@ -65,5 +70,4 @@ class HealthCheckActivity : AppCompatActivity() {
     private fun initData() {
 
     }
-
 }

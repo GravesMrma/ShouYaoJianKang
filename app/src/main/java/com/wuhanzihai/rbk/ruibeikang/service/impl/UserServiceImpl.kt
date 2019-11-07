@@ -1,13 +1,11 @@
 package com.wuhanzihai.rbk.ruibeikang.service.impl
 
-import com.hhjt.baselibrary.data.protocol.BaseResp
 import com.hhjt.baselibrary.ext.convert
 import com.wuhanzihai.rbk.ruibeikang.data.repository.UserRepository
 import com.wuhanzihai.rbk.ruibeikang.service.UserService
 import com.hhjt.baselibrary.ext.convertT
 import com.hhjt.baselibrary.rx.BaseData
-import com.wuhanzihai.rbk.ruibeikang.data.entity.AddressBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
+import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.*
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -23,6 +21,10 @@ class UserServiceImpl @Inject constructor() : UserService {
 
     override fun login(loginReq: LoginReq): Observable<LoginData> {
         return repository.login(loginReq).convert()
+    }
+
+    override fun activation(req: ActivationReq): Observable<BaseData> {
+        return repository.activation(req).convertT()
     }
 
     override fun saveInfo(userInfoReq: UserInfoReq): Observable<BaseData> {
@@ -49,7 +51,19 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.getAddressInfo(req).convert()
     }
 
-    override fun upAddress(req: AddAddressReq): Observable<BaseData> {
+    override fun upAddress(req: UpdateAddressReq): Observable<BaseData> {
         return repository.upAddress(req).convertT()
+    }
+
+    override fun getOrder(req: OrderReq): Observable<OrderBean> {
+        return repository.getOrder(req).convert()
+    }
+
+    override fun mineIndex(): Observable<MineBean> {
+        return repository.mineIndex().convert()
+    }
+
+    override fun getVersion(): Observable<VersionBean> {
+        return repository.getVersion().convert()
     }
 }

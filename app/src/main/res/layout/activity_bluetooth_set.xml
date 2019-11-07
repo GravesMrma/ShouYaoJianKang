@@ -1,22 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BluetoothSetActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="健康管理"/>
+        app:titleText="健康管理" />
 
     <View
+        android:id="@+id/vLine"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/line"/>
+        android:background="@color/line" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vLine">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rlView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                app:layout_constraintDimensionRatio="2.15"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/llSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/tvState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableTop="@drawable/selector_menu_set_img"
+                        android:drawablePadding="@dimen/dp12"
+                        android:gravity="center"
+                        android:text="蓝牙未开启、开启蓝牙才能绑定手环！"
+                        android:textColor="@color/selector_gray99_white"
+                        android:textSize="@dimen/f10" />
+
+                    <TextView
+                        android:id="@+id/tvSearch"
+                        android:layout_width="@dimen/dp144"
+                        android:layout_height="@dimen/dp42"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dp29"
+                        android:background="@drawable/sp_green_21"
+                        android:gravity="center"
+                        android:text="开启蓝牙"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f15" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp44"
+                    android:layout_marginTop="@dimen/dp19"
+                    android:layout_marginRight="@dimen/dp44"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:layout_width="@dimen/dp144"
+                        android:layout_height="@dimen/dp42"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/sp_green_21"
+                        android:gravity="center"
+                        android:text="蓝牙已连接"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f15" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp29"
+                        android:layout_marginTop="@dimen/dp19"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/sp_gray_5"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/dp8"
+                            android:paddingRight="@dimen/dp8">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="蓝牙名称:"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f10" />
+
+                            <TextView
+                                android:id="@+id/tvName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f10" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="@dimen/dp14"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/sp_gray_5"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/dp8"
+                            android:paddingRight="@dimen/dp8">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="蓝牙地址:"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f10" />
+
+                            <TextView
+                                android:id="@+id/tvMac"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f10" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvUnbind"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp29"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_gray_5"
+                        android:gravity="center"
+                        android:text="解绑手环"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp14"
+                android:layout_marginBottom="@dimen/dp60"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rlView" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

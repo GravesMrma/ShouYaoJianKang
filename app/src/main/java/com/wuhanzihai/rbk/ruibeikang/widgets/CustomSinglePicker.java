@@ -1,9 +1,12 @@
 package com.wuhanzihai.rbk.ruibeikang.widgets;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import com.wuhanzihai.rbk.ruibeikang.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -60,9 +64,9 @@ public class CustomSinglePicker {
     }
 
     private void initView() {
-        data_pv =  datePickerDialog.findViewById(R.id.data_pv);
-        tv_cancle =  datePickerDialog.findViewById(R.id.tv_cancel);
-        tv_select =  datePickerDialog.findViewById(R.id.tv_select);
+        data_pv = datePickerDialog.findViewById(R.id.data_pv);
+        tv_cancle = datePickerDialog.findViewById(R.id.tv_cancel);
+        tv_select = datePickerDialog.findViewById(R.id.tv_select);
         tv_cancle.setOnClickListener(view -> datePickerDialog.dismiss());
         tv_select.setOnClickListener(view -> {
             handler.handle(selectData);
@@ -78,22 +82,40 @@ public class CustomSinglePicker {
         data_pv.setCanScroll(list_data.size() > 1);
     }
 
-    public void show(List<String> data,boolean isLoop) {
+    public CustomSinglePicker setData(List<String> data) {
         list_data = data;
-        data_pv.setData(data);
-        this.data_pv.setIsLoop(isLoop); // 设置日期控件是否可以循环滚动
+        Collections.reverse(list_data);
+        data_pv.setData(list_data);
         executeScroll();
-
         addListener();
-        setSelectedTime();
+        selectData = data.get(0);
+        return this;
+    }
+
+    public CustomSinglePicker setIsLoop(boolean isLoop) {
+        data_pv.setIsLoop(isLoop); // 设置日期控件是否可以循环滚动
+
+        return this;
+    }
+
+    public void show() {
         datePickerDialog.show();
     }
 
     /**
-     * 设置日期控件默认选中的时间
+     * 设置日期控件默认选中的数据
      */
-    public void setSelectedTime() {
-        selectData = list_data.get(0);
-        executeScroll();
+    public CustomSinglePicker setSelected(int index) {
+        data_pv.setSelected(index);
+        selectData = list_data.get(index);
+        executeAnimator(data_pv);
+        return this;
+    }
+
+    private void executeAnimator(View view) {
+        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("alpha", 1f, 0f, 1f);
+        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleX", 1f, 1.3f, 1f);
+        PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("scaleY", 1f, 1.3f, 1f);
+        ObjectAnimator.ofPropertyValuesHolder(view, pvhX, pvhY, pvhZ).setDuration(200).start();
     }
 }

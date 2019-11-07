@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F7F9"
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BloodPreDataActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:canBack="true"
-        app:titleText="血压数据"/>
+        app:canBack="true" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/line"/>
+        android:background="@color/line" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

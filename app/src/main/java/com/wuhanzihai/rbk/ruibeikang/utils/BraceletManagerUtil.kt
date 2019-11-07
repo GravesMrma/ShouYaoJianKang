@@ -63,6 +63,7 @@ class BraceletManagerUtil {
         val command = Command.newInstance()
         command.data = DataManager.getUnBindDeviceBytes(false, true)
         if (command.data != null && BluetoothWristManager.getInstance().bleDevice != null) {
+            AppPrefsUtils.putString(BaseConstant.BRACELET_MAC,"")
             BluetoothWristManager.getInstance().bleDevice.writeData(command)
         }
     }
@@ -81,12 +82,11 @@ class BraceletManagerUtil {
                         command.data = DataManager.getBindDeviceBytes(AppPrefsUtils.getString(BaseConstant.BRACELET_ID), AppPrefsUtils.getString(BaseConstant.BRACELET_MAC), false)
                         BluetoothWristManager.getInstance().bleDevice.writeData(command)
                         Log.e("Callback", "写入数据成功-绑定成功" + AppPrefsUtils.getString(BaseConstant.BRACELET_ID) + AppPrefsUtils.getString(BaseConstant.BRACELET_MAC))
-
                         listener.onConnect()
+                        getCombinationData()
                         getSyncRealDate() // 开启数据同步
                         getNote()
                         openHeartRateAllDayBytes(30) // 开启全天监测
-
                         Log.e("Callback", "开启数据同步")
                     }
                 }
@@ -97,6 +97,35 @@ class BraceletManagerUtil {
             Log.e("Callback", "已连接.....")
         }
     }
+
+    fun reConnectBleDevice() {
+        if (!getBleDeviceState()) {
+            Log.e("Callback", "注册连接监听.....")
+            registerConnect(object : IConnectListener {
+                override fun onConnectFailure(s: String) {}
+                override fun onConectListener(deviceStatus: DeviceStatus) {
+                    Log.e("Callback", "重连接成功")
+                    if (deviceStatus == DeviceStatus.DISCOVERSERVICES_COMPLETED) {
+                        Log.e("Callback", "重连接成功——获取服务成功")
+                        val command = Command.newInstance()
+                        command.data = DataManager.getBindDeviceBytes(AppPrefsUtils.getString(BaseConstant.BRACELET_ID), AppPrefsUtils.getString(BaseConstant.BRACELET_MAC), false)
+                        BluetoothWristManager.getInstance().bleDevice.writeData(command)
+                        Log.e("Callback", "写入数据成功-绑定成功" + AppPrefsUtils.getString(BaseConstant.BRACELET_ID) + AppPrefsUtils.getString(BaseConstant.BRACELET_MAC))
+                        getCombinationData()
+                        getSyncRealDate() // 开启数据同步
+                        getNote()
+                        openHeartRateAllDayBytes(30) // 开启全天监测
+                        Log.e("Callback", "开启数据同步")
+                    }
+                }
+            })
+            Log.e("Callback", "重连接中.....${AppPrefsUtils.getString(BaseConstant.BRACELET_MAC)}")
+            BluetoothWristManager.getInstance().bleDevice.connect(AppPrefsUtils.getString(BaseConstant.BRACELET_MAC))
+        }else{
+            Log.e("Callback", "已连接.....")
+        }
+    }
+
 
     // 注册数据监听
     fun registerDataListener(listener: BleDataListener) {

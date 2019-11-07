@@ -20,6 +20,7 @@
             android:layout_height="@dimen/dp34" />
 
         <TextView
+            android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -29,161 +30,112 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp29"
-        android:paddingLeft="@dimen/dp10"
-        android:paddingRight="@dimen/dp10"
-        android:paddingTop="@dimen/dp6"
-        android:paddingBottom="@dimen/dp6"
-        android:background="@drawable/sp_gary_5_stk">
+        android:layout_marginTop="@dimen/dp15"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="vertical">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/dp14"-->
+        <!--android:paddingLeft="@dimen/dp10"-->
+        <!--android:paddingRight="@dimen/dp10"-->
+        <!--android:paddingTop="@dimen/dp6"-->
+        <!--android:paddingBottom="@dimen/dp6"-->
+        <!--android:background="@drawable/sp_gary_5_stk">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="131/80"
-                android:textSize="@dimen/f15"
-                android:textColor="#9C1C0F"/>
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="mmhg"
-                android:textSize="@dimen/f10"
-                android:textColor="@color/gray_99"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="131/80"-->
+                <!--android:textSize="@dimen/f15"-->
+                <!--android:textColor="#D33C26"/>-->
 
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="心率:60次/每分"
-            android:textSize="@dimen/f11"
-            android:textColor="@color/gray_99"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:drawableRight="@mipmap/ic_right_tag"
-            android:drawablePadding="@dimen/dp10"
-            android:text="09:10"
-            android:textSize="@dimen/f11"
-            android:textColor="@color/gray_99"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp14"
-        android:paddingLeft="@dimen/dp10"
-        android:paddingRight="@dimen/dp10"
-        android:paddingTop="@dimen/dp6"
-        android:paddingBottom="@dimen/dp6"
-        android:background="@drawable/sp_gary_5_stk">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="131/80"
-                android:textSize="@dimen/f15"
-                android:textColor="#D33C26"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="mmhg"
-                android:textSize="@dimen/f10"
-                android:textColor="@color/gray_99"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="mmhg"-->
+                <!--android:textSize="@dimen/f10"-->
+                <!--android:textColor="@color/gray_99"/>-->
 
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="心率:60次/每分"
-            android:textSize="@dimen/f11"
-            android:textColor="@color/gray_99"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="心率:60次/每分"-->
+            <!--android:textSize="@dimen/f11"-->
+            <!--android:textColor="@color/gray_99"/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:drawableRight="@mipmap/ic_right_tag"
-            android:drawablePadding="@dimen/dp10"
-            android:text="09:10"
-            android:textSize="@dimen/f11"
-            android:textColor="@color/gray_99"/>
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="center"-->
+            <!--android:drawableRight="@mipmap/ic_right_tag"-->
+            <!--android:drawablePadding="@dimen/dp10"-->
+            <!--android:text="09:10"-->
+            <!--android:textSize="@dimen/f11"-->
+            <!--android:textColor="@color/gray_99"/>-->
+    <!--</RelativeLayout>-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp14"
-        android:paddingLeft="@dimen/dp10"
-        android:paddingRight="@dimen/dp10"
-        android:paddingTop="@dimen/dp6"
-        android:paddingBottom="@dimen/dp6"
-        android:background="@drawable/sp_gary_5_stk">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/dp14"-->
+        <!--android:paddingLeft="@dimen/dp10"-->
+        <!--android:paddingRight="@dimen/dp10"-->
+        <!--android:paddingTop="@dimen/dp6"-->
+        <!--android:paddingBottom="@dimen/dp6"-->
+        <!--android:background="@drawable/sp_gary_5_stk">-->
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="131/80"
-                android:textSize="@dimen/f15"
-                android:textColor="#95E36B"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="131/80"-->
+                <!--android:textSize="@dimen/f15"-->
+                <!--android:textColor="#95E36B"/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="mmhg"
-                android:textSize="@dimen/f10"
-                android:textColor="@color/gray_99"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="mmhg"-->
+                <!--android:textSize="@dimen/f10"-->
+                <!--android:textColor="@color/gray_99"/>-->
 
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:drawableRight="@mipmap/ic_right_tag"
-            android:drawablePadding="@dimen/dp10"
-            android:text="09:10"
-            android:textSize="@dimen/f11"
-            android:textColor="@color/gray_99"/>
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="center"-->
+            <!--android:drawableRight="@mipmap/ic_right_tag"-->
+            <!--android:drawablePadding="@dimen/dp10"-->
+            <!--android:text="09:10"-->
+            <!--android:textSize="@dimen/f11"-->
+            <!--android:textColor="@color/gray_99"/>-->
+    <!--</RelativeLayout>-->
 
 </LinearLayout>

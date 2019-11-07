@@ -1,138 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#99333333"
-    android:gravity="center">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp14"
+    android:layout_marginRight="@dimen/dp14"
+    android:layout_marginTop="@dimen/dp30"
+    android:background="@drawable/sp_white_5"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp19"
         android:text="定制播放时长"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="@dimen/f15"/>
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f15"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_marginTop="@dimen/dp19"
+        android:background="@color/line" />
 
     <RadioGroup
         android:id="@+id/mRgRecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp24"
         android:gravity="center"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/mRbNone"
+            android:id="@+id/mRbClose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
-            android:paddingTop="@dimen/dp14"
-            android:paddingBottom="@dimen/dp14"
-            android:paddingLeft="@dimen/dp44"
-            android:paddingRight="@dimen/dp44"
             android:button="@null"
             android:checked="true"
-            android:drawableRight="@drawable/selector_timing_bg"
-            android:text="不设置"
-            android:gravity="center_vertical"
-            android:textColor="@color/selector_white_orange"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp14"
+            android:paddingBottom="@dimen/dp14"
+            android:text="不开启"
+            android:textColor="@color/selector_gray99_green"
             android:textSize="@dimen/f12" />
 
         <RadioButton
             android:id="@+id/mRb10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
+            android:button="@null"
+            android:gravity="center"
             android:paddingTop="@dimen/dp14"
             android:paddingBottom="@dimen/dp14"
-            android:paddingLeft="@dimen/dp44"
-            android:paddingRight="@dimen/dp44"
-            android:button="@null"
-            android:drawableRight="@drawable/selector_timing_bg"
             android:text="10分钟"
-            android:gravity="center_vertical"
-            android:textColor="@color/selector_white_orange"
+            android:textColor="@color/selector_gray99_green"
             android:textSize="@dimen/f12" />
 
         <RadioButton
             android:id="@+id/mRb20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
+            android:button="@null"
+            android:gravity="center"
             android:paddingTop="@dimen/dp14"
             android:paddingBottom="@dimen/dp14"
-            android:paddingLeft="@dimen/dp44"
-            android:paddingRight="@dimen/dp44"
-            android:button="@null"
-            android:drawableRight="@drawable/selector_timing_bg"
             android:text="20分钟"
-            android:gravity="center_vertical"
-            android:textColor="@color/selector_white_orange"
+            android:textColor="@color/selector_gray99_green"
             android:textSize="@dimen/f12" />
 
         <RadioButton
             android:id="@+id/mRb30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
+            android:button="@null"
+            android:gravity="center"
             android:paddingTop="@dimen/dp14"
             android:paddingBottom="@dimen/dp14"
-            android:paddingLeft="@dimen/dp44"
-            android:paddingRight="@dimen/dp44"
-            android:button="@null"
-            android:drawableRight="@drawable/selector_timing_bg"
             android:text="30分钟"
-            android:gravity="center_vertical"
-            android:textColor="@color/selector_white_orange"
+            android:textColor="@color/selector_gray99_green"
             android:textSize="@dimen/f12" />
 
         <RadioButton
             android:id="@+id/mRb60"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
+            android:button="@null"
+            android:gravity="center"
             android:paddingTop="@dimen/dp14"
             android:paddingBottom="@dimen/dp14"
-            android:paddingLeft="@dimen/dp44"
-            android:paddingRight="@dimen/dp44"
-            android:button="@null"
-            android:drawableRight="@drawable/selector_timing_bg"
             android:text="60分钟"
-            android:gravity="center_vertical"
-            android:textColor="@color/selector_white_orange"
+            android:textColor="@color/selector_gray99_green"
             android:textSize="@dimen/f12" />
-
 
         <RadioButton
             android:id="@+id/mRb90"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
+            android:button="@null"
+            android:gravity="center"
             android:paddingTop="@dimen/dp14"
             android:paddingBottom="@dimen/dp14"
-            android:paddingLeft="@dimen/dp44"
-            android:paddingRight="@dimen/dp44"
-            android:button="@null"
-            android:drawableRight="@drawable/selector_timing_bg"
             android:text="90分钟"
-            android:gravity="center_vertical"
-            android:textColor="@color/selector_white_orange"
+            android:textColor="@color/selector_gray99_green"
             android:textSize="@dimen/f12" />
     </RadioGroup>
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp24"
-        android:src="@mipmap/yy_quxiao_icon"/>
+        android:padding="@dimen/dp19"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f15" />
 
 </LinearLayout>

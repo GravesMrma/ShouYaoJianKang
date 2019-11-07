@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.MachineActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="血压"/>
+        app:titleText="血压" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/line"/>
+        android:background="@color/line" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,52 +32,57 @@
         <com.hhjt.baselibrary.widgets.WaterView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/dp40"
+            app:centerColor="@color/green_08"
+            app:layout_constraintDimensionRatio="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintDimensionRatio="1"
-            app:centerColor="@color/green_08"
-            app:spreadColor="@color/green_08"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:ringRatio="0.8"
+            app:ringSpeed="1"
+            app:spreadColor="@color/green_0899" />
 
         <RelativeLayout
             android:id="@+id/rlBloodPressure"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintDimensionRatio="1">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/lView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
                         android:text="高压"
-                        android:textSize="@dimen/f13"/>
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f13" />
 
                     <TextView
+                        android:id="@+id/tvHigh"
                         android:layout_width="@dimen/dp58"
                         android:layout_height="@dimen/dp58"
                         android:layout_marginTop="@dimen/dp10"
-                        android:textColor="@color/white"
-                        android:text="100"
-                        android:textSize="@dimen/f13"
+                        android:background="@drawable/sp_blood_bg1"
                         android:gravity="center"
-                        android:background="@drawable/sp_blood_bg"/>
+                        android:hint="@string/chose"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/f13" />
 
                 </LinearLayout>
 
@@ -79,26 +90,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp30"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
                         android:text="低压"
-                        android:textSize="@dimen/f13"/>
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f13" />
 
                     <TextView
+                        android:id="@+id/tvLow"
                         android:layout_width="@dimen/dp58"
                         android:layout_height="@dimen/dp58"
                         android:layout_marginTop="@dimen/dp10"
-                        android:textColor="@color/white"
-                        android:text="@string/chose"
-                        android:textSize="@dimen/f13"
-                        android:lineSpacingExtra="@dimen/dp2"
+                        android:background="@drawable/sp_blood_bg1"
                         android:gravity="center"
-                        android:background="@drawable/sp_blood_bg"/>
+                        android:hint="@string/chose"
+                        android:lineSpacingExtra="@dimen/dp2"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/f13" />
 
                 </LinearLayout>
 
@@ -107,12 +120,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/lView"
-                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dp15"
                 android:text="mmhg"
-                android:textSize="@dimen/f13"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/f13" />
 
         </RelativeLayout>
 
@@ -121,10 +134,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintDimensionRatio="1">
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <TextView
@@ -132,11 +145,12 @@
                 android:layout_width="@dimen/dp86"
                 android:layout_height="@dimen/dp28"
                 android:layout_centerInParent="true"
-                android:textColor="@color/white"
-                android:text="点击选择"
-                android:textSize="@dimen/f13"
+                android:background="@drawable/sp_blood_bg1"
                 android:gravity="center"
-                android:background="@drawable/sp_blood_bg"/>
+                android:hint="点击选择"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/f13" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -144,9 +158,9 @@
                 android:layout_above="@id/tvText"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/dp15"
-                android:textColor="@color/white"
                 android:text="血糖指数"
-                android:textSize="@dimen/f13"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/f13" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -154,12 +168,88 @@
                 android:layout_below="@id/tvText"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dp38"
-                android:textColor="@color/white"
                 android:text="mmol/L"
-                android:textSize="@dimen/f13"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/f13" />
 
         </RelativeLayout>
 
     </android.support.constraint.ConstraintLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:id="@+id/llBloodPressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="选择心率"
+                android:padding="@dimen/dp14"
+                android:textColor="@color/black_33"
+                android:textColorHint="@color/gray_66" />
+
+            <TextView
+                android:id="@+id/tvXinlv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp14"
+                android:drawableRight="@mipmap/ic_more_gray"
+                android:drawablePadding="@dimen/dp10"
+                android:text="0"
+                android:textColor="@color/black_33"
+                android:textColorHint="@color/gray_66" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@color/line" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBloodSugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btSave"
+            style="@style/buttonStyleRoundGreen"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp38"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp14"
+            android:text="保存" />
+
+    </RelativeLayout>
 </LinearLayout>

@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/fView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@id/llView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/vLine"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/line"/>
+        android:background="@color/line"
+        app:layout_constraintBottom_toTopOf="@id/llView" />
 
     <LinearLayout
+        android:id="@+id/llView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp50"
+        android:background="@color/white"
         android:orientation="horizontal"
-        android:background="@color/white">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <RelativeLayout
             android:id="@+id/rlHome"
@@ -34,13 +38,13 @@
                 android:id="@+id/tvHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:drawableTop="@drawable/selector_main_home"
                 android:drawablePadding="@dimen/dp2"
-                android:layout_centerInParent="true"
-                android:text="首页"
                 android:gravity="center"
-                android:textSize="@dimen/f11"
-                android:textColor="@drawable/selector_color_black_green" />
+                android:text="首页"
+                android:textColor="@drawable/selector_color_black_green"
+                android:textSize="@dimen/f11" />
 
 
         </RelativeLayout>
@@ -55,13 +59,13 @@
                 android:id="@+id/tvHeath"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:drawableTop="@drawable/selector_main_heath"
                 android:drawablePadding="@dimen/dp2"
-                android:layout_centerInParent="true"
-                android:text="健康四步"
                 android:gravity="center"
-                android:textSize="@dimen/f11"
-                android:textColor="@drawable/selector_color_black_green" />
+                android:text="健康服务"
+                android:textColor="@drawable/selector_color_black_green"
+                android:textSize="@dimen/f11" />
 
 
         </RelativeLayout>
@@ -76,14 +80,13 @@
                 android:id="@+id/tvOil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:drawableTop="@drawable/selector_main_oil"
                 android:drawablePadding="@dimen/dp2"
-                android:layout_centerInParent="true"
-                android:text="加油站"
                 android:gravity="center"
-                android:textSize="@dimen/f11"
-                android:textColor="@drawable/selector_color_black_green" />
-
+                android:text="健康商城"
+                android:textColor="@drawable/selector_color_black_green"
+                android:textSize="@dimen/f11" />
 
         </RelativeLayout>
 
@@ -97,17 +100,125 @@
                 android:id="@+id/tvCenter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:drawableTop="@drawable/selector_main_center"
                 android:drawablePadding="@dimen/dp2"
-                android:layout_centerInParent="true"
-                android:text="我的"
                 android:gravity="center"
-                android:textSize="@dimen/f11"
-                android:textColor="@drawable/selector_color_black_green" />
+                android:text="我的"
+                android:textColor="@drawable/selector_color_black_green"
+                android:textSize="@dimen/f11" />
 
 
         </RelativeLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clWindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:background="@drawable/sp_window_bg"
+        app:layout_constraintBottom_toTopOf="@id/llView">
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp18"
+            android:paddingTop="@dimen/dp14"
+            android:paddingBottom="@dimen/dp14"
+            android:paddingRight="@dimen/dp10"
+            android:scaleType="center"
+            android:src="@mipmap/window_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp14"
+            android:paddingRight="@dimen/dp18"
+            android:paddingBottom="@dimen/dp14"
+            android:paddingLeft="@dimen/dp10"
+            android:scaleType="center"
+            android:src="@mipmap/window_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivMusicImg"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp23"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ivClose"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMusicName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp13"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f13"
+            app:layout_constraintRight_toLeftOf="@id/tvTime"
+            app:layout_constraintLeft_toRightOf="@id/ivMusicImg"
+            app:layout_constraintTop_toTopOf="@id/ivMusicImg" />
+
+        <TextView
+            android:id="@+id/tvIntor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp13"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f10"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintRight_toLeftOf="@id/tvTime"
+            app:layout_constraintBottom_toBottomOf="@id/ivMusicImg"
+            app:layout_constraintLeft_toRightOf="@id/ivMusicImg" />
+
+        <TextView
+            android:id="@+id/tvAllTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp11"
+            android:text="00:00"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/ivPlay"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp5"
+            android:text="/"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tvAllTime"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp5"
+            android:text="00:00"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tvText"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

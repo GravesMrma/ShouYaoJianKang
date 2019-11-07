@@ -73,7 +73,6 @@
         app:layout_constraintLeft_toRightOf="@id/tvText"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/rlImg"
-        android:text="2888.00"
         android:maxLines="1"
         android:textSize="@dimen/f15"
         android:textColor="#FFA200" />

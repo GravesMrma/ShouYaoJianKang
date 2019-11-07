@@ -10,6 +10,8 @@ interface HealthInfoView :BaseView {
 
     fun onHealthListResult(result: HealthListBean){}
 
+    fun onHealthFoodResult(result: HealthFoodBean){}
+
     fun onHealthBannerResult(result: HealthBannerBean){}
 
 }

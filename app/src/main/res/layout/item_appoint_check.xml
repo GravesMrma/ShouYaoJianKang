@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_coin_appotin"
+        android:orientation="vertical"
+        android:padding="@dimen/dp8"
+        android:layout_margin="@dimen/dp3"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="武当山净化之旅-奢华双人游"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f10"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="￥18880"
+            android:textColor="#FF9501"
+            android:textSize="@dimen/f10"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_check_45"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

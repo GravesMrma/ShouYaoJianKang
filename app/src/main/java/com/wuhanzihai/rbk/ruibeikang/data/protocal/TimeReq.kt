@@ -9,8 +9,8 @@ import com.wuhanzihai.rbk.ruibeikang.utils.AES
  * Created by wx on 2018/7/10
  */
 class TimeReq() : BaseReq() {
-    private var currenttime: String = System.currentTimeMillis().toString()
-    private var time: String = System.currentTimeMillis().toString()
+    private var currenttime: String = (System.currentTimeMillis() / 1000).toString()
+    private var time: String = (System.currentTimeMillis() / 1000).toString()
     private var token = LoginUtils.getAuthId()
 
     init {

@@ -95,7 +95,7 @@ dependencies {
     compile 'com.contrarywind:Android-PickerView:4.1.4'
 
     //easypermission
-    api 'pub.devrel:easypermissions:1.2.0'
+    api 'pub.devrel:easypermissions:2.0.1'
 
     //statusbar
     api 'com.jaeger.statusbarutil:library:1.5.1'

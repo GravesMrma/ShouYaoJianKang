@@ -19,6 +19,10 @@ class SureOrderPresenter @Inject constructor() : BasePresenter<SureOrderView>() 
     @Inject
     lateinit var mallServiceImpl: MallServiceImpl
 
+    @Inject
+    lateinit var userServiceImpl: UserServiceImpl
+
+    // 获取购物车信息
     fun doneCart(req: DoneCartReq) {
         if (!checkNetWork()) {
             return
@@ -32,4 +36,50 @@ class SureOrderPresenter @Inject constructor() : BasePresenter<SureOrderView>() 
                     }
                 }, lifecycleProvider)
     }
+
+    // 获取购物车信息 之后生成订单
+    fun commitOrder(req: CommitOrderReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        mallServiceImpl.commitOrder(req)
+                .excute(object : BaseSubscriber<OrderDetailBean>(mView) {
+                    override fun onNext(t: OrderDetailBean) {
+                        super.onNext(t)
+                        mView.onCommitOrderResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
+    //  获取默认地址
+    fun getDefAddress() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.getDefAddress()
+                .excute(object : BaseSubscriber<AddressBean>(mView) {
+                    override fun onNext(t: AddressBean) {
+                        super.onNext(t)
+                        mView.onDefAddress(t)
+                    }
+                }, lifecycleProvider)
+    }
+
+    //  直接购买 --- 提交订单
+    fun commitBuyGoods(req: CommitBuyGoodsReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        mallServiceImpl.commitBuyGoods(req)
+                .excute(object : BaseSubscriber<OrderDetailBean>(mView) {
+                    override fun onNext(t: OrderDetailBean) {
+                        super.onNext(t)
+                        mView.onCommitOrderResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
 }

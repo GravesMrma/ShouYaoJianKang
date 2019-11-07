@@ -18,7 +18,6 @@
         app:roundTopRight="true"
         app:roundBottomLeft="true"
         app:roundBottomRight="true"
-        app:roundedCornerRadius="@dimen/dp10"
-        android:background="@color/gray_66"/>
+        app:roundedCornerRadius="@dimen/dp10"/>
 
 </android.support.constraint.ConstraintLayout>

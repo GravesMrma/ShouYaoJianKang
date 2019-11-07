@@ -12,10 +12,34 @@ interface MallService {
 
     fun goodsDetail(goodsDetailReq: GoodsDetailReq): Observable<GoodsDetailBean>
 
-    fun addCart( req: AddCartReq): Observable<BaseData>
+    fun buyGoods(req: BuyGoodsReq): Observable<GoodsBuyBean>
 
-    fun shoppingCart( ): Observable<MutableList<ShoppingCartBean>>
+    fun commitBuyGoods(req: CommitBuyGoodsReq): Observable<OrderDetailBean>
 
-    fun doneCart( req: DoneCartReq): Observable<SureOrderBean>
+    fun addCart(req: AddCartReq): Observable<BaseData>
+
+    fun shoppingCart(): Observable<MutableList<ShoppingCartBean>>
+
+    fun doneCart(req: DoneCartReq): Observable<SureOrderBean>
+
+    fun deleteCart(req: DoneCartReq): Observable<BaseData>
+
+    fun doneCartNum(req: DoneCartNumReq): Observable<BaseData>
+
+    fun commitOrder(req: CommitOrderReq): Observable<OrderDetailBean>
+
+    fun payOrder(req: PayOrderReq): Observable<OrderPayBean>
+
+    fun goodClass(): Observable<MutableList<GoodsClassBean>>
+
+    fun getGoodsList(req: GoodsReq): Observable<GoodsResult>
+
+    fun searchWords(): Observable<SearchBean>
+
+    fun searchGoods(req:SearchReq): Observable<GoodsResult>
+
+    fun getGoodsClassList(req:GoodsClassListReq): Observable<MutableList<Child>>
+
+    fun singleTravel(req:Int): Observable<TravelBean>
 
 }

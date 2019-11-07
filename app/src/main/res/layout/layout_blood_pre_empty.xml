@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_blood_pre_empty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp16"
+            android:text="暂无血压数据，赶快购买血压仪去测量吧~"
+            android:textColor="@color/black"
+            android:textSize="@dimen/f14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:text="智能血压仪测量更精准，数据永久保存！"
+            android:textColor="#959595"
+            android:textSize="@dimen/f13" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp28"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvBuy"
+                android:layout_width="@dimen/dp110"
+                android:layout_height="@dimen/dp28"
+                android:background="@drawable/sp_orange_14_stk"
+                android:gravity="center"
+                android:text="还没买，去购买"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f12" />
+
+            <TextView
+                android:id="@+id/tvCheck"
+                android:layout_width="@dimen/dp110"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginLeft="@dimen/dp30"
+                android:background="@drawable/sp_orange_14"
+                android:gravity="center"
+                android:text="已购买，去测量"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

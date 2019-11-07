@@ -8,10 +8,16 @@
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.QuestionActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleText="健康自检"
+        app:titleText="身体自检"
         app:canBack="true"
         app:titleBackground="@color/white"/>
 
@@ -65,6 +71,6 @@
     <com.hhjt.baselibrary.widgets.APSTSViewPager
         android:id="@+id/vpView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

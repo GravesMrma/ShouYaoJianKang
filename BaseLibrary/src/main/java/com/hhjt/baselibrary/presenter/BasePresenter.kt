@@ -28,7 +28,7 @@ open class BasePresenter<T : BaseView> {
         if (NetWorkUtils.isNetWorkAvailable(context)) {
             return true
         }
-        mView.onError("网络不可用", -1)
+        mView.onError("网络异常,请检查网络连接", -1)
         return false
     }
 }

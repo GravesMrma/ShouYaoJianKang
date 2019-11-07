@@ -24,7 +24,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivImg"
-        android:text="智能手环"
         android:gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp7"
         android:maxLines="2"
@@ -42,11 +41,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvText"
-        android:text="699￥"
         android:layout_marginTop="@dimen/dp5"
         android:textSize="@dimen/f12"
         android:textColor="#FF6000"/>
-
-
-
 </android.support.constraint.ConstraintLayout>

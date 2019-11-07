@@ -8,6 +8,11 @@
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BodyFatActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:layout_width="match_parent"
@@ -67,6 +72,7 @@
                         android:textSize="@dimen/f23"/>
 
                     <TextView
+                        android:id="@+id/tvBMI"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.00"
@@ -148,6 +154,7 @@
                         android:textSize="@dimen/f23"/>
 
                     <TextView
+                        android:id="@+id/tvBodyfat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -192,6 +199,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvBuy"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -202,6 +210,7 @@
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/tvStart"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"

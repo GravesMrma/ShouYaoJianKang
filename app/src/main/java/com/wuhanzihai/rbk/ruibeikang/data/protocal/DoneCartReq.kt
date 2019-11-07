@@ -11,7 +11,7 @@ import java.net.URLEncoder
  * Created by wx on 2018/7/10
  */
 class DoneCartReq(cartid: String) : BaseReq() {
-    var cartid = cartid
+    var cartid = URLEncoder.encode(cartid,"UTF-8")
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
     private var user_id = LoginUtils.getUserId()

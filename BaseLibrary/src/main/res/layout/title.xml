@@ -54,7 +54,8 @@
         <ImageView
             android:id="@+id/img_more"
             android:layout_width="@dimen/dp20"
-            android:layout_height="@dimen/dp20" />
+            android:layout_height="@dimen/dp20"
+            android:scaleType="center"/>
 
         <TextView
             android:id="@+id/txt_more"

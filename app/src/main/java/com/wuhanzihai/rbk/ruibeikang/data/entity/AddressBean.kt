@@ -15,4 +15,4 @@ data class AddressBean(
         val mobile: String,
         val province: String,
         val user_id: Int
-)
+):Serializable

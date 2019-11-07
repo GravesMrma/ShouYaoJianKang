@@ -36,4 +36,32 @@ class UnifiedWebPresenter @Inject constructor() : BasePresenter<ArticleDetailVie
                     }
                 }, lifecycleProvider)
     }
+
+    fun CollectAtr(req: CollectAtrReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        infoServiceImpl.CollectAtr(req)
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
+                        super.onNext(t)
+                        mView.onColloectResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun likeAtr(req: LikeAtrReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        infoServiceImpl.likeAtr(req)
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
+                        super.onNext(t)
+                        mView.onLikeResult()
+                    }
+                }, lifecycleProvider)
+    }
 }

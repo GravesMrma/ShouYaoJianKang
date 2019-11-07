@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="@dimen/dp16"
+        android:layout_height="@dimen/dp16"
+        android:background="@drawable/sp_green_ring"
+        android:gravity="center"
+        android:text="1"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/f12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:gravity="center"
+        android:text="您最近一个星期有没有与家人深入交流过？"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f12"
+        app:layout_constraintBottom_toBottomOf="@id/tvText"
+        app:layout_constraintLeft_toRightOf="@id/tvText"
+        app:layout_constraintTop_toTopOf="@id/tvText" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
+
+
+</android.support.constraint.ConstraintLayout>

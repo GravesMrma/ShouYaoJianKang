@@ -12,10 +12,10 @@
         app:cardCornerRadius="@dimen/dp16"
         app:cardBackgroundColor="@color/white">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivHead"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/ic_heath_data"/>
+            android:layout_height="match_parent" />
 
     </android.support.v7.widget.CardView>
 

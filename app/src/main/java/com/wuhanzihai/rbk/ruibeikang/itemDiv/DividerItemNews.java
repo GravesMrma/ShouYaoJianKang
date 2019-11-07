@@ -30,7 +30,7 @@ public class DividerItemNews extends Y_DividerItemDecoration {
                         0, 0, 0)
                 .setLeftSideLine(true, ContextCompat.getColor(context, R.color.transparent),
                         0, 0, 0)
-                .setTopSideLine(true, ContextCompat.getColor(context, R.color.line),
+                .setTopSideLine(true, ContextCompat.getColor(context, R.color.main_bg),
                         1, 12, 12)
                 .setBottomSideLine(true, ContextCompat.getColor(context, R.color.transparent),
                         0, 0, 0)

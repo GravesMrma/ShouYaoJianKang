@@ -32,7 +32,7 @@ public class DividerItemAddress extends Y_DividerItemDecoration {
 //                   0, 0, 0)
 //                .setTopSideLine(true, ContextCompat.getColor(context, R.color.transparent),
 //                        5, 0, 0)
-            .setBottomSideLine(true, ContextCompat.getColor(context, R.color.line),
+            .setBottomSideLine(true, ContextCompat.getColor(context, R.color.main_bg),
                 1, 14, 0)
             .create();
         return divider;

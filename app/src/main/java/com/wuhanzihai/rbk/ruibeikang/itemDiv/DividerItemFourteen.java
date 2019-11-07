@@ -25,30 +25,16 @@ public class DividerItemFourteen extends Y_DividerItemDecoration {
     @SuppressLint("ResourceAsColor")
     @Override
     public Y_Divider getDivider(int itemPosition) {
-        Y_Divider divider = null;
-        if (itemPosition == 0) {
-            divider = new Y_DividerBuilder()
-                    .setRightSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                            0, 0, 0)
-                    .setLeftSideLine(true, ContextCompat.getColor(context, R.color.line),
-                            0, 0, 0)
-                    .setTopSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                            0, 0, 0)
-                    .setBottomSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                            0, 0, 0)
-                    .create();
-        }else {
-            divider = new Y_DividerBuilder()
-                    .setRightSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                            0, 0, 0)
-                    .setLeftSideLine(true, ContextCompat.getColor(context, R.color.line),
-                            0, 0, 0)
-                    .setTopSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                            14, 0, 0)
-                    .setBottomSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                            0, 0, 0)
-                    .create();
-        }
+        Y_Divider divider = new Y_DividerBuilder()
+//                .setRightSideLine(true, ContextCompat.getColor(context, R.color.transparent),
+//                        0, 0, 0)
+//                .setLeftSideLine(true, ContextCompat.getColor(context, R.color.transparent),
+//                   0, 0, 0)
+                .setTopSideLine(true, ContextCompat.getColor(context, R.color.transparent),
+                        14, 0, 0)
+//            .setBottomSideLine(true, ContextCompat.getColor(context, R.color.clarity),
+//                0, 0, 0)
+            .create();
         return divider;
     }
 }

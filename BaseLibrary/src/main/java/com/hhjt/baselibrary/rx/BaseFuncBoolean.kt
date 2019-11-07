@@ -12,7 +12,7 @@ class BaseFuncBoolean<T> : Function<BaseResp<T>, Observable<Boolean>> {
     override fun apply(t: BaseResp<T>): Observable<Boolean> {
         if (t.code != ResultCode.SUCCESS) {
             return Observable.error(BaseException(t.code, t.msg))
-        } else if (t.code == -2) {
+        } else if (t.code == ResultCode.INVALID_TOKEN) {
             return Observable.error(TokenInvalidException(t.msg, t.code))
         }
         return Observable.just(true)

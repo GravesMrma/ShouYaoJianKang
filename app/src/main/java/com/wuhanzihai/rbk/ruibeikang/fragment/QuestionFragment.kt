@@ -9,8 +9,11 @@ import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wuhanzihai.rbk.ruibeikang.R
-import kotlinx.android.synthetic.main.layout_recyclerview.*
+import com.wuhanzihai.rbk.ruibeikang.activity.SubjectDetailActivity
+import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
+import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.support.v4.startActivity
 
 class QuestionFragment:Fragment() {
 
@@ -18,7 +21,8 @@ class QuestionFragment:Fragment() {
     private lateinit var adapter: BaseQuickAdapter<String, BaseViewHolder>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.layout_recyclerview,null)
+        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_recyclerview, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -32,18 +36,6 @@ class QuestionFragment:Fragment() {
 
     private fun initView(){
         list = mutableListOf()
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
-        list.add("")
         adapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_question,list){
             override fun convert(helper: BaseViewHolder?, item: String?) {
 
@@ -51,7 +43,13 @@ class QuestionFragment:Fragment() {
         }
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act,1)
+        adapter.emptyView = getEmptyView(act,"暂无自测题")
+        adapter.setOnItemClickListener { adapter, view, position ->
+            startActivity<SubjectDetailActivity>()
+        }
     }
 
-    private fun initData(){}
+    private fun initData(){
+
+    }
 }

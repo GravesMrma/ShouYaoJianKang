@@ -12,4 +12,8 @@ interface ShoppingCartView : BaseView {
     fun onShoppingCartListResult(result: MutableList<ShoppingCartBean>)
 
     fun onDoneCartResult()
+
+    fun onDeleteCartResult()
+
+    fun onDoneCartNumResult()
 }

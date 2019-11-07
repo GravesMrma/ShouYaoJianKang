@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F9"
+    android:orientation="vertical"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.HealthDataActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleBackground="@color/white"
+        app:titleText="科学运动" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp14"
+                android:layout_marginTop="@dimen/dp29"
+                android:layout_marginRight="@dimen/dp14"
+                android:background="@drawable/sp_white_5"
+                android:paddingBottom="@dimen/dp14">
+
+                <TextView
+                    android:id="@+id/tvText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="智能手环数据"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    android:src="@drawable/sp_green_9_l"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvText1" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clSportData"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp56"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivImg1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_health_data1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDesc1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp21"
+                        android:text="您还未绑定，请绑定后获取数据"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toLeftOf="@id/ivImg1"
+                        app:layout_constraintRight_toRightOf="@id/ivImg1"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg1" />
+
+                    <TextView
+                        android:id="@+id/tvConnect1"
+                        android:layout_width="@dimen/dp144"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_marginTop="@dimen/dp65"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="去绑定"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg1" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSportData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp13"
+                    android:paddingTop="@dimen/dp14"
+                    android:paddingRight="@dimen/dp13"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tvText1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp42"
+                        android:background="@drawable/sp_healthdata_stk"
+                        android:paddingLeft="@dimen/dp11"
+                        android:paddingRight="@dimen/dp11">
+
+                        <TextView
+                            android:id="@+id/tvStep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="0"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tvStep"
+                            android:layout_marginLeft="@dimen/dp4"
+                            android:layout_marginBottom="@dimen/dp3"
+                            android:layout_toRightOf="@id/tvStep"
+                            android:text="步"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@mipmap/ic_more"
+                            android:drawablePadding="@dimen/dp9"
+                            android:gravity="center"
+                            android:text="步数"
+                            android:textColor="@color/black_33"
+                            android:textSize="@dimen/f12" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp42"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_healthdata_stk"
+                        android:paddingLeft="@dimen/dp11"
+                        android:paddingRight="@dimen/dp11">
+
+                        <TextView
+                            android:id="@+id/tvSleepHour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="00"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvText11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tvSleepHour"
+                            android:layout_marginLeft="@dimen/dp4"
+                            android:layout_marginBottom="@dimen/dp3"
+                            android:layout_toRightOf="@id/tvSleepHour"
+                            android:text="小时"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:id="@+id/tvSleepMin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:layout_toRightOf="@id/tvText11"
+                            android:text="00"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tvSleepMin"
+                            android:layout_marginLeft="@dimen/dp4"
+                            android:layout_marginBottom="@dimen/dp3"
+                            android:layout_toRightOf="@id/tvSleepMin"
+                            android:text="分钟"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@mipmap/ic_more"
+                            android:drawablePadding="@dimen/dp9"
+                            android:gravity="center"
+                            android:text="睡眠"
+                            android:textColor="@color/black_33"
+                            android:textSize="@dimen/f12" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp42"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_healthdata_stk"
+                        android:paddingLeft="@dimen/dp11"
+                        android:paddingRight="@dimen/dp11">
+
+                        <TextView
+                            android:id="@+id/tvHeartRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="0"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tvHeartRate"
+                            android:layout_marginLeft="@dimen/dp4"
+                            android:layout_marginBottom="@dimen/dp3"
+                            android:layout_toRightOf="@id/tvHeartRate"
+                            android:text="bpm"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:id="@+id/tvHeartRateTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@mipmap/ic_more"
+                            android:drawablePadding="@dimen/dp9"
+                            android:gravity="center"
+                            android:text="心率"
+                            android:textColor="@color/black_33"
+                            android:textSize="@dimen/f12" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/dp144"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="查看详情"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12" />
+
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp14"
+                android:layout_marginTop="@dimen/dp29"
+                android:layout_marginRight="@dimen/dp14"
+                android:background="@drawable/sp_white_5"
+                android:paddingBottom="@dimen/dp14">
+
+                <TextView
+                    android:id="@+id/tvText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="智能血压仪数据"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    android:src="@drawable/sp_green_9_l"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvText2" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clPreData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp56"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivImg2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_health_data3"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDesc2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp60"
+                        android:layout_marginTop="@dimen/dp21"
+                        android:layout_marginRight="@dimen/dp60"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/dp3"
+                        android:text="请测量后获取数据，如还未购买，请点击去购买按钮采购该商品"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg2" />
+
+                    <TextView
+                        android:id="@+id/tvBuy2"
+                        android:layout_width="@dimen/dp125"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_marginTop="@dimen/dp65"
+                        android:background="@drawable/sp_orange_14"
+                        android:gravity="center"
+                        android:text="去购买"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvConnect2"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg2" />
+
+                    <TextView
+                        android:id="@+id/tvConnect2"
+                        android:layout_width="@dimen/dp125"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_marginTop="@dimen/dp65"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="去测量"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toRightOf="@id/tvBuy2"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg2" />
+                </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/llPreData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp13"
+                    android:paddingRight="@dimen/dp13"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tvText2">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvBloodPre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvXueya"
+                        android:layout_width="@dimen/dp144"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="查看详情"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12" />
+
+                </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp14"
+                android:layout_marginTop="@dimen/dp29"
+                android:layout_marginRight="@dimen/dp14"
+                android:background="@drawable/sp_white_5"
+                android:paddingBottom="@dimen/dp14">
+
+                <TextView
+                    android:id="@+id/tvText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="智能血糖仪数据"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    android:src="@drawable/sp_green_9_l"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText3"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvText3" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clSugData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp56"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivImg3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_health_data2"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDesc3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp60"
+                        android:layout_marginTop="@dimen/dp21"
+                        android:layout_marginRight="@dimen/dp60"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/dp3"
+                        android:text="请测量后获取数据，如还未购买，请点击去购买按钮采购该商品"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg3" />
+
+                    <TextView
+                        android:id="@+id/tvBuy3"
+                        android:layout_width="@dimen/dp125"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_marginTop="@dimen/dp65"
+                        android:background="@drawable/sp_orange_14"
+                        android:gravity="center"
+                        android:text="去购买"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvConnect3"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg3" />
+
+                    <TextView
+                        android:id="@+id/tvConnect3"
+                        android:layout_width="@dimen/dp125"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_marginTop="@dimen/dp65"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="去测量"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toRightOf="@id/tvBuy3"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg3" />
+                </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSugData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp13"
+                    android:paddingRight="@dimen/dp13"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tvText3">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvBloodSug"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvXTdata"
+                        android:layout_width="@dimen/dp144"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="查看详情"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12" />
+
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp14"
+                android:layout_marginTop="@dimen/dp29"
+                android:layout_marginRight="@dimen/dp14"
+                android:layout_marginBottom="@dimen/dp19"
+                android:background="@drawable/sp_white_5"
+                android:paddingBottom="@dimen/dp14">
+
+                <TextView
+                    android:id="@+id/tvText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="智能体脂称数据"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    android:src="@drawable/sp_green_9_l"
+                    app:layout_constraintBottom_toBottomOf="@id/tvText4"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvText4" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clBodyFatData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp56"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivImg4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_health_data4"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDesc4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp60"
+                        android:layout_marginTop="@dimen/dp21"
+                        android:layout_marginRight="@dimen/dp60"
+                        android:gravity="center"
+                        android:lineSpacingExtra="@dimen/dp3"
+                        android:text="请测量后获取数据，如还未购买，请点击去购买按钮采购该商品"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg4" />
+
+                    <TextView
+                        android:id="@+id/tvBuy4"
+                        android:layout_width="@dimen/dp125"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_marginTop="@dimen/dp65"
+                        android:background="@drawable/sp_orange_14"
+                        android:gravity="center"
+                        android:text="去购买"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvConnect4"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg4" />
+
+                    <TextView
+                        android:id="@+id/tvConnect4"
+                        android:layout_width="@dimen/dp125"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_marginTop="@dimen/dp65"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="去测量"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintLeft_toRightOf="@id/tvBuy4"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg4" />
+                </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/llBodyFatData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp13"
+                    android:paddingRight="@dimen/dp13"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tvText4">
+
+                    <RelativeLayout
+                        android:id="@+id/rlIdiot1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp42"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_healthdata_stk"
+                        android:paddingLeft="@dimen/dp11"
+                        android:paddingRight="@dimen/dp11">
+
+                        <TextView
+                            android:id="@+id/tvBodyValue1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="100"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tvBodyValue1"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:layout_toRightOf="@id/tvBodyValue1"
+                            android:paddingBottom="@dimen/dp3"
+                            android:text="kg"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:id="@+id/tvBodyTime1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@mipmap/ic_more_gray"
+                            android:drawablePadding="@dimen/dp9"
+                            android:gravity="center"
+                            android:text="12:21"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp120"
+                            android:gravity="center"
+                            android:text="体重"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlIdiot2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp42"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_healthdata_stk"
+                        android:paddingLeft="@dimen/dp11"
+                        android:paddingRight="@dimen/dp11">
+
+                        <TextView
+                            android:id="@+id/tvBodyValue2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="9.87%"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvBodyTime2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@mipmap/ic_more_gray"
+                            android:drawablePadding="@dimen/dp9"
+                            android:gravity="center"
+                            android:text="12:21"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp120"
+                            android:gravity="center"
+                            android:text="体脂率"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlIdiot3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp42"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_healthdata_stk"
+                        android:paddingLeft="@dimen/dp11"
+                        android:paddingRight="@dimen/dp11">
+
+                        <TextView
+                            android:id="@+id/tvBodyValue3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="100"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvBodyTime3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@mipmap/ic_more_gray"
+                            android:drawablePadding="@dimen/dp9"
+                            android:gravity="center"
+                            android:text="12:21"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp120"
+                            android:gravity="center"
+                            android:text="基础代谢"
+                            android:textColor="@color/gray_99"
+                            android:textSize="@dimen/f11" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvBodyfatData"
+                        android:layout_width="@dimen/dp144"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@drawable/sp_green_14"
+                        android:gravity="center"
+                        android:text="查看详情"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12" />
+
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

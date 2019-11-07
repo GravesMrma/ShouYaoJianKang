@@ -1,10 +1,6 @@
 package com.wuhanzihai.rbk.ruibeikang.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
-import com.google.gson.Gson
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
 import com.wuhanzihai.rbk.ruibeikang.presenter.LoginPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.LoginView
@@ -20,15 +16,21 @@ import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
 import android.os.Build
 import android.net.Uri
+import android.os.CountDownTimer
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.utils.LoginUtils
-import com.huawei.android.hms.agent.HMSAgent
-import com.huawei.android.hms.agent.push.handler.GetTokenHandler
+import com.tencent.mm.opensdk.modelmsg.SendAuth
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
+import com.wuhanzihai.rbk.ruibeikang.media.MusicService
+import org.jetbrains.anko.startService
+import org.jetbrains.anko.support.v4.startService
 import org.jetbrains.anko.toast
-import com.huawei.hms.support.api.push.TokenResult
+
+//import com.huawei.hms.support.api.push.TokenResult
 
 @Route(path = "/rbk/ruibeikang/activity/LoginActivity")
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
@@ -40,13 +42,15 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
 
     override fun onGetCode() {
         toast("短信已发送")
+        tvCode.isSelected = true
+        countDownTimer.start()
     }
 
     override fun onLoginResult(result: LoginData) {
         toast("登录成功")
-        LoginUtils.saveLoginStatus(true, result.token,result.user_id)
+        LoginUtils.saveLoginStatus(true, result.token, result.user_id)
         GlobalBaseInfo.setBaseInfo(result)
-        if (result.first_login == 1) {
+        if (result.first_login == 0) {
             startActivity<SetSexActivity>()
         } else {
             startActivity<MainActivity>()
@@ -54,35 +58,62 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
         finish()
     }
 
+    private var countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
+        override fun onFinish() {
+            tvCode.isSelected = false
+            tvCode.text = "发送验证码"
+        }
+
+        override fun onTick(p0: Long) {
+            tvCode.isSelected = true
+            tvCode.text = "${(p0 / 1000)}S后重发"
+        }
+    }
+
+    private val api by lazy {
+        WXAPIFactory.createWXAPI(this, BaseConstant.APP_WXID, true)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        Log.d("HMSconnect", "搭配上科技岛派克服静安寺")
-
-        HMSAgent.connect(this) { rst ->
-            Log.e("HMSconnect", rst.toString())
-        }
-        HMSAgent.Push.getToken { rst -> Log.e("HMSconnect", rst.toString()) }
-
         StatusBarUtil.setTranslucentForImageView(act, 0, null)
 
-        if (LoginUtils.getLoginStatus()){
+        if (LoginUtils.getLoginStatus()) {
             startActivity<MainActivity>()
             finish()
+        } else {
+            initView()
+
+            initData()
         }
-
-        GetCodeReq("13971298139")
-
-        initView()
     }
 
     private fun initView() {
         tvCode.onClick {
-            mPresenter.sendCode(GetCodeReq(edAccount.text.toString()))
+            if (!tvCode.isSelected) {
+                mPresenter.sendCode(GetCodeReq(edAccount.text.toString()))
+            }
         }
 
         btLogin.onClick {
             mPresenter.login(LoginReq(edAccount.text.toString(), edPwd.text.toString()))
         }
+
+        btWXLogin.onClick {
+            var req = SendAuth.Req()
+            req.scope = "snsapi_userinfo"
+            req.state = "shouyaojiank"
+            api.sendReq(req)
+        }
+
+        tvArg.onClick {
+            startActivity<StandardWebActivity>("title" to "用户协议"
+                    , "data" to "http://api.hcjiankang.com/api/Web/article?id=722")
+        }
+    }
+
+    private fun initData() {
+        api.registerApp(BaseConstant.APP_WXID)
     }
 }

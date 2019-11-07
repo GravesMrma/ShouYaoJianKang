@@ -44,10 +44,7 @@ class LevelView : View {
             startText = ta.getString(R.styleable.LevelView_startText)!!
         } catch (e: Exception) {
         }
-
-
     }
-
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 

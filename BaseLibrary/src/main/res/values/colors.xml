@@ -5,7 +5,7 @@
     <color name="redFF">#FF0000</color>
     <color name="redE8">#EB5555</color>
     <color name="white">#FFFFFF</color>
-    <color name="line">#DDDDDD</color>
+    <color name="line">#F7F7F9</color>
     <color name="yellow">#FFD772</color>
     <color name="brown">#454141</color>
     <color name="transparent">#00FFFFFF</color>
@@ -34,6 +34,8 @@
     <color name="green_1E">#1EA588</color>
     <color name="gray_99">#999999</color>
     <color name="gray_66">#666666</color>
+    <color name="gray_88">#888888</color>
+    <color name="gray_d5">#D5D5D5</color>
     <color name="gray_F8">#F8F8F8</color>
     <color name="gray_CC">#cccccc</color>
     <color name="orange">#FFA200</color>
@@ -43,6 +45,7 @@
     <color name="gray_F5">#F5F5F5</color>
     <color name="gray_F6">#F6F6F8</color>
     <color name="gray_F7">#F7F7F9</color>
+    <color name="bluesky">#A2E0EF</color>
 
     <color name="black_33">#333333</color>
     <color name="black_33_c5">#7f333333</color>
@@ -51,4 +54,13 @@
     <color name="failure_color">#1f1f1f</color>
 
     <color name="background">#f7f7f7</color>
+
+    <color name="orderbg0">#333333</color>
+    <color name="orderbg1">#FF9501</color>
+    <color name="orderbg2">#333333</color>
+    <color name="orderbg3">#333333</color>
+    <color name="orderbg4">#333333</color>
+    <color name="orderbg5">#333333</color>
+    <color name="orderbg6">#333333</color>
+
 </resources>

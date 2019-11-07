@@ -1,5 +1,6 @@
 package com.wuhanzihai.rbk.ruibeikang.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -20,12 +21,13 @@ import com.wuhanzihai.rbk.ruibeikang.data.protocal.HealthBannerReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.HealthListReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerInfoComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.InfoModule
-import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItem12_14_12
+import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemNews
 import com.wuhanzihai.rbk.ruibeikang.presenter.HealthInfoPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.HealthInfoView
 import kotlinx.android.synthetic.main.fragment_health_info.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.startActivityForResult
 
 class HealthInfoFragment:BaseMvpFragment<HealthInfoPresenter>(),HealthInfoView {
     override fun injectComponent() {
@@ -42,12 +44,15 @@ class HealthInfoFragment:BaseMvpFragment<HealthInfoPresenter>(),HealthInfoView {
     }
 
     override fun onHealthListResult(result: HealthListBean) {
+        srView.finishRefresh()
+        srView.finishLoadMore()
         list.addAll(result.item)
         adapter.notifyDataSetChanged()
     }
 
     private lateinit var adapter: BaseQuickAdapter<HealthListItem, BaseViewHolder>
     private lateinit var list: MutableList<HealthListItem>
+    private var page = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -56,10 +61,8 @@ class HealthInfoFragment:BaseMvpFragment<HealthInfoPresenter>(),HealthInfoView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
         initView()
-
+        mPresenter.healthInfoBanner(HealthBannerReq(arguments!!.getInt("cate_id")))
         initData()
     }
 
@@ -78,13 +81,34 @@ class HealthInfoFragment:BaseMvpFragment<HealthInfoPresenter>(),HealthInfoView {
         }
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act,1)
+        rvView.addItemDecoration(DividerItemNews(act))
+
         adapter.setOnItemClickListener { _, _, position ->
-            startActivity<UnifiedWebActivity>("id" to list[position].article_id)
+            this.position = position
+            startActivityForResult<UnifiedWebActivity>(1234,"id" to list[position].article_id)
+        }
+
+        srView.setOnRefreshListener {
+            page = 1
+            list.clear()
+            mPresenter.healthInfoBanner(HealthBannerReq(arguments!!.getInt("cate_id")))
+            initData()
+        }
+        srView.setOnLoadMoreListener {
+            page++
+            initData()
         }
     }
 
     private fun initData(){
-        mPresenter.healthInfoBanner(HealthBannerReq(arguments!!.getInt("cate_id")))
-        mPresenter.healthInfoList(HealthListReq(arguments!!.getInt("cate_id"),1))
+        mPresenter.healthInfoList(HealthListReq(arguments!!.getInt("cate_id"),page))
+    }
+
+    private var position = 0
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == 4321){
+            adapter.data[position].follow = data!!.getIntExtra("like",0)
+            adapter.notifyItemChanged(position)
+        }
     }
 }

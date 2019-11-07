@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.GeneArchivesActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="基因检测报告查询" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_jyjc" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp16"
+                android:text="暂无基因检测报告，赶快购买基因服务吧~"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp60"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginRight="@dimen/dp60"
+                android:gravity="center"
+                android:text="提早预测疾病风险，提前预防大病侵袭！"
+                android:textColor="@color/gray_99"
+                android:textSize="@dimen/f13" />
+
+            <TextView
+                android:id="@+id/tvBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp11"
+                android:background="@drawable/sp_orange_14"
+                android:gravity="center"
+                android:minWidth="@dimen/dp110"
+                android:minHeight="@dimen/dp28"
+                android:text="去购买"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

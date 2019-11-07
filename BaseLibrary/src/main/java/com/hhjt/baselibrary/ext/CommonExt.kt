@@ -207,8 +207,8 @@ fun SimpleDraweeView.loadImage(path: String) {
 
 fun getPicController(photoUrl: String): DraweeController {
     var request =
-            ImageRequestBuilder.newBuilderWithSource(Uri.parse(photoUrl))
-                    .setResizeOptions(ResizeOptions(400, 400)).build()
+            ImageRequestBuilder.newBuilderWithSource(Uri.parse(photoUrl)).build()
+//                    .setResizeOptions(ResizeOptions(400, 400)).build()
     return Fresco.newDraweeControllerBuilder()
             .setImageRequest(request)
             .setAutoPlayAnimations(true)

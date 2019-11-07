@@ -3,46 +3,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.wuhanzihai.rbk.ruibeikang">
 
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络状态变化监听 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 读取电话状态权限 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 收到短信权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- <uses-permission android:name="android.permission.READ_SMS" /> -->
+    <!-- 读取联系人 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 安卓储存访问权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 拍照权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 用户唤醒机器的权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" /> <!-- 读写系统设置 -->
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" /> <!-- Optional for location -->
+    <!-- 定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 请求安装权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 蓝牙 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 使用蓝牙设备的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 以上都是测试 需要优化 -->
     <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE"/> -->
     <!-- <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" -->
     <!-- tools:ignore="ProtectedPermissions" /> -->
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- HMS-SDK引导升级HMS功能，访问OTA服务器需要网络权限 | HMS-SDK upgrade HMS Feature, access to OTA server requires network privileges -->
-    <!-- HMS-SDK引导升级HMS功能，保存下载的升级包需要SD卡写权限 | HMS-SDK upgrade HMS Feature, save downloaded upgrade pack requires SD card Write permission -->
-    <!-- 检测网络状态 | Detecting Network status -->
-    <!-- 检测wifi状态 | Detecting WiFi status -->
-    <!-- 获取用户手机的IMEI，用来唯一的标识设备。 | Gets the IMEI of the user's phone, used to uniquely identify the device. -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- Android O版本调用安装需要使用该权限 -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 接收PUSH TOKEN的广播以及PUSH消息需要定义该权限 com.wuhanzihai.rbk.ruibeikang 要替换上您应用的包名 -->
-    <permission
-        android:name="com.wuhanzihai.rbk.ruibeikang.permission.PROCESS_PUSH_MSG"
-        android:protectionLevel="signatureOrSystem" /> <!-- 接收PUSH TOKEN的广播以及PUSH消息需要定义该权限 com.wuhanzihai.rbk.ruibeikang 要替换上您应用的包名 -->
-    <uses-permission android:name="com.wuhanzihai.rbk.ruibeikang.permission.PROCESS_PUSH_MSG" /> <!-- PUSH Provider相关权限 -->
-    <permission
-        android:name="com.wuhanzihai.rbk.ruibeikang.permission.PUSH_PROVIDER"
-        android:protectionLevel="signatureOrSystem" />
-    <permission
-        android:name="com.wuhanzihai.rbk.ruibeikang.permission.PUSH_WRITE_PROVIDER"
-        android:protectionLevel="signatureOrSystem" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".common.BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.RebateActivity"></activity>
+        <activity android:name=".activity.HealthFoodActivity" />
+        <activity android:name=".activity.PayResultActivity" />
+        <activity android:name=".activity.SysMsgActivity" />
+        <activity android:name=".activity.CollectActivity" />
+        <activity android:name=".activity.StepRankActivity" />
+        <activity android:name=".activity.GeneArchivesActivity" />
+        <activity android:name=".activity.HealthArchivesActivity" />
+        <activity android:name=".activity.CheckReportActivity" />
+        <activity android:name=".activity.OrderServiceActivity" />
+        <activity android:name=".activity.SureServiceOrderActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity android:name=".activity.EditUserInfoActivity" />
+        <activity android:name=".activity.SearchDetailActivity" />
+        <activity android:name=".activity.ExchangeCouponActivity" />
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.TravelWebActivity" />
+        <activity android:name=".activity.SingleTravelActivity" />
+        <activity android:name=".activity.SureOrderBuyActivity" />
+        <activity android:name=".activity.StandardWebActivity" />
+        <activity android:name=".activity.OrderDetailActivity" />
+        <activity android:name=".activity.GoodsServiceDetailActivity" />
+        <activity android:name=".activity.HealthClassActivity" />
+        <activity android:name=".activity.SubjectDetailActivity" />
+        <activity android:name=".activity.AppointTravelActivity" />
+        <activity android:name=".activity.PurifyTravelActivity" />
+        <activity android:name=".activity.GoodsClassActivity" />
+        <activity android:name=".activity.SportDataActivity" />
+        <activity android:name=".activity.AuthListActivity" />
+        <activity android:name=".activity.AuthActivity" />
+        <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.SetActivity" />
         <activity android:name=".activity.AddAddressActivity" />
         <activity android:name=".activity.UnifiedWebActivity" />
@@ -54,6 +88,7 @@
         <activity android:name=".activity.SetSexActivity" />
         <activity android:name=".activity.CellularNutritionActivity" />
         <activity android:name=".activity.BloodPreDataDetailActivity" />
+        <activity android:name=".activity.BloodPreDataDetailReadActivity" />
         <activity android:name=".activity.BloodPreDataActivity" />
         <activity android:name=".activity.BloodCheckActivity" />
         <activity android:name=".activity.BodyFatDataActivity" />
@@ -69,7 +104,7 @@
         <activity android:name=".activity.CouponActivity" />
         <activity android:name=".activity.AddressActivity" />
         <activity android:name=".activity.SureOrderActivity" />
-        <activity android:name=".activity.ServiceOrderActivity" />
+        <activity android:name=".activity.OrderServiceDetailActivity" />
         <activity android:name=".activity.AfterSaleActivity" />
         <activity android:name=".activity.OrderActivity" />
         <activity android:name=".activity.BIMCheckActivity" />
@@ -81,213 +116,34 @@
         <activity android:name=".activity.QuestionActivity" />
         <activity android:name=".activity.AccompanyingActivity" />
         <activity android:name=".activity.AdultAccompanimentActivity" />
-        <activity android:name=".activity.HealthSportActivity" />
+        <activity android:name=".activity.HealthDataActivity" />
         <activity android:name=".activity.HealthInfoDetailActivity" />
         <activity android:name=".activity.HealthInfoActivity" />
         <activity android:name=".activity.DietitianActivity" />
         <activity android:name=".activity.RegisterActivity" />
+
+        <service
+            android:name=".bluetooth.NotificationService"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+        <service android:name=".media.MusicService" />
+        <service android:name=".media.MusicOperationService" />
+
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".activity.LoginActivity">
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <meta-data -->
-        <!-- android:name="com.huawei.hms.client.appid" -->
-        <!-- android:value="appid=100936219"></meta-data> -->
-        <!-- <activity -->
-        <!-- android:name="com.huawei.hms.activity.BridgeActivity" -->
-        <!-- android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale" -->
-        <!-- android:excludeFromRecents="true" -->
-        <!-- android:exported="false" -->
-        <!-- android:hardwareAccelerated="true" -->
-        <!-- android:theme="@android:style/Theme.Translucent"> -->
-        <!-- <meta-data -->
-        <!-- android:name="hwc-theme" -->
-        <!-- android:value="androidhwext:style/Theme.Emui.Translucent" /> -->
-        <!-- </activity> -->
-        <!-- <activity -->
-        <!-- android:name="com.huawei.updatesdk.service.otaupdate.AppUpdateActivity" -->
-        <!-- android:configChanges="orientation|screenSize" -->
-        <!-- android:exported="false" -->
-        <!-- android:theme="@style/upsdkDlDialog"> -->
-        <!-- <meta-data -->
-        <!-- android:name="hwc-theme" -->
-        <!-- android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" /> -->
-        <!-- </activity> -->
-        <!-- <activity -->
-        <!-- android:name="com.huawei.updatesdk.support.pm.PackageInstallerActivity" -->
-        <!-- android:configChanges="orientation|keyboardHidden|screenSize" -->
-        <!-- android:exported="false" -->
-        <!-- android:theme="@style/upsdkDlDialog"> -->
-        <!-- <meta-data -->
-        <!-- android:name="hwc-theme" -->
-        <!-- android:value="androidhwext:style/Theme.Emui.Translucent" /> -->
-        <!-- </activity> -->
-        <!-- <provider -->
-        <!-- android:name="com.huawei.hms.update.provider.UpdateProvider" -->
-        <!-- android:authorities="com.wuhanzihai.rbk.ruibeikang.hms.update.provider" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"></provider> -->
-        <!-- &lt;!&ndash; 应用下载服务 &ndash;&gt; -->
-        <!-- <service android:name="com.huawei.updatesdk.service.deamon.download.DownloadService" -->
-        <!-- android:exported="false"/> -->
-        <!-- &lt;!&ndash; 接入HMSSDK PUSH模块需要注册，第三方相关 :接收Push消息（注册、透传消息、通知栏点击事件）广播，此receiver类需要开发者自己创建并继承com.huawei.hms.support.api.push.PushReceiver类，参考示例代码中的类：com.huawei.hmsagent.HuaweiPushRevicer&ndash;&gt; -->
-        <!-- &lt;!&ndash;“xxx”用实际的类名替换, ${PACKAGE_NAME} 要替换上您应用的包名&ndash;&gt; -->
-        <!-- <receiver android:name="com.wuhanzihai.rbk.ruibeikang.receiver.MyPushReceiver" -->
-        <!-- android:permission="com.wuhanzihai.rbk.ruibeikang.permission.PROCESS_PUSH_MSG"> -->
-        <!-- <intent-filter> -->
-        <!-- &lt;!&ndash; 必须,用于接收token &ndash;&gt; -->
-        <!-- <action android:name="com.huawei.android.push.intent.REGISTRATION" /> -->
-        <!-- &lt;!&ndash; 必须, 用于接收透传消息 &ndash;&gt; -->
-        <!-- <action android:name="com.huawei.android.push.intent.RECEIVE" /> -->
-        <!-- &lt;!&ndash; 必须, 用于接收通知栏消息点击事件 此事件不需要开发者处理，只需注册就可以&ndash;&gt; -->
-        <!-- <action android:name="com.huawei.intent.action.PUSH_DELAY_NOTIFY"/> -->
-        <!-- </intent-filter> -->
-        <!-- </receiver> -->
-        <!-- <activity -->
-        <!-- android:name=".agent.common.HMSAgentActivity" -->
-        <!-- android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale" -->
-        <!-- android:excludeFromRecents="true" -->
-        <!-- android:exported="false" -->
-        <!-- android:hardwareAccelerated="true" -->
-        <!-- android:theme="@android:style/Theme.Translucent" > -->
-        <!-- <meta-data -->
-        <!-- android:name="hwc-theme" -->
-        <!-- android:value="androidhwext:style/Theme.Emui.Translucent" /> -->
-        <!-- </activity> -->
-        <!--
- 接入HMSSDK 需要注册的appid参数。value的值中“100936219”用实际申请的appid替换，来源于开发者联盟网站应用的权益详情。
-           格式 android:value="appid=xxxxxx"
-           Access HMSSDK need to register AppID parameters. Value "100936219" is replaced with the actual application APPID, derived from the Developer affiliate website application.
-           Format android:value= "appid=xxxxxx"
-        -->
-        <meta-data
-            android:name="com.huawei.hms.client.appid"
-            android:value="appid=100936219" />
-        <!--
- 接入HMSSDK 需要注册的provider，authorities 一定不能与其他应用一样，所以这边 com.wuhanzihai.rbk.ruibeikang 要替换上您应用的包名
-            Access HMSSDK need to register provider,authorities must not be the same as other applications, so this side ${package_name} to replace the package name you applied
-        -->
-        <provider
-            android:name="com.huawei.hms.update.provider.UpdateProvider"
-            android:authorities="com.wuhanzihai.rbk.ruibeikang.hms.update.provider"
-            android:exported="false"
-            android:grantUriPermissions="true" />
-        <!--
- 接入HMSSDK 需要注册的provider，authorities 一定不能与其他应用一样，所以这边 com.wuhanzihai.rbk.ruibeikang 要替换上您应用的包名
-            Access HMSSDK need to register provider,authorities must not be the same as other applications, so this side ${package_name} to replace the package name you applied
-        -->
-        <provider
-            android:name="com.huawei.updatesdk.fileprovider.UpdateSdkFileProvider"
-            android:authorities="com.wuhanzihai.rbk.ruibeikang.updateSdk.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true" /> <!-- <activity android:name=".OpendeviceActivity"/> -->
-        <!-- 使用 HMSAgent 代码接入HMSSDK 需要注册的activity | Use hmsagent code to access HMSSDK activity that requires registration -->
-        <activity
-            android:name="com.huawei.android.hms.agent.common.HMSAgentActivity"
-            android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.Translucent">
-            <meta-data
-                android:name="hwc-theme"
-                android:value="androidhwext:style/Theme.Emui.Translucent" />
-        </activity> <!-- 接入HMSSDK 需要注册的activity | Access HMSSDK activity to be registered -->
-        <activity
-            android:name="com.huawei.hms.activity.BridgeActivity"
-            android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.Translucent">
-            <meta-data
-                android:name="hwc-theme"
-                android:value="androidhwext:style/Theme.Emui.Translucent" />
-        </activity> <!-- 接入HMSSDK 需要注册的activity | Access HMSSDK activity to be registered -->
-        <activity
-            android:name="com.huawei.updatesdk.service.otaupdate.AppUpdateActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false"
-            android:theme="@style/upsdkDlDialog">
-            <meta-data
-                android:name="hwc-theme"
-                android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" />
-        </activity> <!-- 接入HMSSDK 需要注册的activity | Access HMSSDK activity to be registered -->
-        <activity
-            android:name="com.huawei.updatesdk.support.pm.PackageInstallerActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="false"
-            android:theme="@style/upsdkDlDialog">
-            <meta-data
-                android:name="hwc-theme"
-                android:value="androidhwext:style/Theme.Emui.Translucent" />
-        </activity> <!-- 接入HMSSDK 游戏需要注册的activity | Activity to register when accessing HMSSDK game module using hmsagent code -->
-        <activity
-            android:name="com.huawei.appmarket.component.buoycircle.impl.delegete.BuoyBridgeActivity"
-            android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.Translucent">
-            <meta-data
-                android:name="hwc-theme"
-                android:value="androidhwext:style/Theme.Emui.Translucent" />
         </activity>
-        <!--
- 接入HMSSDK PUSH模块需要注册，第三方相关 :接收Push消息（注册、透传消息、通知栏点击事件）广播，
-                此receiver类需要开发者自己创建并继承com.huawei.hms.support.api.push.PushReceiver类，
-                参考示例代码中的类：com.huawei.hmsagent.HuaweiPushRevicer
-        com.wuhanzihai.rbk.ruibeikang 要替换上您应用的包名
-        -->
-        <receiver
-            android:name=".receiver.MyHuaWeiPushReceiver"
-            android:permission="com.wuhanzihai.rbk.ruibeikang.permission.PROCESS_PUSH_MSG">
-            <intent-filter>
-
-                <!-- 必须,用于接收token -->
-                <action android:name="com.huawei.android.push.intent.REGISTRATION" />
-                <!-- 必须, 用于接收透传消息 -->
-                <action android:name="com.huawei.android.push.intent.RECEIVE" />
-                <!-- 必须, 用于接收通知栏消息点击事件 此事件不需要开发者处理，只需注册就可以 -->
-                <action android:name="com.huawei.intent.action.PUSH_DELAY_NOTIFY" />
-
-                <!-- 用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
-                <action android:name="com.huawei.android.push.intent.CLICK" />
-                <!-- 查看push通道是否连接, 不查看则不需要 -->
-                <action android:name="com.huawei.intent.action.PUSH_STATE" />
-            </intent-filter>
-        </receiver>
-        <!--
-如下2个通知会在以后的版本中逐渐废弃
-            接入HMSSDK PUSH模块需要注册，第三方相关 :接收Push消息（点击通知栏或通知栏上的按钮后触发onEvent回调、查看push通道是否连接）广播，
-                此receiver类需要开发者自己创建并继承com.huawei.hms.support.api.push.PushReceiver类，
-                参考示例代码中的类：com.huawei.hmsagent.HuaweiPushRevicer
-        com.wuhanzihai.rbk.ruibeikang 要替换上您应用的包名
-        -->
-        <!-- <receiver android:name="com.wuhanzihai.rbk.ruibeikang.receiver.MyHuaWeiPushReceiver"> -->
-        <!-- <intent-filter> -->
-        <!--  -->
-        <!-- </intent-filter> -->
-        <!-- </receiver> -->
-        <!-- 接入HMSSDK PUSH模块需要注册该service，不需要开发者处理 -->
-        <service
-            android:name="com.huawei.hms.support.api.push.service.HmsMsgService"
-            android:enabled="true"
-            android:exported="true"
-            android:process=":pushservice">
-            <intent-filter>
-                <action android:name="com.huawei.push.msg.NOTIFY_MSG" />
-                <action android:name="com.huawei.push.msg.PASSBY_MSG" />
-            </intent-filter>
-        </service> <!-- 接入HMSSDK 需要注册的应用下载服务 | Access HMSSDK need to register app download service -->
-        <service
-            android:name="com.huawei.updatesdk.service.deamon.download.DownloadService"
-            android:exported="false" />
     </application>
 
 </manifest>

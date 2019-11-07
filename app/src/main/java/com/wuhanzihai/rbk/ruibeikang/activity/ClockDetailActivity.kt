@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.hhjt.baselibrary.common.BaseConstant
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.utils.MyUtils
 import kotlinx.android.synthetic.main.activity_clock_detail.*
 
 class ClockDetailActivity : AppCompatActivity() {
@@ -30,9 +31,11 @@ class ClockDetailActivity : AppCompatActivity() {
     private fun initData(){
         var data = intent.getStringExtra("data")
 
+        tvTitle.setTitleText(intent.getStringExtra("title"))
+
         webView.loadDataWithBaseURL(
                 null,
-                data,
+                MyUtils.myUtils.htmlFormat(data),
                 BaseConstant.MIME_TYPE,
                 BaseConstant.ENCODING,
                 null

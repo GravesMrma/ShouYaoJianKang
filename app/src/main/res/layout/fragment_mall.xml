@@ -5,547 +5,655 @@
     android:layout_height="match_parent"
     android:background="@color/main_bg">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="#81B9DA"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/lSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="#81B9DA"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp5"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp5"
+        app:layout_constraintTop_toBottomOf="@id/fake_status_bar">
+
+        <TextView
+            android:id="@+id/tvToSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/sp_white_15"
+            android:drawableLeft="@mipmap/sy_top_ss"
+            android:drawablePadding="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp12"
+            android:text="搜索文章、音频、商品"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f16" />
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24">
 
-            <com.youth.banner.Banner
-                android:id="@+id/mBanner"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="2.06"
+            <ImageView
+                android:id="@+id/ivImg3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp2"
+                android:src="@mipmap/ic_msg_white"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/lTag"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mBanner">
+            <View
+                android:id="@+id/vNote"
+                android:layout_width="@dimen/dp9"
+                android:layout_height="@dimen/dp9"
+                android:background="@drawable/sp_red_ring"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="@id/ivImg3"
+                app:layout_constraintTop_toTopOf="@id/ivImg3" />
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lSearch">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/vBg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#81B9DA"
+                    app:layout_constraintDimensionRatio="2.8"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/mBanner"
+                    app:layout_constraintTop_toBottomOf="@id/vBg" />
+
+                <com.youth.banner.Banner
+                    android:id="@+id/mBanner"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/dp9"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp9"
+                    app:layout_constraintDimensionRatio="1.75"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/lTag"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/dp12">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@mipmap/ic_mall_qq"
-                            android:drawablePadding="@dimen/dp2"
-                            android:gravity="center"
-                            android:text="英国直供"
-                            android:textColor="@color/gray_99"
-                            android:textSize="@dimen/f11" />
-
-                    </RelativeLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@mipmap/ic_mall_zp"
-                            android:drawablePadding="@dimen/dp2"
-                            android:gravity="center"
-                            android:text="正品保障"
-                            android:textColor="@color/gray_99"
-                            android:textSize="@dimen/f11" />
-
-                    </RelativeLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@mipmap/ic_mall_tk"
-                            android:drawablePadding="@dimen/dp2"
-                            android:gravity="center"
-                            android:text="急速退款"
-                            android:textColor="@color/gray_99"
-                            android:textSize="@dimen/f11" />
-
-                    </RelativeLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@mipmap/ic_mall_sh"
-                            android:drawablePadding="@dimen/dp2"
-                            android:gravity="center"
-                            android:text="售后无忧"
-                            android:textColor="@color/gray_99"
-                            android:textSize="@dimen/f11" />
-
-                    </RelativeLayout>
-
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp12"
-                    android:layout_marginTop="@dimen/dp2"
-                    android:layout_marginRight="@dimen/dp12"
-                    android:layout_marginBottom="@dimen/dp15"
-                    android:background="@drawable/sp_gray_17">
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mBanner">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:minHeight="@dimen/dp34"
                         android:orientation="horizontal"
-                        android:paddingLeft="@dimen/dp16"
-                        android:paddingRight="@dimen/dp16">
+                        android:padding="@dimen/dp12">
 
-
-                        <ImageView
+                        <RelativeLayout
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@mipmap/ic_mall_qq"
+                                android:drawablePadding="@dimen/dp2"
+                                android:gravity="center"
+                                android:text="厂家直供"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11" />
+
+                        </RelativeLayout>
+
+                        <Space
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/ic_mall_rev" />
+                            android:layout_weight="1" />
 
-                        <View
-                            android:layout_width="@dimen/dp1"
-                            android:layout_height="@dimen/dp10"
-                            android:layout_marginLeft="@dimen/dp12"
-                            android:layout_marginRight="@dimen/dp12"
-                            android:background="@color/line" />
-
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@mipmap/ic_mall_zp"
+                                android:drawablePadding="@dimen/dp2"
+                                android:gravity="center"
+                                android:text="正品保障"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11" />
+
+                        </RelativeLayout>
+
+                        <Space
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="怕生病，上首要健康APP"
-                            android:textColor="@color/gray_66"
-                            android:textSize="@dimen/f12" />
+                            android:layout_weight="1" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@mipmap/ic_mall_tk"
+                                android:drawablePadding="@dimen/dp2"
+                                android:gravity="center"
+                                android:text="专属客服"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11" />
+
+                        </RelativeLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@mipmap/ic_mall_sh"
+                                android:drawablePadding="@dimen/dp2"
+                                android:gravity="center"
+                                android:text="售后无忧"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11" />
+
+                        </RelativeLayout>
+
 
                     </LinearLayout>
 
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp12"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:layout_marginRight="@dimen/dp12"
+                        android:layout_marginBottom="@dimen/dp15"
+                        android:background="@drawable/sp_gray_17">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/dp34"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/dp16"
+                            android:paddingRight="@dimen/dp16">
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lAdv"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                app:layout_constraintDimensionRatio="2.92"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lTag">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/ic_mall_rev" />
+
+                            <View
+                                android:layout_width="@dimen/dp1"
+                                android:layout_height="@dimen/dp10"
+                                android:layout_marginLeft="@dimen/dp12"
+                                android:layout_marginRight="@dimen/dp12"
+                                android:background="@color/line" />
+
+                            <TextView
+                                android:id="@+id/tvAdv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="怕生病，上首要健康APP"
+                                android:textColor="@color/gray_66"
+                                android:textSize="@dimen/f12" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+
+                </LinearLayout>
 
                 <com.youth.banner.Banner
                     android:id="@+id/mBannerCoupon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cCells"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp12"
-                android:layout_marginRight="@dimen/dp12"
-                android:background="@drawable/sp_white_5"
-                android:paddingLeft="@dimen/dp14"
-                android:paddingRight="@dimen/dp14"
-                android:paddingBottom="@dimen/dp14"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lAdv">
-
-                <TextView
-                    android:id="@+id/tvText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp18"
-                    android:text="细胞营养素"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f15"
-                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginRight="@dimen/dp12"
+                    app:layout_constraintDimensionRatio="3.63"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/ic_more"
-                    android:drawablePadding="@dimen/dp5"
-                    android:gravity="center"
-                    android:text="更多"
-                    android:textColor="@color/gray_66"
-                    android:textSize="@dimen/f12"
-                    app:layout_constraintBottom_toBottomOf="@id/tvText"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvText" />
+                    app:layout_constraintTop_toBottomOf="@id/lTag" />
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/cBones"
+                    android:id="@+id/cCells"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/dp14"
-                    android:background="@drawable/sp_mall_1"
-                    app:layout_constraintDimensionRatio="1.34"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/sp1"
-                    app:layout_constraintTop_toBottomOf="@id/tvText">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp9"
-                        android:text="骨骼系统"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:gravity="center"
-                        android:textSize="@dimen/f14"
-                        android:textColor="@color/black_33"/>
-
-                </android.support.constraint.ConstraintLayout>
-
-                <Space
-                    android:id="@+id/sp1"
-                    android:layout_width="@dimen/dp3"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp14"
-                    app:layout_constraintBottom_toBottomOf="@id/cBones"
-                    app:layout_constraintLeft_toRightOf="@id/cBones"
-                    app:layout_constraintRight_toLeftOf="@id/cNerve"
-                    app:layout_constraintTop_toBottomOf="@id/tvText" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/cNerve"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/dp14"
-                    android:background="@drawable/sp_mall_2"
-                    app:layout_constraintDimensionRatio="1.34"
-                    app:layout_constraintLeft_toRightOf="@id/sp1"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvText">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp9"
-                        android:text="神经系统"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:gravity="center"
-                        android:textSize="@dimen/f14"
-                        android:textColor="@color/black_33"/>
-
-                </android.support.constraint.ConstraintLayout>
-
-                <Space
-                    android:id="@+id/sp3"
-                    android:layout_width="0dp"
-                    android:layout_height="3dp"
-                    app:layout_constraintLeft_toLeftOf="@id/cBones"
-                    app:layout_constraintRight_toRightOf="@id/cNerve"
-                    app:layout_constraintTop_toBottomOf="@id/cBones" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/cLoop"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/sp_mall_3"
-                    app:layout_constraintDimensionRatio="1.34"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/sp2"
-                    app:layout_constraintTop_toBottomOf="@id/sp3">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp9"
-                        android:text="循环系统"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:gravity="center"
-                        android:textSize="@dimen/f14"
-                        android:textColor="@color/black_33"/>
-
-                </android.support.constraint.ConstraintLayout>
-
-                <Space
-                    android:id="@+id/sp2"
-                    android:layout_width="@dimen/dp3"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@id/cBones"
-                    app:layout_constraintLeft_toRightOf="@id/cBones"
-                    app:layout_constraintRight_toLeftOf="@id/cNerve"
-                    app:layout_constraintTop_toBottomOf="@id/sp3" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/cUrine"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/sp_mall_4"
-                    app:layout_constraintDimensionRatio="1.34"
-                    app:layout_constraintLeft_toRightOf="@id/sp2"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sp3">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp9"
-                        android:text="泌尿系统"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:gravity="center"
-                        android:textSize="@dimen/f14"
-                        android:textColor="@color/black_33"/>
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cHeal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp12"
-                android:layout_marginTop="@dimen/dp10"
-                android:layout_marginRight="@dimen/dp12"
-                android:background="@drawable/sp_white_5"
-                android:paddingLeft="@dimen/dp14"
-                android:paddingRight="@dimen/dp14"
-                android:paddingBottom="@dimen/dp14"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cCells">
-
-                <TextView
-                    android:id="@+id/tvText1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp18"
-                    android:text="健康管理"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f15"
-                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginTop="@dimen/dp17"
+                    android:layout_marginRight="@dimen/dp12"
+                    android:background="@drawable/sp_white_5"
+                    android:paddingLeft="@dimen/dp14"
+                    android:paddingRight="@dimen/dp14"
+                    android:paddingBottom="@dimen/dp14"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/mBannerCoupon">
 
-                <RelativeLayout
-                    android:id="@+id/cHealCall"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/dp14"
-                    app:layout_constraintDimensionRatio="2.09"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/sp4"
-                    app:layout_constraintTop_toBottomOf="@id/tvText1">
-
-                    <android.support.constraint.ConstraintLayout
+                    <TextView
+                        android:id="@+id/tvText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
+                        android:layout_marginTop="@dimen/dp18"
+                        android:text="细胞营养素"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/ivImg1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/ic_heath_call"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/tvText2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp10"
-                            android:text="健康咨询"
-                            android:textColor="@color/black_33"
-                            android:textSize="@dimen/f13"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@id/tvText3"
-                            app:layout_constraintLeft_toRightOf="@id/ivImg1"
-                            app:layout_constraintTop_toTopOf="@id/ivImg1" />
-
-                        <TextView
-                            android:id="@+id/tvText3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="快速专业解答"
-                            android:textColor="@color/gray_99"
-                            android:textSize="@dimen/f11"
-                            app:layout_constraintBottom_toBottomOf="@id/ivImg1"
-                            app:layout_constraintLeft_toLeftOf="@id/tvText2"
-                            app:layout_constraintTop_toBottomOf="@id/tvText2" />
-
-                        <TextView
-                            android:layout_width="@dimen/dp11"
-                            android:layout_height="@dimen/dp11"
-                            android:layout_marginLeft="@dimen/dp4"
-                            android:background="@drawable/sp_orange_1"
-                            android:gravity="center"
-                            android:padding="@dimen/dp1"
-                            android:text="听"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/f7"
-                            app:layout_constraintBottom_toBottomOf="@id/tvText2"
-                            app:layout_constraintLeft_toRightOf="@id/tvText2" />
-
-                    </android.support.constraint.ConstraintLayout>
-
-                </RelativeLayout>
-
-                <View
-                    android:id="@+id/sp4"
-                    android:layout_width="1px"
-                    android:layout_height="0dp"
-                    android:background="@color/line"
-                    app:layout_constraintBottom_toBottomOf="@id/cHealCall"
-                    app:layout_constraintLeft_toRightOf="@id/cHealCall"
-                    app:layout_constraintRight_toLeftOf="@id/cHealData"
-                    app:layout_constraintTop_toTopOf="@id/cHealCall" />
-
-                <RelativeLayout
-                    android:id="@+id/cHealData"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/dp14"
-                    app:layout_constraintDimensionRatio="2.09"
-                    app:layout_constraintLeft_toRightOf="@id/sp4"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvText1">
-
-                    <android.support.constraint.ConstraintLayout
+                    <TextView
+                        android:id="@+id/tvCellular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
+                        android:drawableRight="@mipmap/ic_more"
+                        android:drawablePadding="@dimen/dp5"
+                        android:gravity="center"
+                        android:text="更多"
+                        android:textColor="@color/gray_66"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvText" />
 
-                        <ImageView
-                            android:id="@+id/ivImg2"
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvMallCate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_constraintTop_toBottomOf="@id/tvText" />
+
+                    <!--<android.support.constraint.ConstraintLayout-->
+                    <!--android:id="@+id/cBones"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_marginTop="@dimen/dp14"-->
+                    <!--android:background="@drawable/sp_mall_1"-->
+                    <!--app:layout_constraintDimensionRatio="1.34"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintRight_toLeftOf="@id/sp1"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/tvText">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/dp9"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="骨骼系统"-->
+                    <!--android:textColor="@color/black_33"-->
+                    <!--android:textSize="@dimen/f14"-->
+                    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--</android.support.constraint.ConstraintLayout>-->
+
+                    <!--<Space-->
+                    <!--android:id="@+id/sp1"-->
+                    <!--android:layout_width="@dimen/dp3"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/dp14"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@id/cBones"-->
+                    <!--app:layout_constraintLeft_toRightOf="@id/cBones"-->
+                    <!--app:layout_constraintRight_toLeftOf="@id/cNerve"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/tvText" />-->
+
+                    <!--<android.support.constraint.ConstraintLayout-->
+                    <!--android:id="@+id/cNerve"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_marginTop="@dimen/dp14"-->
+                    <!--android:background="@drawable/sp_mall_2"-->
+                    <!--app:layout_constraintDimensionRatio="1.34"-->
+                    <!--app:layout_constraintLeft_toRightOf="@id/sp1"-->
+                    <!--app:layout_constraintRight_toRightOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/tvText">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/dp9"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="神经系统"-->
+                    <!--android:textColor="@color/black_33"-->
+                    <!--android:textSize="@dimen/f14"-->
+                    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--</android.support.constraint.ConstraintLayout>-->
+
+                    <!--<Space-->
+                    <!--android:id="@+id/sp3"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="3dp"-->
+                    <!--app:layout_constraintLeft_toLeftOf="@id/cBones"-->
+                    <!--app:layout_constraintRight_toRightOf="@id/cNerve"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/cBones" />-->
+
+                    <!--<android.support.constraint.ConstraintLayout-->
+                    <!--android:id="@+id/cLoop"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:background="@drawable/sp_mall_3"-->
+                    <!--app:layout_constraintDimensionRatio="1.34"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintRight_toLeftOf="@id/sp2"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/sp3">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/dp9"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="循环系统"-->
+                    <!--android:textColor="@color/black_33"-->
+                    <!--android:textSize="@dimen/f14"-->
+                    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--</android.support.constraint.ConstraintLayout>-->
+
+                    <!--<Space-->
+                    <!--android:id="@+id/sp2"-->
+                    <!--android:layout_width="@dimen/dp3"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@id/cBones"-->
+                    <!--app:layout_constraintLeft_toRightOf="@id/cBones"-->
+                    <!--app:layout_constraintRight_toLeftOf="@id/cNerve"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/sp3" />-->
+
+                    <!--<android.support.constraint.ConstraintLayout-->
+                    <!--android:id="@+id/cUrine"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:background="@drawable/sp_mall_4"-->
+                    <!--app:layout_constraintDimensionRatio="1.34"-->
+                    <!--app:layout_constraintLeft_toRightOf="@id/sp2"-->
+                    <!--app:layout_constraintRight_toRightOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/sp3">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/dp9"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="泌尿系统"-->
+                    <!--android:textColor="@color/black_33"-->
+                    <!--android:textSize="@dimen/f14"-->
+                    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--</android.support.constraint.ConstraintLayout>-->
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cHeal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp12"
+                    android:background="@drawable/sp_white_5"
+                    android:paddingLeft="@dimen/dp14"
+                    android:paddingRight="@dimen/dp14"
+                    android:paddingBottom="@dimen/dp14"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cCells">
+
+                    <TextView
+                        android:id="@+id/tvText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp18"
+                        android:text="健康管理"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RelativeLayout
+                        android:id="@+id/cHealCall"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/dp14"
+                        app:layout_constraintDimensionRatio="2.09"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/sp4"
+                        app:layout_constraintTop_toBottomOf="@id/tvText1">
+
+                        <android.support.constraint.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/ic_heath_data"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:layout_centerInParent="true">
 
-                        <TextView
-                            android:id="@+id/tvText4"
+                            <ImageView
+                                android:id="@+id/ivImg1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/ic_heath_call"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvText2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp10"
+                                android:text="健康讲堂"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f13"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@id/tvText3"
+                                app:layout_constraintLeft_toRightOf="@id/ivImg1"
+                                app:layout_constraintTop_toTopOf="@id/ivImg1" />
+
+                            <TextView
+                                android:id="@+id/tvText3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="健康好课在线听"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11"
+                                app:layout_constraintBottom_toBottomOf="@id/ivImg1"
+                                app:layout_constraintLeft_toLeftOf="@id/tvText2"
+                                app:layout_constraintTop_toBottomOf="@id/tvText2" />
+
+                            <TextView
+                                android:layout_width="@dimen/dp11"
+                                android:layout_height="@dimen/dp11"
+                                android:layout_marginLeft="@dimen/dp4"
+                                android:background="@drawable/sp_orange_1"
+                                android:gravity="center"
+                                android:padding="@dimen/dp1"
+                                android:text="听"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/f7"
+                                app:layout_constraintBottom_toBottomOf="@id/tvText2"
+                                app:layout_constraintLeft_toRightOf="@id/tvText2" />
+
+                        </android.support.constraint.ConstraintLayout>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/sp4"
+                        android:layout_width="1px"
+                        android:layout_height="0dp"
+                        android:background="@color/line"
+                        app:layout_constraintBottom_toBottomOf="@id/cHealCall"
+                        app:layout_constraintLeft_toRightOf="@id/cHealCall"
+                        app:layout_constraintRight_toLeftOf="@id/cHealData"
+                        app:layout_constraintTop_toTopOf="@id/cHealCall" />
+
+                    <RelativeLayout
+                        android:id="@+id/cHealData"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/dp14"
+                        app:layout_constraintDimensionRatio="2.09"
+                        app:layout_constraintLeft_toRightOf="@id/sp4"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvText1">
+
+                        <android.support.constraint.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp10"
-                            android:text="健康数据"
-                            android:textColor="@color/black_33"
-                            android:textSize="@dimen/f13"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@id/tvText5"
-                            app:layout_constraintLeft_toRightOf="@id/ivImg2"
-                            app:layout_constraintTop_toTopOf="@id/ivImg2" />
+                            android:layout_centerInParent="true">
 
-                        <TextView
-                            android:id="@+id/tvText5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="快速专业解答"
-                            android:textColor="@color/gray_99"
-                            android:textSize="@dimen/f11"
-                            app:layout_constraintBottom_toBottomOf="@id/ivImg2"
-                            app:layout_constraintLeft_toLeftOf="@id/tvText4"
-                            app:layout_constraintTop_toBottomOf="@id/tvText4" />
+                            <ImageView
+                                android:id="@+id/ivImg2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/ic_heath_data"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                    </android.support.constraint.ConstraintLayout>
+                            <TextView
+                                android:id="@+id/tvText4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp10"
+                                android:text="健康数据"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f13"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@id/tvText5"
+                                app:layout_constraintLeft_toRightOf="@id/ivImg2"
+                                app:layout_constraintTop_toTopOf="@id/ivImg2" />
+
+                            <TextView
+                                android:id="@+id/tvText5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="健康分析防疾病"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11"
+                                app:layout_constraintBottom_toBottomOf="@id/ivImg2"
+                                app:layout_constraintLeft_toLeftOf="@id/tvText4"
+                                app:layout_constraintTop_toBottomOf="@id/tvText4" />
+
+                        </android.support.constraint.ConstraintLayout>
 
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
-            </android.support.constraint.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/lAdv1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/dp10"
-                android:orientation="vertical"
-                app:layout_constraintDimensionRatio="2.92"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cHeal">
+                </android.support.constraint.ConstraintLayout>
 
                 <com.youth.banner.Banner
                     android:id="@+id/mBannerNew"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginTop="@dimen/dp16"
+                    android:layout_marginRight="@dimen/dp12"
+                    app:layout_constraintDimensionRatio="3.96"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cHeal" />
+
+                <TextView
+                    android:id="@+id/tvText6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp25"
+                    android:drawableBottom="@drawable/sp_bottom_line"
+                    android:drawablePadding="@dimen/dp5"
+                    android:text="健康推荐"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mBannerNew" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    app:layout_constraintTop_toBottomOf="@id/tvText6" />
 
-            </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tvText6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp25"
-                android:text="健康推荐"
-                android:textColor="@color/black_33"
-                android:textSize="@dimen/f15"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lAdv1" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp10"
-                app:layout_constraintTop_toBottomOf="@id/tvText6" />
+        </android.support.v4.widget.NestedScrollView>
 
-        </android.support.constraint.ConstraintLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp14"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/ivToCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_tocart" />
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

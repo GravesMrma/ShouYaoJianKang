@@ -1,279 +1,493 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/gray_F5">
+    android:background="@color/gray_F5"
+    android:orientation="vertical">
 
-    <android.support.v4.widget.NestedScrollView
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/cdView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintDimensionRatio="2.70"
-                android:background="@color/white">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/ivImg"
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cdView"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:scaleType="center"
-                    app:layout_constraintDimensionRatio="3.50"
-                    android:layout_marginTop="@dimen/dp4"
-                    android:layout_marginLeft="@dimen/dp20"
-                    android:layout_marginRight="@dimen/dp20"
-                    android:src="@mipmap/ic_heath_top"/>
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/ivLeft"
-                    android:layout_width="wrap_content"
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/ivImg"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/dp14"
+                        android:layout_marginRight="@dimen/dp14"
+                        android:layout_marginTop="@dimen/dp7"
+                        app:layout_constraintDimensionRatio="3.84"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp11"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp18"
+                        android:src="@mipmap/ic_heath_left"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivImg" />
+
+                    <TextView
+                        android:id="@+id/tvText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp17"
+                        android:text="人冲榜中"
+                        android:textColor="@color/gray_66"
+                        android:textSize="@dimen/f10"
+                        app:layout_constraintBottom_toBottomOf="@id/ivLeft"
+                        app:layout_constraintLeft_toRightOf="@id/ivLeft" />
+
+                    <TextView
+                        android:id="@+id/tvNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8675"
+                        android:textColor="@color/gray_66"
+                        android:textSize="@dimen/f17"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/tvText"
+                        app:layout_constraintLeft_toLeftOf="@id/tvText"
+                        app:layout_constraintRight_toRightOf="@id/tvText" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/rlRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp12"
+                        android:minWidth="@dimen/dp135"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+
+                        <RelativeLayout
+                            android:id="@+id/rl1"
+                            android:layout_width="@dimen/dp35"
+                            android:layout_height="@dimen/dp35"
+                            android:visibility="invisible">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/dp16"
+                                app:cardElevation="@dimen/dp5">
+
+                                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                    android:id="@+id/ivHead"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                            </android.support.v7.widget.CardView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl2"
+                            android:layout_width="@dimen/dp35"
+                            android:layout_height="@dimen/dp35"
+                            android:layout_marginLeft="@dimen/dp20"
+                            android:visibility="invisible">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/dp16"
+                                app:cardElevation="@dimen/dp5">
+
+                                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                    android:id="@+id/ivHead1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                            </android.support.v7.widget.CardView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl3"
+                            android:layout_width="@dimen/dp35"
+                            android:layout_height="@dimen/dp35"
+                            android:layout_marginLeft="@dimen/dp40"
+                            android:visibility="invisible">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/dp16"
+                                app:cardElevation="@dimen/dp5">
+
+                                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                    android:id="@+id/ivHead2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                            </android.support.v7.widget.CardView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl4"
+                            android:layout_width="@dimen/dp35"
+                            android:layout_height="@dimen/dp35"
+                            android:layout_marginLeft="@dimen/dp60"
+                            android:visibility="invisible">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/dp16"
+                                app:cardElevation="@dimen/dp5">
+
+                                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                    android:id="@+id/ivHead3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                            </android.support.v7.widget.CardView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl5"
+                            android:layout_width="@dimen/dp35"
+                            android:layout_height="@dimen/dp35"
+                            android:layout_marginLeft="@dimen/dp80"
+                            android:visibility="invisible">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/dp16"
+                                app:cardElevation="@dimen/dp5">
+
+                                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                    android:id="@+id/ivHead4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                            </android.support.v7.widget.CardView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl6"
+                            android:layout_width="@dimen/dp35"
+                            android:layout_height="@dimen/dp35"
+                            android:visibility="invisible"
+                            android:layout_marginLeft="@dimen/dp100">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/dp16"
+                                app:cardElevation="@dimen/dp5">
+
+                                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                    android:id="@+id/ivHead5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                            </android.support.v7.widget.CardView>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cdView1"
+                    android:layout_width="0dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp20"
-                    android:layout_marginBottom="@dimen/dp15"
-                    android:src="@mipmap/ic_heath_left"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/dp14"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <TextView
-                    android:id="@+id/tvText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@id/ivLeft"
-                    app:layout_constraintLeft_toRightOf="@id/ivLeft"
-                    android:layout_marginLeft="@dimen/dp17"
-                    android:text="人已完成"
-                    android:textSize="@dimen/f10"
-                    android:textColor="@color/gray_66"/>
-
-                <TextView
-                    android:id="@+id/tvNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toLeftOf="@id/tvText"
-                    app:layout_constraintRight_toRightOf="@id/tvText"
-                    app:layout_constraintBottom_toTopOf="@id/tvText"
-                    android:text="8675"
-                    android:textSize="@dimen/f17"
-                    android:textStyle="bold"
-                    android:textColor="@color/gray_66"/>
-
-
-                <RelativeLayout
-                    android:id="@+id/rlRight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="@dimen/dp12"
-                    android:layout_marginRight="@dimen/dp18">
+                    app:layout_constraintTop_toBottomOf="@id/cdView">
 
+                    <TextView
+                        android:id="@+id/tvText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp17"
+                        android:layout_marginTop="@dimen/dp12"
+                        android:drawableLeft="@drawable/sp_green_9_l"
+                        android:text="专家问诊"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <include layout="@layout/item_heath_card_img"/>
+                    <ImageView
+                        android:layout_width="@dimen/dp9"
+                        android:layout_height="@dimen/dp18"
+                        android:src="@drawable/sp_green_9_l"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvText1" />
 
+                    <com.youth.banner.Banner
+                        android:id="@+id/ivZj"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/dp12"
+                        android:layout_marginTop="@dimen/dp13"
+                        android:layout_marginRight="@dimen/dp12"
+                        app:layout_constraintDimensionRatio="2.35"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvText1" />
+                    <!--app:roundBottomLeft="true"-->
+                    <!--app:roundBottomRight="true"-->
+                    <!--app:roundTopLeft="true"-->
+                    <!--app:roundTopRight="true"-->
+                    <!--app:roundedCornerRadius="@dimen/dp5"-->
 
-                </RelativeLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cdView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/dp17"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cdView1">
+
+                    <TextView
+                        android:id="@+id/tvText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp17"
+                        android:layout_marginTop="@dimen/dp12"
+                        android:drawableLeft="@drawable/sp_green_9_l"
+                        android:text="情绪舒缓·视觉"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp9"
+                        android:layout_height="@dimen/dp18"
+                        android:src="@drawable/sp_green_9_l"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText2"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvText2" />
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/ivTravel"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/dp12"
+                        android:layout_marginTop="@dimen/dp13"
+                        android:layout_marginRight="@dimen/dp12"
+                        app:layout_constraintDimensionRatio="2.35"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvText2" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cdView2a"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/dp17"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cdView2">
+
+                    <TextView
+                        android:id="@+id/tvText2a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp17"
+                        android:layout_marginTop="@dimen/dp12"
+                        android:drawableLeft="@drawable/sp_green_9_l"
+                        android:text="情绪舒缓·听觉"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvMoreMusic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/tvText2a"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText2a"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginRight="@dimen/dp12"
+                        android:drawableRight="@mipmap/ic_right_tag"
+                        android:drawablePadding="@dimen/dp5"
+                        android:gravity="center"
+                        android:text="更多"
+                        android:textColor="@color/gray_66"
+                        android:textSize="@dimen/f11" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp9"
+                        android:layout_height="@dimen/dp18"
+                        android:src="@drawable/sp_green_9_l"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText2a"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvText2a" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvMusic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp12"
+                        android:layout_marginTop="@dimen/dp13"
+                        android:layout_marginRight="@dimen/dp12"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvText2a" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cdView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/dp17"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cdView2a">
+
+                    <TextView
+                        android:id="@+id/tvText3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp17"
+                        android:layout_marginTop="@dimen/dp12"
+                        android:drawableLeft="@drawable/sp_green_9_l"
+                        android:text="优选服务"
+                        android:textStyle="bold"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp9"
+                        android:layout_height="@dimen/dp18"
+                        android:src="@drawable/sp_green_9_l"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText3"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvText3" />
+
+                    <com.yarolegovich.discretescrollview.DiscreteScrollView
+                        android:id="@+id/dvView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp13"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvText3" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:visibility="gone"
+                    android:id="@+id/cdView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/dp17"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cdView3">
+
+                    <TextView
+                        android:id="@+id/tvText4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp17"
+                        android:layout_marginTop="@dimen/dp12"
+                        android:drawableLeft="@drawable/sp_green_9_l"
+                        android:text="健康任务"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp9"
+                        android:layout_height="@dimen/dp18"
+                        android:src="@drawable/sp_green_9_l"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText4"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvText4" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvView1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp13"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvText4" />
+
+                    <!--<include layout="@layout/item_health_item_item"/>-->
+
+                </android.support.constraint.ConstraintLayout>
+
 
             </android.support.constraint.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cdView1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginTop="@dimen/dp10"
-                android:paddingBottom="@dimen/dp14"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cdView">
+        </android.support.v4.widget.NestedScrollView>
 
-                <TextView
-                    android:id="@+id/tvText1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="@dimen/dp17"
-                    android:layout_marginTop="@dimen/dp12"
-                    android:drawableLeft="@drawable/sp_green_9_l"
-                    android:text="就诊服务"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f15" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp9"
-                    android:layout_height="@dimen/dp18"
-                    app:layout_constraintTop_toTopOf="@id/tvText1"
-                    app:layout_constraintBottom_toBottomOf="@id/tvText1"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:src="@drawable/sp_green_9_l" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvText1"
-                    android:layout_marginTop="@dimen/dp5"
-                    android:nestedScrollingEnabled="false"/>
-
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cdView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginTop="@dimen/dp10"
-                android:paddingBottom="@dimen/dp17"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cdView1">
-
-                <TextView
-                    android:id="@+id/tvText2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="@dimen/dp17"
-                    android:layout_marginTop="@dimen/dp12"
-                    android:drawableLeft="@drawable/sp_green_9_l"
-                    android:text="净化之旅"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f15" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp9"
-                    android:layout_height="@dimen/dp18"
-                    app:layout_constraintTop_toTopOf="@id/tvText2"
-                    app:layout_constraintBottom_toBottomOf="@id/tvText2"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:src="@drawable/sp_green_9_l" />
-
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvText2"
-                    android:layout_marginTop="@dimen/dp13"
-                    android:layout_marginLeft="@dimen/dp12"
-                    android:layout_marginRight="@dimen/dp12"
-                    app:layout_constraintDimensionRatio="2.35"
-                    app:roundedCornerRadius="@dimen/dp5"
-                    app:roundBottomRight="true"
-                    app:roundBottomLeft="true"
-                    app:roundTopRight="true"
-                    app:roundTopLeft="true"/>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cdView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginTop="@dimen/dp10"
-                android:paddingBottom="@dimen/dp17"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cdView2">
-
-                <TextView
-                    android:id="@+id/tvText3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="@dimen/dp17"
-                    android:layout_marginTop="@dimen/dp12"
-                    android:drawableLeft="@drawable/sp_green_9_l"
-                    android:text="优选服务"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f15" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp9"
-                    android:layout_height="@dimen/dp18"
-                    app:layout_constraintTop_toTopOf="@id/tvText3"
-                    app:layout_constraintBottom_toBottomOf="@id/tvText3"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:src="@drawable/sp_green_9_l" />
-
-                <com.yarolegovich.discretescrollview.DiscreteScrollView
-                    android:id="@+id/dvView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvText3"
-                    android:layout_marginTop="@dimen/dp13" />
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cdView4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginTop="@dimen/dp10"
-                android:paddingBottom="@dimen/dp17"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cdView3">
-
-                <TextView
-                    android:id="@+id/tvText4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="@dimen/dp17"
-                    android:layout_marginTop="@dimen/dp12"
-                    android:drawableLeft="@drawable/sp_green_9_l"
-                    android:text="健康任务"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f15" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp9"
-                    android:layout_height="@dimen/dp18"
-                    app:layout_constraintTop_toTopOf="@id/tvText4"
-                    app:layout_constraintBottom_toBottomOf="@id/tvText4"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:src="@drawable/sp_green_9_l" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvView1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvText4"
-                    android:layout_marginTop="@dimen/dp13"/>
-
-                <!--<include layout="@layout/item_health_item_item"/>-->
-
-            </android.support.constraint.ConstraintLayout>
-
-
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v4.widget.NestedScrollView>
-
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

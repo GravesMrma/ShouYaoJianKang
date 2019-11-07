@@ -1,36 +1,37 @@
 package com.wuhanzihai.rbk.ruibeikang.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.os.Handler
+import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationSet
+import android.view.animation.TranslateAnimation
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 import com.hhjt.baselibrary.ext.loadImage
-import com.hhjt.baselibrary.rx.BaseData
+import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.wuhanzihai.rbk.ruibeikang.R
-import com.wuhanzihai.rbk.ruibeikang.activity.GoodsDetailActivity
+import com.wuhanzihai.rbk.ruibeikang.activity.*
 import com.wuhanzihai.rbk.ruibeikang.common.FrescoBannerLoader
+import com.wuhanzihai.rbk.ruibeikang.common.setOnBannerListener
 import com.wuhanzihai.rbk.ruibeikang.data.entity.*
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.GoodsDetailReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerMallComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.MallModule
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemFifteen
+import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemMallCate
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemMallItem
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemMallMenu
-import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemTen
 import com.wuhanzihai.rbk.ruibeikang.presenter.MallPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.MallView
 import kotlinx.android.synthetic.main.fragment_mall.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
-import org.jetbrains.anko.support.v4.toast
 
 class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
@@ -41,36 +42,54 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
     }
 
     override fun onMallIndexResult(result: MallBean) {
-
-//        mBanner.update(bannerList)
-
-        //        mBanner.setImageLoader(FrescoBannerLoader(false))
-//                .start()
+        this.result = result
         mBanner.setImageLoader(FrescoBannerLoader(true))
                 .setImages(result.banner.item)
                 .start()
+        mBanner.setOnBannerListener { setOnBannerListener(act, result.banner.item[it]) }
+
+        menuList.clear()
         menuList.addAll(result.tjcategory.item)
         adapterMenu.notifyDataSetChanged()
 
-        mBannerCoupon.setImageLoader(FrescoBannerLoader(true))
+        mBannerCoupon.setImageLoader(FrescoBannerLoader(false))
                 .setImages(result.coupon.item)
                 .start()
+//        mBannerCoupon.setOnBannerListener { setOnBannerListener(act, result.coupon.item[it]) }
 
-        mBannerNew.setImageLoader(FrescoBannerLoader(true))
+        mBannerNew.setImageLoader(FrescoBannerLoader(false))
                 .setImages(result.newpeople.item)
                 .start()
+        mBannerNew.setOnBannerListener { setOnBannerListener(act, result.newpeople.item[it]) }
 
+        listCate.clear()
+        listCate.add(result.hotcategory.item[0])
+        listCate.add(result.hotcategory.item[1])
+        listCate.add(result.hotcategory.item[2])
+        listCate.add(result.hotcategory.item[3])
+//        listCate.addAll(result.hotcategory.item)
+        adapterCate.notifyDataSetChanged()
+        list.clear()
         list.addAll(result.theme)
         adapter.notifyDataSetChanged()
+
+        handler.removeCallbacks(run)
+        startAnimation()
+
+        srView.finishRefresh()
     }
 
-    private lateinit var menuList: MutableList<tjcategoryItem>
-    private lateinit var adapterMenu: BaseQuickAdapter<tjcategoryItem, BaseViewHolder>
+    private lateinit var menuList: MutableList<MallGoodsItem>
+    private lateinit var adapterMenu: BaseQuickAdapter<MallGoodsItem, BaseViewHolder>
 
-    private lateinit var list: MutableList<themeItem>
-    private lateinit var adapter: BaseQuickAdapter<themeItem, BaseViewHolder>
+    private lateinit var list: MutableList<ThemeItemDetail>
+    private lateinit var adapter: BaseQuickAdapter<ThemeItemDetail, BaseViewHolder>
+
+    private lateinit var listCate: MutableList<Hotcategory>
+    private lateinit var adapterCate: BaseQuickAdapter<Hotcategory, BaseViewHolder>
 
     private lateinit var dividerItemMallItem: DividerItemMallItem
+    private var result: MallBean? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -87,8 +106,8 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
     private fun initView() {
         menuList = mutableListOf()
-        adapterMenu = object : BaseQuickAdapter<tjcategoryItem, BaseViewHolder>(R.layout.item_mall_menu, menuList) {
-            override fun convert(helper: BaseViewHolder?, item: tjcategoryItem?) {
+        adapterMenu = object : BaseQuickAdapter<MallGoodsItem, BaseViewHolder>(R.layout.item_mall_menu, menuList) {
+            override fun convert(helper: BaseViewHolder?, item: MallGoodsItem?) {
                 helper!!.setText(R.id.tvText, item!!.name)
                 helper.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item.icon)
             }
@@ -96,21 +115,66 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         rvMenu.adapter = adapterMenu
         rvMenu.layoutManager = GridLayoutManager(act, 4)
         rvMenu.addItemDecoration(DividerItemMallMenu(act))
-
         adapterMenu.setOnItemClickListener { _, _, position ->
+            if (menuList[position].id == 0) {
+                startActivity<GoodsClassActivity>()
+            } else {
+                if (position < 5) {
+                    startActivity<HealthCareActivity>("fatherId" to menuList[position].pid,
+                            "childId" to menuList[position].id, "title" to "健康生活")
+                } else {
+                    if (position == 6) {
+                        startActivity<HealthCareActivity>("fatherId" to menuList[position].pid,
+                                "childId" to menuList[position].id, "title" to "健康生活")
+                    } else {
+                        startActivity<HealthCareActivity>("fatherId" to menuList[position].pid,
+                                "childId" to menuList[position].id, "title" to "健康医疗")
+                    }
+                }
+            }
+        }
+
+        listCate = mutableListOf()
+        adapterCate = object : BaseQuickAdapter<Hotcategory, BaseViewHolder>(R.layout.item_mall_cate, listCate) {
+            override fun convert(helper: BaseViewHolder?, item: Hotcategory?) {
+                helper!!.setText(R.id.tvText, item!!.name)
+                helper.getView<SimpleDraweeView>(R.id.ivImg).loadImage("http://www.hcjiankang.com/androidimg/ic_gene${helper.layoutPosition + 1}.png")
+//                helper.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item.pic)
+                when (helper.layoutPosition) {
+                    0 -> {
+                        helper.getView<ConstraintLayout>(R.id.cBones).background = resources.getDrawable(R.drawable.sp_mall_1)
+                    }
+                    1 -> {
+                        helper.getView<ConstraintLayout>(R.id.cBones).background = resources.getDrawable(R.drawable.sp_mall_2)
+                    }
+                    2 -> {
+                        helper.getView<ConstraintLayout>(R.id.cBones).background = resources.getDrawable(R.drawable.sp_mall_3)
+                    }
+                    3 -> {
+                        helper.getView<ConstraintLayout>(R.id.cBones).background = resources.getDrawable(R.drawable.sp_mall_4)
+                    }
+                }
+            }
+        }
+        rvMallCate.adapter = adapterCate
+        rvMallCate.layoutManager = GridLayoutManager(act, 2)
+        rvMallCate.addItemDecoration(DividerItemMallCate(act))
+        adapterCate.setOnItemClickListener { _, _, position ->
+            startActivity<HealthCareActivity>(
+                    "fatherId" to listCate[position].pid
+                    , "childId" to listCate[position].id
+                    , "title" to "细胞营养素")
         }
 
         list = mutableListOf()
         dividerItemMallItem = DividerItemMallItem(act)
-
-        adapter = object : BaseQuickAdapter<themeItem, BaseViewHolder>(R.layout.item_mall_item, list) {
-            override fun convert(helper: BaseViewHolder?, item: themeItem?) {
+        adapter = object : BaseQuickAdapter<ThemeItemDetail, BaseViewHolder>(R.layout.item_mall_item, list) {
+            override fun convert(helper: BaseViewHolder?, item: ThemeItemDetail?) {
                 helper!!.getView<SimpleDraweeView>(R.id.ivBg).loadImage(item!!.ptheme_bg_img)
-
-                var adapterItem = object : BaseQuickAdapter<productlistItem, BaseViewHolder>(R.layout.item_mall_item_item, item.productlist) {
-                    override fun convert(helper: BaseViewHolder?, item: productlistItem?) {
+                var adapterItem = object : BaseQuickAdapter<GoodsListItem, BaseViewHolder>(R.layout.item_mall_item_item, item.productlist) {
+                    override fun convert(helper: BaseViewHolder?, item: GoodsListItem?) {
                         helper!!.setText(R.id.tvText, item!!.name)
-                                .setText(R.id.tvPrice, item.price + "¥")
+                                .setText(R.id.tvPrice, "¥${item.price}")
                         helper.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item.image)
                     }
                 }
@@ -131,6 +195,35 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         rvView.layoutManager = GridLayoutManager(act, 1)
         rvView.addItemDecoration(DividerItemFifteen(act))
 
+        adapter.setOnItemClickListener { _, _, position ->
+
+        }
+        ivToCart.onClick {
+            startActivity<ShoppingCartActivity>()
+        }
+        tvCellular.onClick {
+            startActivity<HealthCareActivity>("fatherId" to 1, "title" to "细胞营养素")
+        }
+        cHealCall.onClick {
+            startActivity<HealthClassActivity>()
+        }
+
+        mBannerCoupon.onClick {
+            startActivity<ExchangeCouponActivity>()
+        }
+        tvToSearch.onClick {
+            startActivity<SearchActivity>()
+        }
+        cHealData.onClick {
+            startActivity<HealthDataActivity>()
+        }
+        srView.setOnRefreshListener {
+            initData()
+        }
+        ivImg3.onClick {
+            startActivity<SysMsgActivity>()
+        }
+
 //        adapter.setOnItemClickListener { adapter, view, position ->
 //            startActivity<GoodsDetailActivity>("id" to 3)
 //
@@ -139,5 +232,25 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
     private fun initData() {
         mPresenter.mallIndex()
+    }
+
+    private var index = 0
+    private var handler = Handler()
+
+    private fun startAnimation() {
+        tvAdv.text = result!!.proadcast.item[index % result!!.proadcast.item.size]
+
+        val animationSet = AnimationSet(true)
+        val animation = TranslateAnimation(0f, 0f, 100f, 0f)
+        animation.duration = 800
+        animationSet.addAnimation(animation)
+        animationSet.fillAfter = true
+        tvAdv.startAnimation(animationSet)
+        index++
+        handler.postDelayed(run, 3000)
+    }
+
+    private var run = Runnable {
+        startAnimation()
     }
 }

@@ -1,4 +1,7 @@
 <resources>
   <string name="app_name">BaseLibrary</string>
   <string name="rmb">¥</string>
+  <string name="daijsdha">来电/短信\n微信/QQ提醒</string>
+  <string name="jkiu">手环链接/数据获取\n等常见问题解答</string>
+
 </resources>

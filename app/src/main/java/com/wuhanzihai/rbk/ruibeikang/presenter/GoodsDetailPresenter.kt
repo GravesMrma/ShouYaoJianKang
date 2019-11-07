@@ -1,15 +1,10 @@
 package com.wuhanzihai.rbk.ruibeikang.presenter
 
-import com.google.gson.Gson
-import com.wuhanzihai.rbk.ruibeikang.presenter.view.LoginView
-import com.wuhanzihai.rbk.ruibeikang.service.impl.UserServiceImpl
 import com.hhjt.baselibrary.ext.excute
 import com.hhjt.baselibrary.presenter.BasePresenter
 import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.rx.BaseSubscriber
-import com.wuhanzihai.rbk.ruibeikang.data.entity.GoodsDetailBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
-import com.wuhanzihai.rbk.ruibeikang.data.entity.MallBean
+import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.*
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.GoodsDetailView
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.MallView
@@ -49,6 +44,34 @@ class GoodsDetailPresenter @Inject constructor() : BasePresenter<GoodsDetailView
                     override fun onNext(t: BaseData) {
                         super.onNext(t)
                         mView.onAddCartResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun getShoppingCartList() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        mallServiceImpl.shoppingCart()
+                .excute(object : BaseSubscriber<MutableList<ShoppingCartBean>>(mView) {
+                    override fun onNext(t: MutableList<ShoppingCartBean>) {
+                        super.onNext(t)
+                        mView.onShoppingCartListResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun buyGoods(req: BuyGoodsReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        mallServiceImpl.buyGoods(req)
+                .excute(object : BaseSubscriber<GoodsBuyBean>(mView) {
+                    override fun onNext(t: GoodsBuyBean) {
+                        super.onNext(t)
+                        mView.onBuyResult(t)
                     }
                 }, lifecycleProvider)
     }

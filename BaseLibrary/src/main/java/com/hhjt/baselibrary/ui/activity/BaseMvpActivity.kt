@@ -1,5 +1,6 @@
 package com.hhjt.baselibrary.ui.activity
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import com.hhjt.baselibrary.common.BaseApplication
 import com.hhjt.baselibrary.widgets.ProgressLoading
@@ -27,6 +28,7 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         initActivityInjection()
         injectComponent()
 

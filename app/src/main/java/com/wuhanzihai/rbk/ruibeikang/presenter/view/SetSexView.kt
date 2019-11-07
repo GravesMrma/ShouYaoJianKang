@@ -6,4 +6,7 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
 interface SetSexView :BaseView {
 
     fun onSaveInfoResult()
+
+    fun onUserInfoResult(result: LoginData){}
+
 }

@@ -12,6 +12,7 @@ class ArticleDetailReq(article_id: Int) : BaseReq() {
     private var article_id = article_id
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
+    private var user_id = LoginUtils.getUserId()
 
     init {
         sign = AES.encryptAES(formatParam(this), getKey())

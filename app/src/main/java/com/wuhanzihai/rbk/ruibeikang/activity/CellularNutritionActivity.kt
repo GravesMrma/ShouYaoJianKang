@@ -7,7 +7,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.data.entity.CellsBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.GoodBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.GoodsBean
 import kotlinx.android.synthetic.main.activity_cellular_nutrition.*
 import org.jetbrains.anko.act

@@ -1,24 +1,15 @@
 package com.wuhanzihai.rbk.ruibeikang.presenter
 
-import com.google.gson.Gson
-import com.wuhanzihai.rbk.ruibeikang.presenter.view.LoginView
 import com.wuhanzihai.rbk.ruibeikang.service.impl.UserServiceImpl
 import com.hhjt.baselibrary.ext.excute
 import com.hhjt.baselibrary.presenter.BasePresenter
 import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.rx.BaseSubscriber
 import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
-import com.wuhanzihai.rbk.ruibeikang.data.entity.MallBean
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.GetCodeReq
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.LoginReq
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.UserInfoReq
+import com.wuhanzihai.rbk.ruibeikang.data.entity.VersionBean
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.ActivationReq
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.MainView
-import com.wuhanzihai.rbk.ruibeikang.presenter.view.MallView
-import com.wuhanzihai.rbk.ruibeikang.presenter.view.SetSexView
 import com.wuhanzihai.rbk.ruibeikang.service.impl.IndexServiceImpl
-import com.wuhanzihai.rbk.ruibeikang.service.impl.MallServiceImpl
-import com.wuhanzihai.rbk.ruibeikang.utils.AES
-import com.wuhanzihai.rbk.ruibeikang.utils.MD5Util
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor() : BasePresenter<MainView>() {
@@ -39,6 +30,34 @@ class MainPresenter @Inject constructor() : BasePresenter<MainView>() {
                     override fun onNext(t: LoginData) {
                         super.onNext(t)
                        mView.onUserInfoResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun activation(req: ActivationReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.activation(req)
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
+                        super.onNext(t)
+                        mView.onActivationResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun getVersion() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.getVersion()
+                .excute(object : BaseSubscriber<VersionBean>(mView) {
+                    override fun onNext(t: VersionBean) {
+                        super.onNext(t)
+                        mView.onVersionResult(t)
                     }
                 }, lifecycleProvider)
     }

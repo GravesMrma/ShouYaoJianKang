@@ -15,4 +15,5 @@ class BraceletData {
     var bloodPressureList: List<BloodPressure>? = null
     var allDayHeartRateBean: AllDayHeartRateBean? = null
     var msgSwitchList: List<MsgSwith>? = null
+    var bat = ""
 }

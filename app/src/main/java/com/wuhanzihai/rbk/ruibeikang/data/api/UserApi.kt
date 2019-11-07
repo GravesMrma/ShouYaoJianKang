@@ -2,14 +2,11 @@ package com.wuhanzihai.rbk.ruibeikang.data.api
 
 import com.hhjt.baselibrary.data.protocol.BaseResp
 import com.hhjt.baselibrary.rx.BaseData
-import com.wuhanzihai.rbk.ruibeikang.data.entity.AddressBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
+import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.*
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 interface UserApi {
 
@@ -18,6 +15,9 @@ interface UserApi {
 
     @POST("Entrance/quickLogin")
     fun login(@Body req: LoginReq): Observable<BaseResp<LoginData>>
+
+    @POST("User/usertocard")
+    fun activation(@Body req: ActivationReq): Observable<BaseData>
 
     @POST("User/saveinfo")
     fun saveInfo(@Body userInfoReq: UserInfoReq): Observable<BaseData>
@@ -38,6 +38,20 @@ interface UserApi {
     fun getAddressInfo(@Body req: AddressReq): Observable<BaseResp<AddressBean>>
 
     @POST("User/modifiaddress")
-    fun upAddress(@Body req: AddAddressReq): Observable<BaseData>
+    fun upAddress(@Body req: UpdateAddressReq): Observable<BaseData>
+
+    @POST("User/order")
+    fun getOrder(@Body req: OrderReq): Observable<BaseResp<OrderBean>>
+
+    //个人中心健康推荐
+    @POST("User/healthrommend")
+    fun mineIndex(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("Web/version")
+    fun getVersion(@Body req: NoParamReq): Observable<BaseResp<VersionBean>>
+
+    @Multipart
+    @POST("HomeApi/UploadImg")
+    fun uploadImg(@PartMap maps: HashMap<String, RequestBody>): Observable<BaseData>
 
 }

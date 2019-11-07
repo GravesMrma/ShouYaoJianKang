@@ -19,6 +19,8 @@ data class ArticleDetailBean(
     val fortypv: String,
     val hot_time: String,
     val is_hot: Int,
+    val isshouchan: Int,
+    val iszan: Int,
     val is_open: Int,
     val is_tuijian: Int,
     val keywords: List<String>,

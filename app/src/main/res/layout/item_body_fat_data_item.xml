@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sp_gary_5_stk"
+    android:paddingLeft="@dimen/dp10"
+    android:paddingTop="@dimen/dp6"
+    android:paddingRight="@dimen/dp10"
+    android:paddingBottom="@dimen/dp6">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="131/80"
+            android:textColor="#D33C26"
+            android:textSize="@dimen/f15" />
+
+        <TextView
+            android:id="@+id/tvDanwei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mmhg"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f10" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:drawableRight="@mipmap/ic_right_tag"
+        android:drawablePadding="@dimen/dp10"
+        android:gravity="center"
+        android:text="09:10"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11" />
+</RelativeLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,12 +7,411 @@
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BloodPreDataDetailActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleText="数据解读"
-        app:canBack="true"/>
+        app:canBack="true"
+        app:titleText="数据解读" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp28"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f29" />
+
+        <TextView
+            android:id="@+id/tvDw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:text="mmHg"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f13" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/rlData1"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp35">
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="@dimen/dp61"
+                    android:layout_height="@dimen/dp20"
+                    android:background="@drawable/sp_blood_s1" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="@dimen/dp84"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view1"
+                    android:background="#95E36B" />
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="@dimen/dp84"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view2"
+                    android:background="#FBC86F" />
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="@dimen/dp61"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view3"
+                    android:background="@drawable/sp_blood_s2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view1"
+                    android:layout_alignLeft="@id/view1"
+                    android:layout_alignRight="@id/view1"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="低血糖"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view1"
+                    android:layout_alignLeft="@id/view2"
+                    android:layout_alignRight="@id/view2"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="正常"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view1"
+                    android:layout_alignLeft="@id/view3"
+                    android:layout_alignRight="@id/view3"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="糖尿病前期"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view1"
+                    android:layout_alignLeft="@id/view4"
+                    android:layout_alignRight="@id/view4"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="高血糖"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlData2"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp35">
+
+                <View
+                    android:id="@+id/view11"
+                    android:layout_width="@dimen/dp61"
+                    android:layout_height="@dimen/dp20"
+                    android:background="@drawable/sp_blood_s1" />
+
+                <View
+                    android:id="@+id/view12"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view11"
+                    android:background="#95E36B" />
+
+                <View
+                    android:id="@+id/view13"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view12"
+                    android:background="#FBC86F" />
+                <View
+                    android:id="@+id/view14"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view13"
+                    android:background="#F17C6B" />
+                <View
+                    android:id="@+id/view15"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view14"
+                    android:background="#D33C26" />
+
+                <View
+                    android:id="@+id/view16"
+                    android:layout_width="@dimen/dp61"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_toRightOf="@id/view15"
+                    android:background="@drawable/sp_blood_s2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view11"
+                    android:layout_alignLeft="@id/view11"
+                    android:layout_alignRight="@id/view11"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="低血压"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view11"
+                    android:layout_alignLeft="@id/view12"
+                    android:layout_alignRight="@id/view12"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="正常"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view11"
+                    android:layout_alignLeft="@id/view13"
+                    android:layout_alignRight="@id/view13"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="正常高血压"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view11"
+                    android:layout_alignLeft="@id/view14"
+                    android:layout_alignRight="@id/view14"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="一级高血压"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view11"
+                    android:layout_alignLeft="@id/view15"
+                    android:layout_alignRight="@id/view15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="二高血压"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view11"
+                    android:layout_alignLeft="@id/view16"
+                    android:layout_alignRight="@id/view16"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:gravity="center"
+                    android:text="三级高血压"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f10" />
+
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/rlHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/ic_blood_head" />
+
+                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                    android:id="@+id/ivHead"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@color/red"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:layout_marginTop="@dimen/dp4"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp14"
+        android:background="@drawable/sp_white_5"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp7"
+        android:paddingTop="@dimen/dp14"
+        android:paddingRight="@dimen/dp7"
+        android:paddingBottom="@dimen/dp14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_data_bld"
+            android:gravity="center"
+            android:drawablePadding="@dimen/dp9"
+            android:text="数据解读"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f15" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp14"
+            android:minLines="3"
+            android:textColor="@color/gray_66"
+            android:textSize="@dimen/f11" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/dp28"
+            android:background="@color/line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp30"
+            android:drawableLeft="@mipmap/ic_datebldlev"
+            android:gravity="center"
+            android:drawablePadding="@dimen/dp9"
+            android:text="数据信息"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f15" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp14"
+            android:textColor="@color/gray_66"
+            android:textSize="@dimen/f11" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lSport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp14"
+        android:paddingBottom="@dimen/dp14"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lManager">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp12"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dp9"
+                android:layout_height="@dimen/dp18"
+                android:src="@drawable/sp_green_9_l" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp8"
+                android:drawableLeft="@drawable/sp_green_9_l"
+                android:text="健康生活方式"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f15"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/dp14">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@mipmap/ic_more"
+                    android:drawablePadding="@dimen/dp5"
+                    android:text="更多"
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvSport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

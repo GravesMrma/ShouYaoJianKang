@@ -1,82 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BodyFatDataActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/ivBg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
         android:src="@mipmap/pic_body_fat_bg"
-        android:scaleType="centerCrop"/>
+        app:layout_constraintTop_toBottomOf="@id/fake_status_bar" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:canBack="true"
-        app:titleText="体脂数据"
-        app:titleTextColor="@color/white"
+        app:isWhiteBack="true"
+        app:layout_constraintTop_toBottomOf="@id/fake_status_bar"
         app:titleBackground="@color/clarity"
-        app:isWhiteBack="true"/>
+        app:titleText="体脂数据"
+        app:titleTextColor="@color/white" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:layout_marginTop="@dimen/dp34"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/dp34">
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
         <TextView
             android:id="@+id/tvWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:text="00"
-            android:textSize="47sp"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textSize="47sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/tvWeight"
-            app:layout_constraintLeft_toRightOf="@id/tvWeight"
             android:text="."
-            android:textSize="47sp"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textSize="47sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvWeight"
+            app:layout_constraintLeft_toRightOf="@id/tvWeight" />
 
         <TextView
             android:id="@+id/tvText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/tvWeight"
-            app:layout_constraintLeft_toRightOf="@id/tvPoint"
             android:text="kg"
-            android:textSize="@dimen/f20"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/f20"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tvPoint"
+            app:layout_constraintTop_toTopOf="@id/tvWeight" />
 
         <TextView
             android:id="@+id/tvDouble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/tvPoint"
-            app:layout_constraintBottom_toBottomOf="@id/tvWeight"
             android:text="00"
-            android:textSize="@dimen/f20"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/f20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvWeight"
+            app:layout_constraintLeft_toRightOf="@id/tvPoint" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -84,9 +90,9 @@
         android:id="@+id/rvView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:overScrollMode="never"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivBg"
-        android:overScrollMode="never"/>
+        app:layout_constraintTop_toBottomOf="@id/ivBg" />
 
 </android.support.constraint.ConstraintLayout>

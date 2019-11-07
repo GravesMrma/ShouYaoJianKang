@@ -31,9 +31,9 @@ public class DividerItem12_10_12 extends Y_DividerItemDecoration {
                 .setLeftSideLine(true, ContextCompat.getColor(context, R.color.transparent),
                         12, 0, 0)
                 .setTopSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                        10, 0, 0)
+                        5, 0, 0)
                 .setBottomSideLine(true, ContextCompat.getColor(context, R.color.clarity),
-                        0, 0, 0)
+                        5, 0, 0)
                 .create();
         return divider;
     }

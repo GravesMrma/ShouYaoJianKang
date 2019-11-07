@@ -8,7 +8,14 @@
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BloodCheckActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleText="血压"
@@ -18,7 +25,20 @@
         android:layout_width="match_parent"
         android:layout_height="1px"/>
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never">
 
+        <ImageView
+            android:id="@+id/ivImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/xueya"/>
+
+    </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +57,7 @@
             android:gravity="center"/>
 
         <TextView
-            android:id="@+id/tvConnect"
+            android:id="@+id/tvConnect1"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"

@@ -22,6 +22,9 @@ import com.wuhanzihai.rbk.ruibeikang.presenter.view.HealthHabitsView
 import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
+import com.facebook.drawee.drawable.ScalingUtils
+import com.facebook.drawee.generic.GenericDraweeHierarchy
+import org.jetbrains.anko.support.v4.toast
 
 class HealthHabitsFragment:BaseMvpFragment<HealthHabitsPresenter>(),HealthHabitsView {
     override fun injectComponent() {
@@ -31,6 +34,11 @@ class HealthHabitsFragment:BaseMvpFragment<HealthHabitsPresenter>(),HealthHabits
     }
 
     override fun onHealthHabitsResult(result: MutableList<HealthHabitsBean>) {
+//        list.addAll(result)
+//        adapter.notifyDataSetChanged()
+    }
+
+    override fun onHealthListResult(result: HealthListBean) {
 
     }
 
@@ -62,14 +70,22 @@ class HealthHabitsFragment:BaseMvpFragment<HealthHabitsPresenter>(),HealthHabits
         rvView.addItemDecoration(DividerItem11_11_10(act))
 
         adapter.setOnItemClickListener { _, _, position ->
-            startActivity<HealthHabitsDetailActivity>("id" to list[position].cat_id)
+            startActivity<HealthHabitsDetailActivity>("id" to list[position].cat_id
+                    ,"title" to list[position].cat_name)
+        }
+
+        srView.setOnRefreshListener {
+            srView.finishRefresh()
+        }
+
+        srView.setOnLoadMoreListener {
+            srView.finishLoadMore()
         }
     }
 
     private fun initData(){
         var data = arguments!!.getSerializable("data")
         list.addAll((data as HealthHabitsBundle).list)
-        Log.e("数据是",list.size.toString()+"")
         adapter.notifyDataSetChanged()
     }
 }

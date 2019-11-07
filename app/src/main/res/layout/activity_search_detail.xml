@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.SearchDetailActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/lSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp42"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15">
+
+        <EditText
+            android:id="@+id/edContent"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp28"
+            android:layout_weight="1"
+            android:background="@drawable/sp_gary_14"
+            android:drawableLeft="@mipmap/sy_top_ss"
+            android:drawablePadding="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:hint="搜索文章、音频、商品"
+            android:paddingLeft="@dimen/dp12"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f16" />
+
+        <TextView
+            android:id="@+id/tvCommit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp30"
+            android:text="取消"
+            android:textColor="@color/green_08"
+            android:textSize="@dimen/f17" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <RadioGroup
+        android:id="@+id/mRgRecord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp38"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/mRbAll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp5"
+            android:gravity="bottom|center_horizontal"
+            android:text="文章"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDfk"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp5"
+            android:gravity="bottom|center_horizontal"
+            android:text="音频"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDfw"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp5"
+            android:gravity="bottom|center_horizontal"
+            android:text="商品"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

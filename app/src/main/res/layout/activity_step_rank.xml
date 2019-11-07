@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.StepRankActivity">
+
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivBg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1.8"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/rlTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/fake_status_bar">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_return" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                android:id="@+id/ivHead"
+                android:layout_width="@dimen/dp24"
+                android:layout_height="@dimen/dp24"/>
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:shadowRadius="1"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:textSize="@dimen/f13"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/vSpace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivBg"
+        app:layout_constraintTop_toBottomOf="@id/rlTitle" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/ndView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rlTitle">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/vSpaceTop"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                app:layout_constraintDimensionRatio="3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vSpaceTop">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp14"
+                    android:paddingTop="@dimen/dp12"
+                    android:paddingRight="@dimen/dp14"
+                    android:paddingBottom="@dimen/dp12">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="步数排行榜"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f16"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/toStep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@mipmap/ic_more_brown"
+                        android:drawablePadding="@dimen/dp5"
+                        android:text="手环计步"
+                        android:textColor="#24C789"
+                        android:textSize="@dimen/f12" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/dp14"
+                    android:layout_marginTop="@dimen/dp14"
+                    android:background="@color/line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp14"
+                    android:layout_marginRight="@dimen/dp14"
+                    android:layout_marginTop="@dimen/dp14"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:layout_marginTop="@dimen/dp20"
+                            android:layout_marginRight="@dimen/dp5"
+                            android:layout_marginBottom="@dimen/dp5"
+                            app:cardCornerRadius="@dimen/dp10"
+                            app:cardElevation="@dimen/dp5"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <android.support.constraint.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/vStepTop2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dp78"
+                                    android:background="@drawable/sp_strprank_top"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dp75"
+                                    android:background="@drawable/sp_strprank_btm"
+                                    app:layout_constraintTop_toBottomOf="@id/vStepTop2" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                        android:id="@+id/ivImage2"
+                                        android:layout_width="@dimen/dp38"
+                                        android:layout_height="@dimen/dp38"
+                                        android:layout_marginTop="@dimen/dp33"
+                                        app:imgborder_color="#487EFA"
+                                        app:imgborder_width="@dimen/dp2"/>
+
+                                    <TextView
+                                        android:id="@+id/tvStep2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp12"
+                                        android:includeFontPadding="false"
+                                        android:textColor="#487EFA"
+                                        android:textSize="@dimen/f19" />
+
+                                    <TextView
+                                        android:id="@+id/tvName2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp6"
+                                        android:textColor="@color/black_33"
+                                        android:textSize="@dimen/f13" />
+
+                                    <TextView
+                                        android:id="@+id/tvCollect2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp2"
+                                        android:drawableLeft="@drawable/selector_shoucang_sml"
+                                        android:drawablePadding="@dimen/dp4"
+                                        android:gravity="bottom"
+                                        android:textColor="@color/selector_gray_yellow"
+                                        android:textSize="@dimen/f13" />
+                                </LinearLayout>
+                            </android.support.constraint.ConstraintLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:elevation="@dimen/dp6"
+                            android:src="@mipmap/group_detail_sliver" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:layout_marginTop="@dimen/dp10"
+                            android:layout_marginRight="@dimen/dp5"
+                            android:layout_marginBottom="@dimen/dp5"
+                            app:cardCornerRadius="@dimen/dp10"
+                            app:cardElevation="@dimen/dp5"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <android.support.constraint.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/vStepTop1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dp88"
+                                    android:background="@drawable/sp_strprank_top"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dp75"
+                                    android:background="@drawable/sp_strprank_btm"
+                                    app:layout_constraintTop_toBottomOf="@id/vStepTop1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                        android:id="@+id/ivImage1"
+                                        android:layout_width="@dimen/dp38"
+                                        android:layout_height="@dimen/dp38"
+                                        android:layout_marginTop="@dimen/dp38"
+                                        app:imgborder_color="#FF9307"
+                                        app:imgborder_width="@dimen/dp2"/>
+
+                                    <TextView
+                                        android:id="@+id/tvStep1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp17"
+                                        android:includeFontPadding="false"
+                                        android:textColor="#FF9307"
+                                        android:textSize="@dimen/f19" />
+
+                                    <TextView
+                                        android:id="@+id/tvName1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp6"
+                                        android:textColor="@color/black_33"
+                                        android:textSize="@dimen/f13" />
+
+                                    <TextView
+                                        android:id="@+id/tvCollect1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp2"
+                                        android:drawableLeft="@drawable/selector_shoucang_sml"
+                                        android:drawablePadding="@dimen/dp4"
+                                        android:gravity="bottom"
+                                        android:textColor="@color/selector_gray_yellow"
+                                        android:textSize="@dimen/f13" />
+
+                                </LinearLayout>
+                            </android.support.constraint.ConstraintLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:elevation="@dimen/dp6"
+                            android:src="@mipmap/group_detail_gold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:layout_marginTop="@dimen/dp20"
+                            android:layout_marginRight="@dimen/dp5"
+                            android:layout_marginBottom="@dimen/dp5"
+                            app:cardCornerRadius="@dimen/dp10"
+                            app:cardElevation="@dimen/dp5"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <android.support.constraint.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/vStepTop3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dp78"
+                                    android:background="@drawable/sp_strprank_top"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dp75"
+                                    android:background="@drawable/sp_strprank_btm"
+                                    app:layout_constraintTop_toBottomOf="@id/vStepTop3" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                                        android:id="@+id/ivImage3"
+                                        android:layout_width="@dimen/dp38"
+                                        android:layout_height="@dimen/dp38"
+                                        android:layout_marginTop="@dimen/dp33"
+                                        app:imgborder_color="#24C789"
+                                        app:imgborder_width="@dimen/dp2"/>
+
+                                    <TextView
+                                        android:id="@+id/tvStep3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp12"
+                                        android:includeFontPadding="false"
+                                        android:textColor="#24C789"
+                                        android:textSize="@dimen/f19" />
+
+                                    <TextView
+                                        android:id="@+id/tvName3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp6"
+                                        android:textColor="@color/black_33"
+                                        android:textSize="@dimen/f13" />
+
+                                    <TextView
+                                        android:id="@+id/tvCollect3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp2"
+                                        android:drawableLeft="@drawable/selector_shoucang_sml"
+                                        android:drawablePadding="@dimen/dp4"
+                                        android:gravity="bottom"
+                                        android:text="30"
+                                        android:textColor="@color/selector_gray_yellow"
+                                        android:textSize="@dimen/f13" />
+
+                                </LinearLayout>
+
+
+                            </android.support.constraint.ConstraintLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:elevation="@dimen/dp6"
+                            android:src="@mipmap/group_detail_copper" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/vSpaceTop" />
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.constraint.ConstraintLayout>

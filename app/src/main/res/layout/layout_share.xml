@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/dp10">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sp_white_5"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="好东西分享给好朋友"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f10" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvWeChat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_fx_icon_wx"
+                android:drawablePadding="@dimen/dp10"
+                android:gravity="center"
+                android:text="微信" />
+
+
+            <TextView
+                android:id="@+id/tvFriend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_fx_icon_pyq"
+                android:drawablePadding="@dimen/dp10"
+                android:gravity="center"
+                android:text="朋友圈" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sp_white_5"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dp10"
+        android:paddingTop="@dimen/dp12"
+        android:paddingBottom="@dimen/dp12"
+        android:text="取消"
+        android:textColor="@color/gray_66"
+        android:textSize="@dimen/f14" />
+
+</LinearLayout>

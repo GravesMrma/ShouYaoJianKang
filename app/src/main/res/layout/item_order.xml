@@ -16,7 +16,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="订单编号：2019072403551311"
         android:textColor="@color/black_33"
         android:textSize="@dimen/f12"/>
 
@@ -26,8 +25,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="等待买家付款"
-        android:textColor="#FFA200"
         android:textSize="@dimen/f12"/>
 
     <android.support.v7.widget.RecyclerView
@@ -52,26 +49,20 @@
             android:id="@+id/tvMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/dp26"
+            android:minHeight="@dimen/dp28"
             android:minWidth="@dimen/dp84"
             android:gravity="center"
-            android:background="@drawable/sp_order_bt_bg"
-            android:text="查看更多"
-            android:textSize="@dimen/f10"
-            android:textColor="#FFA200"/>
+            android:textSize="@dimen/f12"/>
 
         <TextView
             android:id="@+id/tvCommit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/dp26"
+            android:minHeight="@dimen/dp28"
             android:minWidth="@dimen/dp84"
             android:gravity="center"
-            android:background="@drawable/sp_order_bt_bg"
             android:layout_marginLeft="@dimen/dp10"
-            android:text="立即付款"
-            android:textSize="@dimen/f10"
-            android:textColor="#FFA200"/>
+            android:textSize="@dimen/f12"/>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

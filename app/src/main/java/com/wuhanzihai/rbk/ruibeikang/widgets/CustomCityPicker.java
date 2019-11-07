@@ -107,7 +107,6 @@ public class CustomCityPicker {
         });
 
         pvCity.setOnSelectListener(city -> {
-            selectCity = city;
             areaChange(selectProvince,selectCity);
         });
         pvArea.setOnSelectListener(area->{
@@ -120,6 +119,7 @@ public class CustomCityPicker {
         cityList.addAll(CityUtils.Companion.getInstance().getCityList(context,province));
         pvCity.setData(cityList);
         pvCity.setSelected(0);
+        selectCity = cityList.get(0);
         areaChange(province,cityList.get(0));
         executeAnimator(pvCity);
     }
@@ -129,6 +129,7 @@ public class CustomCityPicker {
         areaList.addAll(CityUtils.Companion.getInstance().getAreaList(context,province,city));
         pvArea.setData(areaList);
         pvArea.setSelected(0);
+        selectArea = areaList.get(0);
         executeAnimator(pvArea);
         executeScroll();
     }

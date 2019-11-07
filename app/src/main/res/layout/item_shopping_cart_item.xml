@@ -48,8 +48,10 @@
         app:layout_constraintTop_toTopOf="@id/ivImg">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/vInfo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/tvName"
@@ -108,12 +110,11 @@
 
         </android.support.constraint.ConstraintLayout>
 
-
         <RelativeLayout
+            android:id="@+id/vManager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="invisible">
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -122,36 +123,36 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/ivReduce"
                     android:layout_width="@dimen/dp29"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="-"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f25" />
+                    android:src="@mipmap/ic_redues"
+                    android:scaleType="center"
+                    android:background="@drawable/sp_gary_5_stk"/>
 
                 <TextView
+                    android:id="@+id/tvNum"
                     android:layout_width="@dimen/dp50"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/dp10"
                     android:layout_marginRight="@dimen/dp10"
                     android:gravity="center"
-                    android:text="2" />
+                    android:text="1" />
 
 
-                <TextView
+                <ImageView
+                    android:id="@+id/ivAdd"
                     android:layout_width="@dimen/dp29"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="+"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f25" />
+                    android:src="@mipmap/ic_adda"
+                    android:scaleType="center"
+                    android:background="@drawable/sp_gary_5_stk"/>
 
             </LinearLayout>
 
 
         </RelativeLayout>
-
 
     </android.support.constraint.ConstraintLayout>
 

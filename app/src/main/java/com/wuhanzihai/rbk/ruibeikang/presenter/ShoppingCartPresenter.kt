@@ -33,7 +33,6 @@ class ShoppingCartPresenter @Inject constructor() : BasePresenter<ShoppingCartVi
                 }, lifecycleProvider)
     }
 
-
     fun doneCart(req: DoneCartReq) {
         if (!checkNetWork()) {
             return
@@ -44,6 +43,34 @@ class ShoppingCartPresenter @Inject constructor() : BasePresenter<ShoppingCartVi
                     override fun onNext(t: SureOrderBean) {
                         super.onNext(t)
                         mView.onDoneCartResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun deleteCart(req: DoneCartReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        mallServiceImpl.deleteCart(req)
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
+                        super.onNext(t)
+                        mView.onDeleteCartResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun doneCartNum(req: DoneCartNumReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        mallServiceImpl.doneCartNum(req)
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
+                        super.onNext(t)
+                        mView.onDoneCartNumResult()
                     }
                 }, lifecycleProvider)
     }

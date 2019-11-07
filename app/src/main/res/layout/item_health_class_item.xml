@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/dp14">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp14"
+        android:background="@color/line"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintHorizontal_weight="58"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="@dimen/dp5"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp14"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minLines="2"
+        android:textColor="@color/selector_gray66_green"
+        android:textSize="@dimen/f14"
+        app:layout_constraintHorizontal_weight="260"
+        app:layout_constraintLeft_toRightOf="@id/ivImg"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivImg" />
+
+    <TextView
+        android:id="@+id/tvLisNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp14"
+        android:drawableLeft="@mipmap/jkjt_icon_shijian"
+        android:drawablePadding="@dimen/dp5"
+        android:gravity="center"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11"
+        app:layout_constraintBottom_toBottomOf="@id/ivImg"
+        app:layout_constraintLeft_toRightOf="@id/ivImg" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp24"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11"
+        app:layout_constraintBottom_toBottomOf="@id/tvLisNum"
+        app:layout_constraintLeft_toRightOf="@id/tvLisNum" />
+
+</android.support.constraint.ConstraintLayout>

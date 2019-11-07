@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hhjt.baselibrary.R;
+import com.hhjt.baselibrary.common.AppCommonExt;
 
 
 /**
@@ -47,7 +48,7 @@ public class TemplateTitle extends RelativeLayout {
             titleTextColor = ta.getColor(R.styleable.TemplateTitle_titleTextColor, Color.BLACK);
             titleRightImg = ta.getResourceId(R.styleable.TemplateTitle_titleRightImg, 0);
             canBack = ta.getBoolean(R.styleable.TemplateTitle_canBack, false);
-            isShare = ta.getBoolean(R.styleable.TemplateTitle_isShare, true);
+            isShare = ta.getBoolean(R.styleable.TemplateTitle_isShare, false);
             isWhiteBack = ta.getBoolean(R.styleable.TemplateTitle_isWhiteBack, false);
             backText = ta.getString(R.styleable.TemplateTitle_backText);
             moreImg = ta.getResourceId(R.styleable.TemplateTitle_moreImg, 0);
@@ -79,15 +80,10 @@ public class TemplateTitle extends RelativeLayout {
             tvBack.setText(backText);
             backBtn.setOnClickListener(v -> ((Activity) getContext()).finish());
         }
-//        if (isShare) {
-//            ImageView moreImgView = findViewById(R.id.img_more);
-//            moreImgView.setOnClickListener(new OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    AppCommonExt.INSTANCE.share((Activity) getContext());
-//                }
-//            });
-//        }
+        if (isShare) {
+            ImageView moreImgView = findViewById(R.id.img_more);
+            moreImgView.setImageResource(R.drawable.ic_share);
+        }
         if (isWhiteBack) {
             ImageView moreImgView = findViewById(R.id.img_back);
             moreImgView.setImageResource(R.drawable.ic_return_white);
@@ -127,6 +123,16 @@ public class TemplateTitle extends RelativeLayout {
      */
     public void setTitleAction(OnClickListener listener) {
         TextView tvTitle = findViewById(R.id.title);
+        tvTitle.setOnClickListener(listener);
+    }
+
+    /**
+     * 设置更多按钮事件
+     *
+     * @param listener 事件监听
+     */
+    public void setShareAction(OnClickListener listener) {
+        ImageView tvTitle = findViewById(R.id.img_more);
         tvTitle.setOnClickListener(listener);
     }
 

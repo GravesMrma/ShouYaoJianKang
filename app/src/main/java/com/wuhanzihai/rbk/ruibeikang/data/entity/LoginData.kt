@@ -3,7 +3,7 @@ package com.wuhanzihai.rbk.ruibeikang.data.entity
 data class LoginData(
         var birthday: String,
         var discount: String,
-        var head_pic: String,
+        var head_pic: String = "http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png",
         var height: Int,
         var is_activation: Int,
         var is_lock: Int,

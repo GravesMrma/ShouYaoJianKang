@@ -8,11 +8,18 @@
     android:orientation="vertical"
     tools:context=".activity.HealthHabitsDetailActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:canBack="true"
-        app:titleText="适合20-30岁的健康运动"/>
+        app:canBack="true"/>
 
     <View
         android:layout_width="match_parent"
@@ -20,8 +27,19 @@
         android:background="@color/line"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvView"
+        android:id="@+id/rvClass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"/>
+
+    <com.hhjt.baselibrary.widgets.APSTSViewPager
+        android:id="@+id/vpView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 
 </LinearLayout>

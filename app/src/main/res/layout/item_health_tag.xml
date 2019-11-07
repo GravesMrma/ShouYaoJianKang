@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvText"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/dp25"
-    android:minWidth="@dimen/dp75"
+    android:layout_marginLeft="@dimen/dp12"
+    android:layout_marginTop="@dimen/dp7"
+    android:layout_marginRight="@dimen/dp12"
+    android:layout_marginBottom="@dimen/dp7"
     android:background="@drawable/selector_health_tag"
-    android:text="你你"
-    android:textColor="@color/selector_gray_white"
-    android:textSize="@dimen/f12"
     android:gravity="center"
-    android:id="@+id/tvText">
+    android:minWidth="@dimen/dp75"
+    android:textColor="@color/selector_gray_white"
+    android:textSize="@dimen/f12">
 
 
 </TextView>

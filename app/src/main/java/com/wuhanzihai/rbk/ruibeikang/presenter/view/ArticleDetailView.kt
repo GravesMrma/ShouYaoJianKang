@@ -7,4 +7,8 @@ interface ArticleDetailView :BaseView {
 
     fun onArticleDetailResult(result: ArticleDetailBean)
 
+    fun onColloectResult()
+
+    fun onLikeResult()
+
 }

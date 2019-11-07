@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dp9"
+    android:paddingRight="@dimen/dp14"
+    android:paddingTop="@dimen/dp10"
+    android:paddingBottom="@dimen/dp10">
+
+    <TextView
+        android:id="@+id/tvRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:textColor="@color/gray_88"
+        android:textSize="@dimen/f22"/>
+    
+    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+        android:id="@+id/ivHead"
+        android:layout_width="@dimen/dp38"
+        android:layout_height="@dimen/dp38"
+        android:layout_marginLeft="@dimen/dp33"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/f15"
+        android:textColor="@color/black_33"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/ivHead"
+        android:layout_marginLeft="@dimen/dp10"/>
+
+    <TextView
+        android:id="@+id/tvCollect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:drawableBottom="@drawable/selector_shoucang_sml"
+        android:minEms="2"
+        android:text="5"
+        android:textSize="@dimen/f13"
+        android:textColor="@color/selector_gray_yellow"/>
+
+    <TextView
+        android:id="@+id/tvStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp200"
+        android:maxEms="3"
+        android:textStyle="bold"
+        android:textColor="#24C789"
+        android:textSize="@dimen/f22"/>
+</RelativeLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RebateActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:layout_constraintTop_toBottomOf="@id/fake_status_bar"
+        app:titleText="返利中心" />
+
+    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+        android:layout_width="@dimen/dp74"
+        android:layout_height="@dimen/dp74"
+        android:layout_marginLeft="@dimen/dp25"
+        android:layout_marginTop="@dimen/dp13"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginTop="@dimen/dp39"
+        android:layout_marginRight="@dimen/dp14"
+        android:background="@drawable/sp_white_14"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp91"
+            android:layout_marginTop="@dimen/dp24"
+            android:text="守护者：李晓"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTixian"
+            android:layout_width="@dimen/dp74"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp16"
+            android:layout_marginRight="@dimen/dp12"
+            android:background="@drawable/sp_orange_14"
+            android:gravity="center"
+            android:text="申请提现"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tvTixian">
+
+
+
+
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

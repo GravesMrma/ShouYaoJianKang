@@ -4,10 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
+import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.fragment.CouponFragment
 import kotlinx.android.synthetic.main.activity_coupon.*
+import org.jetbrains.anko.act
 import java.util.*
 
 class CouponActivity : AppCompatActivity() {
@@ -16,6 +19,10 @@ class CouponActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coupon)
+        StatusBarUtil.setLightMode(act)
+        StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
+
+
         initView()
         initData()
     }

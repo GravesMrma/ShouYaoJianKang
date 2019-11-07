@@ -18,16 +18,14 @@ import com.youth.banner.loader.ImageLoader
  */
 class FrescoBannerLoaderArt() : ImageLoader() {
     override fun displayImage(context: Context?, path: Any?, imageView: ImageView) {
-//        val uri = Uri.parse(BaseConstant.IMAGE_ADDRESS + (path as BannerEntity).ad_code)
-//        imageView?.setImageURI(uri)
         (imageView as SimpleDraweeView).loadImage((path as HealthListItem).thumb)
     }
 
     override fun createImageView(context: Context): ImageView {
         return SimpleDraweeView(context).also {
             val hierarchyBuilder = GenericDraweeHierarchyBuilder(context.resources)
-//            hierarchyBuilder.failureImage = ContextCompat.getDrawable(context, R.mipmap.holder_banner)
-//            hierarchyBuilder.placeholderImage = ContextCompat.getDrawable(context, R.mipmap.holder_banner)
+            hierarchyBuilder.failureImage = ContextCompat.getDrawable(context, R.mipmap.ic_empty_banner)
+            hierarchyBuilder.placeholderImage = ContextCompat.getDrawable(context, R.mipmap.ic_empty_banner)
             hierarchyBuilder.failureImageScaleType = ScalingUtils.ScaleType.FIT_XY
             hierarchyBuilder.placeholderImageScaleType = ScalingUtils.ScaleType.FIT_XY
             it.hierarchy = hierarchyBuilder.build()

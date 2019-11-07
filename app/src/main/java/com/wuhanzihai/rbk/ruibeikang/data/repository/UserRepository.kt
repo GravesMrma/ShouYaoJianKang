@@ -4,8 +4,7 @@ import com.wuhanzihai.rbk.ruibeikang.data.api.UserApi
 import com.hhjt.baselibrary.data.net.RetrofitFactory
 import com.hhjt.baselibrary.data.protocol.BaseResp
 import com.hhjt.baselibrary.rx.BaseData
-import com.wuhanzihai.rbk.ruibeikang.data.entity.AddressBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
+import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.*
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -18,6 +17,10 @@ class UserRepository @Inject constructor() {
 
     fun login(loginReq: LoginReq): Observable<BaseResp<LoginData>> {
         return RetrofitFactory.instance.create(UserApi::class.java).login(loginReq)
+    }
+
+    fun activation(getCodeReq: ActivationReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).activation(getCodeReq)
     }
 
     fun saveInfo(userInfoReq: UserInfoReq): Observable<BaseData> {
@@ -44,8 +47,19 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).getAddressInfo(req)
     }
 
-    fun upAddress(req: AddAddressReq): Observable<BaseData> {
+    fun upAddress(req: UpdateAddressReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).upAddress(req)
     }
 
+    fun getOrder(req: OrderReq): Observable<BaseResp<OrderBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).getOrder(req)
+    }
+
+    fun mineIndex(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).mineIndex(NoParamIdReq())
+    }
+
+    fun getVersion(): Observable<BaseResp<VersionBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).getVersion(NoParamReq())
+    }
 }

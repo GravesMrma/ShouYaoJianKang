@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp42"
+    android:background="@drawable/sp_healthdata_stk"
+    android:paddingLeft="@dimen/dp11"
+    android:paddingRight="@dimen/dp11">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHeartPre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="100/200"
+            android:textColor="@color/green_08"
+            android:textSize="@dimen/f20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="mmHg"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f11" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvHeartRateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:drawableRight="@mipmap/ic_more_gray"
+        android:drawablePadding="@dimen/dp9"
+        android:gravity="center"
+        android:text="12:21"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11" />
+
+    <TextView
+        android:id="@+id/tvHeartRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp70"
+        android:gravity="center"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11" />
+</RelativeLayout>

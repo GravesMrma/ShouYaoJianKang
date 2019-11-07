@@ -5,6 +5,7 @@ import com.hhjt.baselibrary.utils.LoginUtils
 import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.utils.AES
 import java.net.URLDecoder
+import java.net.URLEncoder
 
 /**
  * Created by wx on 2018/7/10
@@ -20,15 +21,15 @@ class AddAddressReq(consignee: String
                     , mobile: String
                     ,is_default:Int) : BaseReq() {
 
-    private var address = address
-    private var city = city
+    private var address = URLEncoder.encode(address,"UTF-8")
+    private var city =  URLEncoder.encode(city,"UTF-8")
     private var citycode = citycode
-    private var consignee = consignee
-    private var district = district
+    private var consignee = URLEncoder.encode(consignee,"UTF-8")
+    private var district = URLEncoder.encode(district,"UTF-8")
     private var districtcode = districtcode
     private var is_default = is_default
     private var mobile = mobile
-    private var province = province
+    private var province = URLEncoder.encode(province,"UTF-8")
     private var provincecode = provincecode
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()

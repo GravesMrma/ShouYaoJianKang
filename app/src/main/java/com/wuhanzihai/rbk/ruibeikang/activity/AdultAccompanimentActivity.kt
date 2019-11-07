@@ -26,8 +26,8 @@ class AdultAccompanimentActivity : AppCompatActivity() {
         tvTitle.setTitleText(intent.getStringExtra("title"))
         tvText.text = intent.getStringExtra("title")
 
-        mStack.add(WebFragment())
-        mStack.add(ProblemFragment())
+//        mStack.add(WebFragment())
+//        mStack.add(ProblemFragment())
 
         val adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {

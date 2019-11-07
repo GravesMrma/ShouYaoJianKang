@@ -69,7 +69,7 @@ public class CustomDatePicker {
     }
 
     public CustomDatePicker(Context context, ResultHandler resultHandler) {
-        String startDate = "1940-01-01";
+        String startDate = "1900-01-01";
         String endDate = DateUtils.INSTANCE.convertTimeToString(System.currentTimeMillis(), "yyyy-MM-dd");
         if (isValidDate(startDate, "yyyy-MM-dd") && isValidDate(endDate, "yyyy-MM-dd")) {
             canAccess = true;
@@ -98,7 +98,6 @@ public class CustomDatePicker {
         calendar.add(Calendar.MONTH, 10);//月份减一为-1，加一为1
         res = calendar.getTime().getTime();
         return res;
-
     }
 
     private void initDialog() {
@@ -517,6 +516,7 @@ public class CustomDatePicker {
                     initTimer();
                     addListener();
                     setSelectedTime(time);
+                    setIsLoop(false);
                     datePickerDialog.show();
                 }
             } else {

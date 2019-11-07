@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
+import com.hhjt.baselibrary.ext.onClick
 import com.wuhanzihai.rbk.ruibeikang.R
 import kotlinx.android.synthetic.main.dialog_bluetooth.view.*
 
@@ -27,26 +28,29 @@ class BluetoothDialog(context: Context, cancelable: Boolean, backCancelable: Boo
         params.width = WindowManager.LayoutParams.WRAP_CONTENT
         params.height = WindowManager.LayoutParams.WRAP_CONTENT
         window.attributes = params
+
     }
 
-    fun setName(name: String) {
+    fun setName(name: String): BluetoothDialog {
         view.tvName.text = name
+        return this
     }
 
-    fun setNoBluetooth() {
+    fun setNoBluetooth(): BluetoothDialog {
         view.rlSearching.visibility = View.GONE
         view.ivNoBluetooth.visibility = View.VISIBLE
 
-        view.tvCancel.visibility = View.GONE
         view.lView.visibility = View.VISIBLE
+        return this
     }
 
-    fun setCancelListener(onClickListener: View.OnClickListener) {
-        view.tvCancel.setOnClickListener(onClickListener)
+    fun setCancelListener(onClickListener: View.OnClickListener): BluetoothDialog {
         view.tvClose.setOnClickListener(onClickListener)
+        return this
     }
 
-    fun setReconnectListener(onClickListener: View.OnClickListener) {
+    fun setReconnectListener(onClickListener: View.OnClickListener): BluetoothDialog {
         view.tvReconnect.setOnClickListener(onClickListener)
+        return this
     }
 }

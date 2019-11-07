@@ -19,9 +19,8 @@ import com.hhjt.baselibrary.common.BaseApplication
 import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.ext.BitmapMemoryCacheParamsSupplier
 import com.hhjt.baselibrary.utils.DateUtils
-import com.huawei.android.hms.agent.HMSAgent
-import com.huawei.hms.support.log.HMSDebugger
 import com.kotlin.base.utils.AppPrefsUtils
+import com.orhanobut.hawk.Hawk
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
@@ -46,9 +45,10 @@ class BaseApp : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        HMSAgent.init(this)
         initFresco()
         ARouter.init(this)
+        Hawk.init(context).build()
+        initBluetoothBracelet()
     }
 
     private fun initFresco() {
@@ -67,45 +67,47 @@ class BaseApp : BaseApplication() {
         Fresco.initialize(this, config)
     }
 
-    private fun initBluetoothBracelet(){
-        BraceletManagerUtil.instance.initBracelet(object :InitializeListener{
+    private fun initBluetoothBracelet() {
+        BraceletManagerUtil.instance.initBracelet(object : InitializeListener {
             override fun onInitializeFailure(p0: String?) {
                 Log.e("Callback", "初始化失败$p0")
-                registerDataListener()  //  注册数据监听
 
+            }
+
+            override fun onInitializeSuccess() {
+                Log.e("Callback", "初始化成功")
+                registerDataListener()  //  注册数据监听
                 // 重新连接
-                if (AppPrefsUtils.getString(BaseConstant.BRACELET_MAC).isNotEmpty()){
-                    BraceletManagerUtil.instance.reConnectBleDevice(object :BraceletManagerUtil.ConnectListener{
+                if (AppPrefsUtils.getString(BaseConstant.BRACELET_MAC).isNotEmpty()) {
+                    BraceletManagerUtil.instance.reConnectBleDevice(object : BraceletManagerUtil.ConnectListener {
                         override fun onConnect() {
 
 
                         }
                     })
                 }
-                //
-            }
-
-            override fun onInitializeSuccess() {
-
             }
         })
     }
 
-    private fun registerDataListener(){
-        BraceletManagerUtil.instance.registerDataListener(object :BleDataListener{
+    private fun registerDataListener() {
+        Log.e("Callback", "注册数据data监听。。。")
+        BraceletManagerUtil.instance.registerDataListener(object : BleDataListener {
             override fun onCallbackFailure(p0: String?) {
                 Log.e("Callback", "收到错误数据$p0")
-
             }
 
-            override fun onDataCallback(callback: Callback<Any>?) {
+            override fun onDataCallback(callback: Callback<*>?) {
                 Log.e("Callback", "数据监听" + callback!!.data.toString())
-
+                if (callback.mode == null){
+                    // mode为空就返回
+                    return
+                }
                 if (callback.mode == CallbackMode.SPORTS_DATA) {
                     val sportsBean = callback.data as SportsBean
                     BraceletData.instance.sportsBean = sportsBean
-                    AppPrefsUtils.putString(BaseConstant.BRACELET_TODAY_STEP+DateUtils.getToDay(),sportsBean.step.toString())
-                    AppPrefsUtils.putString(BaseConstant.BRACELET_TODAY_CAL+DateUtils.getToDay(),(sportsBean.calorie.toDouble() / 1000.toDouble()).toString())
+                    AppPrefsUtils.putString(BaseConstant.BRACELET_TODAY_STEP + DateUtils.getToDay(), sportsBean.step.toString())
+                    AppPrefsUtils.putString(BaseConstant.BRACELET_TODAY_CAL + DateUtils.getToDay(), (sportsBean.calorie.toDouble() / 1000.toDouble()).toString())
                 }
                 if (callback.mode == CallbackMode.SLEEP_DATA) {
                     val sleepBean = callback.data as SleepBean
@@ -139,7 +141,15 @@ class BaseApp : BaseApplication() {
 
                 }
                 if (callback != null) {
-                    Bus.send(BraceletDataEvent(callback))
+                    if (callback.mode != CallbackMode.BIND_RESULT && callback.mode != CallbackMode.SYSNC_STATUS) {
+                        try {
+                            Bus.send(BraceletDataEvent(callback))
+                            Log.e("Callback", "发送数据")
+                        } catch (e: Exception) {
+                            Log.e("Callback", "发送数据错误的是" + callback.mode.name)
+                            Log.e("Callback", "发送数据错误的是" + e.toString())
+                        }
+                    }
                 }
             }
         })

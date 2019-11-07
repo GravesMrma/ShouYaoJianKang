@@ -6,4 +6,217 @@
     android:layout_height="match_parent"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.PayActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:layout_constraintTop_toBottomOf="@id/fake_status_bar"
+        app:titleText="支付订单" />
+
+    <View
+        android:id="@+id/vLine"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <ImageView
+        android:id="@+id/ivBg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/a08"
+        app:layout_constraintDimensionRatio="3.18"
+        app:layout_constraintTop_toBottomOf="@id/vLine" />
+
+    <LinearLayout
+        android:id="@+id/llView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/ivBg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vLine">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rmb"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f17" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f35" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="请在尽快完成支付 "
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvText2a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp17"
+        android:layout_marginTop="@dimen/dp32"
+        android:drawableLeft="@drawable/sp_green_9_l"
+        android:text="选择支付方式"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f15"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivBg" />
+
+    <ImageView
+        android:layout_width="@dimen/dp9"
+        android:layout_height="@dimen/dp18"
+        android:src="@drawable/sp_green_9_l"
+        app:layout_constraintBottom_toBottomOf="@id/tvText2a"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvText2a" />
+
+    <TextView
+        android:id="@+id/tvWeChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp14"
+        android:drawableLeft="@mipmap/ic_weixin"
+        android:drawableRight="@drawable/selector_check"
+        android:drawablePadding="@dimen/dp20"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/dp14"
+        android:paddingBottom="@dimen/dp14"
+        android:text="微信支付"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f14"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvText2a" />
+
+    <View
+        android:id="@+id/vLine1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginRight="@dimen/dp14"
+        android:background="@color/line"
+        app:layout_constraintTop_toBottomOf="@id/tvWeChat" />
+
+    <TextView
+        android:id="@+id/tvAli"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp14"
+        android:drawableLeft="@mipmap/ic_zhifubao"
+        android:drawableRight="@drawable/selector_check"
+        android:drawablePadding="@dimen/dp20"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/dp14"
+        android:paddingBottom="@dimen/dp14"
+        android:text="支付宝支付"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f14"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vLine1" />
+
+    <View
+        android:id="@+id/vLine2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"
+        app:layout_constraintTop_toBottomOf="@id/tvAli" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp47"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingTop="@dimen/dp10"
+        android:paddingRight="@dimen/dp14"
+        android:paddingBottom="@dimen/dp10"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sp_orange_14"
+            android:gravity="center"
+            android:minWidth="@dimen/dp96"
+            android:minHeight="@dimen/dp29"
+            android:text="立即支付"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="实付金额:"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/f17"
+            app:layout_constraintBottom_toBottomOf="@id/tvText"
+            app:layout_constraintLeft_toRightOf="@id/tvText"
+            app:layout_constraintTop_toTopOf="@id/tvText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:paddingBottom="@dimen/dp2"
+            android:text="￥"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/f11"
+            app:layout_constraintBottom_toBottomOf="@id/tvMoney"
+            app:layout_constraintRight_toLeftOf="@id/tvMoney" />
+
+    </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>

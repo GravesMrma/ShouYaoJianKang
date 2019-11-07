@@ -2,25 +2,15 @@ package com.wuhanzihai.rbk.ruibeikang.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Point
 import android.net.Uri
 import android.os.Environment
-import android.support.annotation.NonNull
-import android.support.v7.widget.RecyclerView
-import android.view.Gravity
 import android.view.View
-import android.widget.TextView
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
-import com.facebook.common.util.UriUtil
-import com.facebook.drawee.backends.pipeline.Fresco
-import com.facebook.drawee.view.SimpleDraweeView
 import com.hhjt.baselibrary.common.BaseConstant
-import com.hhjt.baselibrary.utils.DensityUtils
-import java.text.SimpleDateFormat
 import java.util.*
 import java.io.IOException
-import com.hhjt.baselibrary.utils.LoginUtils
 import java.io.File
 import java.io.FileOutputStream
 
@@ -29,7 +19,30 @@ class MyUtils {
 
     companion object {
         val myUtils by lazy { MyUtils() }
+
+        fun toHour(str: String): String {
+            return str.substring(0, str.indexOf(":"))
+        }
+
+        fun toMui(str: String): String {
+            return str.substring(str.indexOf(":") + 1)
+        }
+
+        fun getWidth(context: Activity): Int {
+            val defaultDisplay = context.windowManager.defaultDisplay
+            val point = Point()
+            defaultDisplay.getSize(point)
+            return point.x
+        }
+
+        fun getViewHeight(view: View): Int {
+            view.measure(0, 0)
+            return  view.measuredWidth
+        }
     }
+
+
+
 
     fun htmlFormat(content: String): String {
         var content = content
@@ -202,5 +215,17 @@ class MyUtils {
         }
 
         return filePic.absolutePath
+    }
+
+    /**
+     * 拨打电话（跳转到拨号界面，用户手动点击拨打）
+     *
+     * @param phoneNum 电话号码
+     */
+    fun callPhone(context: Context,phoneNum: String) {
+        val intent = Intent(Intent.ACTION_DIAL)
+        val data = Uri.parse("tel:$phoneNum")
+        intent.data = data
+        context.startActivity(intent)
     }
 }

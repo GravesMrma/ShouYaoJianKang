@@ -32,7 +32,6 @@ public class AES {
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
             byte[] encryptedBytes = cipher.doFinal(byteContent);
             // 同样对加密后数据进行 base64 编码
-            Log.e("bianma",Base64.encodeToString(encryptedBytes,Base64.NO_WRAP));
             return URLEncoder.encode(Base64.encodeToString(encryptedBytes,Base64.NO_WRAP));
         } catch (Exception e) {
         }

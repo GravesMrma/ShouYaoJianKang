@@ -43,9 +43,22 @@ class HealthHabitsPresenter @Inject constructor() : BasePresenter<HealthHabitsVi
                 .excute(object : BaseSubscriber<MutableList<HealthHabitsBean>>(mView) {
                     override fun onNext(t: MutableList<HealthHabitsBean>) {
                         super.onNext(t)
-//                        mView.
+                        mView.onHealthHabitsDetailResult(t)
                     }
                 }, lifecycleProvider)
     }
 
+    fun healthInfoList(healthListReq: HealthListReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        infoServiceImpl.healthInfoList(healthListReq)
+                .excute(object : BaseSubscriber<HealthListBean>(mView) {
+                    override fun onNext(t: HealthListBean) {
+                        super.onNext(t)
+                        mView.onHealthListResult(t)
+                    }
+                }, lifecycleProvider)
+    }
 }

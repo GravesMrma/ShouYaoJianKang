@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingTop="@dimen/dp14"
+    android:paddingBottom="@dimen/dp14">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp24"
+        android:layout_centerInParent="true"
+        android:minWidth="@dimen/dp77"
+        android:gravity="center"
+        android:textColor="@color/selector_gray66_white"
+        android:textSize="@dimen/f14"
+        android:text="智能硬件"
+        android:background="@drawable/selector_green_white_bg"/>
+
+</RelativeLayout>

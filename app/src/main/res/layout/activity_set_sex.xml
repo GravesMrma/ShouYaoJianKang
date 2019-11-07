@@ -9,6 +9,13 @@
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.SetSexActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

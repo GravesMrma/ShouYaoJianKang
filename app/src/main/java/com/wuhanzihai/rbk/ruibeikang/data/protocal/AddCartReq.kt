@@ -8,12 +8,13 @@ import com.wuhanzihai.rbk.ruibeikang.utils.AES
 /**
  * Created by wx on 2018/7/10
  */
-class AddCartReq( product_id: Int, sku_id: Int) : BaseReq() {
-    private var user_id = GlobalBaseInfo.getBaseInfo()!!.user_id
+class AddCartReq(product_id: Int, sku_id: Int) : BaseReq() {
+    private var number = 1
     private var product_id = product_id
     private var sku_id = sku_id
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
+    private var user_id = LoginUtils.getUserId()
 
     init {
         sign = AES.encryptAES(formatParam(this), getKey())

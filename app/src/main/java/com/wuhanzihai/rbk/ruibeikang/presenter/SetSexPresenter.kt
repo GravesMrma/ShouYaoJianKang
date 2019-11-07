@@ -21,7 +21,7 @@ class SetSexPresenter @Inject constructor() : BasePresenter<SetSexView>() {
     @Inject
     lateinit var userServiceImpl: UserServiceImpl
 
-    fun sendCode(userInfoReq: UserInfoReq) {
+    fun saveInfo(userInfoReq: UserInfoReq) {
         if (!checkNetWork()) {
             return
         }
@@ -31,6 +31,20 @@ class SetSexPresenter @Inject constructor() : BasePresenter<SetSexView>() {
                     override fun onNext(t: BaseData) {
                         super.onNext(t)
                         mView.onSaveInfoResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun getUserInfo() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.getUserInfo()
+                .excute(object : BaseSubscriber<LoginData>(mView) {
+                    override fun onNext(t: LoginData) {
+                        super.onNext(t)
+                        mView.onUserInfoResult(t)
                     }
                 }, lifecycleProvider)
     }

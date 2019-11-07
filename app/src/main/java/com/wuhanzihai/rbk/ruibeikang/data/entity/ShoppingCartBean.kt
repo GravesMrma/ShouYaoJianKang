@@ -12,7 +12,7 @@ data class ProductItem(
     val buyer_quota: Int,
     val cartid: Int,
     val invalid: Int,
-    val number: Int,
+    var number: Int,
     val original_price: String,
     val price: String,
     val product_id: Int,
@@ -22,7 +22,8 @@ data class ProductItem(
     val sku_id: Int,
     val skudata: List<SkudataItem>,
     val skuname: String,
-    var isCheck:Boolean = false
+    var isCheck:Boolean = false,
+    var isManager:Boolean = false
 )
 
 data class SkudataItem(  val pid: String,  val vid: String)

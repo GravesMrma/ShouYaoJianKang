@@ -32,6 +32,7 @@ class RetrofitFactory private constructor() {
             val request = chain.request()
                     .newBuilder()
                     .addHeader("Device-Type", "1")
+                    .addHeader("User-Agent", "Android")
                     .addHeader("Token", LoginUtils.getAuthId())
 //                    .addHeader("X-Requested-With","XMLHttpRequest")
                     .build()
@@ -75,5 +76,4 @@ class RetrofitFactory private constructor() {
     fun <T> create(service: Class<T>): T {
         return retrofit.create(service)
     }
-
 }

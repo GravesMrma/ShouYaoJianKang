@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFEFEF"
+    android:orientation="vertical"
+    tools:context=".activity.AppointTravelActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="净化之旅" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingRight="@dimen/dp14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/dp50"
+            android:text="预约人"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/edName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/clarity"
+            android:hint="请输入预约人姓名"
+            android:maxLines="1"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingRight="@dimen/dp14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/dp50"
+            android:text="联系方式"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@color/line" />
+
+        <EditText
+            android:id="@+id/edPhonem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/clarity"
+            android:hint="请输入预约人手机号"
+            android:maxLines="1"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingRight="@dimen/dp14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/dp50"
+            android:text="报名截止"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@color/line" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/clarity"
+            android:hint="2019.08.30 - 2019.09.30"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingRight="@dimen/dp14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/dp50"
+            android:text="套餐选择"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingRight="@dimen/dp14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/dp50"
+            android:text="预付定金"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@color/line" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/clarity"
+            android:gravity="center_vertical"
+            android:hint="请输入预约人手机号"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp14"
+        android:drawableLeft="@mipmap/ic_check_30"
+        android:drawablePadding="@dimen/dp5"
+        android:text="预约服务代表您已同意"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f10" />
+</LinearLayout>

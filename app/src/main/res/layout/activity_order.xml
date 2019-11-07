@@ -9,11 +9,17 @@
     android:background="@color/main_bg"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.OrderActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="我的订单" />
+        app:titleText="我的订单"/>
 
     <View
         android:layout_width="match_parent"
@@ -89,7 +95,7 @@
             android:drawableBottom="@drawable/selector_coin_indicator"
             android:drawablePadding="@dimen/dp9"
             android:gravity="bottom|center_horizontal"
-            android:text="待评价"
+            android:text="已完成"
             android:textColor="@color/selector_attention_doctor"
             android:textSize="@dimen/f15" />
 

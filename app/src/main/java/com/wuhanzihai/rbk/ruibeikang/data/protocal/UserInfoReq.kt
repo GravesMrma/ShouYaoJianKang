@@ -4,6 +4,8 @@ import android.util.Log
 import com.hhjt.baselibrary.utils.LoginUtils
 import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.utils.AES
+import java.net.URLDecoder
+import java.net.URLEncoder
 
 /**
  * Created by wx on 2018/7/10
@@ -17,12 +19,12 @@ class UserInfoReq(sex: String
                   , height: String
                   , weight: String) : BaseReq() {
 
-    private var birthday: String = birthday
-    private var head_pic: String = head_pic
+    private var birthday: String = URLEncoder.encode(birthday, "UTF-8")
+    private var head_pic: String = URLEncoder.encode(head_pic, "UTF-8")
     private var height: String = height
-    private var nickname: String = nickname
+    private var nickname: String = URLEncoder.encode(nickname, "UTF-8")
     private var rel_code: String = rel_code
-    private var rel_name: String = rel_name
+    private var rel_name: String = URLEncoder.encode(rel_name, "UTF-8")
     private var sex: String = sex
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
@@ -31,6 +33,9 @@ class UserInfoReq(sex: String
 
     init {
         sign = AES.encryptAES(formatParam(this), getKey())
-        Log.e("签名",sign)
+        this.birthday = URLDecoder.decode(this.birthday, "UTF-8")
+        this.head_pic = URLDecoder.decode(this.head_pic, "UTF-8")
+        this.nickname = URLDecoder.decode(this.nickname, "UTF-8")
+        this.rel_name = URLDecoder.decode(this.rel_name, "UTF-8")
     }
 }

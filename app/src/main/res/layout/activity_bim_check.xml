@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.BIMCheckActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
@@ -19,43 +25,43 @@
         android:layout_height="1px"
         android:background="@color/line" />
 
-    <TextView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/tvMachine"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp149"
         android:layout_marginLeft="@dimen/dp12"
         android:layout_marginTop="@dimen/dp10"
         android:layout_marginRight="@dimen/dp12"
-        android:background="@drawable/sp_orange_10"
-        android:gravity="center"
-        android:text="智能设备检测"
-        android:textColor="@color/white"
-        android:textSize="@dimen/f15" />
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="@dimen/dp10" />
 
-    <TextView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/tvManual"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp149"
         android:layout_marginLeft="@dimen/dp12"
         android:layout_marginTop="@dimen/dp10"
         android:layout_marginRight="@dimen/dp12"
-        android:background="@drawable/sp_orange_10"
-        android:gravity="center"
-        android:text="手动记录数据"
-        android:textColor="@color/white"
-        android:textSize="@dimen/f15" />
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="@dimen/dp10" />
 
-    <TextView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/tvSearch"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp149"
         android:layout_marginLeft="@dimen/dp12"
         android:layout_marginTop="@dimen/dp10"
         android:layout_marginRight="@dimen/dp12"
-        android:background="@drawable/sp_orange_10"
-        android:gravity="center"
-        android:text="血压数据查询"
-        android:textColor="@color/white"
-        android:textSize="@dimen/f15" />
+        app:roundBottomLeft="true"
+        app:roundBottomRight="true"
+        app:roundTopLeft="true"
+        app:roundTopRight="true"
+        app:roundedCornerRadius="@dimen/dp10" />
 
 </LinearLayout>

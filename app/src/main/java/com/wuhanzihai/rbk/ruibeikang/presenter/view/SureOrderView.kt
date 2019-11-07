@@ -6,6 +6,9 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 
 interface SureOrderView : BaseView {
 
+    fun onDoneCartResult(result: SureOrderBean){}
 
-    fun onDoneCartResult(result: SureOrderBean)
+    fun onDefAddress(result: AddressBean)
+
+    fun onCommitOrderResult(result: OrderDetailBean)
 }

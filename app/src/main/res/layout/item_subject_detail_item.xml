@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp14"
+    android:paddingBottom="@dimen/dp14"
+    android:paddingLeft="@dimen/dp10"
+    android:paddingRight="@dimen/dp10"
+    android:background="@drawable/sp_gary_5_stk">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="@dimen/dp16"
+        android:layout_height="@dimen/dp16"
+        android:background="@drawable/selector_coin_subject"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="A"
+        android:textColor="@color/white"
+        android:textSize="@dimen/f12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:gravity="center"
+        android:text="这是一个选项啊？"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f12"
+        app:layout_constraintBottom_toBottomOf="@id/tvText"
+        app:layout_constraintLeft_toRightOf="@id/tvText"
+        app:layout_constraintTop_toTopOf="@id/tvText" />
+
+
+</android.support.constraint.ConstraintLayout>

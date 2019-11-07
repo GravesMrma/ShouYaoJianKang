@@ -28,7 +28,7 @@ public class DividerItemService extends Y_DividerItemDecoration {
         Y_Divider divider = new Y_DividerBuilder()
                 .setRightSideLine(true, ContextCompat.getColor(context, R.color.transparent),
                         14, 0, 0)
-                .setLeftSideLine(true, ContextCompat.getColor(context, R.color.line),
+                .setLeftSideLine(true, ContextCompat.getColor(context, R.color.transparent),
                         14, 0, 0)
                 .setTopSideLine(true, ContextCompat.getColor(context, R.color.transparent),
                         14, 0, 0)

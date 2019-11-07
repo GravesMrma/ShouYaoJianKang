@@ -29,7 +29,7 @@ public class CircleImageView extends ImageView {
     private static final int COLORDRAWABLE_DIMENSION = 1;
 
     private static final int DEFAULT_BORDER_WIDTH = 2;
-    private static final int DEFAULT_BORDER_COLOR = Color.BLACK;
+    private static final int DEFAULT_BORDER_COLOR = Color.WHITE;
 
     private final RectF mDrawableRect = new RectF();
     private final RectF mBorderRect = new RectF();
@@ -70,7 +70,7 @@ public class CircleImageView extends ImageView {
         mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_imgborder_width, DEFAULT_BORDER_WIDTH);
         mBorderColor = a.getColor(R.styleable.CircleImageView_imgborder_color, DEFAULT_BORDER_COLOR);
 
-        mBorderColor = getResources().getColor(R.color.clarity);
+//        mBorderColor = getResources().getColor(R.color.clarity);
         a.recycle();
 
         mReady = true;
