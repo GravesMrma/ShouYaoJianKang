@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
+import com.eightbitlab.rxbus.Bus
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.utils.LoginUtils
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.event.MainFragmentEvent
 import com.wuhanzihai.rbk.ruibeikang.utils.NotificationsUtils
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
@@ -36,7 +38,9 @@ class SetActivity : AppCompatActivity() {
     private fun initView() {
         btLogout.onClick {
             LoginUtils.saveLoginStatus(false, "")
+            Bus.send(MainFragmentEvent(-1))
             startActivity<LoginActivity>()
+            finish()
         }
         tvUserInfo.onClick {
             startActivity<EditUserInfoActivity>()

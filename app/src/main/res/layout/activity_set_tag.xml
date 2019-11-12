@@ -9,58 +9,68 @@
     android:orientation="vertical"
     tools:context="com.wuhanzihai.rbk.ruibeikang.activity.SetTagActivity">
 
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp90"
+        android:layout_marginTop="@dimen/dp50"
         android:text="选择以下信息，为您提供个性化服务！"
         android:textColor="@color/black"
         android:textSize="@dimen/f15" />
 
-    <com.zhy.view.flowlayout.TagFlowLayout
-        android:id="@+id/rvView"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:max_select="10"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dp28"
+        android:layout_marginBottom="@dimen/dp14">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/dp14"
-            android:layout_marginRight="@dimen/dp14"
-            android:layout_marginBottom="@dimen/dp87"
-            android:orientation="horizontal">
+            android:layout_marginLeft="@dimen/dp7"
+            android:layout_marginRight="@dimen/dp7"/>
 
-            <TextView
-                android:id="@+id/tvBack"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp42"
-                android:layout_weight="1"
-                android:background="@drawable/sp_tag_left"
-                android:gravity="center"
-                android:text="下一步"
-                android:textColor="@color/green_08"
-                android:textSize="@dimen/f15" />
+    </android.support.v4.widget.NestedScrollView>
 
-            <TextView
-                android:id="@+id/tvNext"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp42"
-                android:layout_weight="1"
-                android:background="@drawable/sp_tag_right"
-                android:gravity="center"
-                android:text="完成"
-                android:textColor="@color/white"
-                android:textSize="@dimen/f15" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginRight="@dimen/dp14"
+        android:layout_marginBottom="@dimen/dp24"
+        android:orientation="horizontal">
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp42"
+            android:layout_weight="1"
+            android:background="@drawable/sp_tag_left"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="上一步"
+            android:textColor="@color/green_08"
+            android:textSize="@dimen/f15" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tvNext"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp42"
+            android:layout_weight="1"
+            android:background="@drawable/sp_tag"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f15" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

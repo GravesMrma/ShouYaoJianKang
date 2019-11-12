@@ -23,7 +23,7 @@ import com.wuhanzihai.rbk.ruibeikang.injection.module.InfoModule
 import com.wuhanzihai.rbk.ruibeikang.media.MusicService
 import com.wuhanzihai.rbk.ruibeikang.presenter.HealthClassPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.HealthClassView
-import kotlinx.android.synthetic.main.fragment_question.rvView
+import kotlinx.android.synthetic.main.layout_recyclerview.rvView
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startService
 

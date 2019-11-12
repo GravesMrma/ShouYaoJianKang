@@ -1,11 +1,14 @@
 package com.wuhanzihai.rbk.ruibeikang.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationSet
+import android.view.animation.TranslateAnimation
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
@@ -17,10 +20,7 @@ import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.*
 import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.common.loadImage
-import com.wuhanzihai.rbk.ruibeikang.data.entity.BannerEntity
-import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
-import com.wuhanzihai.rbk.ruibeikang.data.entity.MineBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.MineServiceBean
+import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemTen
@@ -44,9 +44,9 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
 
     override fun onUserInfoResult(result: LoginData) {
         GlobalBaseInfo.setBaseInfo(result)
-        if (result.sex==1){
+        if (result.sex == 1) {
             ivImg.loadImage("http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png")
-        }else{
+        } else {
             ivImg.loadImage("http://www.hcjiankang.com/androidimg/mid_icon_meinv_s.png")
         }
 //        ivImg.loadImage(result.head_pic)
@@ -68,11 +68,20 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         srView.finishRefresh()
     }
 
+    override fun onMineAdvResult(result: MineAdv) {
+        mineAdv = result
+        handler.removeCallbacks(run)
+        startAnimation()
+        isRun = true
+    }
+
     private lateinit var list: MutableList<BannerEntity>
     private lateinit var adapter: BaseQuickAdapter<BannerEntity, BaseViewHolder>
 
     private lateinit var serList: MutableList<MineServiceBean>
     private lateinit var serAdapter: BaseQuickAdapter<MineServiceBean, BaseViewHolder>
+
+    private var mineAdv: MineAdv? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -100,7 +109,10 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
                     , "data" to "http://pft.zoosnet.net/LR/Chatpre.aspx?id=PFT35316404&lng=cn")
         }
         ivMsg.onClick {
-            startActivity<SysMsgActivity>()
+//            startActivity<SysMsgActivity>()
+            startActivity<RebateActivity>()
+//            startActivity<WelcomeActivity>()
+//            startActivity<SetTagActivity>()
         }
         tvMore.onClick {
             startActivity<OrderActivity>()
@@ -144,7 +156,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
                 3 -> startActivity<AuthActivity>()
                 4 -> startActivity<HealthArchivesActivity>()
                 5 -> startActivity<CouponActivity>()
-                6 ->  startActivity<StandardWebActivity>("title" to "常见问题"
+                6 -> startActivity<StandardWebActivity>("title" to "常见问题"
                         , "data" to "http://api.hcjiankang.com/api/Web/article?id=732")
                 7 -> MyUtils.myUtils.callPhone(act, "4000186617")
             }
@@ -173,8 +185,50 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
     }
 
     private fun initData() {
-
         mPresenter.getUserInfo()
         mPresenter.mineIndex()
+        mPresenter.userAdv()
     }
+
+    private var index = 0
+    private var handler = Handler()
+    private var isRun = false
+
+    private fun startAnimation() {
+        if (!isRun){
+            return
+        }
+        if (mineAdv != null) {
+            tvAdv.text = mineAdv!!.item[index % mineAdv!!.item.size]
+        }
+        val animationSet = AnimationSet(true)
+        val animation = TranslateAnimation(0f, 0f, 40f, 0f)
+        animation.duration = 800
+        animationSet.addAnimation(animation)
+        animationSet.fillAfter = true
+        tvAdv.startAnimation(animationSet)
+        index++
+        handler.postDelayed(run, 3000)
+    }
+
+    private fun stopAnimation(){
+        handler.removeCallbacks(run)
+    }
+
+    private var run = Runnable {
+        startAnimation()
+    }
+
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden) {
+            isRun = false
+            stopAnimation()
+        } else {
+            isRun = true
+            startAnimation()
+        }
+    }
+
 }

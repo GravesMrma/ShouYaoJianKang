@@ -59,9 +59,9 @@ class GoodsServiceDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), Good
         tvOldPrice.text = "¥${result.original_price}"
         tvOldPrice.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
         if (result.sales == 0){
-            tvSellNum.text = "已热销:${result.counterfeit_sales}"
+            tvSellNum.text = "已预订:${result.counterfeit_sales}"
         }else{
-            tvSellNum.text = "已热销:${result.sales}"
+            tvSellNum.text = "已预订:${result.sales}"
         }
 
         webView.loadDataWithBaseURL(
@@ -90,8 +90,8 @@ class GoodsServiceDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), Good
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_service_detail)
+        StatusBarUtil.setTranslucentForImageView(act, 0, null)
         StatusBarUtil.setLightMode(act)
-        StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
         id = intent.getIntExtra("id", 0)
 
@@ -186,7 +186,7 @@ class GoodsServiceDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), Good
         }
         val baos = ByteArrayOutputStream()
         bitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val datas = baos.toByteArray()
+        val datas = JavaUtils.bmpToByteArray(bitmap,23000)
         msg.thumbData = datas
 
 //构造一个Req

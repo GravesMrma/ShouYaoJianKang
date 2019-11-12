@@ -15,12 +15,13 @@ import com.wuhanzihai.rbk.ruibeikang.itemDiv.*
 import kotlinx.android.synthetic.main.layout_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 
-class ServiceOrderFragment : Fragment() {
+// 直推下级
+class DirectFragment : Fragment() {
     private lateinit var list: MutableList<OrderBean>
     private lateinit var adapter: BaseQuickAdapter<OrderBean, BaseViewHolder>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.layout_recyclerview, null)
+        return inflater.inflate(R.layout.fragment_direct, null)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

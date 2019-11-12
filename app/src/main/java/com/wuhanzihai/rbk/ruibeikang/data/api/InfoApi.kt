@@ -86,4 +86,7 @@ interface InfoApi {
     @POST("ArticleContent/coursedetailsmusic")
     fun healthClassDetailMusic(@Body req: HealthClassDetailMusicReq): Observable<BaseResp<HealthClassDetailMusicBean>>
 
+    @POST("ArticleContent/getarticlekeys")
+    fun tagWords(@Body req: NoParamReq): Observable<BaseResp<MineAdv>>
+
 }

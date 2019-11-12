@@ -33,7 +33,7 @@ class AddAddressReq(consignee: String
     private var provincecode = provincecode
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
-    private var user_id = GlobalBaseInfo.getBaseInfo()!!.user_id
+    private var user_id = LoginUtils.getUserId()
 
     init {
         sign = AES.encryptAES(formatParam(this), getKey())

@@ -11,7 +11,7 @@ import com.wuhanzihai.rbk.ruibeikang.utils.AES
 class GetUserInfoReq() : BaseReq() {
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
-    private var user_id: Int = LoginUtils.getUserId()
+    private var user_id = LoginUtils.getUserId()
 
     init {
         sign = AES.encryptAES(formatParam(this), getKey())

@@ -9,6 +9,7 @@ import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.common.loadImage
+import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
 import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.UserInfoReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
@@ -29,27 +30,29 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
     }
 
     override fun onSaveInfoResult() {
-
+        showTextDesc(act,"修改成功")
     }
 
     override fun onUserInfoResult(result: LoginData) {
         GlobalBaseInfo.setBaseInfo(result)
 //        ivHead.loadImage(result.head_pic)
-        if (result.sex==1){
+        if (result.sex == 1) {
             ivHead.loadImage("http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png")
-        }else{
+        } else {
             ivHead.loadImage("http://www.hcjiankang.com/androidimg/mid_icon_meinv_s.png")
         }
         edName.setText(result.nickname)
         tvBirthday.text = result.birthday
+        sex = result.sex
         when (result.sex) {
-            0 -> tvSex.text = "保密"
             1 -> tvSex.text = "男"
             2 -> tvSex.text = "女"
         }
+        tvHeight.text = "${result.height}cm"
+        tvWeight.text = "${result.weight}Kg"
     }
 
-    private val sexs = mutableListOf("男", "女", "保密")
+    private val sexs = mutableListOf("男", "女")
     private var sex = 0
     private var weight1 = ""
     private var height1 = ""
@@ -70,14 +73,21 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
 
     private fun initView() {
         tvTitle.setMoreTextAction {
+            var headUrl = ""
+            if (sex == 1) {
+                headUrl = "http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png"
+            }
+            if (sex == 2) {
+                headUrl = "http://www.hcjiankang.com/androidimg/mid_icon_meinv_s.png"
+            }
             mPresenter.saveInfo(UserInfoReq(sex.toString(),
                     tvBirthday.text.toString(),
-                    "http://www.hcjiankang.com/androidimg/qiaofeng.png",
+                    headUrl,
                     edName.text.toString(),
                     "",
                     ""
-                    , "170"
-                    , "63.5"))
+                    , height1.replace("cm", "")
+                    , weight1.replace("Kg", "")))
         }
 
         rlSex.onClick {
@@ -90,16 +100,13 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
                     "女" -> {
                         sex = 2
                     }
-                    "保密" -> {
-                        sex = 0
-                    }
                 }
             }.setData(sexs).setIsLoop(false).show()
         }
         rlBirthday.onClick {
             CustomDatePicker(act) {
                 tvBirthday.text = it
-            }.show("1990-01-01")
+            }.setIsLoop(false).showSpecificTime(false).show()
         }
 
         rlWeight.onClick {

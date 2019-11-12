@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.ApplyCashProcessActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:layout_constraintTop_toBottomOf="@id/fake_status_bar"
+        app:moreText="返利规则"
+        app:titleText="申请提现" />
+
+    <View
+        android:id="@+id/vLine"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/main_bg"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <ImageView
+        android:id="@+id/ivImg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp31"
+        android:src="@mipmap/ic_charge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvText"
+        app:layout_constraintTop_toBottomOf="@id/vLine" />
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp20"
+        android:text="提现金额(元)"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f17"
+        app:layout_constraintBottom_toTopOf="@id/tvText1"
+        app:layout_constraintLeft_toRightOf="@id/ivImg1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivImg1" />
+
+    <TextView
+        android:id="@+id/tvText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="@string/rmb"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f17"
+        app:layout_constraintBottom_toBottomOf="@id/ivImg1"
+        app:layout_constraintLeft_toLeftOf="@id/tvText"
+        app:layout_constraintTop_toBottomOf="@id/tvText" />
+
+    <TextView
+        android:id="@+id/tvMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:text="6283.00"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f28"
+        app:layout_constraintBottom_toBottomOf="@id/tvText1"
+        app:layout_constraintLeft_toRightOf="@id/tvText1" />
+
+    <View
+        android:id="@+id/vLine1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginTop="@dimen/dp26"
+        android:layout_marginRight="@dimen/dp14"
+        android:background="@color/main_bg"
+        app:layout_constraintTop_toBottomOf="@id/ivImg1" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clState1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp45"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vLine1">
+
+        <ImageView
+            android:id="@+id/ivState1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_pros"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvState1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp11"
+            android:text="提现申请已提交"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f14"
+            app:layout_constraintBottom_toTopOf="@id/tvTime1"
+            app:layout_constraintLeft_toRightOf="@id/ivState1"
+            app:layout_constraintTop_toTopOf="@id/ivState1" />
+
+        <TextView
+            android:id="@+id/tvTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="2019-10-09   19:00"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f11"
+            app:layout_constraintBottom_toBottomOf="@id/ivState1"
+            app:layout_constraintLeft_toLeftOf="@id/tvState1"
+            app:layout_constraintTop_toBottomOf="@id/tvState1" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/vLine2"
+        android:layout_width="@dimen/dp1"
+        android:layout_height="@dimen/dp70"
+        android:layout_marginLeft="@dimen/dp10"
+        android:background="@color/orange"
+        app:layout_constraintLeft_toLeftOf="@id/clState1"
+        app:layout_constraintTop_toBottomOf="@id/clState1" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clState2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/clState1"
+        app:layout_constraintTop_toBottomOf="@id/vLine2">
+
+        <ImageView
+            android:id="@+id/ivState2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_pros"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvState2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp11"
+            android:text="未通过\n您的微信账号有误！"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f14"
+            app:layout_constraintBottom_toTopOf="@id/tvTime2"
+            app:layout_constraintLeft_toRightOf="@id/ivState2"
+            app:layout_constraintTop_toTopOf="@id/ivState2" />
+
+        <TextView
+            android:id="@+id/tvTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="2019-10-09   19:00"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f11"
+            app:layout_constraintBottom_toBottomOf="@id/ivState2"
+            app:layout_constraintLeft_toLeftOf="@id/tvState2"
+            app:layout_constraintTop_toBottomOf="@id/tvState2" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tvCopy"
+        android:layout_marginBottom="@dimen/dp30"
+        android:layout_marginLeft="@dimen/dp40"
+        android:layout_marginRight="@dimen/dp40"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11" />
+
+    <TextView
+        android:id="@+id/tvCopy"
+        style="@style/buttonStyleRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp20"
+        android:paddingRight="@dimen/dp20"
+        android:text="复制公众号"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="@dimen/dp30"/>
+
+
+</android.support.constraint.ConstraintLayout>

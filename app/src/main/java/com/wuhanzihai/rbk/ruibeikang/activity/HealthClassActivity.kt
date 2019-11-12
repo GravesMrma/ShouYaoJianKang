@@ -39,7 +39,9 @@ class HealthClassActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClass
 
     override fun onHealthBannerResult(result: HealthClassBannerBean) {
         mBanner.update(result.item)
-        mBanner.setOnBannerListener { setOnBannerListener(act, result.item[it]) }
+        mBanner.setOnBannerListener {
+            setOnBannerListener(act,result.item[it])
+        }
     }
 
     override fun onHealthClassDetailResult(result: HealthClassDetailBean) {

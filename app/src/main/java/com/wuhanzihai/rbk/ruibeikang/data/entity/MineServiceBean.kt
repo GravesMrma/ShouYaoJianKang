@@ -6,3 +6,5 @@ data class MineServiceBean(
         var title:String,
         var res:Int
 ) : Serializable
+
+data class MineAdv(var item:MutableList<String>)

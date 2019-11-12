@@ -13,7 +13,6 @@
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
@@ -22,15 +21,8 @@
         app:layout_constraintTop_toBottomOf="@id/fake_status_bar"
         app:titleText="返利中心" />
 
-    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
-        android:layout_width="@dimen/dp74"
-        android:layout_height="@dimen/dp74"
-        android:layout_marginLeft="@dimen/dp25"
-        android:layout_marginTop="@dimen/dp13"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/clView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp14"
@@ -38,7 +30,6 @@
         android:layout_marginRight="@dimen/dp14"
         android:background="@drawable/sp_white_14"
         app:layout_constraintTop_toBottomOf="@id/tvTitle">
-
 
         <TextView
             android:id="@+id/tvName"
@@ -69,17 +60,136 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingTop="@dimen/dp50"
+            android:paddingRight="@dimen/dp12"
+            android:paddingBottom="@dimen/dp22"
             app:layout_constraintTop_toBottomOf="@id/tvTixian">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvMoney1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="39283.00"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:text="可提现返利"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f12" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <View
+                android:layout_width="@dimen/dp1"
+                android:layout_height="@dimen/dp25"
+                android:background="@color/line" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvMoney2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="39283.00"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:text="累计提现返利"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f12" />
 
+            </LinearLayout>
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <View
+                android:layout_width="@dimen/dp1"
+                android:layout_height="@dimen/dp25"
+                android:background="@color/line" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvMoney3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="39283.00"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:text="可提现返利"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f12" />
+            </LinearLayout>
         </LinearLayout>
-
-
     </android.support.constraint.ConstraintLayout>
 
+    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+        android:id="@+id/ivHead"
+        android:layout_width="@dimen/dp74"
+        android:layout_height="@dimen/dp74"
+        android:layout_marginLeft="@dimen/dp25"
+        android:layout_marginTop="@dimen/dp13"
+        android:src="@mipmap/pic_test"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginTop="@dimen/dp14"
+        android:layout_marginRight="@dimen/dp14"
+        android:paddingTop="@dimen/dp12"
+        android:paddingBottom="@dimen/dp9"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sp_white_15"
+        app:layout_constraintTop_toBottomOf="@id/clView" />
 </android.support.constraint.ConstraintLayout>

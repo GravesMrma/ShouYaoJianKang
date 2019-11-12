@@ -55,11 +55,56 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).getOrder(req)
     }
 
+    fun userAdv(): Observable<BaseResp<MineAdv>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).userAdv(NoParamReq())
+    }
+
     fun mineIndex(): Observable<BaseResp<MineBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).mineIndex(NoParamIdReq())
     }
 
     fun getVersion(): Observable<BaseResp<VersionBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).getVersion(NoParamReq())
+    }
+
+    // 分销
+    fun disbutorIndex(): Observable<BaseResp<RebateBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex(NoParamIdReq())
+    }
+
+    fun disbutorIndex1(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex1(NoParamIdReq())
+    }
+
+    fun disbutorIndex2(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex2(NoParamIdReq())
+    }
+
+    fun disbutorIndex3(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex3(NoParamIdReq())
+    }
+
+    fun disbutorIndex4(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex4(NoParamIdReq())
+    }
+
+    fun disbutorIndex5(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex5(NoParamIdReq())
+    }
+
+    fun disbutorIndex6(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex6(NoParamIdReq())
+    }
+
+    fun disbutorIndex7(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex7(NoParamIdReq())
+    }
+
+    fun disbutorIndex8(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex8(NoParamIdReq())
+    }
+
+    fun disbutorIndex9(): Observable<BaseResp<MineBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex9(NoParamIdReq())
     }
 }

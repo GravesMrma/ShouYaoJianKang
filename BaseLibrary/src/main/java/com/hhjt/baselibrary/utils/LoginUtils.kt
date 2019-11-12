@@ -14,11 +14,20 @@ object LoginUtils {
         AppPrefsUtils.putString(BaseConstant.AUTH, auth)
     }
 
+    fun saveLoginStatus(auth: String) {
+        AppPrefsUtils.putString(BaseConstant.AUTH, auth)
+    }
+
     fun saveLoginStatus(status: Boolean, auth: String,user_id: Int) {
         AppPrefsUtils.putBoolean(BaseConstant.LOGIN_STATUS, status)
         AppPrefsUtils.putString(BaseConstant.AUTH, auth)
         AppPrefsUtils.putInt(BaseConstant.USER_ID, user_id)
     }
+
+    fun saveLoginStatus(user_id: Int) {
+        AppPrefsUtils.putInt(BaseConstant.USER_ID, user_id)
+    }
+
 
     fun getAuthId(): String {
         return AppPrefsUtils.getString(BaseConstant.AUTH)

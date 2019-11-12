@@ -26,7 +26,7 @@ class InfoServiceImpl @Inject constructor() : InfoService {
         return repository.healthInfoClass().convert()
     }
 
-    override fun healthFoodClass(req:IdReq): Observable<HealthFoodBean> {
+    override fun healthFoodClass(req: IdReq): Observable<HealthFoodBean> {
         return repository.healthFoodClass(req).convert()
     }
 
@@ -104,5 +104,9 @@ class InfoServiceImpl @Inject constructor() : InfoService {
 
     override fun healthClassDetailMusic(req: HealthClassDetailMusicReq): Observable<HealthClassDetailMusicBean> {
         return repository.healthClassDetailMusic(req).convert()
+    }
+
+    override fun keyWords(): Observable<MineAdv> {
+        return repository.tagWords().convert()
     }
 }

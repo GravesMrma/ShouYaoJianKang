@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:minHeight="@dimen/dp42"
-    android:textSize="@dimen/f15"
-    android:textColor="@color/selector_gray99_white_check"
-    android:layout_marginRight="@dimen/dp14"
-    android:layout_marginTop="@dimen/dp10"
-    android:gravity="center"
-    android:background="@drawable/selector_tag_bg"
-    android:paddingLeft="@dimen/dp21"
-    android:paddingRight="@dimen/dp21">
-</TextView>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp42"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/selector_tag_bg"
+        android:gravity="center"
+        android:textColor="@color/selector_gray99_white"
+        android:textSize="@dimen/f15"/>
+</RelativeLayout>

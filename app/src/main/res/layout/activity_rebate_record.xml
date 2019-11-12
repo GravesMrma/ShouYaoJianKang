@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.RebateRecordActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="商品返利记录"
+        app:moreText="返利规则"/>
+
+    <RadioGroup
+        android:id="@+id/mRgRecord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <RadioButton
+            android:id="@+id/mRbNor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="直推返利"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbUsed"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="间推返利"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+    </RadioGroup>
+
+    <com.hhjt.baselibrary.widgets.APSTSViewPager
+        android:id="@+id/vpView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+
+</LinearLayout>

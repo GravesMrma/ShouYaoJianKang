@@ -28,7 +28,7 @@ import kotlin.concurrent.thread
 class QRCodeScanActivity : BaseMvpActivity<QRCodeScanPresenter>(), QRCodeView.Delegate, QRCodeScanView {
 
     private var id = ""
-    private var user_id = ""
+    private var user_id = LoginUtils.getUserId()
     private var join = false
     private var apply = false
 

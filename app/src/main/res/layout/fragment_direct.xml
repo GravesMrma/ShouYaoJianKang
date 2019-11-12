@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/mRgRecord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp24"
+        android:layout_marginTop="@dimen/dp14"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/mRbAll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginRight="@dimen/dp17"
+            android:layout_weight="1"
+            android:background="@drawable/selector_coin_team"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12" />
+
+        <RadioButton
+            android:id="@+id/mRbSeven"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp17"
+            android:layout_marginRight="@dimen/dp17"
+            android:layout_weight="1"
+            android:background="@drawable/selector_coin_team"
+            android:button="@null"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12" />
+
+        <RadioButton
+            android:id="@+id/mRbThirty"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp17"
+            android:layout_marginRight="@dimen/dp17"
+            android:layout_weight="1"
+            android:background="@drawable/selector_coin_team"
+            android:button="@null"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12" />
+
+        <RadioButton
+            android:id="@+id/mRbNinety"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp17"
+            android:layout_marginRight="@dimen/dp14"
+            android:layout_weight="1"
+            android:background="@drawable/selector_coin_team"
+            android:button="@null"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dp14"
+        android:padding="@dimen/dp14"
+        android:gravity="center"
+        android:background="@drawable/sp_white_10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="团队总人数:"
+                android:textColor="@color/green_08"
+                android:textSize="@dimen/f17"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="145"
+                android:textSize="@dimen/f22"
+                android:textColor="@color/black_33"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="人"
+                android:textSize="@dimen/f15"
+                android:textColor="@color/black_33"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="直推下级:100人"
+            android:textSize="@dimen/f14"
+            android:textColor="@color/gray_99"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="间推下级:89人"
+            android:textSize="@dimen/f14"
+            android:textColor="@color/gray_99"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

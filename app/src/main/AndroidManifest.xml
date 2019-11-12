@@ -33,6 +33,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:name=".common.BaseApp"
@@ -43,7 +46,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.RebateActivity"></activity>
+        <activity android:name=".activity.DirectlySuperiorActivity"></activity>
+        <activity android:name=".activity.RebateRecordActivity" />
+        <activity android:name=".activity.GuideActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MyTeamActivity" />
+        <activity android:name=".activity.ApplyPhoneActivity" />
+        <activity android:name=".activity.ApplyCashProcessActivity" />
+        <activity android:name=".activity.ApplyCashActivity" />
+        <activity android:name=".activity.AddBankCardActivity" />
+        <activity android:name=".activity.BankCardActivity" />
+        <activity android:name=".activity.RebateActivity" />
         <activity android:name=".activity.HealthFoodActivity" />
         <activity android:name=".activity.PayResultActivity" />
         <activity android:name=".activity.SysMsgActivity" />
@@ -136,14 +149,20 @@
             android:name=".activity.MainActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.WelcomeActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- 配置APP ID -->
+        <meta-data
+            android:name="BUGLY_APPID"
+            android:value="5b7fbecce9" /> <!-- 配置APP渠道号 -->
+        <meta-data
+            android:name="BUGLY_APP_CHANNEL"
+            android:value="shouyaojiank" />
     </application>
 
 </manifest>

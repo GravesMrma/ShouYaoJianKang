@@ -2,6 +2,7 @@ package com.wuhanzihai.rbk.ruibeikang.common
 
 import android.app.ActivityManager
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
@@ -24,13 +25,17 @@ import com.orhanobut.hawk.Hawk
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.tencent.bugly.crashreport.CrashReport
 import com.wuhanzihai.rbk.ruibeikang.data.entity.BraceletData
 import com.wuhanzihai.rbk.ruibeikang.event.BraceletDataEvent
 import com.wuhanzihai.rbk.ruibeikang.utils.BraceletManagerUtil
 import java.io.File
+import com.tencent.bugly.crashreport.CrashReport.UserStrategy
+import android.support.v4.content.ContextCompat.getSystemService
+
+
 
 class BaseApp : BaseApplication() {
-
 
     init {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
@@ -45,9 +50,23 @@ class BaseApp : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        // 加载bugly
+        val strategy = UserStrategy(applicationContext)
+        strategy.appChannel = "shouyaojk"  //设置渠道
+        strategy.appVersion = getLocalVersion()      //App的版本
+        strategy.appPackageName = "com.wuhanzihai.rbk.ruibeikang"  //App的包名
+        CrashReport.initCrashReport(applicationContext, "5b7fbecce9", false,strategy)
+
+        // 图片初始化
         initFresco()
+
+        // 跳转初始化
         ARouter.init(this)
+
+        // 缓存初始化
         Hawk.init(context).build()
+
+        //蓝牙初始化
         initBluetoothBracelet()
     }
 
@@ -99,7 +118,7 @@ class BaseApp : BaseApplication() {
 
             override fun onDataCallback(callback: Callback<*>?) {
                 Log.e("Callback", "数据监听" + callback!!.data.toString())
-                if (callback.mode == null){
+                if (callback.mode == null) {
                     // mode为空就返回
                     return
                 }
@@ -153,5 +172,16 @@ class BaseApp : BaseApplication() {
                 }
             }
         })
+    }
+
+    private fun getLocalVersion(): String {
+        var localVersionName = "1.0.0"
+        try {
+            val packageInfo = applicationContext.packageManager.getPackageInfo(packageName, 0)
+            localVersionName = packageInfo.versionName
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+        }
+        return localVersionName
     }
 }

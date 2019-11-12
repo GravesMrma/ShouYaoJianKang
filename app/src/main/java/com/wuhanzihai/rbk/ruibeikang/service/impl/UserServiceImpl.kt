@@ -59,11 +59,55 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.getOrder(req).convert()
     }
 
+    override fun userAdv(): Observable<MineAdv> {
+        return repository.userAdv().convert()
+    }
+
     override fun mineIndex(): Observable<MineBean> {
         return repository.mineIndex().convert()
     }
 
     override fun getVersion(): Observable<VersionBean> {
         return repository.getVersion().convert()
+    }
+
+    override fun disbutorIndex(): Observable<RebateBean> {
+        return repository.disbutorIndex().convert()
+    }
+
+    override fun disbutorIndex1(): Observable<MineBean> {
+        return repository.disbutorIndex1().convert()
+    }
+
+    override fun disbutorIndex2(): Observable<MineBean> {
+        return repository.disbutorIndex2().convert()
+    }
+
+    override fun disbutorIndex3(): Observable<MineBean> {
+        return repository.disbutorIndex3().convert()
+    }
+
+    override fun disbutorIndex4(): Observable<MineBean> {
+        return repository.disbutorIndex4().convert()
+    }
+
+    override fun disbutorIndex5(): Observable<MineBean> {
+        return repository.disbutorIndex5().convert()
+    }
+
+    override fun disbutorIndex6(): Observable<MineBean> {
+        return repository.disbutorIndex6().convert()
+    }
+
+    override fun disbutorIndex7(): Observable<MineBean> {
+        return repository.disbutorIndex7().convert()
+    }
+
+    override fun disbutorIndex8(): Observable<MineBean> {
+        return repository.disbutorIndex8().convert()
+    }
+
+    override fun disbutorIndex9(): Observable<MineBean> {
+        return repository.disbutorIndex9().convert()
     }
 }

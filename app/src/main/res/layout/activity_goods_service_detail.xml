@@ -82,7 +82,7 @@
                 android:gravity="center"
                 android:paddingLeft="@dimen/dp10"
                 android:paddingRight="@dimen/dp10"
-                android:text="定金支付"
+                android:text="订金支付"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/f11"
                 app:layout_constraintBottom_toBottomOf="@id/tvText"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/dp14"
                 android:gravity="center"
-                android:text="已预定:0"
+                android:text="已预订:0"
                 android:textColor="@color/gray_66"
                 android:textSize="@dimen/f11"
                 app:layout_constraintBottom_toBottomOf="@id/tvText"
@@ -227,15 +227,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp24"
-                    android:layout_marginRight="@dimen/dp10"
                     android:layout_weight="1"
-                    android:text="此项目需要预付定金（其余款项线下支付），支付完成后会有专属客服与您联系，为您答疑解惑，全程安排服务行程，保障就诊无忧！"
+                    android:text="此项目需要预付订金（其余款项线下支付），支付完成后会有专属客服与您联系，为您答疑解惑，全程安排服务行程，保障就诊无忧！"
                     android:textColor="@color/gray_99"
                     android:textSize="@dimen/f11" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:drawableRight="@mipmap/ic_more"
                     android:gravity="right" />
 

@@ -76,7 +76,7 @@ class SureServiceOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrde
         var data = intent.getSerializableExtra("data") as GoodsBuyBean
         ivImg.loadImage(data.product.image)
         tvName.text = data.product.name
-        tvSpec.text = data.product.name
+        tvSpec.text = data.product.intro
         tvPrice.text = data.product.price
         tvNum.text = "x${data.product.number}"
         tvMoney.text = data.product.price

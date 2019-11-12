@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_address.*
 import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.toast
 
 // 地址列表页面 收货地址
 class AddressActivity : BaseMvpActivity<AddressPresenter>(), AddressView {

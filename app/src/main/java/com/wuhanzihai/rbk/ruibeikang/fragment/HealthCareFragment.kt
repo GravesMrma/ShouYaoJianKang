@@ -62,6 +62,7 @@ class HealthCareFragment(var category_id: Int) : BaseMvpFragment<HealthCarePrese
 
         initView()
 
+        page = 1
         initData()
     }
 
@@ -77,6 +78,7 @@ class HealthCareFragment(var category_id: Int) : BaseMvpFragment<HealthCarePrese
                 helper.setText(R.id.tvPrice, item.price)
 
                 if (item.is_reservation == 0) {
+                    helper.setImageResource(R.id.ivVip,R.mipmap.ic_vip_tag)
                     if (item.sales==0){
                         if (item.product_id  == 145||
                                 item.product_id  == 146||
@@ -100,10 +102,11 @@ class HealthCareFragment(var category_id: Int) : BaseMvpFragment<HealthCarePrese
                     helper.getView<TextView>(R.id.tvOldPrice).paint.flags = Paint.STRIKE_THRU_TEXT_FLAG; //中划线
                     helper.getView<TextView>(R.id.tvOldPrice).visibility = View.VISIBLE
                 } else {
+                    helper.setImageResource(R.id.ivVip,R.mipmap.ic_dinjzf)
                     if (item.sales==0){
-                        helper.setText(R.id.tvReserve, "${item.counterfeit_sales}人已预定")
+                        helper.setText(R.id.tvReserve, "${item.counterfeit_sales}人已预订")
                     }else{
-                        helper.setText(R.id.tvReserve, "${item.sales}人已预定")
+                        helper.setText(R.id.tvReserve, "${item.sales}人已预订")
                     }
                     helper.getView<TextView>(R.id.tvOldPrice).visibility = View.GONE
                 }

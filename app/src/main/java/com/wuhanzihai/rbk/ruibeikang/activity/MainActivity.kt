@@ -26,6 +26,7 @@ import com.hhjt.baselibrary.ext.loadImage
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
+import com.hhjt.baselibrary.utils.LoginUtils
 import com.jaeger.library.StatusBarUtil
 import com.kotlin.base.utils.AppPrefsUtils
 import com.wuhanzihai.rbk.ruibeikang.R
@@ -35,6 +36,7 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
 import com.wuhanzihai.rbk.ruibeikang.data.entity.VersionBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.ActivationReq
 import com.wuhanzihai.rbk.ruibeikang.event.MainEvent
+import com.wuhanzihai.rbk.ruibeikang.event.MainFragmentEvent
 import com.wuhanzihai.rbk.ruibeikang.event.MusicStateEvent
 import com.wuhanzihai.rbk.ruibeikang.fragment.HealthyFragment
 import com.wuhanzihai.rbk.ruibeikang.fragment.MainFragment
@@ -73,12 +75,12 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
     }
 
     override fun onActivationResult(result: BaseData) {
-        if (result.code == 1){
+        if (result.code == 1) {
             toast("激活成功")
             actDialog.dismiss()
             mPresenter.getVersion()
             mPresenter.getUserInfo()
-        }else{
+        } else {
             toast(result.msg)
         }
     }
@@ -118,13 +120,14 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
                 .cancelableOnTouchOutside(false)
                 .cancelableOnClickKeyBack(false)
                 .onClick(R.id.rlExit) { AnyLayer, v ->
+                    LoginUtils.saveLoginStatus(false,"")
                     startActivity<LoginActivity>()
                     finish()
                 }
                 .onClick(R.id.btSure) { AnyLayer, v ->
-                    if (AnyLayer.getView<EditText>(R.id.edAccount).text.isEmpty()||AnyLayer.getView<EditText>(R.id.edAccount).text.isEmpty()){
+                    if (AnyLayer.getView<EditText>(R.id.edAccount).text.isEmpty() || AnyLayer.getView<EditText>(R.id.edAccount).text.isEmpty()) {
                         toast("请填写正确激活信息")
-                    }else{
+                    } else {
                         mPresenter.activation(ActivationReq(AnyLayer.getView<EditText>(R.id.edAccount).text.toString()
                                 , AnyLayer.getView<EditText>(R.id.edPwd).text.toString()))
                     }
@@ -203,8 +206,13 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
             }, 1500)
         }.registerInBus(this)
 
-        mPresenter.getVersion()
-        mPresenter.getUserInfo()
+        Bus.observe<MainFragmentEvent>().subscribe {
+            if (it.index == -1){
+                finish()
+            }else{
+                jumpFragment(it.index)
+            }
+        }.registerInBus(this)
 
         Bus.observe<MusicStateEvent>().subscribe {
             if (it.state == ManagedMediaPlayer.Status.STARTED) {
@@ -287,6 +295,8 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
         if (AudioPlayer.getInstance().getStatus() == ManagedMediaPlayer.Status.STARTED) {
             clWindow.visibility = View.VISIBLE
         }
+        mPresenter.getVersion()
+        mPresenter.getUserInfo()
     }
 
 //    private var mLastY: Int = 0

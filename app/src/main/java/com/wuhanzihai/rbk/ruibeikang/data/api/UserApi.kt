@@ -43,6 +43,9 @@ interface UserApi {
     @POST("User/order")
     fun getOrder(@Body req: OrderReq): Observable<BaseResp<OrderBean>>
 
+    @POST("User/usertost")
+    fun userAdv(@Body req: NoParamReq): Observable<BaseResp<MineAdv>>
+
     //个人中心健康推荐
     @POST("User/healthrommend")
     fun mineIndex(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
@@ -53,5 +56,38 @@ interface UserApi {
     @Multipart
     @POST("HomeApi/UploadImg")
     fun uploadImg(@PartMap maps: HashMap<String, RequestBody>): Observable<BaseData>
+
+    // 分销系统
+
+    @POST("Disbutor/home")
+    fun disbutorIndex(@Body req: NoParamIdReq): Observable<BaseResp<RebateBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex1(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex2(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex3(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex4(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex5(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex6(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex7(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex8(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
+    @POST("User/healthrommend")
+    fun disbutorIndex9(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+
 
 }

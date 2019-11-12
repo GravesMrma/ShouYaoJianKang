@@ -100,4 +100,8 @@ class InfoRepository @Inject constructor() {
     fun healthClassDetailMusic(req: HealthClassDetailMusicReq): Observable<BaseResp<HealthClassDetailMusicBean>> {
         return RetrofitFactory.instance.create(InfoApi::class.java).healthClassDetailMusic(req)
     }
+
+    fun tagWords(): Observable<BaseResp<MineAdv>> {
+        return RetrofitFactory.instance.create(InfoApi::class.java).tagWords(NoParamReq())
+    }
 }

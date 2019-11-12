@@ -203,6 +203,9 @@ class HealthyFragment : BaseMvpFragment<HealthFragmentPresenter>(), HealthFragme
         srView.setOnRefreshListener {
             mPresenter.healthIndex()
         }
+        srView.setOnLoadMoreListener {
+            srView.setNoMoreData(true)
+        }
     }
 
     // 以下代码 仅供参考 切忌勿改的 否则会直接导致你的智商出BUG

@@ -188,7 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="@dimen/dp50"
-            android:text="预付定金"
+            android:text="预付订金"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f12" />
 

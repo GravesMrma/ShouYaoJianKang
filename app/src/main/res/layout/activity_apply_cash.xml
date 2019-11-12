@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ApplyCashActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:moreText="返利规则"
+        app:titleText="申请提现" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginRight="@dimen/dp14"
+        android:layout_marginTop="@dimen/dp25"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sp_gray_10_b0"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp11">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提现账户"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f12" />
+
+            <TextView
+                android:id="@+id/tvBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/ic_more_gray"
+                android:text="微信钱包-李晓"
+                android:textColor="@color/orange"
+                android:layout_marginLeft="@dimen/dp20"
+                android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sp_white_10_t0"
+            android:paddingLeft="@dimen/dp11"
+            android:paddingTop="@dimen/dp14"
+            android:paddingRight="@dimen/dp11"
+            android:paddingBottom="@dimen/dp17">
+
+            <TextView
+                android:id="@+id/tvText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可提现返利"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手续费收取标准?"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f12"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp30"
+                android:text="@string/rmb"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f24"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvText" />
+
+            <EditText
+                android:id="@+id/edMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp5"
+                android:background="@color/clarity"
+                android:inputType="number"
+                android:lines="1"
+                android:text="435654"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f24"
+                app:layout_constraintBottom_toBottomOf="@id/tvText1"
+                app:layout_constraintLeft_toRightOf="@id/tvText1" />
+
+            <View
+                android:id="@+id/vLine"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginTop="@dimen/dp15"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@id/tvText1" />
+
+            <TextView
+                android:id="@+id/tvCharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp19"
+                android:text="手续费：¥ 60.00(微信收取)"
+                android:textColor="@color/gray_99"
+                android:textSize="@dimen/f12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vLine" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_88"
+        android:textSize="@dimen/f11"
+        android:layout_margin="@dimen/dp14"
+        android:text="单笔最高限额1万元，低于100不可提现，每月最多发起2笔提现申请详细规则请点击右上方返利查看！"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp54"
+        android:layout_marginLeft="@dimen/dp29"
+        android:layout_marginRight="@dimen/dp29"
+        style="@style/buttonStyleRound"
+        android:text="立即提现"/>
+
+
+</LinearLayout>

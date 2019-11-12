@@ -35,6 +35,13 @@ class MyUtils {
             return point.x
         }
 
+        fun getHeight(context: Activity): Int {
+            val defaultDisplay = context.windowManager.defaultDisplay
+            val point = Point()
+            defaultDisplay.getSize(point)
+            return point.y
+        }
+
         fun getViewHeight(view: View): Int {
             view.measure(0, 0)
             return  view.measuredWidth

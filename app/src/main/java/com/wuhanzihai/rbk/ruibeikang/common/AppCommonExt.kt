@@ -1,6 +1,7 @@
 package com.wuhanzihai.rbk.ruibeikang.common
 
 import android.content.Context
+import android.os.Handler
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -93,4 +94,7 @@ fun showTextDesc(context: Context, text: String) {
             .cancelableOnClickKeyBack(true)
     anyLayer.getView<TextView>(R.id.tvText).setText(text)
     anyLayer.show()
+//    Handler().postDelayed({
+//        anyLayer.dismiss()
+//    }, 1000)
 }

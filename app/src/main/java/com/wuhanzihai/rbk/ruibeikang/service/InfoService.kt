@@ -52,4 +52,6 @@ interface InfoService {
 
     fun healthClassDetailMusic(req: HealthClassDetailMusicReq): Observable<HealthClassDetailMusicBean>
 
+    fun keyWords(): Observable<MineAdv>
+
 }

@@ -31,7 +31,7 @@ open class BaseSubscriber<T>(val baseView: BaseView, var isHideLoading: Boolean 
             is DataNullException -> baseView.onDataIsNull()
             is JsonIOException -> baseView.onError("数据格式化错误", 0)
             is TokenInvalidException -> {
-                baseView.onTokenInvalid(e.msg, e.code)
+                baseView.onTokenInvalid("您的账号已在其他手机登录", e.code)
                 LoginUtils.saveLoginStatus(false, "")
                 ARouter.getInstance().build("/rbk/ruibeikang/activity/LoginActivity").navigation()
             }

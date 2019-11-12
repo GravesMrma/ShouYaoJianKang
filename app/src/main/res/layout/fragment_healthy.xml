@@ -236,7 +236,6 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/cdView1"
                     android:layout_width="0dp"
-                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
                     android:background="@color/white"

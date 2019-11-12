@@ -28,7 +28,7 @@ class UserInfoReq(sex: String
     private var sex: String = sex
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
-    private var user_id: String = "2061"
+    private var user_id = LoginUtils.getUserId()
     private var weight: String = weight
 
     init {

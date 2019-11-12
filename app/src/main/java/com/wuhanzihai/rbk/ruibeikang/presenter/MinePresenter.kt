@@ -7,10 +7,7 @@ import com.hhjt.baselibrary.ext.excute
 import com.hhjt.baselibrary.presenter.BasePresenter
 import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.rx.BaseSubscriber
-import com.wuhanzihai.rbk.ruibeikang.data.entity.GoodsDetailBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
-import com.wuhanzihai.rbk.ruibeikang.data.entity.MallBean
-import com.wuhanzihai.rbk.ruibeikang.data.entity.MineBean
+import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.GetCodeReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.GoodsDetailReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.LoginReq
@@ -52,6 +49,20 @@ class MinePresenter @Inject constructor() : BasePresenter<MineView>() {
                     override fun onNext(t: MineBean) {
                         super.onNext(t)
                         mView.onMineResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun userAdv() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.userAdv()
+                .excute(object : BaseSubscriber<MineAdv>(mView) {
+                    override fun onNext(t: MineAdv) {
+                        super.onNext(t)
+                        mView.onMineAdvResult(t)
                     }
                 }, lifecycleProvider)
     }

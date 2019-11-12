@@ -26,14 +26,13 @@ import org.jetbrains.anko.act
 
 //  血压数据解读
 class BloodPreDataDetailActivity : AppCompatActivity() {
-
     private var type = -1
     private var value = ""
     private var state = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blood_pre_data_detail)
-
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 

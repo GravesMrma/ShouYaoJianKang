@@ -54,6 +54,7 @@ class HealthCallActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClassV
         ivImg.loadImage(result.course_banner)
         tvTitle1.text = result.course_title
         tvTitle2.text = result.course_title
+        tvTitle.text = result.course_title
     }
 
     override fun onHealthClassDetailMusicResult(result: HealthClassDetailMusicBean) {
@@ -71,6 +72,10 @@ class HealthCallActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClassV
         setContentView(R.layout.activity_health_call)
         StatusBarUtil.setTranslucentForImageView(act, 0, null)
         StatusBarUtil.setLightMode(act)
+
+        rlView.background.mutate().alpha = 0
+        fake_status_bar.background.mutate().alpha = 0
+
         initView()
 
         initData()
@@ -166,11 +171,8 @@ class HealthCallActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClassV
             ivOrder.isSelected = !ivOrder.isSelected
         }
 
-        rlView.background.mutate().alpha = 0
-        fake_status_bar.background.mutate().alpha = 0
+
         var index = (MyUtils.getWidth(act) / 1.73).toInt()
-//        var index = MyUtils.getViewHeight(llViewTool) - MyUtils.getViewHeight(rlView) - MyUtils.getViewHeight(fake_status_bar) - MyUtils.getViewHeight(mRgRecord1)
-        Log.e("数值", "${MyUtils.getViewHeight(llViewTool)},${MyUtils.getViewHeight(rlView)},${MyUtils.getViewHeight(fake_status_bar)},${MyUtils.getViewHeight(mRgRecord1)},")
         var sy = 0
         nsView.viewTreeObserver.addOnScrollChangedListener {
             sy = nsView.scrollY
@@ -179,10 +181,12 @@ class HealthCallActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClassV
                 rlView.background.mutate().alpha = aaa
                 fake_status_bar.background.mutate().alpha = aaa
                 mRgRecord1.visibility = View.GONE
+                tvTitle.visibility = View.GONE
             } else {
                 rlView.background.mutate().alpha = 255
                 fake_status_bar.background.mutate().alpha = 255
                 mRgRecord1.visibility = View.VISIBLE
+                tvTitle.visibility = View.VISIBLE
             }
         }
     }
@@ -201,9 +205,11 @@ class HealthCallActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClassV
                     var source = AudioPlayer.getInstance().getNowPlaying()
                     if (!isFinishing) {
                         if (source != null) {
-                            ivImg1.loadImage(source!!.music_img)
-                            tvName.text = source.music_title
-                            startSeek()
+                            runOnUiThread {
+                                tvNameadsada.text = source.music_title
+                                ivImg1.loadImage(source.music_img)
+                                startSeek()
+                            }
                             healthClassMusicFragment.setSelect(source.music_id)
                         }
                     }
@@ -230,7 +236,7 @@ class HealthCallActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClassV
         if (AudioPlayer.getInstance().getNowPlaying() != null) {
             clView.visibility = View.VISIBLE
             ivImg1.loadImage(AudioPlayer.getInstance().getNowPlaying()!!.music_img)
-            tvName.text = AudioPlayer.getInstance().getNowPlaying()!!.music_title
+            tvNameadsada.text = AudioPlayer.getInstance().getNowPlaying()!!.music_title
             ivPlay.isSelected = AudioPlayer.getInstance().getStatus() == ManagedMediaPlayer.Status.STARTED
             if (AudioPlayer.getInstance().getStatus() == ManagedMediaPlayer.Status.STARTED) {
                 handler.postDelayed(run, 500)

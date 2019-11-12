@@ -12,7 +12,7 @@ import com.wuhanzihai.rbk.ruibeikang.R
 import kotlinx.android.synthetic.main.layout_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 
-class ProblemFragment:Fragment() {
+class RebateRecordFragment:Fragment() {
 
 
     private lateinit var list: MutableList<String>

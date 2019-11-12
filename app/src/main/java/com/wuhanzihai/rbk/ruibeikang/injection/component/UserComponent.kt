@@ -38,4 +38,8 @@ interface UserComponent {
 
     fun inject(activity: OrderServiceDetailActivity)
 
+    fun inject(activity: SetTagActivity)
+
+    fun inject(activity: RebateActivity)
+
 }

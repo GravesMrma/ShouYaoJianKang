@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
+import com.hhjt.baselibrary.utils.LoginUtils
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
+import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.UserInfoReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
@@ -37,6 +40,11 @@ class SetSexActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
     override fun onSaveInfoResult() {
         toast("修改成功")
         startActivity<SetTagActivity>()
+        finish()
+    }
+
+    override fun onUserInfoResult(result: LoginData) {
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,27 +70,48 @@ class SetSexActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
             sex = "2"
         }
         tvAge.onClick {
-            CustomDatePicker.getInstance(this) {
+            CustomDatePicker(this) {
                 birthday = it
                 tvAge.text = it
-            }.show()
+            }.setIsLoop(false).showSpecificTime(false).show()
         }
 
         tvWeight.onClick {
             CustomSinglePicker(this, CustomSinglePicker.ResultHandler {
                 weight1 = it
                 tvWeight.text = it
-            }).setData(weight).setIsLoop(false).show()
+            }).setData(weight).setSelected(weight.size / 3).setIsLoop(false).show()
         }
 
         tvHeight.onClick {
             CustomSinglePicker(this, CustomSinglePicker.ResultHandler {
                 height1 = it
                 tvHeight.text = it
-            }).setData(height).setIsLoop(false).show()
+            }).setData(height).setSelected(height.size / 2).setIsLoop(false).show()
         }
         btCommit.onClick {
-            mPresenter.saveInfo(UserInfoReq(sex, birthday, "http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png", "", "", "", "180", "65"))
+            if (sex.isEmpty() ||
+                    birthday.isEmpty() ||
+                    height1.isEmpty() ||
+                    weight1.isEmpty()) {
+                toast("请填写完整信息")
+                return@onClick
+            }
+            var headUrl = ""
+            if (sex == "1") {
+                headUrl = "http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png"
+            }
+            if (sex == "2") {
+                headUrl = "http://www.hcjiankang.com/androidimg/mid_icon_meinv_s.png"
+            }
+
+            mPresenter.saveInfo(UserInfoReq(sex, birthday,
+                    headUrl,
+                    "",
+                    "",
+                    "",
+                    height1.replace("cm", ""),
+                    weight1.replace("Kg", "")))
         }
     }
 

@@ -18,7 +18,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -64,40 +63,24 @@ public class CustomDatePicker {
     private Calendar selectedCalender, startCalendar, endCalendar;
     private TextView tv_cancle, tv_select, hour_text, minute_text;
 
-    public static CustomDatePicker getInstance(Context context, ResultHandler resultHandler){
-        return new CustomDatePicker(context,resultHandler);
-    }
-
     public CustomDatePicker(Context context, ResultHandler resultHandler) {
         String startDate = "1900-01-01";
-        String endDate = DateUtils.INSTANCE.convertTimeToString(System.currentTimeMillis(), "yyyy-MM-dd");
-        if (isValidDate(startDate, "yyyy-MM-dd") && isValidDate(endDate, "yyyy-MM-dd")) {
-            canAccess = true;
-            this.context = context;
-            this.handler = resultHandler;
-            selectedCalender = Calendar.getInstance();
-            startCalendar = Calendar.getInstance();
-            endCalendar = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
-            try {
-                startCalendar.setTime(sdf.parse(startDate));
-                endCalendar.setTime(sdf.parse(endDate));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            initDialog();
-            initView();
+        String endDate = DateUtils.INSTANCE.convertTimeToString(System.currentTimeMillis(), "");
+        canAccess = true;
+        this.context = context;
+        this.handler = resultHandler;
+        selectedCalender = Calendar.getInstance();
+        startCalendar = Calendar.getInstance();
+        endCalendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        try {
+            startCalendar.setTime(sdf.parse(startDate));
+            endCalendar.setTime(sdf.parse(endDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-    }
-
-    public static Long nextMonth() {
-        Long res ;
-        Date date = new Date(System.currentTimeMillis());//当前日期
-        Calendar calendar = Calendar.getInstance();//日历对象
-        calendar.setTime(date);//设置当前日期
-        calendar.add(Calendar.MONTH, 10);//月份减一为-1，加一为1
-        res = calendar.getTime().getTime();
-        return res;
+        initDialog();
+        initView();
     }
 
     private void initDialog() {
@@ -302,45 +285,28 @@ public class CustomDatePicker {
     }
 
     private void addListener() {
-        year_pv.setOnSelectListener(new DatePickerView.onSelectListener() {
-            @Override
-            public void onSelect(String text) {
-                selectedCalender.set(Calendar.YEAR, Integer.parseInt(text));
-                monthChange();
-            }
+        year_pv.setOnSelectListener(text -> {
+            selectedCalender.set(Calendar.YEAR, Integer.parseInt(text));
+            monthChange();
         });
 
-        month_pv.setOnSelectListener(new DatePickerView.onSelectListener() {
-            @Override
-            public void onSelect(String text) {
-                selectedCalender.set(Calendar.DAY_OF_MONTH, 1);
-                selectedCalender.set(Calendar.MONTH, Integer.parseInt(text) - 1);
-                dayChange();
-            }
+        month_pv.setOnSelectListener(text -> {
+            selectedCalender.set(Calendar.DAY_OF_MONTH, 1);
+            selectedCalender.set(Calendar.MONTH, Integer.parseInt(text) - 1);
+            dayChange();
         });
 
-        day_pv.setOnSelectListener(new DatePickerView.onSelectListener() {
-            @Override
-            public void onSelect(String text) {
-                selectedCalender.set(Calendar.DAY_OF_MONTH, Integer.parseInt(text));
-                hourChange();
-            }
+        day_pv.setOnSelectListener(text -> {
+            selectedCalender.set(Calendar.DAY_OF_MONTH, Integer.parseInt(text));
+            hourChange();
         });
 
-        hour_pv.setOnSelectListener(new DatePickerView.onSelectListener() {
-            @Override
-            public void onSelect(String text) {
-                selectedCalender.set(Calendar.HOUR_OF_DAY, Integer.parseInt(text));
-                minuteChange();
-            }
+        hour_pv.setOnSelectListener(text -> {
+            selectedCalender.set(Calendar.HOUR_OF_DAY, Integer.parseInt(text));
+            minuteChange();
         });
 
-        minute_pv.setOnSelectListener(new DatePickerView.onSelectListener() {
-            @Override
-            public void onSelect(String text) {
-                selectedCalender.set(Calendar.MINUTE, Integer.parseInt(text));
-            }
-        });
+        minute_pv.setOnSelectListener(text -> selectedCalender.set(Calendar.MINUTE, Integer.parseInt(text)));
     }
 
     private void monthChange() {
@@ -364,12 +330,7 @@ public class CustomDatePicker {
         month_pv.setSelected(0);
         executeAnimator(month_pv);
 
-        month_pv.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dayChange();
-            }
-        }, 100);
+        month_pv.postDelayed(() -> dayChange(), 100);
     }
 
     private void dayChange() {
@@ -394,12 +355,7 @@ public class CustomDatePicker {
         day_pv.setSelected(0);
         executeAnimator(day_pv);
 
-        day_pv.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hourChange();
-            }
-        }, 100);
+        day_pv.postDelayed(() -> hourChange(), 100);
     }
 
     private void hourChange() {
@@ -427,12 +383,7 @@ public class CustomDatePicker {
             executeAnimator(hour_pv);
         }
 
-        hour_pv.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                minuteChange();
-            }
-        }, 100);
+        hour_pv.postDelayed(() -> minuteChange(), 100);
     }
 
     private void minuteChange() {
@@ -489,46 +440,24 @@ public class CustomDatePicker {
         return scrollUnits;
     }
 
-    public void show(String time) {
-        if (canAccess) {
-            if (isValidDate(time, "yyyy-MM-dd")) {
-                if (startCalendar.getTime().getTime() < endCalendar.getTime().getTime()) {
-                    canAccess = true;
-                    initParameter();
-                    initTimer();
-                    addListener();
-                    setSelectedTime(time);
-                    datePickerDialog.show();
-                }
-            } else {
-                canAccess = false;
-            }
-        }
-    }
 
-    public void show() {
+    public CustomDatePicker show() {
         String time = DateUtils.INSTANCE.convertTimeToString(System.currentTimeMillis(), "yyyy-MM-dd");
-        if (canAccess) {
-            if (isValidDate(time, "yyyy-MM-dd")) {
-                if (startCalendar.getTime().getTime() < endCalendar.getTime().getTime()) {
-                    canAccess = true;
-                    initParameter();
-                    initTimer();
-                    addListener();
-                    setSelectedTime(time);
-                    setIsLoop(false);
-                    datePickerDialog.show();
-                }
-            } else {
-                canAccess = false;
-            }
+        if (startCalendar.getTime().getTime() < endCalendar.getTime().getTime()) {
+            canAccess = true;
+            initParameter();
+            initTimer();
+            addListener();
+            setSelectedTime(time);
+            datePickerDialog.show();
         }
+        return this;
     }
 
     /**
      * 设置日期控件是否显示时和分
      */
-    public void showSpecificTime(boolean show) {
+    public CustomDatePicker showSpecificTime(boolean show) {
         if (canAccess) {
             if (show) {
                 disScrollUnit();
@@ -544,12 +473,13 @@ public class CustomDatePicker {
                 minute_text.setVisibility(View.GONE);
             }
         }
+        return this;
     }
 
     /**
      * 设置日期控件是否可以循环滚动
      */
-    public void setIsLoop(boolean isLoop) {
+    public CustomDatePicker setIsLoop(boolean isLoop) {
         if (canAccess) {
             this.year_pv.setIsLoop(isLoop);
             this.month_pv.setIsLoop(isLoop);
@@ -557,6 +487,7 @@ public class CustomDatePicker {
             this.hour_pv.setIsLoop(isLoop);
             this.minute_pv.setIsLoop(isLoop);
         }
+        return this;
     }
 
     /**
@@ -661,23 +592,4 @@ public class CustomDatePicker {
             executeScroll();
         }
     }
-
-    /**
-     * 验证字符串是否是一个合法的日期格式
-     */
-    private boolean isValidDate(String date, String template) {
-        boolean convertSuccess = true;
-        // 指定日期格式
-        SimpleDateFormat format = new SimpleDateFormat(template, Locale.CHINA);
-        try {
-            // 设置lenient为false. 否则SimpleDateFormat会比较宽松地验证日期，比如2015/02/29会被接受，并转换成2015/03/01
-            format.setLenient(false);
-            format.parse(date);
-        } catch (Exception e) {
-            // 如果throw java.text.ParseException或者NullPointerException，就说明格式不对
-            convertSuccess = false;
-        }
-        return convertSuccess;
-    }
-
 }

@@ -84,7 +84,6 @@ public class CustomSinglePicker {
 
     public CustomSinglePicker setData(List<String> data) {
         list_data = data;
-        Collections.reverse(list_data);
         data_pv.setData(list_data);
         executeScroll();
         addListener();

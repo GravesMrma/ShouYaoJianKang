@@ -15,8 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hhjt.baselibrary.R;
-import com.hhjt.baselibrary.common.AppCommonExt;
-
 
 /**
  * 标题控件

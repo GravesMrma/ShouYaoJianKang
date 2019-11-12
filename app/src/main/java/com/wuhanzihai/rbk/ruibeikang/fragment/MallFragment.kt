@@ -42,6 +42,7 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
     }
 
     override fun onMallIndexResult(result: MallBean) {
+        srView.finishRefresh()
         this.result = result
         mBanner.setImageLoader(FrescoBannerLoader(true))
                 .setImages(result.banner.item)
@@ -52,15 +53,12 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         menuList.addAll(result.tjcategory.item)
         adapterMenu.notifyDataSetChanged()
 
-        mBannerCoupon.setImageLoader(FrescoBannerLoader(false))
-                .setImages(result.coupon.item)
-                .start()
-//        mBannerCoupon.setOnBannerListener { setOnBannerListener(act, result.coupon.item[it]) }
-
-        mBannerNew.setImageLoader(FrescoBannerLoader(false))
-                .setImages(result.newpeople.item)
-                .start()
-        mBannerNew.setOnBannerListener { setOnBannerListener(act, result.newpeople.item[it]) }
+        couponBs.clear()
+        couponBs.addAll(result.coupon.item)
+        mBannerCoupon.update(couponBs)
+        newpeopleBs.clear()
+        newpeopleBs.addAll(result.newpeople.item)
+        mBannerNew.update(newpeopleBs)
 
         listCate.clear()
         listCate.add(result.hotcategory.item[0])
@@ -75,8 +73,7 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
         handler.removeCallbacks(run)
         startAnimation()
-
-        srView.finishRefresh()
+        isRun = true
     }
 
     private lateinit var menuList: MutableList<MallGoodsItem>
@@ -90,6 +87,9 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
     private lateinit var dividerItemMallItem: DividerItemMallItem
     private var result: MallBean? = null
+
+    private lateinit var newpeopleBs: MutableList<BannerEntity>
+    private lateinit var couponBs: MutableList<BannerEntity>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -133,6 +133,16 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
                 }
             }
         }
+
+        newpeopleBs = mutableListOf()
+        mBannerNew.setImageLoader(FrescoBannerLoader(false))
+                .start()
+        mBannerNew.setOnBannerListener { setOnBannerListener(act, newpeopleBs[it]) }
+
+        couponBs = mutableListOf()
+        mBannerCoupon.setImageLoader(FrescoBannerLoader(false))
+                .start()
+//        mBannerCoupon.setOnBannerListener { setOnBannerListener(act,couponBs[it]) }
 
         listCate = mutableListOf()
         adapterCate = object : BaseQuickAdapter<Hotcategory, BaseViewHolder>(R.layout.item_mall_cate, listCate) {
@@ -220,6 +230,9 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         srView.setOnRefreshListener {
             initData()
         }
+        srView.setOnLoadMoreListener {
+            srView.setNoMoreData(true)
+        }
         ivImg3.onClick {
             startActivity<SysMsgActivity>()
         }
@@ -236,8 +249,12 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
     private var index = 0
     private var handler = Handler()
+    private var isRun = false
 
     private fun startAnimation() {
+        if (!isRun) {
+            return
+        }
         tvAdv.text = result!!.proadcast.item[index % result!!.proadcast.item.size]
 
         val animationSet = AnimationSet(true)
@@ -250,7 +267,22 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         handler.postDelayed(run, 3000)
     }
 
+    private fun stopAnimation() {
+        handler.removeCallbacks(run)
+    }
+
     private var run = Runnable {
         startAnimation()
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden) {
+            isRun = false
+            stopAnimation()
+        } else {
+            isRun = true
+            startAnimation()
+        }
     }
 }

@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import com.wuhanzihai.rbk.ruibeikang.R
-import com.wuhanzihai.rbk.ruibeikang.fragment.ProblemFragment
-import com.wuhanzihai.rbk.ruibeikang.fragment.WebFragment
 import kotlinx.android.synthetic.main.activity_adult_accompaniment.*
 import java.util.*
 
@@ -26,8 +24,6 @@ class AdultAccompanimentActivity : AppCompatActivity() {
         tvTitle.setTitleText(intent.getStringExtra("title"))
         tvText.text = intent.getStringExtra("title")
 
-//        mStack.add(WebFragment())
-//        mStack.add(ProblemFragment())
 
         val adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {

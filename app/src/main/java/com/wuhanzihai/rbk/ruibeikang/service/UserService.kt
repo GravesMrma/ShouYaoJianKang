@@ -30,8 +30,29 @@ interface UserService {
 
     fun getOrder(req: OrderReq): Observable<OrderBean>
 
+    fun userAdv(): Observable<MineAdv>
+
     fun mineIndex(): Observable<MineBean>
 
     fun getVersion(): Observable<VersionBean>
 
+    fun disbutorIndex(): Observable<RebateBean>
+
+    fun disbutorIndex1(): Observable<MineBean>
+
+    fun disbutorIndex2(): Observable<MineBean>
+
+    fun disbutorIndex3(): Observable<MineBean>
+
+    fun disbutorIndex4(): Observable<MineBean>
+
+    fun disbutorIndex5(): Observable<MineBean>
+
+    fun disbutorIndex6(): Observable<MineBean>
+
+    fun disbutorIndex7(): Observable<MineBean>
+
+    fun disbutorIndex8(): Observable<MineBean>
+
+    fun disbutorIndex9(): Observable<MineBean>
 }

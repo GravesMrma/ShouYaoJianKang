@@ -48,14 +48,17 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
 
     override fun onLoginResult(result: LoginData) {
         toast("登录成功")
-        LoginUtils.saveLoginStatus(true, result.token, result.user_id)
         GlobalBaseInfo.setBaseInfo(result)
+        LoginUtils.saveLoginStatus(result.user_id)
+        LoginUtils.saveLoginStatus(result.token)
         if (result.first_login == 0) {
             startActivity<SetSexActivity>()
+            finish()
         } else {
+            LoginUtils.saveLoginStatus(true,result.token,result.user_id)
             startActivity<MainActivity>()
+            finish()
         }
-        finish()
     }
 
     private var countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
@@ -79,14 +82,9 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
         setContentView(R.layout.activity_login)
         StatusBarUtil.setTranslucentForImageView(act, 0, null)
 
-        if (LoginUtils.getLoginStatus()) {
-            startActivity<MainActivity>()
-            finish()
-        } else {
-            initView()
+        initView()
 
-            initData()
-        }
+        initData()
     }
 
     private fun initView() {
@@ -97,7 +95,11 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView {
         }
 
         btLogin.onClick {
-            mPresenter.login(LoginReq(edAccount.text.toString(), edPwd.text.toString()))
+            if (edAccount.text.isNotEmpty()&&edPwd.text.isNotEmpty()){
+                mPresenter.login(LoginReq(edAccount.text.toString(), edPwd.text.toString()))
+            }else{
+                toast("账号和密码有误!")
+            }
         }
 
         btWXLogin.onClick {

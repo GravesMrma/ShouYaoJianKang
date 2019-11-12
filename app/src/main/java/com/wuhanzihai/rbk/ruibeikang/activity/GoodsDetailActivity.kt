@@ -128,6 +128,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         StatusBarUtil.setLightMode(act)
 
         id = intent.getIntExtra("id", 0)
+
         if (id == 145||
                 id == 146||
                 id == 147||
@@ -186,7 +187,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
             }
         }
         llView1.onClick {
-            startActivity<CouponActivity>()
+//            startActivity<CouponActivity>()
         }
         ivBack.onClick {
             finish()
