@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:moreText="返利规则"
-        app:titleText="我的卡包" />
+        app:titleText="我的卡包"
+        app:canBack="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,6 +58,7 @@
                 android:background="@color/line"/>
 
             <EditText
+                android:id="@+id/edName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/dp23"
@@ -100,11 +102,13 @@
                 android:background="@color/line"/>
 
             <EditText
+                android:id="@+id/edCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/dp23"
                 android:paddingTop="@dimen/dp10"
                 android:paddingBottom="@dimen/dp10"
+                android:inputType="number"
                 android:background="@color/clarity"
                 android:textColor="@color/black_33"
                 android:lines="1"

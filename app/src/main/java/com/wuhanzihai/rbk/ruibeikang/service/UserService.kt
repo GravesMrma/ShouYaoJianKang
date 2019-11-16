@@ -38,21 +38,30 @@ interface UserService {
 
     fun disbutorIndex(): Observable<RebateBean>
 
-    fun disbutorIndex1(): Observable<MineBean>
+    fun phoneNumberList(req: PhoneNumberReq): Observable<PhoneNumberBean>
 
-    fun disbutorIndex2(): Observable<MineBean>
+    fun addVipCard(req: AddVipCardReq): Observable<BaseData>
 
-    fun disbutorIndex3(): Observable<MineBean>
+    fun myDistribution(req: PhoneNumberReq): Observable<DistributionBean>
 
-    fun disbutorIndex4(): Observable<MineBean>
+    fun agrApply(req: AgrApplyReq): Observable<BaseData>
 
-    fun disbutorIndex5(): Observable<MineBean>
+    fun addBankCard(req: AddBankCardReq): Observable<BaseData>
 
-    fun disbutorIndex6(): Observable<MineBean>
+    fun deleteBankCard(req: DeleteBankCardReq): Observable<BaseData>
 
-    fun disbutorIndex7(): Observable<MineBean>
+    fun myBankCard(): Observable<BankCardBean>
 
-    fun disbutorIndex8(): Observable<MineBean>
+    fun myDisbutor(): Observable<UpLevelBean>
 
-    fun disbutorIndex9(): Observable<MineBean>
+    fun myTeam(): Observable<MyTeamBean>
+
+    fun directData(req: DirectReq): Observable<DirectBean>
+
+    fun inDirectData(req: DirectReq): Observable<DirectBean>
+
+    fun isRebate(): Observable<IsRebateBean>
+
+    fun rebateAddress(req: RebateAddressReq): Observable<BaseData>
+
 }

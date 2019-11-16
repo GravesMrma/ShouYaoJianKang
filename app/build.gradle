@@ -12,8 +12,8 @@ android {
         applicationId "com.wuhanzihai.rbk.ruibeikang"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 201
-        versionName "2.0.1"
+        versionCode 202
+        versionName "2.0.2"
         multiDexEnabled true
 
         ndk {

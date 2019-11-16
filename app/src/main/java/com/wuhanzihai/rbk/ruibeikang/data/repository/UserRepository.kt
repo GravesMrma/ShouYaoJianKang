@@ -72,39 +72,55 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex(NoParamIdReq())
     }
 
-    fun disbutorIndex1(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex1(NoParamIdReq())
+    fun phoneNumberList(req :PhoneNumberReq): Observable<BaseResp<PhoneNumberBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).phoneNumberList(req)
     }
 
-    fun disbutorIndex2(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex2(NoParamIdReq())
+    fun addVipCard(req:AddVipCardReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).addVipCard(req)
     }
 
-    fun disbutorIndex3(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex3(NoParamIdReq())
+    fun myDistribution(req:PhoneNumberReq): Observable<BaseResp<DistributionBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).myDistribution(req)
     }
 
-    fun disbutorIndex4(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex4(NoParamIdReq())
+    fun agrApply(req:AgrApplyReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).agrApply(req)
     }
 
-    fun disbutorIndex5(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex5(NoParamIdReq())
+    fun addBankCard(req:AddBankCardReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).addBankCard(req)
     }
 
-    fun disbutorIndex6(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex6(NoParamIdReq())
+    fun deleteBankCard(req:DeleteBankCardReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).deleteBankCard(req)
     }
 
-    fun disbutorIndex7(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex7(NoParamIdReq())
+    fun myBankCard(): Observable<BaseResp<BankCardBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).myBankCard(NoParamIdDisIdReq())
     }
 
-    fun disbutorIndex8(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex8(NoParamIdReq())
+    fun myDisbutor(): Observable<BaseResp<UpLevelBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).myDisbutor(NoParamIdReq())
     }
 
-    fun disbutorIndex9(): Observable<BaseResp<MineBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex9(NoParamIdReq())
+    fun myTeam(): Observable<BaseResp<MyTeamBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).myTeam(NoParamDisIdReq())
+    }
+
+    fun directData(req:DirectReq): Observable<BaseResp<DirectBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).directData(req)
+    }
+
+    fun inDirectData(req:DirectReq): Observable<BaseResp<DirectBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).inDirectData(req)
+    }
+
+    fun isRebate(): Observable<BaseResp<IsRebateBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).isRebate(NoParamIdReq())
+    }
+
+    fun rebateAddress(req:RebateAddressReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).rebateAddress(req)
     }
 }

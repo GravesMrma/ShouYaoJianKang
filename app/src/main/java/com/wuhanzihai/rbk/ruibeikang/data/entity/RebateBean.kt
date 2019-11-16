@@ -25,3 +25,6 @@ data class RebateBean(
     val update_time: String,
     val wx_image: String
 )
+
+data class IsRebateBean(val issettledin:Int,
+                        val isinfo:Int)

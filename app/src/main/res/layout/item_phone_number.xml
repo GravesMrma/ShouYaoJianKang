@@ -10,24 +10,25 @@
         android:orientation="vertical">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/clView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/sp_green_10_b0"
             android:padding="@dimen/dp11">
 
             <TextView
+                android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2019.08.15      11:09"
                 android:textColor="@color/white"
                 android:textSize="@dimen/f12"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvApplyNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="申请  5000张"
                 android:textColor="@color/white"
                 android:textSize="@dimen/f12"
                 app:layout_constraintRight_toRightOf="parent"
@@ -45,114 +46,38 @@
             android:paddingRight="@dimen/dp11"
             android:paddingBottom="@dimen/dp19">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="审核方:"
+                android:textSize="@dimen/f14" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="审核方:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:text="首要健康平台"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp5"
-                android:orientation="horizontal">
+                android:text="审核方:"
+                android:textSize="@dimen/f14" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="号段:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:text="SY000000000001-SY0000500000"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvText3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp5">
+                android:layout_marginTop="@dimen/dp5"
+                android:text="审核方:"
+                android:textSize="@dimen/f14" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="分配下级:"
-                        android:textColor="@color/green_08"
-                        android:textSize="@dimen/f14" />
-
-                    <TextView
-                        android:id="@+id/tvNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:text="0 张"
-                        android:textColor="@color/gray_99"
-                        android:textSize="@dimen/f14" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="未分配:"
-                        android:textColor="@color/green_08"
-                        android:textSize="@dimen/f14" />
-
-                    <TextView
-                        android:id="@+id/tvNoNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:text="2000 张"
-                        android:textColor="@color/gray_99"
-                        android:textSize="@dimen/f14" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp1"
                 android:layout_marginTop="@dimen/dp18"
-                android:background="@color/line"/>
+                android:background="@color/line" />
 
             <RelativeLayout
+                android:id="@+id/rlViewNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp18">
@@ -190,7 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="未激活:"
-                        android:textColor="@color/green_08"
+                        android:textColor="@color/orange"
                         android:textSize="@dimen/f14" />
 
                     <TextView
@@ -206,18 +131,33 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/rlViewBt"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp18"
-                android:text="驳回原因：申请数量错误，请重新申请"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/f12"/>
+                android:layout_marginTop="@dimen/dp18">
 
+                <TextView
+                    android:id="@+id/tvState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="驳回原因:申请数量错误，请重新申请"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/f12" />
+
+                <TextView
+                    android:id="@+id/tvCommit"
+                    android:layout_width="@dimen/dp77"
+                    android:layout_height="@dimen/dp24"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/sp_orange_12"
+                    android:gravity="center"
+                    android:text="确认分配"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/f12" />
+            </RelativeLayout>
 
         </LinearLayout>
-
     </LinearLayout>
-
-
 </RelativeLayout>

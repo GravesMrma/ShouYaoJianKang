@@ -75,39 +75,57 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.disbutorIndex().convert()
     }
 
-    override fun disbutorIndex1(): Observable<MineBean> {
-        return repository.disbutorIndex1().convert()
+
+    override fun phoneNumberList(req: PhoneNumberReq): Observable<PhoneNumberBean> {
+        return repository.phoneNumberList(req).convert()
     }
 
-    override fun disbutorIndex2(): Observable<MineBean> {
-        return repository.disbutorIndex2().convert()
+    override fun addVipCard(req:AddVipCardReq): Observable<BaseData> {
+        return repository.addVipCard(req).convertT()
     }
 
-    override fun disbutorIndex3(): Observable<MineBean> {
-        return repository.disbutorIndex3().convert()
+    override fun myDistribution(req: PhoneNumberReq): Observable<DistributionBean> {
+        return repository.myDistribution(req).convert()
     }
 
-    override fun disbutorIndex4(): Observable<MineBean> {
-        return repository.disbutorIndex4().convert()
+    override fun agrApply(req: AgrApplyReq): Observable<BaseData> {
+        return repository.agrApply(req).convertT()
     }
 
-    override fun disbutorIndex5(): Observable<MineBean> {
-        return repository.disbutorIndex5().convert()
+
+    override fun addBankCard(req: AddBankCardReq): Observable<BaseData> {
+        return repository.addBankCard(req).convertT()
     }
 
-    override fun disbutorIndex6(): Observable<MineBean> {
-        return repository.disbutorIndex6().convert()
+    override fun myBankCard(): Observable<BankCardBean> {
+        return repository.myBankCard().convert()
     }
 
-    override fun disbutorIndex7(): Observable<MineBean> {
-        return repository.disbutorIndex7().convert()
+    override fun myDisbutor(): Observable<UpLevelBean> {
+        return repository.myDisbutor().convert()
     }
 
-    override fun disbutorIndex8(): Observable<MineBean> {
-        return repository.disbutorIndex8().convert()
+    override fun deleteBankCard(req: DeleteBankCardReq): Observable<BaseData> {
+        return repository.deleteBankCard(req).convertT()
     }
 
-    override fun disbutorIndex9(): Observable<MineBean> {
-        return repository.disbutorIndex9().convert()
+    override fun myTeam(): Observable<MyTeamBean> {
+        return repository.myTeam().convert()
+    }
+
+    override fun directData(req: DirectReq): Observable<DirectBean> {
+        return repository.directData(req).convert()
+    }
+
+    override fun inDirectData(req: DirectReq): Observable<DirectBean> {
+        return repository.inDirectData(req).convert()
+    }
+
+    override fun isRebate(): Observable<IsRebateBean> {
+        return repository.isRebate().convert()
+    }
+
+    override fun rebateAddress(req: RebateAddressReq): Observable<BaseData> {
+        return repository.rebateAddress(req).convertT()
     }
 }

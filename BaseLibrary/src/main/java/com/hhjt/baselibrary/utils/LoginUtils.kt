@@ -40,4 +40,12 @@ object LoginUtils {
     fun getLoginStatus(): Boolean {
         return AppPrefsUtils.getBoolean(BaseConstant.LOGIN_STATUS)
     }
+
+    fun saveRebateId(id: Int) {
+        AppPrefsUtils.putInt(BaseConstant.REBATE_ID, id)
+    }
+
+    fun getRebateId(): Int {
+        return AppPrefsUtils.getInt(BaseConstant.REBATE_ID)
+    }
 }

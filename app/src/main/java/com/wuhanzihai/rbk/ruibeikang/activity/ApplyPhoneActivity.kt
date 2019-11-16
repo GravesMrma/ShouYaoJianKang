@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.content.ContextCompat
+import com.hhjt.baselibrary.utils.KeyboardUtil
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
 import com.wuhanzihai.rbk.ruibeikang.fragment.PhoneNumberFragment
 import kotlinx.android.synthetic.main.activity_apply_phone.*
 import org.jetbrains.anko.act
+import org.jetbrains.anko.support.v4.act
 import java.util.*
 
 class ApplyPhoneActivity : AppCompatActivity() {

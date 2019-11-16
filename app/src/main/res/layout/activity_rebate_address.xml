@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.RebateAddressActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="新建收货地址" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/dp78"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp19"
+            android:layout_marginBottom="@dimen/dp19"
+            android:text="收卡人"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/clarity"
+            android:maxLines="1"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginRight="@dimen/dp14"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/dp78"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp19"
+            android:layout_marginBottom="@dimen/dp19"
+            android:text="手机号"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/clarity"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginRight="@dimen/dp14"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:id="@+id/lAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/dp78"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp19"
+            android:layout_marginBottom="@dimen/dp19"
+            android:text="所在区域"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:hint="点击选择所在地区"
+            android:maxLines="1"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_marginRight="@dimen/dp14"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/dp78"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp19"
+            android:layout_marginBottom="@dimen/dp19"
+            android:text="详细地址"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edAddress"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/clarity"
+            android:ellipsize="end"
+            android:hint="请填写具体街道、门牌号"
+            android:maxLines="2"
+            android:textColor="@color/black_33"
+            android:textColorHint="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/main_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/tvAddAddress"
+            style="@style/buttonStyleRound"
+            android:layout_width="@dimen/dp300"
+            android:layout_height="@dimen/dp36"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/dp5"
+            android:minWidth="@dimen/dp240"
+            android:text="保存并使用" />
+
+    </RelativeLayout>
+</LinearLayout>

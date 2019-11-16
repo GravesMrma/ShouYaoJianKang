@@ -4,9 +4,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
+import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.fragment.RebateRecordFragment
 import kotlinx.android.synthetic.main.activity_rebate_record.*
+import org.jetbrains.anko.act
 import java.util.*
 
 class RebateRecordActivity : AppCompatActivity() {
@@ -16,14 +18,17 @@ class RebateRecordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rebate_record)
+        StatusBarUtil.setTranslucentForImageView(act, 0, null)
+        StatusBarUtil.setLightMode(act)
+
         initView()
 
         initData()
     }
 
     private fun initView() {
-        mStack.add(RebateRecordFragment())
-        mStack.add(RebateRecordFragment())
+        mStack.add(RebateRecordFragment(1))
+        mStack.add(RebateRecordFragment(2))
 
         val adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {

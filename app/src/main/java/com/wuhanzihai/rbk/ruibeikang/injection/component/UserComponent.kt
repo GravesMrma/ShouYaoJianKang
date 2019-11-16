@@ -4,9 +4,7 @@ import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
 import com.kotlin.base.injection.PerComponentScope
 import com.kotlin.base.injection.component.ActivityComponent
 import com.wuhanzihai.rbk.ruibeikang.activity.*
-import com.wuhanzihai.rbk.ruibeikang.fragment.MineFragment
-import com.wuhanzihai.rbk.ruibeikang.fragment.OrderFragment
-import com.wuhanzihai.rbk.ruibeikang.fragment.OrderServiceFragment
+import com.wuhanzihai.rbk.ruibeikang.fragment.*
 import com.xidebao.activity.QRCodeScanActivity
 import dagger.Component
 
@@ -42,4 +40,21 @@ interface UserComponent {
 
     fun inject(activity: RebateActivity)
 
+    fun inject(fragment: PhoneNumberFragment)
+
+    fun inject(activity: BankCardActivity)
+
+    fun inject(activity: AddBankCardActivity)
+
+    fun inject(activity: ApplyCashRecordFragment)
+
+    fun inject(fragment: DirectFragment)
+
+    fun inject(fragment: IndirectFragment)
+
+    fun inject(activity: DirectlySuperiorActivity)
+
+    fun inject(activity: RebateAddressActivity)
+
+    fun inject(activity: RebateAuthActivity)
 }

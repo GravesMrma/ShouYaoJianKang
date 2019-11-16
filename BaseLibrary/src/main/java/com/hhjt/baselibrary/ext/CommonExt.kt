@@ -223,3 +223,10 @@ fun SmartRefreshLayout.refresh(refresh: () -> Unit, loadMore: () -> Unit) {
     setOnLoadMoreListener { loadMore() }
 }
 
+/**
+ * 上下拉刷新
+ */
+fun SmartRefreshLayout.finish() {
+    finishRefresh()
+    finishLoadMore()
+}

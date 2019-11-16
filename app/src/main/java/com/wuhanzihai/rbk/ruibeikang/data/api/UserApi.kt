@@ -62,32 +62,43 @@ interface UserApi {
     @POST("Disbutor/home")
     fun disbutorIndex(@Body req: NoParamIdReq): Observable<BaseResp<RebateBean>>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex1(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/applycardlist") // 代理商申请卡列表
+    fun phoneNumberList(@Body req: PhoneNumberReq): Observable<BaseResp<PhoneNumberBean>>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex2(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/addvipcard")
+    fun addVipCard(@Body req: AddVipCardReq): Observable<BaseData>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex3(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/mydistribution")
+    fun myDistribution(@Body req: PhoneNumberReq): Observable<BaseResp<DistributionBean>>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex4(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/okapply")
+    fun agrApply(@Body req: AgrApplyReq): Observable<BaseData>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex5(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/addbankcard")
+    fun addBankCard(@Body req: AddBankCardReq): Observable<BaseData>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex6(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/nobank")
+    fun deleteBankCard(@Body req: DeleteBankCardReq): Observable<BaseData>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex7(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/disbutorcard")
+    fun myBankCard(@Body req: NoParamIdDisIdReq): Observable<BaseResp<BankCardBean>>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex8(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/topdsibutor")
+    fun myDisbutor(@Body req: NoParamIdReq): Observable<BaseResp<UpLevelBean>>
 
-    @POST("User/healthrommend")
-    fun disbutorIndex9(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
+    @POST("Disbutor/myteam")
+    fun myTeam(@Body req: NoParamDisIdReq): Observable<BaseResp<MyTeamBean>>
 
+    @POST("Disbutor/directInferiors")
+    fun directData(@Body req: DirectReq): Observable<BaseResp<DirectBean>>
+
+    @POST("Disbutor/indirect")
+    fun inDirectData(@Body req: DirectReq): Observable<BaseResp<DirectBean>>
+
+    @POST("Disbutor/issettledindisbutor")
+    fun isRebate(@Body req: NoParamIdReq): Observable<BaseResp<IsRebateBean>>
+
+    @POST("Disbutor/completionaddress")
+    fun rebateAddress(@Body req: RebateAddressReq): Observable<BaseData>
 
 }

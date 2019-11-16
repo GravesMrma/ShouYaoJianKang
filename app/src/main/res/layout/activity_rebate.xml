@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -37,7 +38,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp91"
             android:layout_marginTop="@dimen/dp24"
-            android:text="守护者：李晓"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f14"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -78,7 +78,6 @@
                     android:id="@+id/tvMoney1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="39283.00"
                     android:textColor="@color/orange"
                     android:textSize="@dimen/f14" />
 
@@ -116,7 +115,6 @@
                     android:id="@+id/tvMoney2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="39283.00"
                     android:textColor="@color/black_33"
                     android:textSize="@dimen/f14" />
 
@@ -156,7 +154,6 @@
                     android:id="@+id/tvMoney3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="39283.00"
                     android:textColor="@color/black_33"
                     android:textSize="@dimen/f14" />
 
@@ -177,7 +174,6 @@
         android:layout_height="@dimen/dp74"
         android:layout_marginLeft="@dimen/dp25"
         android:layout_marginTop="@dimen/dp13"
-        android:src="@mipmap/pic_test"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 

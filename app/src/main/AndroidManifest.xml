@@ -46,7 +46,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.DirectlySuperiorActivity"></activity>
+        <activity android:name=".activity.RebateAddressActivity"></activity>
+        <activity android:name=".activity.RebateAuthActivity" />
+        <activity android:name=".activity.DirectDetailActivity" />
+        <activity android:name=".activity.ApplyCashRecordActivity" />
+        <activity android:name=".activity.DirectlySuperiorActivity" />
         <activity android:name=".activity.RebateRecordActivity" />
         <activity android:name=".activity.GuideActivity" />
         <activity android:name=".activity.LoginActivity" />

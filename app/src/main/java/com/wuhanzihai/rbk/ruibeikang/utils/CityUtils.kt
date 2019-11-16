@@ -72,6 +72,34 @@ class CityUtils() {
         return "00000"
     }
 
+    fun getProvince(context: Context,provinceCode: String):String {
+        val newstringBuilder = StringBuilder()
+        try {
+            var inputStream = context.resources.assets.open("city.json")
+            val isr = InputStreamReader(inputStream)
+            val reader = BufferedReader(isr)
+            val text:List<String> = reader.readLines()
+            for(line in text){
+                newstringBuilder.append(line)
+            }
+            reader.close()
+            isr.close()
+            inputStream.close()
+
+            val json = newstringBuilder.toString()
+            val jsonArray = JSONArray(json)
+            for (i in 0 until jsonArray.length()) {
+                if (jsonArray.optJSONObject(i).getString("code") == provinceCode){
+                    return jsonArray.optJSONObject(i).getString("name")
+                }
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        return ""
+    }
 
     fun getCityList(context: Context, province: String): List<String> {
         val newstringBuilder = StringBuilder()
@@ -138,6 +166,40 @@ class CityUtils() {
             e.printStackTrace()
         }
         return "0000"
+    }
+
+    fun getCity(context: Context, provinceCode: String,cityCode: String): String {
+        val newstringBuilder = StringBuilder()
+        try {
+            var inputStream = context.resources.assets.open("city.json")
+            val isr = InputStreamReader(inputStream)
+            val reader = BufferedReader(isr)
+            val text:List<String> = reader.readLines()
+            for(line in text){
+                newstringBuilder.append(line)
+            }
+            reader.close()
+            isr.close()
+            inputStream.close()
+
+            val json = newstringBuilder.toString()
+            val jsonArray = JSONArray(json)
+            for (i in 0 until jsonArray.length()) {
+                if (jsonArray.optJSONObject(i).getString("code") == provinceCode){
+                    val jsonCity = jsonArray.optJSONObject(i).getJSONArray("city")
+                    for (i1 in 0 until jsonCity.length()) {
+                        if (jsonCity.optJSONObject(i1).getString("code") == cityCode){
+                            return jsonCity.optJSONObject(i1).getString("name")
+                        }
+                    }
+                }
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        return ""
     }
 
     fun getAreaList(context: Context,province:String, city: String): List<String> {
@@ -212,5 +274,43 @@ class CityUtils() {
             e.printStackTrace()
         }
         return "0000"
+    }
+
+    fun getArea(context: Context,provinceCode:String, cityCode: String, areaCode: String): String {
+        val newstringBuilder = StringBuilder()
+        var list = mutableListOf<String>()
+        try {
+            var inputStream = context.resources.assets.open("city.json")
+            val isr = InputStreamReader(inputStream)
+            val reader = BufferedReader(isr)
+            val text:List<String> = reader.readLines()
+            for(line in text){
+                newstringBuilder.append(line)
+            }
+            inputStream.close()
+
+            val json = newstringBuilder.toString()
+            val jsonArray = JSONArray(json)
+            for (i in 0 until jsonArray.length()) {
+                if (jsonArray.optJSONObject(i).getString("code") == provinceCode){
+                    val jsonCity = jsonArray.optJSONObject(i).getJSONArray("city")
+                    for (i1 in 0 until jsonCity.length()) {
+                        if (jsonCity.optJSONObject(i1).getString("code") == cityCode){
+                            val jsonArea = jsonCity.optJSONObject(i1).getJSONArray("area")
+                            for (i2 in 0 until jsonArea.length()) {
+                                if (jsonArea.optJSONObject(i2).getString("code") ==areaCode){
+                                    return jsonArea.optJSONObject(i2).getString("name")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        return ""
     }
 }

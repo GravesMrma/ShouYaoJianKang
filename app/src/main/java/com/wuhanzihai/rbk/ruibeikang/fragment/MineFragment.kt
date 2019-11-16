@@ -75,6 +75,14 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         isRun = true
     }
 
+    override fun onIsRebateResult(result: IsRebateBean) {
+        if (result.isinfo == 0){
+            startActivity<RebateAuthActivity>()
+        }else{
+            startActivity<RebateActivity>()
+        }
+    }
+
     private lateinit var list: MutableList<BannerEntity>
     private lateinit var adapter: BaseQuickAdapter<BannerEntity, BaseViewHolder>
 
@@ -92,7 +100,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         super.onActivityCreated(savedInstanceState)
         StatusBarUtil.setLightMode(act)
 
-        ivSign.loadImage("http://www.hcjiankang.com/androidimg/mineic.png")
+        ivSign.loadImage("http://www.hcjiankang.com/androidimg/ic_fanli.png")
 
         initView()
 
@@ -109,8 +117,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
                     , "data" to "http://pft.zoosnet.net/LR/Chatpre.aspx?id=PFT35316404&lng=cn")
         }
         ivMsg.onClick {
-//            startActivity<SysMsgActivity>()
-            startActivity<RebateActivity>()
+            startActivity<SysMsgActivity>()
 //            startActivity<WelcomeActivity>()
 //            startActivity<SetTagActivity>()
         }
@@ -121,7 +128,8 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
             startActivity<CouponActivity>()
         }
         ivSign.onClick {
-            startActivity<GoodsDetailActivity>("id" to 145)
+//            startActivity<GoodsDetailActivity>("id" to 145)
+            mPresenter.isRebate()
         }
         ivSet.onClick {
             startActivity<SetActivity>()

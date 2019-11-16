@@ -18,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleText="我的团队"
-        app:moreText="返利规则"/>
+        app:moreText="返利规则"
+        app:canBack="true"/>
 
     <RadioGroup
         android:id="@+id/mRgRecord"

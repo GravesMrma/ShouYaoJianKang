@@ -73,6 +73,7 @@ public class DisplayUtil {
                 .CLIPBOARD_SERVICE);
         cmb.setText(content.trim());
         if (!TextUtils.isEmpty(content)) {
+
         }
     }
 

@@ -76,5 +76,9 @@ class BaseConstant {
 
         var COUNT_REAL_TIME = 0L
         var COUNT_TIME = 0L
+
+        const val REBATE_INFO = "rebateinfo"
+        const val REBATE_ID = "rebateinfoid"
+
     }
 }

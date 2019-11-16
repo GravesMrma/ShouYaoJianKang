@@ -92,9 +92,9 @@ fun showTextDesc(context: Context, text: String) {
             .gravity(Gravity.CENTER)
             .cancelableOnTouchOutside(true)
             .cancelableOnClickKeyBack(true)
-    anyLayer.getView<TextView>(R.id.tvText).setText(text)
+    anyLayer.getView<TextView>(R.id.tvText).text = text
     anyLayer.show()
-//    Handler().postDelayed({
-//        anyLayer.dismiss()
-//    }, 1000)
+    Handler().postDelayed({
+        anyLayer.dismiss()
+    }, 1000)
 }

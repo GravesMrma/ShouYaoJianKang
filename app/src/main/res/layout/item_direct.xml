@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sp_green_10_b0"
+            android:padding="@dimen/dp11">
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvApplyNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sp_white_10_t0"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp11"
+            android:paddingTop="@dimen/dp19"
+            android:paddingRight="@dimen/dp11"
+            android:paddingBottom="@dimen/dp19">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="注册账号:"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所在区域:"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llNumber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="被分配号段:"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:id="@+id/tvNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginTop="@dimen/dp18"
+                android:background="@color/line" />
+
+            <RelativeLayout
+                android:id="@+id/rlViewNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp18">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="分配数量:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvYJHNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:text="0"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已激活:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvWJHNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:text="2000"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlViewBt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp18">
+
+                <TextView
+                    android:id="@+id/tvText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="号段分配总数:"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:id="@+id/tvState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_toRightOf="@id/tvText1"
+                    android:layout_centerVertical="true"
+                    android:text="1500"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:id="@+id/tvCommit"
+                    android:layout_width="@dimen/dp77"
+                    android:layout_height="@dimen/dp24"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/sp_green_12"
+                    android:gravity="center"
+                    android:text="查看详情"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/f12" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

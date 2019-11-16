@@ -4,10 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.content.ContextCompat
+import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.fragment.DirectFragment
 import com.wuhanzihai.rbk.ruibeikang.fragment.IndirectFragment
 import kotlinx.android.synthetic.main.activity_my_team.*
+import org.jetbrains.anko.act
 import java.util.*
 
 class MyTeamActivity : AppCompatActivity() {
@@ -18,7 +21,8 @@ class MyTeamActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_team)
-
+        StatusBarUtil.setLightMode(act)
+        StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
         initView()
 
@@ -26,7 +30,6 @@ class MyTeamActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-
         mStack.add(DirectFragment())
         mStack.add(IndirectFragment())
 
@@ -57,11 +60,9 @@ class MyTeamActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     private fun initData() {
 
     }
-
 }
