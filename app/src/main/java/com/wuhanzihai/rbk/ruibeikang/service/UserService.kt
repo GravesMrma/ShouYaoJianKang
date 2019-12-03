@@ -1,10 +1,10 @@
 package com.wuhanzihai.rbk.ruibeikang.service
 
-import com.hhjt.baselibrary.data.protocol.BaseResp
 import com.hhjt.baselibrary.rx.BaseData
 import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.*
 import io.reactivex.Observable
+import java.io.File
 
 interface UserService {
 
@@ -32,6 +32,8 @@ interface UserService {
 
     fun userAdv(): Observable<MineAdv>
 
+    fun mineBanner(): Observable<Banner>
+
     fun mineIndex(): Observable<MineBean>
 
     fun getVersion(): Observable<VersionBean>
@@ -39,6 +41,8 @@ interface UserService {
     fun disbutorIndex(): Observable<RebateBean>
 
     fun phoneNumberList(req: PhoneNumberReq): Observable<PhoneNumberBean>
+
+    fun phoneNumberDetail(req: PhoneNumberReq): Observable<PhoneNumberBean>
 
     fun addVipCard(req: AddVipCardReq): Observable<BaseData>
 
@@ -62,6 +66,54 @@ interface UserService {
 
     fun isRebate(): Observable<IsRebateBean>
 
+    fun authRebate(): Observable<BaseData>
+
     fun rebateAddress(req: RebateAddressReq): Observable<BaseData>
+
+    fun doctorList(): Observable<MutableList<ArchivesBean>>
+
+    fun createDoctor(req: AddArchivesReq): Observable<IsRebateBean>
+
+    fun deleteDoctor(req: DelArchivesReq): Observable<BaseData>
+
+    fun deleteRecord(req: NoParamOrderIdReq): Observable<BaseData>
+
+    fun editDoctor(req: NoParamIdReq): Observable<IsRebateBean>
+
+    fun createQuestion(fileReq: MutableList<File>, req: CreateDoctorReq): Observable<OrderIdBean>
+
+    fun chosePeople(req: ChosePeopleReq): Observable<OrderIdBean>
+
+    fun addQuestion(fileReq: MutableList<File>,req: AddQuestionReq): Observable<IsRebateBean>
+
+    fun doctorRecord(req: NoParamIdReq): Observable<InterrogationBean>
+
+    fun chatRecord(req: ChatRecordReq): Observable<ChatBean>
+
+    fun applyLevel(): Observable<MutableList<RebateLevelBean>>
+
+    fun applyLevelAction(req: ApplyLevelReq): Observable<BaseData>
+
+    fun applyLevelRecord(req: NoParamIdDisIdPageReq): Observable<RebateLevelRecordBean>
+
+    fun myCard(req:NoParamIdTypeReq): Observable<MyCardBean>
+
+    fun applyCardRecord(req:NoParamIdDisIdPageReq): Observable<CardRecord>
+
+    fun payInterrogation(req:PayInterrogationReq): Observable<OrderPayBean>
+
+    fun applyCard(req: ApplyCardReq): Observable<BaseData>
+
+    fun applyCash(req: ApplyCashReq): Observable<BaseData>
+
+    fun applyCashDetail(): Observable<CashDetailBean>
+
+    fun applyCashRecord(req:NoParamIdPageReq): Observable<ApplyCashRecordBean>
+
+    fun applyCashList(req:ApplyCashListReq): Observable<ApplyCashListBean>
+
+    fun applyCashListDetail(): Observable<ApplyCashListDetail>
+
+    fun shareRecord(req:NoParamIdPageReq): Observable<ShareBean>
 
 }

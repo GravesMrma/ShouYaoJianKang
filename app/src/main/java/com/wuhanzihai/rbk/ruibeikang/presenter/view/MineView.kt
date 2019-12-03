@@ -13,4 +13,6 @@ interface MineView : BaseView {
     fun onMineAdvResult(result: MineAdv)
 
     fun onIsRebateResult(result: IsRebateBean)
+
+    fun onMineBanner(result: Banner)
 }

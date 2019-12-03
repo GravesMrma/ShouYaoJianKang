@@ -48,6 +48,9 @@
                         android:layout_marginLeft="@dimen/dp15"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f17"
+                        android:lines="1"
+                        android:ellipsize="end"
+                        android:maxLength="9"
                         app:layout_constraintLeft_toRightOf="@id/ivImg"
                         app:layout_constraintTop_toTopOf="@id/ivImg" />
 
@@ -129,13 +132,12 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:topCorners="@dimen/dp10" />
 
-                    <TextView
+                    <com.wuhanzihai.rbk.ruibeikang.widgets.SlideTextView
                         android:id="@+id/tvAdv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp13"
                         android:layout_marginTop="@dimen/dp13"
-                        android:text="VIP会员福利多多,双11大促销即将开启！"
                         android:textColor="@color/yellow"
                         android:textSize="@dimen/f11"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -266,17 +268,17 @@
                     android:paddingBottom="@dimen/dp15">
 
                     <LinearLayout
+                        android:id="@+id/llCard"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="3"
                             android:textColor="@color/black_33"
                             android:textSize="@dimen/f15"
                             android:textStyle="bold" />
@@ -285,7 +287,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp10"
-                            android:text="健康币"
+                            android:text="卡包"
                             android:textColor="@color/black_33"
                             android:textSize="@dimen/f12" />
 
@@ -656,8 +658,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp12">
 
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/ivSign"
+                    <com.youth.banner.Banner
+                        android:id="@+id/banSign"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintDimensionRatio="3.9"

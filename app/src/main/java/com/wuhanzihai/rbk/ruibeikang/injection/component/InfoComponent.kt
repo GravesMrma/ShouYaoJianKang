@@ -61,4 +61,5 @@ interface InfoComponent {
     fun inject(fragment: CollectFragment)
 
     fun inject(activity: HealthFoodActivity)
+
 }

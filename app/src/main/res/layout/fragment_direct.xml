@@ -1,140 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/srView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
-    <RadioGroup
-        android:visibility="gone"
-        android:id="@+id/mRgRecord"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp24"
-        android:layout_marginTop="@dimen/dp14"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/mRbAll"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp14"
-            android:layout_marginRight="@dimen/dp17"
-            android:layout_weight="1"
-            android:background="@drawable/selector_coin_team"
-            android:button="@null"
-            android:checked="true"
-            android:gravity="center"
-            android:text="全部"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f12" />
-
-        <RadioButton
-            android:id="@+id/mRbSeven"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp17"
-            android:layout_marginRight="@dimen/dp17"
-            android:layout_weight="1"
-            android:background="@drawable/selector_coin_team"
-            android:button="@null"
-            android:gravity="center"
-            android:text="7日内"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f12" />
-
-        <RadioButton
-            android:id="@+id/mRbThirty"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp17"
-            android:layout_marginRight="@dimen/dp17"
-            android:layout_weight="1"
-            android:background="@drawable/selector_coin_team"
-            android:button="@null"
-            android:gravity="center"
-            android:text="30日内"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f12" />
-
-        <RadioButton
-            android:id="@+id/mRbNinety"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp17"
-            android:layout_marginRight="@dimen/dp14"
-            android:layout_weight="1"
-            android:background="@drawable/selector_coin_team"
-            android:button="@null"
-            android:gravity="center"
-            android:text="90日内"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f12" />
-
-    </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/dp14"
-        android:padding="@dimen/dp14"
-        android:gravity="center"
-        android:background="@drawable/sp_white_10">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/mRgRecord"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp14"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/mRbAll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp14"
+                android:layout_marginRight="@dimen/dp17"
+                android:layout_weight="1"
+                android:background="@drawable/selector_coin_team"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="全部"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12" />
+
+            <RadioButton
+                android:id="@+id/mRbSeven"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp17"
+                android:layout_marginRight="@dimen/dp17"
+                android:layout_weight="1"
+                android:background="@drawable/selector_coin_team"
+                android:button="@null"
+                android:gravity="center"
+                android:text="7日内"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12" />
+
+            <RadioButton
+                android:id="@+id/mRbThirty"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp17"
+                android:layout_marginRight="@dimen/dp17"
+                android:layout_weight="1"
+                android:background="@drawable/selector_coin_team"
+                android:button="@null"
+                android:gravity="center"
+                android:text="30日内"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12" />
+
+            <RadioButton
+                android:id="@+id/mRbNinety"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp17"
+                android:layout_marginRight="@dimen/dp14"
+                android:layout_weight="1"
+                android:background="@drawable/selector_coin_team"
+                android:button="@null"
+                android:gravity="center"
+                android:text="90日内"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12" />
+
+        </RadioGroup>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="bottom">
+            android:layout_margin="@dimen/dp14"
+            android:background="@drawable/sp_white_10"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/dp14">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="团队总人数:"
-                android:textColor="@color/green_08"
-                android:textSize="@dimen/f17"/>
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="团队总人数:"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f17" />
+
+                <TextView
+                    android:id="@+id/tvText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f22" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f15" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tvText"
+                android:id="@+id/tvText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
-                android:textSize="@dimen/f22"
-                android:textColor="@color/black_33"/>
+                android:layout_marginTop="@dimen/dp10"
+                android:text="直推下级:0人"
+                android:textColor="@color/gray_99"
+                android:textSize="@dimen/f14" />
 
             <TextView
+                android:id="@+id/tvText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="人"
-                android:textSize="@dimen/f15"
-                android:textColor="@color/black_33"/>
+                android:layout_marginTop="@dimen/dp10"
+                android:text="间推下级:0人"
+                android:textColor="@color/gray_99"
+                android:textSize="@dimen/f14" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:text="直推下级:1人"
-            android:textSize="@dimen/f14"
-            android:textColor="@color/gray_99"/>
-
-        <TextView
-            android:id="@+id/tvText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:text="间推下级:1人"
-            android:textSize="@dimen/f14"
-            android:textColor="@color/gray_99"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false" />
 
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvView"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

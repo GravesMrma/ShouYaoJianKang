@@ -13,8 +13,9 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItem14_14_14
-import kotlinx.android.synthetic.main.layout_recyclerview.*
+import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 
 @SuppressLint("ValidFragment")
@@ -24,7 +25,8 @@ class RebateRecordFragment(var type: Int) : Fragment() {
     private lateinit var adapter: BaseQuickAdapter<String, BaseViewHolder>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.layout_recyclerview, null)
+        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_recyclerview, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -73,6 +75,7 @@ class RebateRecordFragment(var type: Int) : Fragment() {
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act, 1)
         rvView.addItemDecoration(DividerItem14_14_14(act))
+        adapter.emptyView = getEmptyView(act,R.mipmap.empty_colloect,"暂无商品返利~")
     }
 
     private fun initData() {}

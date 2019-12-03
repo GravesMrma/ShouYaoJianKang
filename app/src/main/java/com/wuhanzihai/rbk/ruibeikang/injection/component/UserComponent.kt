@@ -57,4 +57,46 @@ interface UserComponent {
     fun inject(activity: RebateAddressActivity)
 
     fun inject(activity: RebateAuthActivity)
+
+    fun inject(activity: DirectDetailActivity)
+
+    fun inject(fragment: InterrogationFragment)
+
+    fun inject(activity: HealthArchivesActivity)
+
+    fun inject(activity: ChatRoomActivity)
+
+    fun inject(fragment: InterrogationRecordFragment)
+
+    fun inject(activity: ArchivesActivity)
+
+    fun inject(activity: AddArchivesActivity)
+
+    fun inject(activity: ApplyLevelActivity)
+
+    fun inject(activity: ApplyLevelRecordActivity)
+
+    fun inject(activity: MyCardActivity)
+
+    fun inject(activity: PayInterrogationActivity)
+
+    fun inject(activity: ApplyCardActivity)
+
+    fun inject(activity: ApplyCardDetailActivity)
+
+    fun inject(activity: CardStockActivity)
+
+    fun inject(activity: CardStockRecordActivity)
+
+    fun inject(activity: ApplyCashActivity)
+
+    fun inject(activity: ApplyCashDetailActivity)
+
+    fun inject(activity: AuthActivity)
+
+    fun inject(activity: ShareRecordActivity)
+
+    fun inject(activity: ApplyCashProcessActivity)
+
+    fun inject(activity: DoctorActivity)
 }

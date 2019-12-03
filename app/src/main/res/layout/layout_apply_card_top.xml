@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sp_white_5"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:padding="@dimen/dp10"
+        android:src="@mipmap/ic_spces_close" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="等级申请"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f17"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="请选择申请的角色"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/f12" />
+
+    <TextView
+        android:id="@+id/mRgRecord"
+        android:layout_width="@dimen/dp175"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp14"
+        android:background="@drawable/sp_orange_7"
+        android:gravity="center"
+        android:text="默认申请 70 张"
+        android:textColor="@color/white"
+        android:textSize="@dimen/f13"
+        android:orientation="horizontal">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="@dimen/dp175"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/sp_card_stk"
+        android:gravity="center"
+        android:hint="请填写申请人实名"
+        android:lines="1"
+        android:padding="@dimen/dp10"
+        android:textColor="@color/black_33"
+        android:textColorHint="@color/gray_99"
+        android:textSize="@dimen/f12" />
+
+    <EditText
+        android:id="@+id/edPhone"
+        android:layout_width="@dimen/dp175"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/sp_card_stk"
+        android:gravity="center"
+        android:hint="请填写电话号码"
+        android:lines="1"
+        android:padding="@dimen/dp10"
+        android:textColor="@color/black_33"
+        android:textColorHint="@color/gray_99"
+        android:textSize="@dimen/f12" />
+
+    <TextView
+        android:layout_width="@dimen/dp175"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10"
+        android:gravity="start"
+        android:text="提交成功后，平台会在24小时内与您取得联系"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f11" />
+
+    <TextView
+        android:id="@+id/tvSure"
+        style="@style/buttonStyleRound"
+        android:layout_width="@dimen/dp175"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/dp37"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp37"
+        android:layout_marginBottom="@dimen/dp20"
+        android:text="确定" />
+
+</LinearLayout>

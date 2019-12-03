@@ -22,9 +22,6 @@ class WelcomeActivity : AppCompatActivity() {
         if (AppPrefsUtils.getBoolean(BaseConstant.IS_FIRST)) {
             setContentView(R.layout.activity_welcome)
             StatusBarUtil.setTranslucentForImageView(act, 0, null)
-
-            Log.e("屏幕宽度是",MyUtils.getWidth(act).toString() + " /// " +MyUtils.getHeight(act).toString())
-
             handler.postDelayed({
                 if (LoginUtils.getLoginStatus()) {
                     startActivity<MainActivity>()

@@ -4,9 +4,13 @@ import com.wuhanzihai.rbk.ruibeikang.data.api.UserApi
 import com.hhjt.baselibrary.data.net.RetrofitFactory
 import com.hhjt.baselibrary.data.protocol.BaseResp
 import com.hhjt.baselibrary.rx.BaseData
+import com.tencent.bugly.crashreport.crash.CrashDetailBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.*
 import io.reactivex.Observable
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import java.io.File
 import javax.inject.Inject
 
 class UserRepository @Inject constructor() {
@@ -59,6 +63,10 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).userAdv(NoParamReq())
     }
 
+    fun mineBanner(): Observable<BaseResp<Banner>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).mineBanner(NoParamReq())
+    }
+
     fun mineIndex(): Observable<BaseResp<MineBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).mineIndex(NoParamIdReq())
     }
@@ -72,27 +80,31 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).disbutorIndex(NoParamIdReq())
     }
 
-    fun phoneNumberList(req :PhoneNumberReq): Observable<BaseResp<PhoneNumberBean>> {
+    fun phoneNumberList(req: PhoneNumberReq): Observable<BaseResp<PhoneNumberBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).phoneNumberList(req)
     }
 
-    fun addVipCard(req:AddVipCardReq): Observable<BaseData> {
+    fun phoneNumberDetail(req: PhoneNumberReq): Observable<BaseResp<PhoneNumberBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).phoneNumberDetail(req)
+    }
+
+    fun addVipCard(req: AddVipCardReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).addVipCard(req)
     }
 
-    fun myDistribution(req:PhoneNumberReq): Observable<BaseResp<DistributionBean>> {
+    fun myDistribution(req: PhoneNumberReq): Observable<BaseResp<DistributionBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).myDistribution(req)
     }
 
-    fun agrApply(req:AgrApplyReq): Observable<BaseData> {
+    fun agrApply(req: AgrApplyReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).agrApply(req)
     }
 
-    fun addBankCard(req:AddBankCardReq): Observable<BaseData> {
+    fun addBankCard(req: AddBankCardReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).addBankCard(req)
     }
 
-    fun deleteBankCard(req:DeleteBankCardReq): Observable<BaseData> {
+    fun deleteBankCard(req: DeleteBankCardReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).deleteBankCard(req)
     }
 
@@ -101,18 +113,18 @@ class UserRepository @Inject constructor() {
     }
 
     fun myDisbutor(): Observable<BaseResp<UpLevelBean>> {
-        return RetrofitFactory.instance.create(UserApi::class.java).myDisbutor(NoParamIdReq())
+        return RetrofitFactory.instance.create(UserApi::class.java).myDisbutor(NoParamDisIdReq())
     }
 
     fun myTeam(): Observable<BaseResp<MyTeamBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).myTeam(NoParamDisIdReq())
     }
 
-    fun directData(req:DirectReq): Observable<BaseResp<DirectBean>> {
+    fun directData(req: DirectReq): Observable<BaseResp<DirectBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).directData(req)
     }
 
-    fun inDirectData(req:DirectReq): Observable<BaseResp<DirectBean>> {
+    fun inDirectData(req: DirectReq): Observable<BaseResp<DirectBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).inDirectData(req)
     }
 
@@ -120,7 +132,126 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).isRebate(NoParamIdReq())
     }
 
-    fun rebateAddress(req:RebateAddressReq): Observable<BaseData> {
+    fun authRebate(): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).authRebate(NoParamIdReq())
+    }
+
+    fun rebateAddress(req: RebateAddressReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).rebateAddress(req)
+    }
+
+    fun applyLevel(): Observable<BaseResp<MutableList<RebateLevelBean>>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyLevel(NoParamIdReq())
+    }
+
+    fun applyLevelAction(req:ApplyLevelReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyLevelAction(req)
+    }
+
+    fun applyLevelRecord(req:NoParamIdDisIdPageReq): Observable<BaseResp<RebateLevelRecordBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyLevelRecord(req)
+    }
+
+    fun myCard(req:NoParamIdTypeReq): Observable<BaseResp<MyCardBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).myCard(req)
+    }
+
+    fun applyCardRecord(req:NoParamIdDisIdPageReq): Observable<BaseResp<CardRecord>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyCardRecord(req)
+    }
+
+    fun applyCash(req:ApplyCashReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyCash(req)
+    }
+
+    fun applyCashDetail(): Observable<BaseResp<CashDetailBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyCashDetail(NoParamIdReq())
+    }
+
+    fun applyCashRecord(req:NoParamIdPageReq): Observable<BaseResp<ApplyCashRecordBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyCashRecord(req)
+    }
+
+    fun applyCashList(req:ApplyCashListReq): Observable<BaseResp<ApplyCashListBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyCashList(req)
+    }
+
+    fun applyCashListDetail(): Observable<BaseResp<ApplyCashListDetail>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyCashListDetail(NoParamIdReq())
+    }
+
+    fun shareRecord(req:NoParamIdPageReq): Observable<BaseResp<ShareBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).shareRecord(req)
+    }
+
+
+    //  春雨医生
+
+    fun doctorList(): Observable<BaseResp<MutableList<ArchivesBean>>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).doctorList(NoParamIdReq())
+    }
+
+    fun createDoctor(req: AddArchivesReq): Observable<BaseResp<IsRebateBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).createDoctor(req)
+    }
+
+    fun deleteDoctor(req: DelArchivesReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).deleteDoctor(req)
+    }
+
+    fun deleteRecord(req: NoParamOrderIdReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).deleteRecord(req)
+    }
+
+    fun editDoctor(req: NoParamIdReq): Observable<BaseResp<IsRebateBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).editDoctor(req)
+    }
+
+    fun createQuestion(fileReq: MutableList<File>, req: CreateDoctorReq): Observable<BaseResp<OrderIdBean>> {
+        var map = HashMap<String, RequestBody>()
+        for (file in fileReq) {
+            map["file\"; filename=\"" + file.name] = RequestBody.create(MediaType.parse("image/jpg"), file)
+        }
+        map["content"] = RequestBody.create(MediaType.parse("application/json"), req.content)
+        map["time"] = RequestBody.create(MediaType.parse("application/json"), req.time)
+        map["token"] = RequestBody.create(MediaType.parse("application/json"), req.token)
+        map["user_id"] = RequestBody.create(MediaType.parse("application/json"), req.user_id.toString())
+        map["sign"] = RequestBody.create(MediaType.parse("application/json"), req.sign!!)
+        return RetrofitFactory.instance.create(UserApi::class.java).createQuestion(map)
+    }
+
+    fun chosePeople(req: ChosePeopleReq): Observable<BaseResp<OrderIdBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).chosePeople(req)
+    }
+
+    fun addQuestion(fileReq: MutableList<File>,req: AddQuestionReq): Observable<BaseResp<IsRebateBean>> {
+        var map = HashMap<String, RequestBody>()
+        for (file in fileReq) {
+            map["file\"; filename=\"" + file.name] = RequestBody.create(MediaType.parse("image/jpg"), file)
+        }
+        map["content"] = RequestBody.create(MediaType.parse("application/json"), req.content)
+        map["order_id"] = RequestBody.create(MediaType.parse("application/json"), req.order_id)
+        map["time"] = RequestBody.create(MediaType.parse("application/json"), req.time)
+        map["token"] = RequestBody.create(MediaType.parse("application/json"), req.token)
+        map["user_id"] = RequestBody.create(MediaType.parse("application/json"), req.user_id.toString())
+        map["sign"] = RequestBody.create(MediaType.parse("application/json"), req.sign!!)
+
+        return RetrofitFactory.instance.create(UserApi::class.java).addQuestion(req)
+    }
+
+    fun doctorRecord(req: NoParamIdReq): Observable<BaseResp<InterrogationBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).doctorRecord(req)
+    }
+
+    fun chatRecord(req: ChatRecordReq): Observable<BaseResp<ChatBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).chatRecord(req)
+    }
+
+    fun payInterrogation(req: PayInterrogationReq): Observable<BaseResp<OrderPayBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).payInterrogation(req)
+    }
+
+    fun applyCard(req: ApplyCardReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).applyCard(req)
     }
 }

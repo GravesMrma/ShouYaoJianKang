@@ -14,6 +14,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.hhjt.baselibrary.ext.loadImage
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.adapter.MyViewPageAdapter
 import com.wuhanzihai.rbk.ruibeikang.common.FrescoBannerLoader
 import com.wuhanzihai.rbk.ruibeikang.data.entity.MusicBannerBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.MusicDetailBean
@@ -52,13 +53,16 @@ class MusicFragment(var carID: Int) : BaseMvpFragment<MusicPresenter>(), MusicVi
             clView.visibility = View.GONE
         } else {
             clView.visibility = View.VISIBLE
-            mBanner.update(result.item)
+
         }
     }
 
     private lateinit var list: MutableList<MusicItem>
     private lateinit var adapter: BaseQuickAdapter<MusicItem, BaseViewHolder>
     private var page = 1
+
+    private lateinit var views:MutableList<View>
+    private lateinit var viewPageAdapter: MyViewPageAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -74,8 +78,8 @@ class MusicFragment(var carID: Int) : BaseMvpFragment<MusicPresenter>(), MusicVi
     }
 
     private fun initView() {
-        mBanner.setImageLoader(FrescoBannerLoader(true))
-                .start()
+        views = mutableListOf()
+        viewPageAdapter = MyViewPageAdapter(views)
 
         list = mutableListOf()
         adapter = object : BaseQuickAdapter<MusicItem, BaseViewHolder>(R.layout.item_music, list) {

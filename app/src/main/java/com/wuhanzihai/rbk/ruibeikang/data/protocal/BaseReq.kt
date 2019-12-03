@@ -1,5 +1,6 @@
 package com.wuhanzihai.rbk.ruibeikang.data.protocal
 
+import android.util.Log
 import com.google.gson.Gson
 import com.hhjt.baselibrary.common.BaseConstant
 
@@ -11,6 +12,7 @@ open class BaseReq {
         var str = gson.toJson(obj)
         str = str.replace("\\{".toRegex(), "").replace("\\}".toRegex(), "").replace("\"", "")
                 .replace(":", "=").replace(",", "&")
+        Log.e("qianmmm",str)
         return str
     }
 

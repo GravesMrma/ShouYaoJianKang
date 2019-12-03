@@ -67,6 +67,20 @@ class MinePresenter @Inject constructor() : BasePresenter<MineView>() {
                 }, lifecycleProvider)
     }
 
+    fun mineBanner() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.mineBanner()
+                .excute(object : BaseSubscriber<Banner>(mView) {
+                    override fun onNext(t: Banner) {
+                        super.onNext(t)
+                        mView.onMineBanner(t)
+                    }
+                }, lifecycleProvider)
+    }
+
     fun isRebate() {
         if (!checkNetWork()) {
             return

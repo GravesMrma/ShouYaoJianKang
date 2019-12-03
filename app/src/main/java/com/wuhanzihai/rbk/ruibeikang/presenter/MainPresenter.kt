@@ -5,6 +5,7 @@ import com.hhjt.baselibrary.ext.excute
 import com.hhjt.baselibrary.presenter.BasePresenter
 import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.rx.BaseSubscriber
+import com.wuhanzihai.rbk.ruibeikang.data.entity.IsRebateBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
 import com.wuhanzihai.rbk.ruibeikang.data.entity.VersionBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.ActivationReq
@@ -58,6 +59,20 @@ class MainPresenter @Inject constructor() : BasePresenter<MainView>() {
                     override fun onNext(t: VersionBean) {
                         super.onNext(t)
                         mView.onVersionResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun isRebate() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.isRebate()
+                .excute(object : BaseSubscriber<IsRebateBean>(mView) {
+                    override fun onNext(t: IsRebateBean) {
+                        super.onNext(t)
+                        mView.onIsRebateResult(t)
                     }
                 }, lifecycleProvider)
     }

@@ -8,13 +8,16 @@ import com.wuhanzihai.rbk.ruibeikang.utils.AES
 /**
  * Created by wx on 2018/7/10
  */
-class PhoneNumberReq(page:Int) : BaseReq() {
+class PhoneNumberReq(disbutor_id:Int,page:Int) : BaseReq() {
     private var disbutor_id = LoginUtils.getRebateId()
     private var page = page
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
 
     init {
+        if (disbutor_id != 0){
+            this.disbutor_id = disbutor_id
+        }
         sign = AES.encryptAES(formatParam(this), getKey())
     }
 }

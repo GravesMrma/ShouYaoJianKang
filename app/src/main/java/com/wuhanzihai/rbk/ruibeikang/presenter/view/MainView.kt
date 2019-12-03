@@ -20,4 +20,6 @@ interface MainView :BaseView {
 
     fun onActivationResult(result: BaseData){}
 
+    fun onIsRebateResult(result: IsRebateBean){}
+
 }

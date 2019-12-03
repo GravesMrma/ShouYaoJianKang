@@ -61,6 +61,8 @@ class BaseConstant {
 
         const val FAHJASJK = "97b4b70JASDc1f"
 
+        const val ISREBATE_DATA = "aspfhaspp"
+
         //血压计型号
         const val BP_DEVICE_NAME = "BP826"
         //血糖仪型号
@@ -74,11 +76,14 @@ class BaseConstant {
 
         const val STEP_DATA = "suijibushu"
 
+
         var COUNT_REAL_TIME = 0L
         var COUNT_TIME = 0L
 
         const val REBATE_INFO = "rebateinfo"
         const val REBATE_ID = "rebateinfoid"
+
+        const val MALL_ADV = "masiudhasdja"
 
     }
 }

@@ -65,6 +65,7 @@
             android:textSize="@dimen/f30" />
 
         <EditText
+            android:id="@+id/edMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -108,9 +109,9 @@
             android:textSize="@dimen/f12" />
 
         <TextView
+            android:id="@+id/tvMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00.00"
             android:textColor="@color/gray_99"
             android:textSize="@dimen/f12" />
 

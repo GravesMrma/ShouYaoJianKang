@@ -28,13 +28,18 @@
 
     <TextView
         android:id="@+id/tvTag"
-        android:layout_width="@dimen/dp14"
-        android:layout_height="@dimen/dp14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/sp_red_order_ring"
         android:gravity="center"
-        android:text="12"
+        android:minWidth="@dimen/dp14"
+        android:paddingLeft="@dimen/dp4"
+        android:paddingTop="@dimen/dp2"
+        android:paddingRight="@dimen/dp4"
+        android:paddingBottom="@dimen/dp2"
+        android:text="赚钱"
         android:textColor="@color/white"
-        android:textSize="@dimen/f10"
+        android:textSize="@dimen/f8"
         android:visibility="gone"
         app:layout_constraintRight_toRightOf="@id/ivImg"
         app:layout_constraintTop_toTopOf="@id/ivImg" />

@@ -46,6 +46,10 @@ interface UserApi {
     @POST("User/usertost")
     fun userAdv(@Body req: NoParamReq): Observable<BaseResp<MineAdv>>
 
+    @POST("user/userbanner")
+    fun mineBanner(@Body req: NoParamReq): Observable<BaseResp<Banner>>
+
+
     //个人中心健康推荐
     @POST("User/healthrommend")
     fun mineIndex(@Body req: NoParamIdReq): Observable<BaseResp<MineBean>>
@@ -59,11 +63,12 @@ interface UserApi {
 
     // 分销系统
 
-    @POST("Disbutor/home")
-    fun disbutorIndex(@Body req: NoParamIdReq): Observable<BaseResp<RebateBean>>
 
     @POST("Disbutor/applycardlist") // 代理商申请卡列表
     fun phoneNumberList(@Body req: PhoneNumberReq): Observable<BaseResp<PhoneNumberBean>>
+
+    @POST("Disbutor/directInferiorsinfo") //
+    fun phoneNumberDetail(@Body req: PhoneNumberReq): Observable<BaseResp<PhoneNumberBean>>
 
     @POST("Disbutor/addvipcard")
     fun addVipCard(@Body req: AddVipCardReq): Observable<BaseData>
@@ -74,31 +79,114 @@ interface UserApi {
     @POST("Disbutor/okapply")
     fun agrApply(@Body req: AgrApplyReq): Observable<BaseData>
 
-    @POST("Disbutor/addbankcard")
+
+    @POST("Agent/myperson")
+    fun myDisbutor(@Body req: NoParamDisIdReq): Observable<BaseResp<UpLevelBean>>
+
+    @POST("Agent/myteam")
+    fun myTeam(@Body req: NoParamDisIdReq): Observable<BaseResp<MyTeamBean>>
+
+    @POST("Agent/myteamdirect")
+    fun directData(@Body req: DirectReq): Observable<BaseResp<DirectBean>>
+
+    @POST("Agent/myteamindirect")
+    fun inDirectData(@Body req: DirectReq): Observable<BaseResp<DirectBean>>
+
+
+    @POST("Disbutor/completionaddress")
+    fun rebateAddress(@Body req: RebateAddressReq): Observable<BaseData>
+
+    // new  rebate
+    @POST("Agent/issettledin")
+    fun isRebate(@Body req: NoParamIdReq): Observable<BaseResp<IsRebateBean>>
+
+    @POST("Agent/settledin")
+    fun authRebate(@Body req: NoParamIdReq): Observable<BaseData>
+
+    @POST("Agent/agentinfo")
+    fun disbutorIndex(@Body req: NoParamIdReq): Observable<BaseResp<RebateBean>>
+
+    @POST("Agent/agentgrade")
+    fun applyLevel(@Body req: NoParamIdReq): Observable<BaseResp<MutableList<RebateLevelBean>>>
+
+    @POST("Agent/applyleval")
+    fun applyLevelAction(@Body req: ApplyLevelReq): Observable<BaseData>
+
+    @POST("Agent/applylevalrecord")
+    fun applyLevelRecord(@Body req: NoParamIdDisIdPageReq): Observable<BaseResp<RebateLevelRecordBean>>
+
+    @POST("User/userpackage")
+    fun myCard(@Body req: NoParamIdTypeReq): Observable<BaseResp<MyCardBean>>
+
+    @POST("Agent/addbankcard")
     fun addBankCard(@Body req: AddBankCardReq): Observable<BaseData>
 
-    @POST("Disbutor/nobank")
+    @POST("Agent/nobank")
     fun deleteBankCard(@Body req: DeleteBankCardReq): Observable<BaseData>
 
     @POST("Disbutor/disbutorcard")
     fun myBankCard(@Body req: NoParamIdDisIdReq): Observable<BaseResp<BankCardBean>>
 
-    @POST("Disbutor/topdsibutor")
-    fun myDisbutor(@Body req: NoParamIdReq): Observable<BaseResp<UpLevelBean>>
+    @POST("Agent/applystock")
+    fun applyCard(@Body req: ApplyCardReq): Observable<BaseData>
 
-    @POST("Disbutor/myteam")
-    fun myTeam(@Body req: NoParamDisIdReq): Observable<BaseResp<MyTeamBean>>
+    @POST("Agent/stockapply")
+    fun applyCardRecord(@Body req: NoParamIdDisIdPageReq): Observable<BaseResp<CardRecord>>
 
-    @POST("Disbutor/directInferiors")
-    fun directData(@Body req: DirectReq): Observable<BaseResp<DirectBean>>
+    @POST("draw/cash_out_appliy")
+    fun applyCash(@Body req: ApplyCashReq): Observable<BaseData>
 
-    @POST("Disbutor/indirect")
-    fun inDirectData(@Body req: DirectReq): Observable<BaseResp<DirectBean>>
+    @POST("draw/detail")
+    fun applyCashDetail(@Body req: NoParamIdReq): Observable<BaseResp<CashDetailBean>>
 
-    @POST("Disbutor/issettledindisbutor")
-    fun isRebate(@Body req: NoParamIdReq): Observable<BaseResp<IsRebateBean>>
+    @POST("draw/detail_list")
+    fun applyCashRecord(@Body req: NoParamIdPageReq): Observable<BaseResp<ApplyCashRecordBean>>
 
-    @POST("Disbutor/completionaddress")
-    fun rebateAddress(@Body req: RebateAddressReq): Observable<BaseData>
+    @POST("draw/draw_records")
+    fun applyCashList(@Body req: ApplyCashListReq): Observable<BaseResp<ApplyCashListBean>>
+
+    @POST("draw/draw_record")
+    fun applyCashListDetail(@Body req: NoParamIdReq): Observable<BaseResp<ApplyCashListDetail>>
+
+    @POST("draw/share")
+    fun shareRecord(@Body req: NoParamIdPageReq): Observable<BaseResp<ShareBean>>
+
+    // 分销系统 结束
+
+    //春雨医生
+
+    @POST("doctor/choose_person")
+    fun doctorList(@Body req: NoParamIdReq): Observable<BaseResp<MutableList<ArchivesBean>>>
+
+    @POST("doctor/mk_person")
+    fun createDoctor(@Body req: AddArchivesReq): Observable<BaseResp<IsRebateBean>>
+
+    @POST("doctor/mk_person")
+    fun deleteDoctor(@Body req: DelArchivesReq): Observable<BaseData>
+
+    @POST("doctor/mk_person")
+    fun editDoctor(@Body req: NoParamIdReq): Observable<BaseResp<IsRebateBean>>
+
+    @Multipart
+    @POST("doctor/mk_questions")
+    fun createQuestion(@PartMap maps: HashMap<String, RequestBody>): Observable<BaseResp<OrderIdBean>>
+
+    @POST("doctor/choose_person")
+    fun chosePeople(@Body req: ChosePeopleReq): Observable<BaseResp<OrderIdBean>>
+
+    @POST("doctor/continue_question")
+    fun addQuestion(@Body req: AddQuestionReq): Observable<BaseResp<IsRebateBean>>
+
+    @POST("doctor/records")
+    fun doctorRecord(@Body req: NoParamIdReq): Observable<BaseResp<InterrogationBean>>
+
+    @POST("doctor/del_records")
+    fun deleteRecord(@Body req: NoParamOrderIdReq): Observable<BaseData>
+
+    @POST("doctor/load_read")
+    fun chatRecord(@Body req: ChatRecordReq): Observable<BaseResp<ChatBean>>
+
+    @POST("doctor/mk_alipay")
+    fun payInterrogation(@Body req: PayInterrogationReq): Observable<BaseResp<OrderPayBean>>
 
 }

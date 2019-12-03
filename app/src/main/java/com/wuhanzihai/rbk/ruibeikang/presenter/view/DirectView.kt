@@ -9,4 +9,6 @@ interface DirectView : BaseView {
 
     fun onInDirectResult(result:DirectBean)
 
+    fun onMyTeamResult(result:MyTeamBean)
+
 }

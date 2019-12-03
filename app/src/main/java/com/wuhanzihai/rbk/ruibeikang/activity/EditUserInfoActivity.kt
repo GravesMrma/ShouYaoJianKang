@@ -3,6 +3,8 @@ package com.wuhanzihai.rbk.ruibeikang.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.text.Editable
+import android.text.TextWatcher
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
 import com.jaeger.library.StatusBarUtil
@@ -21,6 +23,8 @@ import com.wuhanzihai.rbk.ruibeikang.widgets.CustomSinglePicker
 import kotlinx.android.synthetic.main.activity_edit_user_info.*
 import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
+import java.util.regex.Pattern
+
 
 class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
     override fun injectComponent() {
@@ -30,12 +34,11 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
     }
 
     override fun onSaveInfoResult() {
-        showTextDesc(act,"修改成功")
+        showTextDesc(act, "修改成功")
     }
 
     override fun onUserInfoResult(result: LoginData) {
         GlobalBaseInfo.setBaseInfo(result)
-//        ivHead.loadImage(result.head_pic)
         if (result.sex == 1) {
             ivHead.loadImage("http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png")
         } else {
@@ -50,6 +53,13 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
         }
         tvHeight.text = "${result.height}cm"
         tvWeight.text = "${result.weight}Kg"
+        if (result.rel_code == null || result.rel_code.length < 10) {
+            tvAuth.text = "未认证"
+            tvAuth.background = resources.getDrawable(R.drawable.sp_orange_11)
+        } else {
+            tvAuth.text = "已认证"
+            tvAuth.background = resources.getDrawable(R.drawable.sp_gray_11)
+        }
     }
 
     private val sexs = mutableListOf("男", "女")
@@ -59,6 +69,7 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
 
     private lateinit var weight: MutableList<String>
     private lateinit var height: MutableList<String>
+    private var isFalse = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +84,10 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
 
     private fun initView() {
         tvTitle.setMoreTextAction {
+            if (isFalse) {
+                showTextDesc(act, "存在非法字符!")
+                return@setMoreTextAction
+            }
             var headUrl = ""
             if (sex == 1) {
                 headUrl = "http://www.hcjiankang.com/androidimg/mid_icon_shuaige_s.png"
@@ -89,6 +104,20 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
                     , height1.replace("cm", "")
                     , weight1.replace("Kg", "")))
         }
+
+        edName.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (isSpecialChar(s!!.toString())) {
+                    isFalse = true
+                    showTextDesc(act, "存在非法字符!")
+                } else {
+                    isFalse = false
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
 
         rlSex.onClick {
             CustomSinglePicker(act) {
@@ -108,6 +137,9 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
                 tvBirthday.text = it
             }.setIsLoop(false).showSpecificTime(false).show()
         }
+        rlAuth.onClick {
+            startActivity<AuthActivity>()
+        }
 
         rlWeight.onClick {
             CustomSinglePicker(this, CustomSinglePicker.ResultHandler {
@@ -125,6 +157,9 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
         rlTag.onClick {
             startActivity<SetTagActivity>()
         }
+        rlWeChat.onClick {
+            showTextDesc(act, "暂时不能添加微信")
+        }
     }
 
     private fun initData() {
@@ -137,5 +172,12 @@ class EditUserInfoActivity : BaseMvpActivity<SetSexPresenter>(), SetSexView {
         for (i in 100..250) {
             height.add("${i}cm")
         }
+    }
+
+    private fun isSpecialChar(str: String): Boolean {
+        val regEx = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t"
+        val p = Pattern.compile(regEx)
+        val m = p.matcher(str)
+        return m.find()
     }
 }

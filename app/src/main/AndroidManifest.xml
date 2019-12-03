@@ -37,6 +37,8 @@
         android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
 
+    <!--android:hardwareAccelerated="false"   硬件加速-->
+
     <application
         android:name=".common.BaseApp"
         android:allowBackup="true"
@@ -46,14 +48,37 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.RebateAddressActivity"></activity>
+        <activity android:name=".activity.LogisticsActivity"></activity>
+        <activity android:name=".activity.CardStockRecordActivity" />
+        <activity android:name=".activity.PayInterrogationActivity" />
+        <activity android:name=".activity.ApplyLevelRecordActivity" />
+        <activity android:name=".activity.ApplyLevelActivity" />
+        <activity android:name=".activity.ShareHealthActivity" />
+        <activity android:name=".activity.MyCardActivity" />
+        <activity android:name=".activity.ShareRecordActivity" />
+        <activity android:name=".activity.ApplyCardRecordDetailActivity" />
+        <activity android:name=".activity.ApplyCardRecordActivity" />
+        <activity android:name=".activity.ApplyCardDetailActivity" />
+        <activity android:name=".activity.ApplyCardActivity" />
+        <activity android:name=".activity.CardStockActivity" />
+        <activity android:name=".activity.ApplyCashDetailActivity" />
+        <activity android:name=".activity.InterrogationRecordActivity" />
+        <activity android:name=".activity.ArchivesDetailActivity" />
+        <activity android:name=".activity.ChatRoomActivity" />
+        <activity android:name=".activity.DoctorActivity" />
+        <activity android:name=".activity.AddArchivesActivity" />
+        <activity android:name=".activity.ArchivesActivity" />
+        <activity android:name=".activity.InterrogationActivity" />
+        <activity android:name=".activity.RebateAddressActivity" />
         <activity android:name=".activity.RebateAuthActivity" />
         <activity android:name=".activity.DirectDetailActivity" />
         <activity android:name=".activity.ApplyCashRecordActivity" />
         <activity android:name=".activity.DirectlySuperiorActivity" />
         <activity android:name=".activity.RebateRecordActivity" />
         <activity android:name=".activity.GuideActivity" />
-        <activity android:name=".activity.LoginActivity" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.MyTeamActivity" />
         <activity android:name=".activity.ApplyPhoneActivity" />
         <activity android:name=".activity.ApplyCashProcessActivity" />

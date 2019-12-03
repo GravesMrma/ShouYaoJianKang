@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ApplyCardActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="制卡申请" />
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFECCC"
+                android:gravity="center"
+                android:padding="@dimen/dp8"
+                android:text="会员卡制作完成后不可退换，如有疑问请联系在线客服"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f12" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/dp58"
+                    android:layout_height="@dimen/dp1"
+                    android:background="#BCBCBC" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:text="制卡规则"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f20" />
+
+                <View
+                    android:layout_width="@dimen/dp58"
+                    android:layout_height="@dimen/dp1"
+                    android:background="#BCBCBC" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp21"
+                android:layout_marginRight="@dimen/dp14"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp14">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.  "
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+                <TextView
+                    android:id="@+id/tvText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp21"
+                android:layout_marginRight="@dimen/dp14"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp14">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.  "
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+                <TextView
+                    android:id="@+id/tvText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp21"
+                android:layout_marginRight="@dimen/dp14"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp14">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.  "
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+                <TextView
+                    android:id="@+id/tvText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp28"
+        android:paddingTop="@dimen/dp5"
+        android:paddingRight="@dimen/dp28"
+        android:paddingBottom="@dimen/dp5">
+
+        <TextView
+            android:id="@+id/tvCommit"
+            style="@style/buttonStyleRound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="申请制作实体卡" />
+
+    </LinearLayout>
+</LinearLayout>

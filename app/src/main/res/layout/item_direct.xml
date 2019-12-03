@@ -69,30 +69,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp5"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="所在区域:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/llNumber1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -137,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="分配数量:"
+                        android:text="卡号库存:"
                         android:textColor="@color/green_08"
                         android:textSize="@dimen/f14" />
 
@@ -161,7 +137,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="已激活:"
+                        android:text="发展新用户:"
                         android:textColor="@color/green_08"
                         android:textSize="@dimen/f14" />
 
@@ -170,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp10"
-                        android:text="2000"
+                        android:text="0"
                         android:textColor="@color/gray_99"
                         android:textSize="@dimen/f14" />
 
@@ -178,43 +154,6 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rlViewBt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp18">
-
-                <TextView
-                    android:id="@+id/tvText1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="号段分配总数:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:layout_toRightOf="@id/tvText1"
-                    android:layout_centerVertical="true"
-                    android:text="1500"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvCommit"
-                    android:layout_width="@dimen/dp77"
-                    android:layout_height="@dimen/dp24"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/sp_green_12"
-                    android:gravity="center"
-                    android:text="查看详情"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/f12" />
-            </RelativeLayout>
 
         </LinearLayout>
     </LinearLayout>

@@ -5,10 +5,10 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 
 interface BankCardView : BaseView {
 
-    fun onBankCardResult(result: BankCardBean)
+    fun onBankCardResult(result: MyCardBean){}
 
-    fun onAddBankCardResult()
+    fun onAddBankCardResult(){}
 
-    fun onDelBankCardResult()
+    fun onDelBankCardResult(){}
 
 }

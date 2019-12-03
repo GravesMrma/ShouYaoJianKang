@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2DFFA200"
+            android:padding="@dimen/dp12"
+            android:text="重要:急重症不适合网上咨询，请立即前往当地医院就诊"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/f12" />
+
+        <EditText
+            android:id="@+id/edContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clarity"
+            android:gravity="start"
+            android:hint="请用10~500字详细描述您的症状、疾病和身体状况，否则可能无法获得医生的详细解答。请勿透露您的真实姓名活联系方式"
+            android:lineSpacingExtra="@dimen/dp5"
+            android:minLines="6"
+            android:paddingLeft="@dimen/dp14"
+            android:paddingTop="@dimen/dp24"
+            android:paddingRight="@dimen/dp14"
+            android:paddingBottom="@dimen/dp24"
+            android:textColor="@color/black_33"
+            android:textColorHint="#BCBCBC"
+            android:textSize="@dimen/f14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp14"
+            android:text="上传相关图片（检查报告、患处照片、药品等）"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp8"
+            android:text="如何正确拍摄清晰图片？查看指南 >"
+            android:textColor="@color/gray_99"
+            android:textSize="@dimen/f12" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp14"
+            android:layout_marginRight="@dimen/dp14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginBottom="@dimen/dp8"
+            android:drawableLeft="@mipmap/ic_srt"
+            android:drawablePadding="@dimen/dp3"
+            android:gravity="center"
+            android:text="首要健康会保证您的隐私安全"
+            android:textColor="#BCBCBC"
+            android:textSize="@dimen/f11" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvCommit"
+                style="@style/buttonStyleRoundGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/dp25"
+                android:text="提交问题" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -10,4 +10,6 @@ interface RebateView : BaseView {
 
     fun onUserInfoResult(result: LoginData)
 
+    fun onCashDetailResult(result: CashDetailBean){}
+
 }

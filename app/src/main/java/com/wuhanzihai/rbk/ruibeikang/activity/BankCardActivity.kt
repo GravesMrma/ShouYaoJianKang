@@ -11,7 +11,9 @@ import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
 import com.wuhanzihai.rbk.ruibeikang.data.entity.BankCardBean
+import com.wuhanzihai.rbk.ruibeikang.data.entity.MyCardBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.DeleteBankCardReq
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.NoParamIdTypeReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
 import com.wuhanzihai.rbk.ruibeikang.presenter.BankCardPresenter
@@ -28,38 +30,43 @@ class BankCardActivity : BaseMvpActivity<BankCardPresenter>(), BankCardView {
         mPresenter.mView = this
     }
 
-    override fun onBankCardResult(result: BankCardBean) {
+    override fun onBankCardResult(result: MyCardBean) {
         if (result != null) {
-            if (result.card_id == 0) {
+            if (result.bankcard.card_number == null) {
                 rlView1.visibility = View.VISIBLE
+                rlView2.visibility = View.GONE
             } else {
+                rlView1.visibility = View.GONE
                 rlView2.visibility = View.VISIBLE
-                tvName.text = result.bank_name
-                tvType.text = result.card_type
-                tvCode.text = toCardNo(result.card_number)
-                tvCard.text = result.degreename
-                id = result.card_id
+                tvName.text = result.bankcard.bank_name
+                tvType.text = result.bankcard.card_type_name
+                tvCode.text = toCardNo(result.bankcard.card_number)
+                id = result.bankcard.card_id
             }
         }
-    }
-
-    override fun onAddBankCardResult() {
-
+        tvCard.text = result.uaer_agent_grade.g_name
     }
 
     override fun onDelBankCardResult() {
-
+        showTextDesc(act, "删除成功")
+        initData()
     }
 
     private var id = 0
 
-    private val  dialog by lazy {
+    private val dialog by lazy {
         val anyLayer = AnyLayer.with(act)
                 .contentView(R.layout.layout_chose)
-                .backgroundColorRes(R.color.clarity_50)
                 .gravity(Gravity.CENTER)
-                .cancelableOnTouchOutside(true)
-                .cancelableOnClickKeyBack(true)
+                .backgroundResource(R.color.clarity_40)
+                .onClick(R.id.tvCancel) { anyLayer, v ->
+                    anyLayer.dismiss()
+                }
+                .onClick(R.id.tvSure) { anyLayer, v ->
+                    mPresenter.deleteBankCard(DeleteBankCardReq(id))
+                    anyLayer.dismiss()
+                }
+        anyLayer
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +77,6 @@ class BankCardActivity : BaseMvpActivity<BankCardPresenter>(), BankCardView {
 
         initView()
 
-        initData()
     }
 
     private fun initView() {
@@ -79,23 +85,26 @@ class BankCardActivity : BaseMvpActivity<BankCardPresenter>(), BankCardView {
         }
 
         tvReduce.onClick {
-
-            showTextDesc()
-            mPresenter.deleteBankCard(DeleteBankCardReq(id))
+            dialog.show()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        initData()
+    }
+
     private fun initData() {
-        mPresenter.myBankCard()
+        mPresenter.myCard(NoParamIdTypeReq(0))
     }
 
     private fun toCardNo(code: String): String {
         var a = code.length
         var b = 0
-        b = a / 4 +1
+        b = a / 4 + 1
         var list = mutableListOf<String>()
         for (i in 0 until b) {
-            if (i == b-1) {
+            if (i == b - 1) {
                 list.add(code.substring(i * 4))
             } else {
                 list.add(code.substring(i * 4, i * 4 + 4))

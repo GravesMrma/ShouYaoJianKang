@@ -6,8 +6,10 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 
 interface RebateAddressView : BaseView {
 
-    fun onRebateResult(result: RebateBean)
+//    fun onRebateResult(result: RebateBean)
+//
+//    fun onRebateAddressResult()
 
-    fun onRebateAddressResult()
+    fun onAuthRebateResult()
 
 }

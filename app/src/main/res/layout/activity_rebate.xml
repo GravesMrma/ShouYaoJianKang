@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,170 +21,183 @@
         app:layout_constraintTop_toBottomOf="@id/fake_status_bar"
         app:titleText="返利中心" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/clView"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp14"
-        android:layout_marginTop="@dimen/dp39"
-        android:layout_marginRight="@dimen/dp14"
-        android:background="@drawable/sp_white_14"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp91"
-            android:layout_marginTop="@dimen/dp24"
-            android:textColor="@color/black_33"
-            android:textSize="@dimen/f14"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvTixian"
-            android:layout_width="@dimen/dp74"
-            android:layout_height="@dimen/dp25"
-            android:layout_marginTop="@dimen/dp16"
-            android:layout_marginRight="@dimen/dp12"
-            android:background="@drawable/sp_orange_14"
-            android:gravity="center"
-            android:text="申请提现"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f12"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/dp12"
-            android:paddingTop="@dimen/dp50"
-            android:paddingRight="@dimen/dp12"
-            android:paddingBottom="@dimen/dp22"
-            app:layout_constraintTop_toBottomOf="@id/tvTixian">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvMoney1"
-                    android:layout_width="wrap_content"
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/orange"
-                    android:textSize="@dimen/f14" />
+                    android:layout_marginLeft="@dimen/dp14"
+                    android:layout_marginTop="@dimen/dp39"
+                    android:layout_marginRight="@dimen/dp14"
+                    android:background="@drawable/sp_white_14"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp91"
+                        android:layout_marginTop="@dimen/dp24"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f14"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTixian"
+                        android:layout_width="@dimen/dp74"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_marginTop="@dimen/dp16"
+                        android:layout_marginRight="@dimen/dp12"
+                        android:background="@drawable/sp_orange_14"
+                        android:gravity="center"
+                        android:text="申请提现"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dp12"
+                        android:paddingTop="@dimen/dp48"
+                        android:paddingRight="@dimen/dp12"
+                        android:paddingBottom="@dimen/dp22"
+                        app:layout_constraintTop_toBottomOf="@id/tvTixian">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:id="@+id/llApply"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="可提现金额"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11" />
+
+                            <TextView
+                                android:id="@+id/tvMoney1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp13"
+                                android:textColor="@color/orange"
+                                android:textSize="@dimen/f19" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <View
+                            android:layout_width="@dimen/dp1"
+                            android:layout_height="@dimen/dp25"
+                            android:background="@color/line" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:id="@+id/llAuth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="审核中金额"
+                                android:textColor="@color/gray_99"
+                                android:textSize="@dimen/f11" />
+
+                            <TextView
+                                android:id="@+id/tvMoney2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp13"
+                                android:textColor="@color/orange"
+                                android:textSize="@dimen/f19" />
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+                    android:id="@+id/ivHead"
+                    android:layout_width="@dimen/dp74"
+                    android:layout_height="@dimen/dp74"
+                    android:layout_marginLeft="@dimen/dp25"
                     android:layout_marginTop="@dimen/dp13"
-                    android:text="可提现返利"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f12" />
-            </LinearLayout>
+                    android:src="@mipmap/ic_empty_item"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <View
-                android:layout_width="@dimen/dp1"
-                android:layout_height="@dimen/dp25"
-                android:background="@color/line" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp14"
+                    android:layout_marginTop="@dimen/dp14"
+                    android:layout_marginRight="@dimen/dp14"
+                    android:background="@drawable/sp_white_15"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="@dimen/dp12"
+                    android:paddingBottom="@dimen/dp9"
+                    app:layout_constraintTop_toBottomOf="@id/clView" />
 
                 <TextView
-                    android:id="@+id/tvMoney2"
+                    android:id="@+id/tvText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp28"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f14" />
+                    android:textSize="@dimen/f12"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rvView" />
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp13"
-                    android:text="累计提现返利"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f12" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <View
-                android:layout_width="@dimen/dp1"
-                android:layout_height="@dimen/dp25"
-                android:background="@color/line" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvMoney3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp13"
-                    android:text="可提现返利"
-                    android:textColor="@color/black_33"
-                    android:textSize="@dimen/f12" />
-            </LinearLayout>
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
-
-    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
-        android:id="@+id/ivHead"
-        android:layout_width="@dimen/dp74"
-        android:layout_height="@dimen/dp74"
-        android:layout_marginLeft="@dimen/dp25"
-        android:layout_marginTop="@dimen/dp13"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvView"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/dp14"
-        android:layout_marginTop="@dimen/dp14"
-        android:layout_marginRight="@dimen/dp14"
-        android:paddingTop="@dimen/dp12"
-        android:paddingBottom="@dimen/dp9"
-        android:layout_height="wrap_content"
-        android:background="@drawable/sp_white_15"
-        app:layout_constraintTop_toBottomOf="@id/clView" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp100"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvText" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </android.support.constraint.ConstraintLayout>

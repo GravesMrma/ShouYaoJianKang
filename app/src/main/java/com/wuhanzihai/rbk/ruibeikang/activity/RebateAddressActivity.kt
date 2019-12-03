@@ -18,6 +18,7 @@ import com.wuhanzihai.rbk.ruibeikang.utils.CityUtils
 import com.wuhanzihai.rbk.ruibeikang.widgets.CustomCityPicker
 import kotlinx.android.synthetic.main.activity_rebate_address.*
 import org.jetbrains.anko.act
+import org.jetbrains.anko.toast
 
 class RebateAddressActivity : BaseMvpActivity<RebateAddressPresenter>(), RebateAddressView {
     override fun injectComponent() {
@@ -26,18 +27,26 @@ class RebateAddressActivity : BaseMvpActivity<RebateAddressPresenter>(), RebateA
         mPresenter.mView = this
     }
 
-    override fun onRebateResult(result: RebateBean) {
-        tvName.text = result.name
-        tvPhone.text = result.phone
-        tvAddress.text = CityUtils.instance.getProvince(act, result.province) +
-                CityUtils.instance.getCity(act, result.province, result.city) +
-                CityUtils.instance.getArea(act, result.province, result.city, result.area)
-        edAddress.setText(result.address)
-    }
-
-    override fun onRebateAddressResult() {
+    override fun onAuthRebateResult() {
 
     }
+
+//    override fun onRebateResult(result: RebateBean) {
+//        tvName.text = result.name
+//        tvPhone.text = result.phone
+//        selectProvince = CityUtils.instance.getProvince(act, result.province)
+//        selectCity = CityUtils.instance.getCity(act, result.province, result.city)
+//        selectArea = CityUtils.instance.getArea(act, result.province, result.city, result.area)
+//        tvAddress.text = CityUtils.instance.getProvince(act, result.province) +
+//                CityUtils.instance.getCity(act, result.province, result.city) +
+//                CityUtils.instance.getArea(act, result.province, result.city, result.area)
+//        edAddress.setText(result.address)
+//    }
+//
+//    override fun onRebateAddressResult() {
+//        toast("修改成功")
+//        finish()
+//    }
 
     private var selectProvince = ""
     private var selectCity = ""
@@ -49,31 +58,31 @@ class RebateAddressActivity : BaseMvpActivity<RebateAddressPresenter>(), RebateA
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
-        initView()
-
-        initData()
+//        initView()
+//
+//        initData()
     }
 
-    private fun initView() {
-        lAddress.onClick {
-            CustomCityPicker(this, CustomCityPicker.ResultHandler { province, city, area ->
-                selectProvince = province
-                selectCity = city
-                selectArea = area
-                tvAddress.text = "${province}-${city}-${area}"
-
-            }).show()
-        }
-
-        tvAddAddress.onClick {
-            mPresenter.rebateAddress(RebateAddressReq(CityUtils.instance.getProvinceCode(act, selectProvince).toInt()
-                    , CityUtils.instance.getCityCode(this, selectProvince, selectCity).toInt()
-                    , CityUtils.instance.getAreaCode(this, selectProvince, selectCity, selectArea).toInt()))
-        }
-    }
-
-    private fun initData() {
-        mPresenter.disbutorIndex()
-
-    }
+//    private fun initView() {
+//        lAddress.onClick {
+//            CustomCityPicker(this, CustomCityPicker.ResultHandler { province, city, area ->
+//                selectProvince = province
+//                selectCity = city
+//                selectArea = area
+//                tvAddress.text = "${province}-${city}-${area}"
+//
+//            }).show()
+//        }
+//
+//        tvAddAddress.onClick {
+//            mPresenter.rebateAddress(RebateAddressReq(edAddress.text.toString(),
+//                    CityUtils.instance.getProvinceCode(act, selectProvince).toInt()
+//                    , CityUtils.instance.getCityCode(this, selectProvince, selectCity).toInt()
+//                    , CityUtils.instance.getAreaCode(this, selectProvince, selectCity, selectArea).toInt()))
+//        }
+//    }
+//
+//    private fun initData() {
+//        mPresenter.disbutorIndex()
+//    }
 }

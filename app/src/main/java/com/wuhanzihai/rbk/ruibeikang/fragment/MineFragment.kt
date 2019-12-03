@@ -1,25 +1,26 @@
 package com.wuhanzihai.rbk.ruibeikang.fragment
 
 import android.os.Bundle
-import android.os.Handler
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationSet
-import android.view.animation.TranslateAnimation
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
+import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.ext.loadImage
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.jaeger.library.StatusBarUtil
+import com.orhanobut.hawk.Hawk
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.*
+import com.wuhanzihai.rbk.ruibeikang.common.FrescoBannerLoader
 import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.common.loadImage
+import com.wuhanzihai.rbk.ruibeikang.common.setOnBannerListener
 import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
@@ -69,18 +70,18 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
     }
 
     override fun onMineAdvResult(result: MineAdv) {
-        mineAdv = result
-        handler.removeCallbacks(run)
-        startAnimation()
-        isRun = true
+        tvAdv.startSlide(result.item)
     }
 
     override fun onIsRebateResult(result: IsRebateBean) {
-        if (result.isinfo == 0){
-            startActivity<RebateAuthActivity>()
-        }else{
-            startActivity<RebateActivity>()
-        }
+        Hawk.put(BaseConstant.ISREBATE_DATA, result)
+        is_agent = result.is_agent
+    }
+
+    override fun onMineBanner(result: Banner) {
+        bannerList.clear()
+        bannerList.addAll(result.item)
+        banSign.update(result.item)
     }
 
     private lateinit var list: MutableList<BannerEntity>
@@ -89,7 +90,9 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
     private lateinit var serList: MutableList<MineServiceBean>
     private lateinit var serAdapter: BaseQuickAdapter<MineServiceBean, BaseViewHolder>
 
-    private var mineAdv: MineAdv? = null
+    private lateinit var bannerList: MutableList<BannerEntity>
+
+    private var is_agent = -1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -99,8 +102,6 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         StatusBarUtil.setLightMode(act)
-
-        ivSign.loadImage("http://www.hcjiankang.com/androidimg/ic_fanli.png")
 
         initView()
 
@@ -118,8 +119,6 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         }
         ivMsg.onClick {
             startActivity<SysMsgActivity>()
-//            startActivity<WelcomeActivity>()
-//            startActivity<SetTagActivity>()
         }
         tvMore.onClick {
             startActivity<OrderActivity>()
@@ -127,10 +126,17 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         lCoupon.onClick {
             startActivity<CouponActivity>()
         }
-        ivSign.onClick {
-//            startActivity<GoodsDetailActivity>("id" to 145)
-            mPresenter.isRebate()
+        llCard.onClick {
+            startActivity<MyCardActivity>()
         }
+
+        bannerList = mutableListOf()
+        banSign.setImageLoader(FrescoBannerLoader(false)).start()
+        banSign.setOnBannerListener { setOnBannerListener(act, bannerList[it]) }
+//        ivSign.onClick {
+////            startActivity<GoodsDetailActivity>("id" to 145)
+//            mPresenter.isRebate()
+//        }
         ivSet.onClick {
             startActivity<SetActivity>()
         }
@@ -142,7 +148,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         serList.add(MineServiceBean("服务订单", R.mipmap.fw_mid_icon_dd))
         serList.add(MineServiceBean("检测报告", R.mipmap.fw_mid_icon_tjbg))
         serList.add(MineServiceBean("地址管理", R.mipmap.fw_mid_icon_dzgl))
-        serList.add(MineServiceBean("实名认证", R.mipmap.fw_mid_icon_smrz))
+        serList.add(MineServiceBean("分享赚钱", R.mipmap.fw_mid_icon_smrz))
         serList.add(MineServiceBean("健康档案", R.mipmap.fw_mid_icon_jkda))
         serList.add(MineServiceBean("兑换中心", R.mipmap.fw_mid_icon_dhzx))
         serList.add(MineServiceBean("常见问题", R.mipmap.fw_mid_icon_cjwt))
@@ -151,6 +157,9 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
             override fun convert(helper: BaseViewHolder?, item: MineServiceBean?) {
                 helper!!.setImageResource(R.id.ivImg, item!!.res)
                         .setText(R.id.tvText, item.title)
+                if (helper.layoutPosition == 3) {
+                    helper.getView<TextView>(R.id.tvTag).visibility = View.VISIBLE
+                }
             }
         }
         rvView.adapter = serAdapter
@@ -161,7 +170,13 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
                 0 -> startActivity<OrderServiceActivity>()
                 1 -> startActivity<CheckReportActivity>()
                 2 -> startActivity<AddressActivity>()
-                3 -> startActivity<AuthActivity>()
+                3 -> {
+                    if (is_agent == 1) {
+                        startActivity<ShareHealthActivity>()  //分享赚钱
+                    } else {
+                        startActivity<RebateAuthActivity>()
+                    }
+                }
                 4 -> startActivity<HealthArchivesActivity>()
                 5 -> startActivity<CouponActivity>()
                 6 -> startActivity<StandardWebActivity>("title" to "常见问题"
@@ -196,47 +211,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         mPresenter.getUserInfo()
         mPresenter.mineIndex()
         mPresenter.userAdv()
+        mPresenter.mineBanner()
+        mPresenter.isRebate()
     }
-
-    private var index = 0
-    private var handler = Handler()
-    private var isRun = false
-
-    private fun startAnimation() {
-        if (!isRun){
-            return
-        }
-        if (mineAdv != null) {
-            tvAdv.text = mineAdv!!.item[index % mineAdv!!.item.size]
-        }
-        val animationSet = AnimationSet(true)
-        val animation = TranslateAnimation(0f, 0f, 40f, 0f)
-        animation.duration = 800
-        animationSet.addAnimation(animation)
-        animationSet.fillAfter = true
-        tvAdv.startAnimation(animationSet)
-        index++
-        handler.postDelayed(run, 3000)
-    }
-
-    private fun stopAnimation(){
-        handler.removeCallbacks(run)
-    }
-
-    private var run = Runnable {
-        startAnimation()
-    }
-
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (hidden) {
-            isRun = false
-            stopAnimation()
-        } else {
-            isRun = true
-            startAnimation()
-        }
-    }
-
 }

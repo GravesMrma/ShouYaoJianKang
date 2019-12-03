@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MyCardActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="卡包" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp12">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@mipmap/ic_mycard3"
+            app:layout_constraintDimensionRatio="2.8"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp11"
+            android:src="@mipmap/ic_card_tag3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCard1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp25"
+            android:text="尊享会员卡"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f22"
+            app:layout_constraintLeft_toRightOf="@id/iv3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp15"
+            android:text="已激活"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp18"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:text="向平台申请返利"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintLeft_toRightOf="@id/iv3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCard1" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp15"
+            android:text="2019-11-09"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clBank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp12">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@mipmap/ic_mycard1"
+            app:layout_constraintDimensionRatio="2.8"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp11"
+            android:src="@mipmap/ic_card_tag1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCard2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp25"
+            android:text="我的银行卡"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f22"
+            app:layout_constraintLeft_toRightOf="@id/iv1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp15"
+            android:text="储蓄卡"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText222"
+            android:layout_width="@dimen/dp45"
+            android:layout_height="@dimen/dp20"
+            android:layout_margin="@dimen/dp15"
+            android:background="@drawable/sp_white_10"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="去绑定"
+            android:textColor="#3B97FF"
+            android:textSize="@dimen/f12"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText22"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp18"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:text="为保证您的佣金、返利及时到账，\n请绑定储蓄卡"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintLeft_toRightOf="@id/iv1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCard2" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clDent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp12">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@mipmap/ic_mycard2"
+            app:layout_constraintDimensionRatio="2.8"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp11"
+            android:src="@mipmap/ic_card_tag2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCard3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp25"
+            android:text="我的身份卡"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f22"
+            app:layout_constraintLeft_toRightOf="@id/iv2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp15"
+            android:drawableRight="@mipmap/ic_more_white"
+            android:drawablePadding="@dimen/dp5"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="更多福利"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText333"
+            android:layout_width="@dimen/dp45"
+            android:layout_height="@dimen/dp20"
+            android:layout_margin="@dimen/dp15"
+            android:background="@drawable/sp_white_10"
+            android:gravity="center"
+            android:text="去申请"
+            android:visibility="gone"
+            android:textColor="#FF8E1F"
+            android:textSize="@dimen/f12"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvText33"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp18"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:text="向平台申请购买卡号，认证身份，得更\n多售卡佣金，还能获取额外商品返利"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12"
+            app:layout_constraintLeft_toRightOf="@id/iv2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCard3" />
+
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

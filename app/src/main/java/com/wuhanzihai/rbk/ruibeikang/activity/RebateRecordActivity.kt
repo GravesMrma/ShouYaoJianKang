@@ -4,12 +4,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.ViewPager
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.fragment.RebateRecordFragment
 import kotlinx.android.synthetic.main.activity_rebate_record.*
 import org.jetbrains.anko.act
 import java.util.*
+import org.jetbrains.anko.startActivity
 
 class RebateRecordActivity : AppCompatActivity() {
 
@@ -27,6 +29,12 @@ class RebateRecordActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+
+        tvTitle.setMoreTextAction {
+            startActivity<StandardWebActivity>("title" to "返利规则"
+                    , "data" to "http://api.hcjiankang.com/api/Web/article?id=773")
+        }
+
         mStack.add(RebateRecordFragment(1))
         mStack.add(RebateRecordFragment(2))
 
@@ -44,8 +52,20 @@ class RebateRecordActivity : AppCompatActivity() {
             }
         }
         vpView.adapter = adapter
-        vpView.setNoFocus(true)
+        vpView.setNoFocus(false)
         vpView.offscreenPageLimit = 2
+        vpView.addOnPageChangeListener(object :ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(p0: Int) {}
+            override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {}
+            override fun onPageSelected(p0: Int) {
+                if (p0 == 0){
+                    mRgRecord.check(R.id.mRbNor)
+                }
+                if (p0 == 1){
+                    mRgRecord.check(R.id.mRbUsed)
+                }
+            }
+        })
 
         mRgRecord.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {

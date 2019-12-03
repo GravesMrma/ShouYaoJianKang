@@ -241,11 +241,10 @@
                                 android:layout_marginRight="@dimen/dp12"
                                 android:background="@color/line" />
 
-                            <TextView
+                            <com.wuhanzihai.rbk.ruibeikang.widgets.SlideTextView
                                 android:id="@+id/tvAdv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="怕生病，上首要健康APP"
                                 android:textColor="@color/gray_66"
                                 android:textSize="@dimen/f12" />
 

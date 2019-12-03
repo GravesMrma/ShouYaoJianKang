@@ -107,6 +107,7 @@ public class CustomCityPicker {
         });
 
         pvCity.setOnSelectListener(city -> {
+            selectCity = city;
             areaChange(selectProvince,selectCity);
         });
         pvArea.setOnSelectListener(area->{

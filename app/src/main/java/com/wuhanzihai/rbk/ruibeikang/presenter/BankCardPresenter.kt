@@ -19,15 +19,14 @@ class BankCardPresenter @Inject constructor() : BasePresenter<BankCardView>() {
     @Inject
     lateinit var userServiceImpl: UserServiceImpl
 
-
-    fun myBankCard() {
+    fun myCard(req:NoParamIdTypeReq) {
         if (!checkNetWork()) {
             return
         }
         mView.showLoading()
-        userServiceImpl.myBankCard()
-                .excute(object : BaseSubscriber<BankCardBean>(mView) {
-                    override fun onNext(t: BankCardBean) {
+        userServiceImpl.myCard(req)
+                .excute(object : BaseSubscriber<MyCardBean>(mView) {
+                    override fun onNext(t: MyCardBean) {
                         super.onNext(t)
                         mView.onBankCardResult(t)
                     }
@@ -57,7 +56,7 @@ class BankCardPresenter @Inject constructor() : BasePresenter<BankCardView>() {
                 .excute(object : BaseSubscriber<BaseData>(mView) {
                     override fun onNext(t: BaseData) {
                         super.onNext(t)
-                        mView.onAddBankCardResult()
+                        mView.onDelBankCardResult()
                     }
                 }, lifecycleProvider)
     }

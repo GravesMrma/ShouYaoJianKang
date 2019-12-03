@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/dp24"
+    android:background="@drawable/selector_coin_archives"
+    android:paddingLeft="@dimen/dp12"
+    android:paddingRight="@dimen/dp12"
+    android:layout_marginRight="@dimen/dp5"
+    android:layout_marginBottom="@dimen/dp5"
+    android:textSize="@dimen/f12"
+    android:gravity="center"
+    android:singleLine="true"
+    android:textColor="@color/selector_gray66_white_check"
+    android:id="@+id/tvText"
+    tools:text="标签">
+
+</TextView>

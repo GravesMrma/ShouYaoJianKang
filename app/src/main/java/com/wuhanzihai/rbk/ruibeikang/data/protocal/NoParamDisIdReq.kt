@@ -9,7 +9,7 @@ import com.wuhanzihai.rbk.ruibeikang.utils.AES
  * Created by wx on 2018/7/10
  */
 class NoParamDisIdReq() : BaseReq() {
-    private var disbutor_id = LoginUtils.getRebateId()
+    private var agent_id = LoginUtils.getRebateId()
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
 

@@ -84,30 +84,35 @@ public class CustomSinglePicker {
 
     public CustomSinglePicker setData(List<String> data) {
         list_data = data;
-        data_pv.setData(list_data);
-        executeScroll();
-        addListener();
-        selectData = data.get(0);
+
+
         return this;
     }
 
     public CustomSinglePicker setIsLoop(boolean isLoop) {
         data_pv.setIsLoop(isLoop); // 设置日期控件是否可以循环滚动
-
         return this;
     }
 
     public void show() {
+        addListener();
+        executeScroll();
+        data_pv.setData(list_data);
+        data_pv.setSelected(selectIndex);
+        selectData = list_data.get(selectIndex);
         datePickerDialog.show();
     }
 
     /**
      * 设置日期控件默认选中的数据
      */
+
+    private int selectIndex = 0;
     public CustomSinglePicker setSelected(int index) {
-        data_pv.setSelected(index);
-        selectData = list_data.get(index);
-        executeAnimator(data_pv);
+        selectIndex = index;
+//        data_pv.setSelected(index);
+//        selectData = list_data.get(index);
+//        executeAnimator(data_pv);
         return this;
     }
 

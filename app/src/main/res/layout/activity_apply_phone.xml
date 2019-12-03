@@ -15,9 +15,10 @@
         android:background="@color/white" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleText="号段申请记录"
+        app:titleText="卡号申请记录"
         app:moreText="返利规则"
         app:canBack="true"/>
 

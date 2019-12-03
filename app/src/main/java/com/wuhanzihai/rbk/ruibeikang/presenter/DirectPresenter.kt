@@ -48,4 +48,17 @@ class DirectPresenter @Inject constructor() : BasePresenter<DirectView>() {
                 }, lifecycleProvider)
     }
 
+    fun myTeam() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.myTeam()
+                .excute(object : BaseSubscriber<MyTeamBean>(mView) {
+                    override fun onNext(t: MyTeamBean) {
+                        super.onNext(t)
+                        mView.onMyTeamResult(t)
+                    }
+                }, lifecycleProvider)
+    }
 }

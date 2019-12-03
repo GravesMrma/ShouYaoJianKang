@@ -29,9 +29,11 @@ import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
 import com.hhjt.baselibrary.utils.LoginUtils
 import com.jaeger.library.StatusBarUtil
 import com.kotlin.base.utils.AppPrefsUtils
+import com.orhanobut.hawk.Hawk
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.common.toDoubleInt
+import com.wuhanzihai.rbk.ruibeikang.data.entity.IsRebateBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
 import com.wuhanzihai.rbk.ruibeikang.data.entity.VersionBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.ActivationReq
@@ -71,6 +73,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
             actDialog.show()
         } else {
             actDialog.dismiss()
+            mPresenter.isRebate()
         }
     }
 
@@ -99,6 +102,10 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
             updateDialog.getView<TextView>(R.id.tvDesc1).text = desc.substring(0, desc.length - 4)
             updateDialog.show()
         }
+    }
+
+    override fun onIsRebateResult(result: IsRebateBean) {
+        Hawk.put(BaseConstant.ISREBATE_DATA, result)
     }
 
     private fun getLocalVersion(): String {
@@ -163,7 +170,6 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         StatusBarUtil.setTranslucentForImageView(act, 0, null)
 
         initView()

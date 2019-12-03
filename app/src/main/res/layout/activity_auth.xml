@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,13 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="实名认证"
-        app:moreText="保存"/>
+        app:titleText="实名认证" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/line"/>
+        android:background="@color/line" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -39,15 +37,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp10"
-                android:textSize="@dimen/f11"
+                android:text="身份信息（必填）"
                 android:textColor="@color/black_33"
-                android:text="身份信息（必填）"/>
+                android:textSize="@dimen/f11" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -55,34 +53,34 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp11"
                     android:text="您的真实姓名"
-                    android:textSize="@dimen/f12"
-                    android:textColor="@color/gray_99"/>
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f12" />
 
                 <EditText
                     android:id="@+id/edName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/tranpt"
+                    android:hint="请输入姓名"
+                    android:maxLength="10"
+                    android:maxLines="1"
                     android:padding="@dimen/dp10"
-                    android:textSize="@dimen/f12"
                     android:textColor="@color/black_33"
                     android:textColorHint="@color/gray_99"
-                    android:hint="请输入姓名"
-                    android:maxLines="1"
-                    android:maxLength="10"
-                    android:background="@color/tranpt"/>
+                    android:textSize="@dimen/f12" />
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/line"/>
+                android:background="@color/line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -90,22 +88,21 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp11"
                     android:text="您的身份证号"
-                    android:textSize="@dimen/f12"
-                    android:textColor="@color/gray_99"/>
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f12" />
 
                 <EditText
                     android:id="@+id/edCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/tranpt"
+                    android:hint="请输入身份证号(我们将进行加密处理)"
+                    android:maxLength="18"
+                    android:maxLines="1"
                     android:padding="@dimen/dp10"
-                    android:textSize="@dimen/f12"
                     android:textColor="@color/black_33"
                     android:textColorHint="#999999"
-                    android:hint="请输入身份证号(我们将进行加密处理)"
-                    android:maxLines="1"
-                    android:maxLength="18"
-                    android:inputType="number"
-                    android:background="@color/tranpt"/>
+                    android:textSize="@dimen/f12" />
 
             </LinearLayout>
 
@@ -113,71 +110,74 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp10"
-                android:textSize="@dimen/f11"
+                android:text="手机号（必填）"
                 android:textColor="@color/black_33"
-                android:text="手机号（必填）"/>
+                android:textSize="@dimen/f11"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/edPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/tranpt"
+                    android:hint="与上述实名一致的手机号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:maxLines="1"
                     android:padding="@dimen/dp10"
-                    android:textSize="@dimen/f12"
                     android:textColor="@color/black_33"
                     android:textColorHint="@color/gray_99"
-                    android:hint="与上述实名一致的手机号"
-                    android:maxLines="1"
-                    android:maxLength="11"
-                    android:inputType="number"
-                    android:background="@color/tranpt"/>
+                    android:textSize="@dimen/f12" />
 
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp10"
-                    android:textSize="@dimen/f11"
+                    android:text="身份证正反面照片（选填）"
                     android:textColor="@color/black_33"
-                    android:text="身份证正反面照片（选填）"/>
+                    android:textSize="@dimen/f11" />
 
             </RelativeLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:orientation="horizontal"
                 android:padding="@dimen/dp14"
-                android:orientation="horizontal">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="@dimen/dp105"
+                    android:layout_weight="1"
                     android:background="#F7F7F9">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableTop="@mipmap/authaaa"
                         android:layout_centerInParent="true"
+                        android:drawableTop="@mipmap/authaaa"
                         android:drawablePadding="@dimen/dp10"
                         android:gravity="center"
                         android:text="上传身份证人面像"
-                        android:textSize="@dimen/f12"
-                        android:textColor="@color/black_33"/>
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
 
                     <ImageView
                         android:id="@+id/ivZm"
@@ -192,20 +192,20 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="@dimen/dp105"
+                    android:layout_weight="1"
                     android:background="#F7F7F9">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableTop="@mipmap/authaaa"
                         android:layout_centerInParent="true"
+                        android:drawableTop="@mipmap/authaaa"
                         android:drawablePadding="@dimen/dp10"
                         android:gravity="center"
                         android:text="上传身份证国徽面"
-                        android:textSize="@dimen/f12"
-                        android:textColor="@color/black_33"/>
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
 
                     <ImageView
                         android:id="@+id/ivFm"
@@ -220,53 +220,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:orientation="horizontal"
                 android:paddingLeft="@dimen/dp14"
+                android:paddingTop="@dimen/dp5"
                 android:paddingRight="@dimen/dp14"
                 android:paddingBottom="@dimen/dp14"
-                android:paddingTop="@dimen/dp5"
-                android:orientation="horizontal">
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="示例"
-                        android:textSize="@dimen/f12"
-                        android:textColor="@color/black_33"/>
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_shili0"/>
+                        android:src="@mipmap/ic_shili0" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="示例"
-                        android:textSize="@dimen/f12"
-                        android:textColor="@color/black_33"/>
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_shili1"/>
+                        android:src="@mipmap/ic_shili1" />
 
                 </LinearLayout>
 
@@ -275,19 +276,27 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="为什么需要实名认证？"
                 android:layout_marginTop="@dimen/dp15"
-                android:textSize="@dimen/f12"
+                android:gravity="center"
+                android:text="为什么需要实名认证？"
                 android:textColor="@color/black_33"
-                android:gravity="center"/>
+                android:textSize="@dimen/f12" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="·根据海关规定，购买跨境商品需要办理清关手续，请配合进行实名认证，以确保您购买的商品顺利通过海关检查。（首页承诺所传身份证明只用于办理跨境商品的清关手续，不做他途使用，其他任何人均无法查看）\n·实名认证的规则：购买跨境商品须填写首要账号注册人的真实姓名、身份证号码及与实名一致的手机号，具体以下单时的提示为准。 "
-                android:textSize="@dimen/f11"
+                android:padding="@dimen/dp12"
+                android:text="为了保护联合创始人、全球合伙人、守护者、尊享会员权益，防止出现恶性竞争（多人争抢一个拥有多手机号的客户），需要您通过身份证实名认证形式绑定账号后才能申请等级，当出现多个激活手机号绑定同一个身份证的情况下，首要健康平台会与当事人协商使用哪个手机号进行升级（只能选择一个绑定身份证件的账号进行升级）；感谢您的配合！"
                 android:textColor="@color/black_33"
-                android:padding="@dimen/dp12"/>
+                android:textSize="@dimen/f11" />
+
+            <TextView
+                android:id="@+id/tvText"
+                style="@style/buttonStyleRound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp24"
+                android:text="确定保存" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

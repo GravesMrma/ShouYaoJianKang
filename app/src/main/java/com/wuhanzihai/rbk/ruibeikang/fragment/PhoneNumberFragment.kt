@@ -51,10 +51,16 @@ class PhoneNumberFragment(var type: Int) : BaseMvpFragment<PhoneNumberPresenter>
     }
 
     override fun onAddCardResult() {
-        showTextDesc(act, "申请成功")
+        showTextDesc(act, "提交成功,等待上级确认")
+        page == 1
+        list.clear()
+        initData()
     }
 
     override fun onAgrApplyResult() {
+        page == 1
+        list.clear()
+        initData()
         showTextDesc(act, "审核成功等待厂家发货给审核者")
     }
 
@@ -194,7 +200,12 @@ class PhoneNumberFragment(var type: Int) : BaseMvpFragment<PhoneNumberPresenter>
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act, 1)
         rvView.addItemDecoration(DividerItem14_14_14(act))
-        adapter.emptyView = getEmptyView(act, "暂无数据")
+        if (type == 1){
+            adapter.emptyView = getEmptyView(act, R.mipmap.empty_colloect," 暂无卡号申请记录，赶快申请吧~")
+        }
+        if (type == 2){
+            adapter.emptyView = getEmptyView(act, R.mipmap.empty_colloect," 暂无卡号分配记录，赶快申请吧~")
+        }
         adapter.setOnItemClickListener { _, _, position ->
 
         }
@@ -217,13 +228,13 @@ class PhoneNumberFragment(var type: Int) : BaseMvpFragment<PhoneNumberPresenter>
         if (type == 1) {
             llText.visibility = View.VISIBLE
             llBt.visibility = View.VISIBLE
-            mPresenter.phoneNumberList(PhoneNumberReq(page))
+            mPresenter.phoneNumberList(PhoneNumberReq(0,page))
 
         }
         if (type == 2) {
             llText.visibility = View.GONE
             llBt.visibility = View.GONE
-            mPresenter.myDistribution(PhoneNumberReq(page))
+            mPresenter.myDistribution(PhoneNumberReq(0,page))
         }
     }
 

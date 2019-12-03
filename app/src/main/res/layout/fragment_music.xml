@@ -39,52 +39,14 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.youth.banner.Banner
+                    <android.support.v4.view.ViewPager
                         android:id="@+id/mBanner"
                         android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp19"
-                        app:layout_constraintDimensionRatio="2.59"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvText" />
-
-                    <TextView
-                        android:id="@+id/tvText1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp20"
-                        android:text="每日梦境"
-                        android:textColor="@color/black_33"
-                        android:textSize="@dimen/f16"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mBanner" />
-
-                    <TextView
-                        android:id="@+id/tvText2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp6"
-                        android:text="梦不需要语言，它们是灵魂深处的话花园"
-                        android:textColor="@color/gray_99"
-                        android:textSize="@dimen/f12"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvText1" />
-
-                    <TextView
-                        android:id="@+id/tvText3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp6"
-                        android:drawableLeft="@mipmap/ic_now_l"
-                        android:drawablePadding="@dimen/dp3"
-                        android:gravity="center_vertical"
-                        android:text="672次收听"
-                        android:textColor="@color/gray_99"
-                        android:textSize="@dimen/f10"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent" />
-
 
                 </android.support.constraint.ConstraintLayout>
 

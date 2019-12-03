@@ -12,8 +12,8 @@ android {
         applicationId "com.wuhanzihai.rbk.ruibeikang"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 202
-        versionName "2.0.2"
+        versionCode 203
+        versionName "2.0.3"
         multiDexEnabled true
 
         ndk {
@@ -49,6 +49,11 @@ android {
         debug {
             signingConfig signingConfigs.config
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 
     compileOptions {

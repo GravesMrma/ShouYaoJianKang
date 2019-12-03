@@ -100,8 +100,9 @@ class HealthyFragment : BaseMvpFragment<HealthFragmentPresenter>(), HealthFragme
                 .start()
 //        ivZj.setOnBannerListener { setOnBannerListener(act, ivZjList[it]) }
         ivZj.onClick {
-            startActivity<StandardWebActivity>("title" to "专家问诊"
-                    , "data" to "http://www.hcjiankang.com/androidimg/wenzheng.html")
+            startActivity<InterrogationActivity>()
+//            startActivity<StandardWebActivity>("title" to "专家问诊"
+//                    , "data" to "http://www.hcjiankang.com/androidimg/wenzheng.html")
         }
 
         ivTravelList = mutableListOf()
@@ -294,8 +295,6 @@ class HealthyFragment : BaseMvpFragment<HealthFragmentPresenter>(), HealthFragme
                     }
                 }
                 startAnimation()
-
-                Log.e("随机数", indexs.toString())
             }
 
             override fun onAnimationStart(animation: Animation?) {}

@@ -19,31 +19,46 @@ class RebateAddressPresenter @Inject constructor() : BasePresenter<RebateAddress
     @Inject
     lateinit var userServiceImpl: UserServiceImpl
 
-    fun disbutorIndex() {
+//    fun disbutorIndex() {
+//        if (!checkNetWork()) {
+//            return
+//        }
+//        mView.showLoading()
+//        userServiceImpl.disbutorIndex()
+//                .excute(object : BaseSubscriber<RebateBean>(mView) {
+//                    override fun onNext(t: RebateBean) {
+//                        super.onNext(t)
+//                        mView.onRebateResult(t)
+//                    }
+//                }, lifecycleProvider)
+//    }
+
+    fun authRebate() {
         if (!checkNetWork()) {
             return
         }
         mView.showLoading()
-        userServiceImpl.disbutorIndex()
-                .excute(object : BaseSubscriber<RebateBean>(mView) {
-                    override fun onNext(t: RebateBean) {
+        userServiceImpl.authRebate()
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
                         super.onNext(t)
-                        mView.onRebateResult(t)
+                        mView.onAuthRebateResult()
                     }
                 }, lifecycleProvider)
     }
 
-    fun rebateAddress(req:RebateAddressReq) {
-        if (!checkNetWork()) {
-            return
-        }
-        mView.showLoading()
-        userServiceImpl.rebateAddress(req)
-                .excute(object : BaseSubscriber<BaseData>(mView) {
-                    override fun onNext(t: BaseData) {
-                        super.onNext(t)
-                        mView.onRebateAddressResult()
-                    }
-                }, lifecycleProvider)
-    }
+
+//    fun rebateAddress(req:RebateAddressReq) {
+//        if (!checkNetWork()) {
+//            return
+//        }
+//        mView.showLoading()
+//        userServiceImpl.rebateAddress(req)
+//                .excute(object : BaseSubscriber<BaseData>(mView) {
+//                    override fun onNext(t: BaseData) {
+//                        super.onNext(t)
+//                        mView.onRebateAddressResult()
+//                    }
+//                }, lifecycleProvider)
+//    }
 }

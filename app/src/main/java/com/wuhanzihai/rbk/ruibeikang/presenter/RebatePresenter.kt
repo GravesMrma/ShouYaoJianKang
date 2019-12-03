@@ -49,4 +49,18 @@ class RebatePresenter @Inject constructor() : BasePresenter<RebateView>() {
                     }
                 }, lifecycleProvider)
     }
+
+    fun applyCashDetail() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.applyCashDetail()
+                .excute(object : BaseSubscriber<CashDetailBean>(mView) {
+                    override fun onNext(t: CashDetailBean) {
+                        super.onNext(t)
+                        mView.onCashDetailResult(t)
+                    }
+                }, lifecycleProvider)
+    }
 }

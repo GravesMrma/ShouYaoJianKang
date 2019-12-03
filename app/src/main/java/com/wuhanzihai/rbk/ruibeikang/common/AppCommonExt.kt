@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.hhjt.baselibrary.common.BaseConstant
+import com.orhanobut.hawk.Hawk
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.*
 import com.wuhanzihai.rbk.ruibeikang.data.entity.BannerEntity
+import com.wuhanzihai.rbk.ruibeikang.data.entity.IsRebateBean
 import com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
@@ -21,14 +24,14 @@ fun CircleImageView.loadImage(url: String) {
     if (android.util.Patterns.WEB_URL.matcher(url).matches()) {
         GlideApp.with(context)
                 .load(url)
-//                .placeholder(R.mipmap.ic_acc1)
-//                .error(R.mipmap.ic_acc1)
+                .placeholder(R.mipmap.ic_empty_item1)
+                .error(R.mipmap.ic_empty_item1)
                 .into(this)
     } else {
         GlideApp.with(context)
                 .load(com.hhjt.baselibrary.common.BaseConstant.BASE_URL + url)
-//                .placeholder(R.mipmap.ic_acc1)
-//                .error(R.mipmap.ic_acc1)
+                .placeholder(R.mipmap.ic_empty_item1)
+                .error(R.mipmap.ic_empty_item1)
                 .into(this)
     }
 }
@@ -82,6 +85,16 @@ fun setOnBannerListener(context: Context, bannerEntity: BannerEntity) {
         7 -> context.startActivity<HealthInfoActivity>()
         8 -> context.startActivity<SingleTravelActivity>()
         9 -> context.startActivity<HealthFoodActivity>("id" to bannerEntity.link)
+        10 -> {
+            var result = Hawk.get<IsRebateBean>(BaseConstant.ISREBATE_DATA)
+            if (result != null) {
+                if (result.is_agent == 2) {
+                    context.startActivity<RebateAuthActivity>()
+                } else {
+                    context.startActivity<RebateActivity>()
+                }
+            }
+        }
     }
 }
 
@@ -95,6 +108,81 @@ fun showTextDesc(context: Context, text: String) {
     anyLayer.getView<TextView>(R.id.tvText).text = text
     anyLayer.show()
     Handler().postDelayed({
+        anyLayer.dismiss()
+    }, 1000)
+}
+
+fun showChoseText(context: Context, title: String, content: String, sure: String, onDone: () -> Unit) {
+    val anyLayer = AnyLayer.with(context)
+            .contentView(R.layout.layout_chose_text)
+            .backgroundColorRes(R.color.clarity_50)
+            .gravity(Gravity.CENTER)
+            .cancelableOnTouchOutside(true)
+            .cancelableOnClickKeyBack(true)
+            .onClick(R.id.tvCancel) { anyLayer, v ->
+                anyLayer.dismiss()
+            }
+            .onClick(R.id.tvSure) { anyLayer, v ->
+                onDone()
+                anyLayer.dismiss()
+            }
+    anyLayer.getView<TextView>(R.id.tvTitle).text = title
+    anyLayer.getView<TextView>(R.id.tvContent).text = content
+    anyLayer.getView<TextView>(R.id.tvSure).text = sure
+    anyLayer.show()
+}
+
+fun showChoseText(context: Context, content: String, onDone: () -> Unit) {
+    val anyLayer = AnyLayer.with(context)
+            .contentView(R.layout.layout_chose_text)
+            .backgroundColorRes(R.color.clarity_50)
+            .gravity(Gravity.CENTER)
+            .cancelableOnTouchOutside(true)
+            .cancelableOnClickKeyBack(true)
+            .onClick(R.id.tvCancel) { anyLayer, v ->
+                anyLayer.dismiss()
+            }
+            .onClick(R.id.tvSure) { anyLayer, v ->
+                onDone()
+                anyLayer.dismiss()
+            }
+    anyLayer.getView<TextView>(R.id.tvTitle).text = "提示"
+    anyLayer.getView<TextView>(R.id.tvContent).text = content
+    anyLayer.getView<TextView>(R.id.tvSure).text = "确定"
+    anyLayer.show()
+}
+
+fun showChoseText(context: Context, content: String, sure: String, onDone: () -> Unit) {
+    val anyLayer = AnyLayer.with(context)
+            .contentView(R.layout.layout_chose_text)
+            .backgroundColorRes(R.color.clarity_50)
+            .gravity(Gravity.CENTER)
+            .cancelableOnTouchOutside(true)
+            .cancelableOnClickKeyBack(true)
+            .onClick(R.id.tvCancel) { anyLayer, v ->
+                anyLayer.dismiss()
+            }
+            .onClick(R.id.tvSure) { anyLayer, v ->
+                onDone()
+                anyLayer.dismiss()
+            }
+    anyLayer.getView<TextView>(R.id.tvTitle).text = "提示"
+    anyLayer.getView<TextView>(R.id.tvContent).text = content
+    anyLayer.getView<TextView>(R.id.tvSure).text = sure
+    anyLayer.show()
+}
+
+fun showTextDesc(context: Context, text: String, doMore: () -> Unit) {
+    val anyLayer = AnyLayer.with(context)
+            .contentView(R.layout.layout_text_desc)
+            .backgroundColorRes(R.color.clarity_50)
+            .gravity(Gravity.CENTER)
+            .cancelableOnTouchOutside(true)
+            .cancelableOnClickKeyBack(true)
+    anyLayer.getView<TextView>(R.id.tvText).text = text
+    anyLayer.show()
+    Handler().postDelayed({
+        doMore()
         anyLayer.dismiss()
     }, 1000)
 }

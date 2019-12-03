@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ChatRoomActivity"
+    android:fitsSystemWindows="true">
+
+    <!--<View-->
+        <!--android:id="@+id/fake_status_bar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/statusbar_view_height"-->
+        <!--android:background="@color/white"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleText="聊天室" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvMsg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/llEdit">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tvRemind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_08"
+        android:gravity="center"
+        android:padding="@dimen/dp8"
+        android:text="23小时或19次对话后问题关闭"
+        android:textColor="@color/white"
+        android:textSize="@dimen/f12"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingTop="@dimen/dp16"
+        android:paddingRight="@dimen/dp22"
+        android:paddingBottom="@dimen/dp22"
+        app:layout_constraintTop_toBottomOf="@id/tvRemind">
+
+        <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+            android:id="@+id/ivHead"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:text="你的名字"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f14"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/ivHead"
+            app:layout_constraintTop_toTopOf="@id/ivHead" />
+
+        <TextView
+            android:id="@+id/tvJob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:text="你的名字"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f14"
+            app:layout_constraintLeft_toRightOf="@id/tvName"
+            app:layout_constraintTop_toTopOf="@id/ivHead" />
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/tfView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp12"
+            app:layout_constraintLeft_toLeftOf="@id/tvName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:max_select="0" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/llEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp7"
+        android:paddingBottom="@dimen/dp7"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp14"
+            android:paddingRight="@dimen/dp14"
+            android:src="@mipmap/ic_chat_more" />
+
+        <com.wuhanzihai.rbk.ruibeikang.widgets.TextEditTextView
+            android:id="@+id/edContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/sp_inputmsg_stk"
+            android:gravity="start"
+            android:hint="请输入文字描述病情"
+            android:maxLines="3"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingTop="@dimen/dp13"
+            android:paddingRight="@dimen/dp10"
+            android:paddingBottom="@dimen/dp13"
+            android:textColor="@color/black_33"
+            android:textColorHint="#BCBCBC"
+            android:textSize="@dimen/f12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginRight="@dimen/dp14"
+            android:background="@drawable/sp_gray_14"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f12" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

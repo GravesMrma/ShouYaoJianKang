@@ -10,10 +10,14 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.hhjt.baselibrary.ext.finish
+import com.hhjt.baselibrary.ext.refresh
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
 import com.wuhanzihai.rbk.ruibeikang.data.entity.DirectBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.DirectItem
+import com.wuhanzihai.rbk.ruibeikang.data.entity.MyTeamBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.DirectReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
@@ -36,9 +40,15 @@ class IndirectFragment: BaseMvpFragment<DirectPresenter>(), DirectView {
     }
 
     override fun onInDirectResult(result: DirectBean) {
-
+        srView.finish()
         list.addAll(result.item)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun onMyTeamResult(result: MyTeamBean) {
+        tvText.text = (result.directcount + result.indirectcount).toString()
+        tvText1.text = "直推下级:${result.directcount}人"
+        tvText2.text = "间推下级:${result.indirectcount}人"
     }
 
     private lateinit var list: MutableList<DirectItem>
@@ -61,28 +71,51 @@ class IndirectFragment: BaseMvpFragment<DirectPresenter>(), DirectView {
 
     private fun initView(){
         list = mutableListOf()
-        adapter = object : BaseQuickAdapter<DirectItem, BaseViewHolder>(R.layout.item_direct,list){
+        adapter = object : BaseQuickAdapter<DirectItem, BaseViewHolder>(R.layout.item_indirect, list) {
             override fun convert(helper: BaseViewHolder?, item: DirectItem?) {
-                helper!!.setText(R.id.tvTime,"关联时间  ${item!!.relation_time}")
-                        .setText(R.id.tvApplyNumber,"${item.dg_name}: ${item.name}")
-                        .setText(R.id.tvName,item.phone)
-                        .setText(R.id.tvAddress,"${item.province}${item.city}${item.area}")
-                        .setText(R.id.tvNumber,"未知数据")
-                        .setText(R.id.tvYJHNum,"")
-                        .setText(R.id.tvWJHNum,"")
-                        .setText(R.id.tvState,"")
-
-                helper.getView<RelativeLayout>(R.id.rlViewBt).visibility = View.GONE
-                helper.getView<LinearLayout>(R.id.llNumber1).visibility = View.GONE
-
+                helper!!.setText(R.id.tvTime, "关联时间  ${item!!.create_time.substring(0,10)}")
+                        .setText(R.id.tvApplyNumber, "${item.g_name}: ${item.nickname}")
+                        .setText(R.id.tvName, item.mobile)
+                        .setText(R.id.tvNumber, item.card_no)
+                        .setText(R.id.tvYJHNum,  item.stock.toString())
+                        .setText(R.id.tvWJHNum,  item.userdirectcount.toString())
+//                        .setText(R.id.tvState, "")
             }
         }
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act,1)
         rvView.addItemDecoration(DividerItem14_14_14(act))
+        adapter.emptyView =  getEmptyView(act, R.mipmap.empty_team,"暂无下级成员，只有分销商才能查看下级成员哦~")
+
+        mRgRecord.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.mRbAll->{
+
+                }
+                R.id.mRbSeven->{
+
+                }
+                R.id.mRbThirty->{
+
+                }
+                R.id.mRbNinety->{
+
+                }
+            }
+        }
+
+        srView.refresh({
+            page == 1
+            list.clear()
+            initData()
+        },{
+            page++
+            initData()
+        })
     }
 
     private fun initData(){
         mPresenter.inDirectData(DirectReq(page,0))
+        mPresenter.myTeam()
     }
 }

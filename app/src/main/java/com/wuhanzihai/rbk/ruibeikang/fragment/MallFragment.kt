@@ -5,6 +5,7 @@ import android.os.Handler
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +14,12 @@ import android.view.animation.TranslateAnimation
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
+import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.ext.loadImage
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
+import com.kotlin.base.utils.AppPrefsUtils
+import com.orhanobut.hawk.Hawk
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.*
 import com.wuhanzihai.rbk.ruibeikang.common.FrescoBannerLoader
@@ -32,6 +36,7 @@ import com.wuhanzihai.rbk.ruibeikang.presenter.view.MallView
 import kotlinx.android.synthetic.main.fragment_mall.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
+import per.goweii.anylayer.AnyLayer
 
 class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
@@ -39,6 +44,16 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         DaggerMallComponent.builder().activityComponent(mActivityComponent)
                 .mallModule(MallModule()).build().inject(this)
         mPresenter.mView = this
+    }
+
+    private val dialog by lazy {
+        val anyLayer =
+                AnyLayer.with(act)
+                        .contentView(R.layout.layout_mall_adv)
+                        .gravity(Gravity.CENTER)
+                        .backgroundResource(R.color.clarity_40)
+                        .cancelableOnTouchOutside(true)
+        anyLayer
     }
 
     override fun onMallIndexResult(result: MallBean) {
@@ -71,9 +86,12 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         list.addAll(result.theme)
         adapter.notifyDataSetChanged()
 
-        handler.removeCallbacks(run)
-        startAnimation()
-        isRun = true
+        tvAdv.startSlide(result.proadcast.item as MutableList<String>)
+
+        if (!AppPrefsUtils.getBoolean(BaseConstant.MALL_ADV)) {
+            dialog.show()
+            AppPrefsUtils.putBoolean(BaseConstant.MALL_ADV, true)
+        }
     }
 
     private lateinit var menuList: MutableList<MallGoodsItem>
@@ -219,7 +237,12 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         }
 
         mBannerCoupon.onClick {
-            startActivity<ExchangeCouponActivity>()
+            if (Hawk.get<IsRebateBean>(BaseConstant.ISREBATE_DATA).is_agent == 1) {
+                startActivity<ShareHealthActivity>()  //分享赚钱
+            } else {
+                startActivity<RebateAuthActivity>()
+            }
+//            startActivity<RebateActivity>()
         }
         tvToSearch.onClick {
             startActivity<SearchActivity>()
@@ -241,48 +264,12 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 //            startActivity<GoodsDetailActivity>("id" to 3)
 //
 //        }
+
+
+
     }
 
     private fun initData() {
         mPresenter.mallIndex()
-    }
-
-    private var index = 0
-    private var handler = Handler()
-    private var isRun = false
-
-    private fun startAnimation() {
-        if (!isRun) {
-            return
-        }
-        tvAdv.text = result!!.proadcast.item[index % result!!.proadcast.item.size]
-
-        val animationSet = AnimationSet(true)
-        val animation = TranslateAnimation(0f, 0f, 100f, 0f)
-        animation.duration = 800
-        animationSet.addAnimation(animation)
-        animationSet.fillAfter = true
-        tvAdv.startAnimation(animationSet)
-        index++
-        handler.postDelayed(run, 3000)
-    }
-
-    private fun stopAnimation() {
-        handler.removeCallbacks(run)
-    }
-
-    private var run = Runnable {
-        startAnimation()
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (hidden) {
-            isRun = false
-            stopAnimation()
-        } else {
-            isRun = true
-            startAnimation()
-        }
     }
 }

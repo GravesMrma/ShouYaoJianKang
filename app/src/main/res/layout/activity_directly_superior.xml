@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,232 +23,350 @@
         app:titleText="直属上级" />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/clView"
+        android:id="@+id/clInfoDef"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp14"
-        android:layout_marginTop="@dimen/dp39"
-        android:layout_marginRight="@dimen/dp14"
-        android:background="@drawable/sp_white_14"
+        android:layout_height="0dp"
+        android:background="@color/main_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp91"
-            android:layout_marginTop="@dimen/dp24"
-            android:text="黄海洋 (联合创始人)"
-            android:textColor="@color/black_33"
-            android:textSize="@dimen/f14"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvTixian"
-            android:layout_width="@dimen/dp60"
-            android:layout_height="@dimen/dp20"
-            android:background="@drawable/sp_orange_10_r0"
-            android:gravity="center"
-            android:paddingLeft="@dimen/dp2"
-            android:text="直属上级"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f11"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvName"
-            app:layout_constraintBottom_toBottomOf="@id/tvName"/>
-
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dp12"
-            android:paddingRight="@dimen/dp12"
-            android:layout_marginTop="@dimen/dp23"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/dp36"
-            app:layout_constraintTop_toBottomOf="@id/tvTixian">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="所在区域:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:text="海南省 三亚市"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp13"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="关联时间:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:text="2019.06.11"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
-
-    <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
-        android:id="@+id/ivHead"
-        android:layout_width="@dimen/dp74"
-        android:layout_height="@dimen/dp74"
-        android:layout_marginLeft="@dimen/dp25"
-        android:layout_marginTop="@dimen/dp13"
-        android:src="@mipmap/pic_test"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/clView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp14"
-        android:layout_marginTop="@dimen/dp39"
-        android:layout_marginRight="@dimen/dp14"
-        android:background="@drawable/sp_white_14"
-        app:layout_constraintTop_toBottomOf="@id/clView">
-
-        <TextView
-            android:id="@+id/tvName1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:layout_marginLeft="@dimen/dp91"
-            android:layout_marginTop="@dimen/dp24"
-            android:text="守护者：李晓"
-            android:textColor="@color/black_33"
-            android:textSize="@dimen/f14"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="@dimen/dp60"
-            android:layout_height="@dimen/dp20"
-            android:background="@drawable/sp_orange_10_r0"
-            android:gravity="center"
-            android:paddingLeft="@dimen/dp2"
-            android:text="原推荐人"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f11"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvName1"
-            app:layout_constraintBottom_toBottomOf="@id/tvName1"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dp12"
-            android:paddingRight="@dimen/dp12"
-            android:layout_marginTop="@dimen/dp37"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp39"
+            android:layout_marginRight="@dimen/dp14"
+            android:background="@drawable/sp_white_14"
             app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvNameDef"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginLeft="@dimen/dp91"
+                android:layout_marginTop="@dimen/dp24"
+                android:textColor="@color/black_33"
+                android:text="首要健康平台"
+                android:textSize="@dimen/f14"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="守护者:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvName2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:text="王梦龙"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp13"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="所在区域:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
-
-                <TextView
-                    android:id="@+id/tvAddress1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:text="湖北省 武汉市"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvTixianDef"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp20"
+                android:background="@drawable/sp_orange_10_r0"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp2"
+                android:text="直属上级"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f11"
+                app:layout_constraintBottom_toBottomOf="@id/tvNameDef"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvNameDef" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp13"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/dp23"
+                android:layout_marginBottom="@dimen/dp36"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTixianDef">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="关联时间:"
-                    android:textColor="@color/green_08"
-                    android:textSize="@dimen/f14" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tvTime1"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="所在区域:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:text="武汉市"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp10"
-                    android:text="2019.08.29"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f14" />
+                    android:layout_marginTop="@dimen/dp13"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关联时间:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvTimeDef"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
 
             </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
-        </LinearLayout>
+        <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+            android:layout_width="@dimen/dp74"
+            android:layout_height="@dimen/dp74"
+            android:layout_marginLeft="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp13"
+            android:src="@mipmap/ic_def_ring"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
     </android.support.constraint.ConstraintLayout>
 
+    <android.support.constraint.ConstraintLayout
+        android:visibility="gone"
+        android:id="@+id/clInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/main_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp39"
+            android:layout_marginRight="@dimen/dp14"
+            android:background="@drawable/sp_white_14"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp91"
+                android:layout_marginTop="@dimen/dp24"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f14"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTixian"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp20"
+                android:background="@drawable/sp_orange_10_r0"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp2"
+                android:text="直属上级"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f11"
+                app:layout_constraintBottom_toBottomOf="@id/tvName"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvName" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp23"
+                android:layout_marginBottom="@dimen/dp36"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTixian">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="激活卡号:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关联时间:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+
+        <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
+            android:id="@+id/ivHead"
+            android:layout_width="@dimen/dp74"
+            android:layout_height="@dimen/dp74"
+            android:layout_marginLeft="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp13"
+            android:src="@mipmap/ic_rebate_def"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginTop="@dimen/dp39"
+            android:layout_marginRight="@dimen/dp14"
+            android:background="@drawable/sp_white_14"
+            app:layout_constraintTop_toBottomOf="@id/clView">
+
+            <TextView
+                android:id="@+id/tvName1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp91"
+                android:layout_marginTop="@dimen/dp24"
+                android:text="守护者：李晓"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f14"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp20"
+                android:background="@drawable/sp_orange_10_r0"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp2"
+                android:text="原推荐人"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f11"
+                app:layout_constraintBottom_toBottomOf="@id/tvName1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvName1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp37"
+                android:layout_marginBottom="@dimen/dp36"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="守护者:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvName2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="激活卡号:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvAddress1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关联时间:"
+                        android:textColor="@color/green_08"
+                        android:textSize="@dimen/f14" />
+
+                    <TextView
+                        android:id="@+id/tvTime1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="@color/gray_99"
+                        android:textSize="@dimen/f14" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

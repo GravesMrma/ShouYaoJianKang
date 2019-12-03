@@ -12,6 +12,7 @@ import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
 import com.wuhanzihai.rbk.ruibeikang.fragment.PhoneNumberFragment
 import kotlinx.android.synthetic.main.activity_apply_phone.*
 import org.jetbrains.anko.act
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.act
 import java.util.*
 
@@ -30,7 +31,10 @@ class ApplyPhoneActivity : AppCompatActivity() {
     }
 
     private fun initView(){
-
+        tvTitle.setMoreTextAction {
+            startActivity<StandardWebActivity>("title" to "返利规则"
+                    , "data" to "http://api.hcjiankang.com/api/Web/article?id=773")
+        }
         mStack.add(PhoneNumberFragment(1))
         mStack.add(PhoneNumberFragment(2))
 

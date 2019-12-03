@@ -8,12 +8,12 @@ import com.wuhanzihai.rbk.ruibeikang.utils.AES
 /**
  * Created by wx on 2018/7/10
  */
-class DirectReq(page:Int,day:Int) : BaseReq() {
+class DirectReq(page: Int, day: Int) : BaseReq() {
+    private var agent_id = LoginUtils.getRebateId()
     private var day = day
-    private var disbutor_id = LoginUtils.getRebateId()
+    private var page = page
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
-    private var page = page
 
     init {
         sign = AES.encryptAES(formatParam(this), getKey())

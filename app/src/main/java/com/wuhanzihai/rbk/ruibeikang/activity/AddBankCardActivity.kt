@@ -7,6 +7,7 @@ import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
 import com.wuhanzihai.rbk.ruibeikang.data.entity.BankCardBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.AddBankCardReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
@@ -24,12 +25,10 @@ class AddBankCardActivity : BaseMvpActivity<BankCardPresenter>(), BankCardView {
         mPresenter.mView = this
     }
 
-    override fun onBankCardResult(result: BankCardBean) {
-
-    }
-
     override fun onAddBankCardResult() {
-
+        toast("添加成功")
+        setResult(4321)
+        finish()
     }
 
     override fun onDelBankCardResult() {
