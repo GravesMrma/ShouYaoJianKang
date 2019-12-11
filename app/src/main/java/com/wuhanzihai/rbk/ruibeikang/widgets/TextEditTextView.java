@@ -1,7 +1,9 @@
 package com.wuhanzihai.rbk.ruibeikang.widgets;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.EditText;
 
@@ -23,7 +25,7 @@ public class TextEditTextView extends android.support.v7.widget.AppCompatEditTex
     public boolean onKeyPreIme(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == 1) {
             super.onKeyPreIme(keyCode, event);
-            onKeyBoardHideListener.onKeyHide(keyCode, event);
+            onKeyBoardHideListener.onKeyHide(0);
             return false;
         }
         return super.onKeyPreIme(keyCode, event);
@@ -38,6 +40,16 @@ public class TextEditTextView extends android.support.v7.widget.AppCompatEditTex
     }
 
     public interface OnKeyBoardHideListener{
-        void onKeyHide(int keyCode, KeyEvent event);
+        void onKeyHide(int keyCode);  //  0 收起软键盘  1 获取焦点  2 取消焦点
+    }
+
+    @Override
+    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect);
+        if (focused){
+            onKeyBoardHideListener.onKeyHide(1);
+        }else {
+            onKeyBoardHideListener.onKeyHide(2);
+        }
     }
 }

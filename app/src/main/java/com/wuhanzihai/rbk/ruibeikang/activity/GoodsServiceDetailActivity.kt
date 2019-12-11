@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Paint
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.view.Gravity
 import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.ext.onClick
@@ -31,7 +30,6 @@ import kotlinx.android.synthetic.main.activity_goods_service_detail.*
 import okhttp3.*
 import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.toast
 import per.goweii.anylayer.AnyLayer
 import java.io.ByteArrayOutputStream
@@ -66,7 +64,7 @@ class GoodsServiceDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), Good
 
         webView.loadDataWithBaseURL(
                 null,
-                MyUtils.myUtils.htmlFormat(result.info),
+                MyUtils.instance.htmlFormat(result.info),
                 BaseConstant.MIME_TYPE,
                 BaseConstant.ENCODING,
                 null

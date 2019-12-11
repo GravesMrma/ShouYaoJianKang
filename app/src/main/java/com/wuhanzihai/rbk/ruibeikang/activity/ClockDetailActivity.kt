@@ -35,7 +35,7 @@ class ClockDetailActivity : AppCompatActivity() {
 
         webView.loadDataWithBaseURL(
                 null,
-                MyUtils.myUtils.htmlFormat(data),
+                MyUtils.instance.htmlFormat(data),
                 BaseConstant.MIME_TYPE,
                 BaseConstant.ENCODING,
                 null

@@ -35,11 +35,11 @@ import javax.inject.Inject
     存在选择图片的Activity基础封装
  */
 abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), BaseView,
-    TakePhoto.TakeResultListener, EasyPermissions.PermissionCallbacks {
+        TakePhoto.TakeResultListener, EasyPermissions.PermissionCallbacks {
 
-    private lateinit var mTakePhoto: TakePhoto
+    lateinit var mTakePhoto: TakePhoto
 
-    private lateinit var mTempFile: File
+    lateinit var mTempFile: File
 
     @Inject
     lateinit var mPresenter: T
@@ -71,10 +71,10 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
      */
     private fun initActivityInjection() {
         mActivityComponent = DaggerActivityComponent.builder()
-            .appComponent((application as BaseApplication).appComponent)
-            .activityModule(ActivityModule(this))
-            .lifecycleProviderModule(LifecycleProviderModule(this))
-            .build()
+                .appComponent((application as BaseApplication).appComponent)
+                .activityModule(ActivityModule(this))
+                .lifecycleProviderModule(LifecycleProviderModule(this))
+                .build()
 
     }
 
@@ -105,17 +105,16 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
      */
     private fun showAlertView() {
         AlertView("选择图片", "", "取消", null, arrayOf("拍照", "相册"), this,
-            AlertView.Style.ActionSheet, OnItemClickListener { _, position ->
-                mTakePhoto.onEnableCompress(CompressConfig.ofDefaultConfig(), false)
-                when (position) {
-                    0 -> {
-                        createTempFile()
-                        mTakePhoto.onPickFromCapture(Uri.fromFile(mTempFile))
-                    }
-                    1 -> mTakePhoto.onPickMultiple(limit)
+                AlertView.Style.ActionSheet, OnItemClickListener { _, position ->
+            mTakePhoto.onEnableCompress(CompressConfig.ofDefaultConfig(), false)
+            when (position) {
+                0 -> {
+                    createTempFile()
+                    mTakePhoto.onPickFromCapture(Uri.fromFile(mTempFile))
                 }
-            }).setCancelable(true)
-            .show()
+                1 -> mTakePhoto.onPickMultiple(limit)
+            }
+        }).setCancelable(true).show()
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
@@ -171,7 +170,7 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
     /*
         新建临时文件
      */
-    private fun createTempFile() {
+     fun createTempFile() {
         val tempFileName = "${DateUtils.curTime}.png"
         if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
             this.mTempFile = File(Environment.getExternalStorageDirectory(), tempFileName)
@@ -194,16 +193,16 @@ abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), Bas
      */
     protected fun checkPermission() {
         val perms = arrayOf(
-            Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
         )
         if (EasyPermissions.hasPermissions(this, *perms)) {
             showAlertView()
         } else {
             EasyPermissions.requestPermissions(
-                this@BaseTakePhotoActivity,
-                "你好,选取需要获取摄像头权限和读写内存权限。你能允许吗?", 0, *perms
+                    this@BaseTakePhotoActivity,
+                    "你好,选取需要获取摄像头权限和读写内存权限。你能允许吗?", 0, *perms
             )
         }
     }

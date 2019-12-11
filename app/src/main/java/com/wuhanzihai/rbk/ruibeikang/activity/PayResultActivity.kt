@@ -20,7 +20,6 @@ class PayResultActivity : AppCompatActivity() {
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
-
         initView()
 
         initData()
@@ -31,10 +30,12 @@ class PayResultActivity : AppCompatActivity() {
         tvMore.onClick {
             Bus.send(MainFragmentEvent(2))
             startActivity<MainActivity>()
+            finish()
         }
 
         tvCommit.onClick {
             startActivity<OrderActivity>()
+            finish()
         }
     }
 

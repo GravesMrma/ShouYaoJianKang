@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp12"
         android:layout_marginTop="@dimen/dp24"
-        android:text="你你你好"
         android:textColor="@color/white"
         android:textSize="@dimen/f17"
         android:textStyle="bold"
@@ -24,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp24"
         android:layout_marginRight="@dimen/dp12"
-        android:text="你你你好"
         android:textColor="@color/white"
         android:textSize="@dimen/f17"
         android:textStyle="bold"
@@ -37,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp24"
         android:layout_marginBottom="@dimen/dp24"
-        android:text="nan"
         android:textColor="@color/white"
         android:textSize="@dimen/f12"
         app:layout_constraintLeft_toLeftOf="@id/tvName"
@@ -49,15 +46,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp10"
         android:layout_marginBottom="@dimen/dp24"
-        android:text="nan"
         android:textColor="@color/white"
         android:textSize="@dimen/f12"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/tvSex"
         app:layout_constraintTop_toBottomOf="@id/tvSex" />
 
-
     <TextView
+        android:id="@+id/tvDetail"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dp24"
         android:layout_marginRight="@dimen/dp12"
@@ -71,7 +67,18 @@
         android:text="详情"
         android:textColor="@color/green_08"
         android:textSize="@dimen/f13"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp12"
+        android:src="@mipmap/ic_del_arch"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tvAge"
         app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

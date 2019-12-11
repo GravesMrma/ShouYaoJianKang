@@ -54,7 +54,6 @@ class RebateActivity : BaseMvpActivity<RebatePresenter>(), RebateView {
         tvMoney2.text = "¥" + result.agent.aplliy_money
     }
 
-
     private lateinit var list: MutableList<RebateItem>
     private lateinit var adapter: BaseQuickAdapter<RebateItem, BaseViewHolder>
 
@@ -88,7 +87,6 @@ class RebateActivity : BaseMvpActivity<RebatePresenter>(), RebateView {
                 4 -> startActivity<ApplyCashRecordActivity>()  //提现明细
                 5 -> {
                     startActivity<ApplyLevelActivity>() // 等级申请
-
                 }
                 6 -> startActivity<ShareHealthActivity>()  //分享赚钱
                 7 -> startActivity<ShareRecordActivity>()  //分享记录

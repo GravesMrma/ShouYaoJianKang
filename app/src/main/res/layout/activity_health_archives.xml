@@ -14,10 +14,12 @@
         android:background="@color/white" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="健康档案" />
+        app:titleText="健康档案"
+        app:moreText="编辑"/>
 
     <View
         android:layout_width="match_parent"
@@ -27,7 +29,8 @@
     <RelativeLayout
         android:id="@+id/rlEmpty"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp16"
-                android:text="暂无健康档案，您的健康信息会定期更新~"
+                android:text="暂无健康档案，为自己、亲友创建档案~"
                 android:textColor="@color/black_33"
                 android:textSize="@dimen/f14" />
 
@@ -56,29 +59,18 @@
                 android:layout_marginLeft="@dimen/dp60"
                 android:layout_marginRight="@dimen/dp60"
                 android:gravity="center"
-                android:text="通过手环、血压血糖仪、体脂称收集数据丰富您的健康信息"
+                android:text="快速创建档案，平台会为您提供更具针对性的健康服务！"
                 android:textColor="@color/gray_99"
                 android:textSize="@dimen/f13" />
 
-            <TextView
-                android:id="@+id/tvBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp11"
-                android:background="@drawable/sp_orange_14"
-                android:gravity="center"
-                android:minWidth="@dimen/dp110"
-                android:minHeight="@dimen/dp28"
-                android:text="去测试"
-                android:textColor="@color/white"
-                android:textSize="@dimen/f12" />
         </LinearLayout>
     </RelativeLayout>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/srView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvView"
@@ -88,5 +80,24 @@
         </android.support.v7.widget.RecyclerView>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp5"
+        android:paddingBottom="@dimen/dp5"
+        android:paddingLeft="@dimen/dp28"
+        android:paddingRight="@dimen/dp28"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tvAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/buttonStyleRound"
+            android:text="添加档案"/>
+
+    </LinearLayout>
 
 </LinearLayout>

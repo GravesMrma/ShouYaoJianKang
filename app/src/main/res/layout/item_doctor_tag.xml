@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/dp14"
+    android:textSize="@dimen/f9"
+    android:textColor="@color/green_08"
+    android:layout_marginRight="@dimen/dp8"
+    android:gravity="center"
+    android:background="@drawable/sp_white_7"
+    android:paddingLeft="@dimen/dp6"
+    android:paddingRight="@dimen/dp6">
+</TextView>

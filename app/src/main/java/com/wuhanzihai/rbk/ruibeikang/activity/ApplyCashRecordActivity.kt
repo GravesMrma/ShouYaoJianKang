@@ -31,8 +31,8 @@ class ApplyCashRecordActivity : AppCompatActivity() {
     private fun initView(){
         mStack.add(ApplyCashRecordFragment(1))
         mStack.add(ApplyCashRecordFragment(2))
-        mStack.add(ApplyCashRecordFragment(3))
         mStack.add(ApplyCashRecordFragment(4))
+        mStack.add(ApplyCashRecordFragment(3))
 
         val adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {

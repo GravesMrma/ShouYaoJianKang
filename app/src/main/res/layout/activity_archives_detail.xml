@@ -14,10 +14,12 @@
         android:background="@color/white" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="健康档案" />
+        app:titleText="健康档案"
+        app:moreText="保存"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -121,7 +123,6 @@
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
-
                     <RadioGroup
                         android:id="@+id/mRgRecord"
                         android:layout_width="wrap_content"
@@ -130,7 +131,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/mRbAll"
+                            android:id="@+id/mRbMan"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -144,7 +145,7 @@
                             android:textSize="@dimen/f15" />
 
                         <RadioButton
-                            android:id="@+id/mRbDfk"
+                            android:id="@+id/mRbWoman"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/dp15"
@@ -189,7 +190,6 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
-                        android:text="1993-02-13"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -222,7 +222,6 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
-                        android:text="170cm"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -255,7 +254,6 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
-                        android:text="56Kg"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -296,7 +294,6 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
-                        android:text="与您的关系"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -329,12 +326,10 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
-                        android:text="与您的关系"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
                 </RelativeLayout>
-
 
             </LinearLayout>
 
@@ -364,7 +359,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
-                    app:max_select="0" />
+                    app:max_select="1" />
 
                 <View
                     android:layout_width="match_parent"
@@ -427,7 +422,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
-                    app:max_select="0" />
+                    app:max_select="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -453,6 +448,7 @@
                     app:max_select="0" />
 
                 <EditText
+                    android:id="@+id/edText5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
@@ -489,6 +485,7 @@
                     app:max_select="0" />
 
                 <EditText
+                    android:id="@+id/edText6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
@@ -525,6 +522,7 @@
                     app:max_select="0" />
 
                 <EditText
+                    android:id="@+id/edText7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
@@ -561,6 +559,7 @@
                     app:max_select="0" />
 
                 <EditText
+                    android:id="@+id/edText8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
@@ -597,6 +596,7 @@
                     app:max_select="0" />
 
                 <EditText
+                    android:id="@+id/edText9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"

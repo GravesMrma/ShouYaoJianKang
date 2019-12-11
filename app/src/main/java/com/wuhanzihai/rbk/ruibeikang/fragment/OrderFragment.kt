@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +18,11 @@ import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.AfterSaleActivity
+import com.wuhanzihai.rbk.ruibeikang.activity.LogisticsActivity
 import com.wuhanzihai.rbk.ruibeikang.activity.OrderDetailActivity
 import com.wuhanzihai.rbk.ruibeikang.activity.PayActivity
 import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
+import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
 import com.wuhanzihai.rbk.ruibeikang.data.entity.Goodslist
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderItem
@@ -33,6 +36,7 @@ import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
+import per.goweii.anylayer.AnyLayer
 
 @SuppressLint("ValidFragment")
 class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderView {
@@ -54,6 +58,7 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
     private lateinit var dividerItemFourteen: DividerItemOrderItem
     private var page = 1
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_recyclerview, container, false)
@@ -65,7 +70,6 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
         initView()
 
         initData()
-
     }
 
     private fun initView() {
@@ -121,6 +125,22 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
                     }
                     4 -> {
                         helper.setText(R.id.tvState, "已发货")
+                        helper.setTextColor(R.id.tvState, ContextCompat.getColor(act, R.color.orange))
+                        helper.getView<TextView>(R.id.tvCommit).visibility = View.VISIBLE
+                        helper.getView<TextView>(R.id.tvMore).visibility = View.VISIBLE
+                        helper.setText(R.id.tvMore, "查看物流")
+                        helper.setTextColor(R.id.tvMore, ContextCompat.getColor(act, R.color.gray_99))
+                        helper.getView<TextView>(R.id.tvMore).setBackgroundResource(R.drawable.sp_gray_14_stk)
+                        helper.getView<TextView>(R.id.tvMore).onClick {
+                            startActivity<LogisticsActivity>("orderId" to item.order_id,
+                                    "storeId" to item.store_id)
+                        }
+                        helper.setText(R.id.tvCommit, "确认收货")
+                        helper.setTextColor(R.id.tvCommit, ContextCompat.getColor(act, R.color.white))
+                        helper.getView<TextView>(R.id.tvCommit).setBackgroundResource(R.drawable.sp_orange_14)
+                        helper.getView<TextView>(R.id.tvCommit).onClick {
+                            toast("确认收货")
+                        }
                     }
                     5 -> {
                         helper.setText(R.id.tvState, "已确认收货")
@@ -152,9 +172,9 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
                 helper.getView<RecyclerView>(R.id.rvView).run {
                     adapter = object : BaseQuickAdapter<Goodslist, BaseViewHolder>(R.layout.item_order_goods, item.goodslist) {
                         override fun convert(helper: BaseViewHolder?, item: Goodslist?) {
-                            if (item!!.pro_good_remark.image.contains(",")){
-                                helper!!.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item.pro_good_remark.image.substring(0,item.pro_good_remark.image.indexOf(",")))
-                            }else{
+                            if (item!!.pro_good_remark.image.contains(",")) {
+                                helper!!.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item.pro_good_remark.image.substring(0, item.pro_good_remark.image.indexOf(",")))
+                            } else {
                                 helper!!.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item.pro_good_remark.image)
                             }
                             helper.setText(R.id.tvName, item.pro_good_remark.name)
@@ -175,7 +195,7 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act, 1)
         rvView.addItemDecoration(DividerItem12_10_12(act))
-        adapter.emptyView = getEmptyView(act,R.mipmap.empty_order,"暂无订单")
+        adapter.emptyView = getEmptyView(act, R.mipmap.empty_order, "暂无订单")
 //        adapter.emptyView = layoutInflater.inflate(R.layout.empty_order_view, null)
         adapter.setOnItemClickListener { _, _, position ->
             startActivity<OrderDetailActivity>("data" to list[position])

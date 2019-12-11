@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp14">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/sp_gary_7"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进一步"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f13" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="完善档案"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/f13" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@mipmap/ic_more_gray"
+            android:drawablePadding="@dimen/dp10"
+            android:gravity="center"
+            android:text="，方便医生了解病情"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f13" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_gravity="center_horizontal"
+        android:text="医生回复仅为建议，具体诊疗请在医院进行"
+        android:textColor="@color/gray_99"
+        android:textSize="@dimen/f12" />
+
+</LinearLayout>

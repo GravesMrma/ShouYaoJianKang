@@ -24,12 +24,15 @@ class ImageShowActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_show)
-        StatusBarUtil.setColor(act, ContextCompat.getColor(act, R.color.colorPrimary))
+//        StatusBarUtil.setColor(act, ContextCompat.getColor(act, R.color.colorPrimary))
+        StatusBarUtil.setLightMode(act)
+        StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
+
 
         var imgs = intent.getStringArrayListExtra("urls")
         var views = mutableListOf<View>()
 
-        count = intent.getIntExtra("count",0)
+        count = intent.getIntExtra("count", 0)
 
         for (i in 0 until imgs.size) {
             var view = layoutInflater.inflate(R.layout.layout_image, null)
@@ -38,17 +41,21 @@ class ImageShowActivity : BaseActivity() {
             mIvShow.setIsLongpressEnabled(false)
             mIvShow.setTapListener(DoubleTapGestureListener(mIvShow))
             val controller =
-                if (imgs[i].contains("http")) {
-                    Fresco.newDraweeControllerBuilder()
-                        .setUri(imgs[i])
-                        .setCallerContext("ZoomableApp-MyPagerAdapter")
-                        .build()
-                } else {
-                    Fresco.newDraweeControllerBuilder()
-                        .setUri(Uri.fromFile(File(imgs[i])))
-                        .setCallerContext("ZoomableApp-MyPagerAdapter")
-                        .build()
-                }
+                    if (imgs[i].contains("http")) {
+                        Fresco.newDraweeControllerBuilder()
+                                .setUri(imgs[i])
+                                .setCallerContext("ZoomableApp-MyPagerAdapter")
+                                .build()
+                    } else {
+                        Fresco.newDraweeControllerBuilder()
+                                .setUri(BaseConstant.BASE_URL + imgs[i])
+                                .setCallerContext("ZoomableApp-MyPagerAdapter")
+                                .build()
+//                    Fresco.newDraweeControllerBuilder()
+//                        .setUri(Uri.fromFile(File(imgs[i])))
+//                        .setCallerContext("ZoomableApp-MyPagerAdapter")
+//                        .build()
+                    }
             mIvShow.controller = controller
             views.add(view)
         }

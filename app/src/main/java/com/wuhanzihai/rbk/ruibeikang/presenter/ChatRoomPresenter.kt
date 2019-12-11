@@ -21,7 +21,7 @@ class ChatRoomPresenter @Inject constructor() : BasePresenter<ChatRoomView>() {
         if (!checkNetWork()) {
             return
         }
-        mView.showLoading()
+//        mView.showLoading()
         userServiceImpl.chatRecord(req)
                 .excute(object : BaseSubscriber<ChatBean>(mView) {
                     override fun onNext(t:ChatBean) {
@@ -40,7 +40,7 @@ class ChatRoomPresenter @Inject constructor() : BasePresenter<ChatRoomView>() {
                 .excute(object : BaseSubscriber<IsRebateBean>(mView) {
                     override fun onNext(t:IsRebateBean) {
                         super.onNext(t)
-//                        mView.onChatResult(t)
+                        mView.onSendSuccess()
                     }
                 }, lifecycleProvider)
     }

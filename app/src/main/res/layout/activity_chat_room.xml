@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ChatRoomActivity"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".activity.ChatRoomActivity">
 
     <!--<View-->
-        <!--android:id="@+id/fake_status_bar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/statusbar_view_height"-->
-        <!--android:background="@color/white"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--android:id="@+id/fake_status_bar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/statusbar_view_height"-->
+    <!--android:background="@color/white"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
         android:id="@+id/tvTitle"
@@ -22,14 +22,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:titleText="聊天室" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvMsg"
+    <LinearLayout
+        android:id="@+id/llView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintBottom_toTopOf="@id/llEdit">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/llEdit"
+        app:layout_constraintTop_toBottomOf="@id/clView">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvMsg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvRemind"
@@ -52,6 +58,7 @@
         android:paddingTop="@dimen/dp16"
         android:paddingRight="@dimen/dp22"
         android:paddingBottom="@dimen/dp22"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/tvRemind">
 
         <com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
@@ -67,7 +74,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp14"
-            android:text="你的名字"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f14"
             android:textStyle="bold"
@@ -79,7 +85,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp14"
-            android:text="你的名字"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f14"
             app:layout_constraintLeft_toRightOf="@id/tvName"
@@ -102,49 +107,138 @@
         android:id="@+id/llEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/dp7"
-        android:paddingBottom="@dimen/dp7"
+        android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/dp14"
-            android:paddingRight="@dimen/dp14"
-            android:src="@mipmap/ic_chat_more" />
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp7"
+            android:paddingBottom="@dimen/dp7">
 
-        <com.wuhanzihai.rbk.ruibeikang.widgets.TextEditTextView
-            android:id="@+id/edContent"
-            android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/ivSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp14"
+                android:paddingRight="@dimen/dp14"
+                android:src="@drawable/selector_chat_more" />
+
+            <com.wuhanzihai.rbk.ruibeikang.widgets.TextEditTextView
+                android:id="@+id/edContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/sp_inputmsg_stk"
+                android:gravity="start"
+                android:hint="请输入文字描述病情"
+                android:maxLines="3"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10"
+                android:textColor="@color/black_33"
+                android:textColorHint="#BCBCBC"
+                android:textSize="@dimen/f12" />
+
+            <TextView
+                android:id="@+id/tvSend"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginLeft="@dimen/dp14"
+                android:layout_marginRight="@dimen/dp14"
+                android:background="@drawable/selector_chat_send"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:text="发送"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPic"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/sp_inputmsg_stk"
-            android:gravity="start"
-            android:hint="请输入文字描述病情"
-            android:maxLines="3"
-            android:paddingLeft="@dimen/dp10"
-            android:paddingTop="@dimen/dp13"
-            android:paddingRight="@dimen/dp10"
-            android:paddingBottom="@dimen/dp13"
-            android:textColor="@color/black_33"
-            android:textColorHint="#BCBCBC"
-            android:textSize="@dimen/f12" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp20"
+            android:paddingBottom="@dimen/dp20"
+            android:visibility="gone">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp30"
-            android:layout_marginLeft="@dimen/dp14"
-            android:layout_marginRight="@dimen/dp14"
-            android:background="@drawable/sp_gray_14"
-            android:gravity="center"
-            android:paddingLeft="@dimen/dp12"
-            android:paddingRight="@dimen/dp12"
-            android:text="发送"
-            android:textColor="@color/white"
-            android:textSize="@dimen/f12" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_srt"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:text="您上传的照片仅对解答您问题的医生可见"
+                android:textColor="@color/gray_66"
+                android:textSize="@dimen/f10" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlTake"
+                    android:layout_width="@dimen/dp100"
+                    android:layout_height="@dimen/dp100"
+                    android:background="@drawable/sp_white_5">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableTop="@mipmap/ic_pic_take"
+                        android:drawablePadding="@dimen/dp5"
+                        android:gravity="center"
+                        android:text="拍照"
+                        android:textColor="#bcbcbc"
+                        android:textSize="@dimen/f12" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlCar"
+                    android:layout_width="@dimen/dp100"
+                    android:layout_height="@dimen/dp100"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:background="@drawable/sp_white_5">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableTop="@mipmap/ic_pic_cra"
+                        android:drawablePadding="@dimen/dp5"
+                        android:gravity="center"
+                        android:text="相册"
+                        android:textColor="#bcbcbc"
+                        android:textSize="@dimen/f12" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:text="线上咨询的必备拍照技能，点击了解 >>"
+                android:textColor="@color/gray_99"
+                android:textSize="@dimen/f11" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

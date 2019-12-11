@@ -35,7 +35,6 @@ class OrderActivity : BaseMvpActivity<OrderPresenter>(),OrderView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
-
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act,ContextCompat.getColor(act, R.color.white))
 

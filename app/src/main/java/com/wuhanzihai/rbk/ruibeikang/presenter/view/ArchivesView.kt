@@ -5,12 +5,16 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 
 interface ArchivesView :BaseView {
 
-    fun onArchivesResult(result: MutableList<ArchivesBean>)
+    fun onArchivesResult(result: MutableList<ArchivesBean>){}
 
-    fun onAddArchivesResult()
+    fun onAddArchivesResult(){}
 
-    fun onDelArchivesResult()
+    fun onEditArchivesResult(){}
 
-    fun onChosePeopleResult(result:OrderIdBean)
+    fun onDelArchivesResult(){}
+
+    fun onChosePeopleResult(result:OrderIdBean){}
+
+    fun onArchivesDetail(result: ArchivesDetail){}
 
 }

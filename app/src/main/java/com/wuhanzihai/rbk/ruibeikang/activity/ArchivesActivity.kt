@@ -15,6 +15,7 @@ import com.hhjt.baselibrary.ext.refresh
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
 import com.wuhanzihai.rbk.ruibeikang.common.showChoseText
 import com.wuhanzihai.rbk.ruibeikang.data.entity.ArchivesBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderIdBean
@@ -47,19 +48,15 @@ class ArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
         adapter.notifyDataSetChanged()
     }
 
-    override fun onAddArchivesResult() {
-
-    }
-
     override fun onDelArchivesResult() {
         page = 1
         list.clear()
         initData()
     }
 
-
     override fun onChosePeopleResult(result: OrderIdBean) {
         startActivity<PayInterrogationActivity>("orderId" to result.order_id.toInt())
+        finish()
     }
 
     private lateinit var list: MutableList<ArchivesBean>
@@ -91,12 +88,12 @@ class ArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
         list = mutableListOf()
         adapter = object : BaseQuickAdapter<ArchivesBean, BaseViewHolder>(R.layout.item_archives, list) {
             override fun convert(helper: BaseViewHolder?, item: ArchivesBean?) {
-                helper!!.setText(R.id.tvName, "${item!!.name} (${item.con})")
+                helper!!.setText(R.id.tvName, "${item!!.name} (${item.connections})")
                 if (item.sex == 1) {
-                    helper.setText(R.id.tvSex, "男   ${SimpleDateFormat("yyyy-MM-dd").format(Date(item.birthday * 1000))}")
+                    helper.setText(R.id.tvSex, "男   ${item.birthday}")
                 }
                 if (item.sex == 2) {
-                    helper.setText(R.id.tvSex, "女   ${SimpleDateFormat("yyyy-MM-dd").format(Date(item.birthday * 1000))}")
+                    helper.setText(R.id.tvSex, "女   ${item.birthday}")
                 }
                 if (edit) {
                     helper.getView<ImageView>(R.id.ivDelete).visibility = View.VISIBLE
@@ -113,6 +110,7 @@ class ArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act, 1)
         rvView.addItemDecoration(DividerItem14_14_14(act))
+        adapter.emptyView = getEmptyView(act,R.mipmap.empty_archives,"暂无档案，快速添加继续提问~")
         adapter.setOnItemClickListener { _, _, position ->
             if (!list[position].isCheck) {
                 for (bean in list) {

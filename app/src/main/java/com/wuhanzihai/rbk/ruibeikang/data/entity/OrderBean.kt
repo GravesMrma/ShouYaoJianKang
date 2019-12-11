@@ -120,3 +120,16 @@ data class ProGoodRemark(
     val user_id: Int,
     val usercart_id: Int
 ):Serializable
+
+data class Logistics(
+    val code: String,
+    val `data`: List<LogisticsData>,
+    val no: String,
+    val searchtime: String,
+    val status: Int
+)
+
+data class LogisticsData(
+    val context: String,
+    val time: String
+)

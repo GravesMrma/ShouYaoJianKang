@@ -32,7 +32,7 @@ import com.wuhanzihai.rbk.ruibeikang.utils.BraceletManagerUtil
 import java.io.File
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy
 import android.support.v4.content.ContextCompat.getSystemService
-
+import cn.jpush.android.api.JPushInterface
 
 
 class BaseApp : BaseApplication() {
@@ -68,6 +68,10 @@ class BaseApp : BaseApplication() {
 
         //蓝牙初始化
         initBluetoothBracelet()
+
+        JPushInterface.setDebugMode(false);
+        JPushInterface.init(this);
+
     }
 
     private fun initFresco() {

@@ -5,5 +5,5 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 
 interface DoctorView : BaseView {
 
-
+    fun onDoctorResult(result:DoctorDetail)
 }

@@ -489,7 +489,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/dp3"
                                     android:ellipsize="end"
-                                    android:maxLines="5"
+                                    android:maxLines="4"
                                     android:textColor="@color/gray_66"
                                     android:textSize="@dimen/f12"
                                     app:layout_constraintBottom_toBottomOf="parent"

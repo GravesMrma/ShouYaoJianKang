@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
 import com.wuhanzihai.rbk.ruibeikang.activity.ChatRoomActivity
+import com.wuhanzihai.rbk.ruibeikang.common.loadImage
 import com.wuhanzihai.rbk.ruibeikang.common.showChoseText
 import com.wuhanzihai.rbk.ruibeikang.data.entity.InterrogationBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.InterrogationItem
@@ -23,8 +24,10 @@ import com.wuhanzihai.rbk.ruibeikang.data.protocal.DelArchivesReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.NoParamOrderIdReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
+import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemTen
 import com.wuhanzihai.rbk.ruibeikang.presenter.InterrogationPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.InterrogationView
+import com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -66,21 +69,74 @@ class InterrogationRecordFragment : BaseMvpFragment<InterrogationPresenter>(), I
         list = mutableListOf()
         adapter = object : BaseQuickAdapter<InterrogationItem, BaseViewHolder>(R.layout.item_interrogation_record, list) {
             override fun convert(helper: BaseViewHolder?, item: InterrogationItem?) {
-                helper!!.setText(R.id.tvName, "没数据")
-                        .setText(R.id.tvTime, SimpleDateFormat("yyyy/MM/dd HH:mm").format(Date(item!!.create_time * 1000)))
-                        .setText(R.id.tvContent, "没数据")
-                        .setText(R.id.tvName, "没数据")
-                        .setText(R.id.tvName, "没数据")
+                helper!!
+                        .setText(R.id.tvTime, item!!.create_time)
+                        .setText(R.id.tvContent, item.content)
 
+                when (item.status) {
+                    1 -> {
+                        helper.setText(R.id.tvState, "未支付")
+                        helper.setText(R.id.tvName, "未支付")
+                        helper.getView<CircleImageView>(R.id.ivHead).setImageResource(R.mipmap.ic_launcher)
+                    }
+                    2 -> {
+                        if (item.reading == 1) {
+                            helper.setText(R.id.tvState, "医生未回复")
+                        } else {
+                            helper.setText(R.id.tvState, "医生已回复")
+                        }
+                        if (item.doctor_content.msg.contains("医生分配中")) {
+                            helper.setText(R.id.tvName, "医生分配中")
+                            helper.getView<CircleImageView>(R.id.ivHead).setImageResource(R.mipmap.ic_launcher)
+                        } else {
+                            if (item.doctor_content.error == 0) {
+                                helper.setText(R.id.tvName, item.doctor_content.name)
+                                        .setText(R.id.tvTime, "${item.create_time}  ${item.doctor_content.clinic_name}")
+                                helper.getView<CircleImageView>(R.id.ivHead).loadImage(item.doctor_content.image)
+                            }
+                        }
+                    }
+                    3 -> {
+                        helper.setText(R.id.tvState, "超时关闭")
+                        helper.setText(R.id.tvName, "超时关闭")
+                        helper.getView<CircleImageView>(R.id.ivHead).setImageResource(R.mipmap.ic_launcher)
+                    }
+                    4 -> {
+                        helper.setText(R.id.tvState, "正常完成")
+                        if (item.doctor_content.error == 0) {
+                            helper.setText(R.id.tvName, item.doctor_content.name)
+                                    .setText(R.id.tvTime, "${item.create_time}  ${item.doctor_content.clinic_name}")
+                            helper.getView<CircleImageView>(R.id.ivHead).loadImage(item.doctor_content.image)
+                        }
+                    }
+                    5 -> {
+                        helper.setText(R.id.tvState, "取消订单")
+                        helper.setText(R.id.tvName, "取消订单")
+                        helper.getView<CircleImageView>(R.id.ivHead).setImageResource(R.mipmap.ic_launcher)
+                    }
+                    6 -> {
+                        helper.setText(R.id.tvState, "退款")
+                        helper.setText(R.id.tvName, "退款")
+                        helper.getView<CircleImageView>(R.id.ivHead).setImageResource(R.mipmap.ic_launcher)
+                    }
+                }
             }
         }
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act, 1)
+        rvView.addItemDecoration(DividerItemTen(act))
         adapter.setOnItemClickListener { _, _, position ->
-            startActivity<ChatRoomActivity>("orderId" to list[position].order_id,"stateId" to list[position].status)
+            if (list[position].status == 2) {
+                if (!list[position].doctor_content.msg.contains("医生分配中")) {
+                    startActivity<ChatRoomActivity>("orderId" to list[position].order_id, "stateId" to list[position].status)
+                }
+            }
+            if (list[position].status == 4) {
+                startActivity<ChatRoomActivity>("orderId" to list[position].order_id, "stateId" to list[position].status)
+            }
         }
 
-        adapter.setOnItemLongClickListener { adapter, view, position ->
+        adapter.setOnItemLongClickListener { _, _, position ->
             showChoseText(act, "确认删除该条记录吗?", "删除") {
                 mPresenter.deleteRecord(NoParamOrderIdReq(list[position].order_id))
             }

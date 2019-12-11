@@ -59,6 +59,10 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).getOrder(req)
     }
 
+    fun logistics(req: LogisticsReq): Observable<BaseResp<Logistics>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).logistics(req)
+    }
+
     fun userAdv(): Observable<BaseResp<MineAdv>> {
         return RetrofitFactory.instance.create(UserApi::class.java).userAdv(NoParamReq())
     }
@@ -144,23 +148,23 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).applyLevel(NoParamIdReq())
     }
 
-    fun applyLevelAction(req:ApplyLevelReq): Observable<BaseData> {
+    fun applyLevelAction(req: ApplyLevelReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).applyLevelAction(req)
     }
 
-    fun applyLevelRecord(req:NoParamIdDisIdPageReq): Observable<BaseResp<RebateLevelRecordBean>> {
+    fun applyLevelRecord(req: NoParamIdDisIdPageReq): Observable<BaseResp<RebateLevelRecordBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).applyLevelRecord(req)
     }
 
-    fun myCard(req:NoParamIdTypeReq): Observable<BaseResp<MyCardBean>> {
+    fun myCard(req: NoParamIdTypeReq): Observable<BaseResp<MyCardBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).myCard(req)
     }
 
-    fun applyCardRecord(req:NoParamIdDisIdPageReq): Observable<BaseResp<CardRecord>> {
+    fun applyCardRecord(req: NoParamIdDisIdPageReq): Observable<BaseResp<CardRecord>> {
         return RetrofitFactory.instance.create(UserApi::class.java).applyCardRecord(req)
     }
 
-    fun applyCash(req:ApplyCashReq): Observable<BaseData> {
+    fun applyCash(req: ApplyCashReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).applyCash(req)
     }
 
@@ -168,11 +172,11 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).applyCashDetail(NoParamIdReq())
     }
 
-    fun applyCashRecord(req:NoParamIdPageReq): Observable<BaseResp<ApplyCashRecordBean>> {
+    fun applyCashRecord(req: NoParamIdPageReq): Observable<BaseResp<ApplyCashRecordBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).applyCashRecord(req)
     }
 
-    fun applyCashList(req:ApplyCashListReq): Observable<BaseResp<ApplyCashListBean>> {
+    fun applyCashList(req: ApplyCashListReq): Observable<BaseResp<ApplyCashListBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).applyCashList(req)
     }
 
@@ -180,7 +184,7 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).applyCashListDetail(NoParamIdReq())
     }
 
-    fun shareRecord(req:NoParamIdPageReq): Observable<BaseResp<ShareBean>> {
+    fun shareRecord(req: NoParamIdPageReq): Observable<BaseResp<ShareBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).shareRecord(req)
     }
 
@@ -191,7 +195,7 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).doctorList(NoParamIdReq())
     }
 
-    fun createDoctor(req: AddArchivesReq): Observable<BaseResp<IsRebateBean>> {
+    fun createDoctor(req: AddArchivesReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).createDoctor(req)
     }
 
@@ -203,7 +207,7 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).deleteRecord(req)
     }
 
-    fun editDoctor(req: NoParamIdReq): Observable<BaseResp<IsRebateBean>> {
+    fun editDoctor(req: EditArchivesReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).editDoctor(req)
     }
 
@@ -224,19 +228,20 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).chosePeople(req)
     }
 
-    fun addQuestion(fileReq: MutableList<File>,req: AddQuestionReq): Observable<BaseResp<IsRebateBean>> {
+    fun addQuestion(fileReq: MutableList<File>, req: AddQuestionReq): Observable<BaseResp<IsRebateBean>> {
         var map = HashMap<String, RequestBody>()
         for (file in fileReq) {
             map["file\"; filename=\"" + file.name] = RequestBody.create(MediaType.parse("image/jpg"), file)
         }
+        if (req.content.isNotEmpty()) {
+        }
         map["content"] = RequestBody.create(MediaType.parse("application/json"), req.content)
-        map["order_id"] = RequestBody.create(MediaType.parse("application/json"), req.order_id)
+        map["order_id"] = RequestBody.create(MediaType.parse("application/json"), req.order_id.toString())
         map["time"] = RequestBody.create(MediaType.parse("application/json"), req.time)
         map["token"] = RequestBody.create(MediaType.parse("application/json"), req.token)
         map["user_id"] = RequestBody.create(MediaType.parse("application/json"), req.user_id.toString())
         map["sign"] = RequestBody.create(MediaType.parse("application/json"), req.sign!!)
-
-        return RetrofitFactory.instance.create(UserApi::class.java).addQuestion(req)
+        return RetrofitFactory.instance.create(UserApi::class.java).addQuestion(map)
     }
 
     fun doctorRecord(req: NoParamIdReq): Observable<BaseResp<InterrogationBean>> {
@@ -253,5 +258,13 @@ class UserRepository @Inject constructor() {
 
     fun applyCard(req: ApplyCardReq): Observable<BaseData> {
         return RetrofitFactory.instance.create(UserApi::class.java).applyCard(req)
+    }
+
+    fun archivesDetail(req: ArchivesDetailReq): Observable<BaseResp<ArchivesDetail>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).archivesDetail(req)
+    }
+
+    fun doctorDetail(req: NoParamOrderReq): Observable<BaseResp<DoctorDetail>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).doctorDetail(req)
     }
 }

@@ -41,9 +41,8 @@ class InterrogationFragment : BaseTakePhotoFragment<InterrogationPresenter>(), I
 
     override fun onCreateQuestion(result: OrderIdBean) {
         startActivity<ArchivesActivity>("orderId" to result.order_id.toInt())
+        activity!!.finish()
     }
-
-
 
     private lateinit var list: MutableList<BusinessSettleEntity>
     private lateinit var adapter: ChoseImageAdapter<BusinessSettleEntity>

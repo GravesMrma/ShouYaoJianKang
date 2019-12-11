@@ -191,13 +191,6 @@ fun checkIsEqual(context: Context, et1: EditText, et2: EditText, msg: String = "
  * 图片加载
  */
 fun SimpleDraweeView.loadImage(path: String) {
-//    this.setImageURI(
-//        if (Patterns.WEB_URL.matcher(path).matches()) {
-//            path
-//        } else {
-//            BaseConstant.IMAGE_ADDRESS + path
-//        }
-//    )
     if (Patterns.WEB_URL.matcher(path).matches()) {
         this.controller = getPicController(path)
     } else {

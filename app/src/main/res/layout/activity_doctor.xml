@@ -53,7 +53,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp18"
-                android:text="名字"
                 android:textColor="@color/white"
                 android:textSize="@dimen/f18"
                 app:layout_constraintLeft_toRightOf="@id/ivHead"
@@ -64,7 +63,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp10"
-                android:text="(湖南省省直中医院)"
                 android:textColor="@color/white"
                 android:textSize="@dimen/f12"
                 app:layout_constraintBottom_toBottomOf="@id/tvName"
@@ -74,14 +72,13 @@
                 android:id="@+id/tvJob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="神经内科  主治医师"
                 android:textColor="@color/white"
                 android:textSize="@dimen/f12"
                 app:layout_constraintBottom_toBottomOf="@id/ivHead"
                 app:layout_constraintLeft_toLeftOf="@id/tvName"
                 app:layout_constraintTop_toTopOf="@id/ivHead" />
 
-            <android.support.v7.widget.RecyclerView
+            <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/rvTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +116,6 @@
                             android:id="@+id/tvMoney1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="465"
                             android:textColor="@color/green_08"
                             android:textSize="@dimen/f27" />
 
@@ -161,7 +157,6 @@
                             android:id="@+id/tvMoney2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="46"
                             android:textColor="@color/green_08"
                             android:textSize="@dimen/f27" />
 
@@ -203,7 +198,6 @@
                             android:id="@+id/tvMoney3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="100"
                             android:textColor="@color/green_08"
                             android:textSize="@dimen/f27" />
 
@@ -249,6 +243,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"
@@ -274,12 +269,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="专家简介"
+                    android:text="擅长领域"
                     android:textColor="@color/black_33"
                     android:textSize="@dimen/f14"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvGoodDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp15"

@@ -1,25 +1,18 @@
 package com.wuhanzihai.rbk.ruibeikang.activity
 
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Paint
-import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import com.google.gson.Gson
 import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.ext.loadImage
 import com.hhjt.baselibrary.ext.onClick
-import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
-import com.hhjt.baselibrary.utils.LoginUtils
 import com.jaeger.library.StatusBarUtil
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage
@@ -27,11 +20,9 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.common.FrescoBannerLoader
-import com.wuhanzihai.rbk.ruibeikang.common.GlobalBaseInfo
 import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.AddCartReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.BuyGoodsReq
-import com.wuhanzihai.rbk.ruibeikang.data.protocal.DoneCartReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.GoodsDetailReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerMallComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.MallModule
@@ -41,7 +32,6 @@ import com.wuhanzihai.rbk.ruibeikang.utils.JavaUtils
 import com.wuhanzihai.rbk.ruibeikang.utils.MyUtils
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
-import com.zhy.view.flowlayout.TagFlowLayout
 import kotlinx.android.synthetic.main.activity_goods_detail.*
 import kotlinx.android.synthetic.main.layout_specs.view.*
 import okhttp3.*
@@ -96,7 +86,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
 
         webView.loadDataWithBaseURL(
                 null,
-                MyUtils.myUtils.htmlFormat(result.info),
+                MyUtils.instance.htmlFormat(result.info),
                 BaseConstant.MIME_TYPE,
                 BaseConstant.ENCODING,
                 null

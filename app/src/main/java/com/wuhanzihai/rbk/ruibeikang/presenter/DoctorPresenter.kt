@@ -16,17 +16,17 @@ class DoctorPresenter @Inject constructor() : BasePresenter<DoctorView>() {
     lateinit var userServiceImpl: UserServiceImpl
 
 
-//    fun chatRecord(req: NoParamIdReq) {
-//        if (!checkNetWork()) {
-//            return
-//        }
-//        mView.showLoading()
-//        userServiceImpl.chatRecord(req)
-//                .excute(object : BaseSubscriber<ChatBean>(mView) {
-//                    override fun onNext(t:ChatBean) {
-//                        super.onNext(t)
-////                        mView.onChatResult(t)
-//                    }
-//                }, lifecycleProvider)
-//    }
+    fun doctorDetail(req: NoParamOrderReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.doctorDetail(req)
+                .excute(object : BaseSubscriber<DoctorDetail>(mView) {
+                    override fun onNext(t:DoctorDetail) {
+                        super.onNext(t)
+                        mView.onDoctorResult(t)
+                    }
+                }, lifecycleProvider)
+    }
 }

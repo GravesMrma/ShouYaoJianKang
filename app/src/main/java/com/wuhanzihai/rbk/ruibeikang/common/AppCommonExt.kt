@@ -2,6 +2,7 @@ package com.wuhanzihai.rbk.ruibeikang.common
 
 import android.content.Context
 import android.os.Handler
+import android.util.Patterns
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 fun CircleImageView.loadImage(url: String) {
-    if (android.util.Patterns.WEB_URL.matcher(url).matches()) {
+    if (Patterns.WEB_URL.matcher(url).matches()) {
         GlideApp.with(context)
                 .load(url)
                 .placeholder(R.mipmap.ic_empty_item1)
@@ -29,7 +30,7 @@ fun CircleImageView.loadImage(url: String) {
                 .into(this)
     } else {
         GlideApp.with(context)
-                .load(com.hhjt.baselibrary.common.BaseConstant.BASE_URL + url)
+                .load(BaseConstant.BASE_URL + url)
                 .placeholder(R.mipmap.ic_empty_item1)
                 .error(R.mipmap.ic_empty_item1)
                 .into(this)
@@ -37,11 +38,17 @@ fun CircleImageView.loadImage(url: String) {
 }
 
 fun ImageView.loadImage(url: String) {
-    if (android.util.Patterns.WEB_URL.matcher(url).matches()) {
+    if (Patterns.WEB_URL.matcher(url).matches()) {
         GlideApp.with(context)
                 .load(url)
-//                .placeholder(R.mipmap.ic_acc1)
-//                .error(R.mipmap.ic_acc1)
+                .placeholder(R.mipmap.ic_empty_item1)
+                .error(R.mipmap.ic_empty_item1)
+                .into(this)
+    } else {
+        GlideApp.with(context)
+                .load(BaseConstant.BASE_URL + url)
+                .placeholder(R.mipmap.ic_empty_item1)
+                .error(R.mipmap.ic_empty_item1)
                 .into(this)
     }
 }

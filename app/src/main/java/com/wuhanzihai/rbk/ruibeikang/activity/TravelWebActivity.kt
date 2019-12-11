@@ -1,6 +1,5 @@
 package com.wuhanzihai.rbk.ruibeikang.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.ViewGroup
@@ -59,7 +58,7 @@ class TravelWebActivity : BaseMvpActivity<UnifiedWebPresenter>(), ArticleDetailV
 
     private fun initView() {
         btCall.onClick {
-            MyUtils.myUtils.callPhone(act,"4000186617")
+            MyUtils.instance.callPhone(act,"4000186617")
         }
     }
 

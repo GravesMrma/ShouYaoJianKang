@@ -30,6 +30,8 @@ interface UserService {
 
     fun getOrder(req: OrderReq): Observable<OrderBean>
 
+    fun logistics(req: LogisticsReq): Observable<Logistics>
+
     fun userAdv(): Observable<MineAdv>
 
     fun mineBanner(): Observable<Banner>
@@ -72,13 +74,13 @@ interface UserService {
 
     fun doctorList(): Observable<MutableList<ArchivesBean>>
 
-    fun createDoctor(req: AddArchivesReq): Observable<IsRebateBean>
+    fun createDoctor(req: AddArchivesReq): Observable<BaseData>
 
     fun deleteDoctor(req: DelArchivesReq): Observable<BaseData>
 
     fun deleteRecord(req: NoParamOrderIdReq): Observable<BaseData>
 
-    fun editDoctor(req: NoParamIdReq): Observable<IsRebateBean>
+    fun editDoctor(req: EditArchivesReq): Observable<BaseData>
 
     fun createQuestion(fileReq: MutableList<File>, req: CreateDoctorReq): Observable<OrderIdBean>
 
@@ -115,5 +117,9 @@ interface UserService {
     fun applyCashListDetail(): Observable<ApplyCashListDetail>
 
     fun shareRecord(req:NoParamIdPageReq): Observable<ShareBean>
+
+    fun archivesDetail(req:ArchivesDetailReq): Observable<ArchivesDetail>
+
+    fun doctorDetail(req:NoParamOrderReq): Observable<DoctorDetail>
 
 }

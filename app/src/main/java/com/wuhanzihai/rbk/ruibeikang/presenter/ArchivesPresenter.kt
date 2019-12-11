@@ -35,10 +35,24 @@ class ArchivesPresenter @Inject constructor() : BasePresenter<ArchivesView>() {
         }
         mView.showLoading()
         userServiceImpl.createDoctor(req)
-                .excute(object : BaseSubscriber<IsRebateBean>(mView) {
-                    override fun onNext(t: IsRebateBean) {
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
                         super.onNext(t)
                         mView.onAddArchivesResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun editDoctor(req:EditArchivesReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.editDoctor(req)
+                .excute(object : BaseSubscriber<BaseData>(mView) {
+                    override fun onNext(t: BaseData) {
+                        super.onNext(t)
+                        mView.onEditArchivesResult()
                     }
                 }, lifecycleProvider)
     }
@@ -57,6 +71,19 @@ class ArchivesPresenter @Inject constructor() : BasePresenter<ArchivesView>() {
                 }, lifecycleProvider)
     }
 
+    fun archivesDetail(req:ArchivesDetailReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.archivesDetail(req)
+                .excute(object : BaseSubscriber<ArchivesDetail>(mView) {
+                    override fun onNext(t: ArchivesDetail) {
+                        super.onNext(t)
+                        mView.onArchivesDetail(t)
+                    }
+                }, lifecycleProvider)
+    }
 
     fun chosePeople(req: ChosePeopleReq ) {
         if (!checkNetWork()) {

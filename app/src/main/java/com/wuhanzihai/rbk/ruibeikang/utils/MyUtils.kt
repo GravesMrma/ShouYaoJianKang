@@ -18,7 +18,7 @@ import java.io.FileOutputStream
 class MyUtils {
 
     companion object {
-        val myUtils by lazy { MyUtils() }
+        val instance by lazy { MyUtils() }
 
         fun toHour(str: String): String {
             return str.substring(0, str.indexOf(":"))
@@ -46,10 +46,47 @@ class MyUtils {
             view.measure(0, 0)
             return  view.measuredWidth
         }
+
+        fun parseTimeSeconds(t: Int): String {
+            var r = ""
+            val day: Int
+            val hour: Int
+            val minute: Int
+            val second: Int
+            if (t >= 86400)
+            //天,
+            {
+                day = t / 86400
+                hour = t % 86400 / 3600
+                minute = t % 86400 % 3600 / 60
+                r = toDouble(day)+"天" + toDouble(hour)+"时" + toDouble(minute)+"分"
+            } else if (t >= 3600)
+            //时,
+            {
+                hour = t / 3600
+                minute = t % 3600 / 60
+                second = t % 3600 % 60
+                r = toDouble(hour)+"时" + toDouble(minute)+"分" + toDouble(second)+"秒"
+            } else if (t >= 60)
+            //分
+            {
+                minute = t / 60
+                second = t % 60
+                r = "00时" + toDouble(minute)+"分" + toDouble(second)+"秒"
+            } else {
+                second = t
+                r = "00时00分" + toDouble(second)+"秒"
+            }
+            return r
+        }
+
+        fun toDouble(int: Int): String {
+            if (int < 10) {
+                return "0" + int.toString()
+            }
+            return int.toString()
+        }
     }
-
-
-
 
     fun htmlFormat(content: String): String {
         var content = content
@@ -69,45 +106,8 @@ class MyUtils {
     }
 
 
-    fun parseTimeSeconds(t: Int): String {
-        var r = ""
-        val day: Int
-        val hour: Int
-        val minute: Int
-        val second: Int
-        if (t >= 86400)
-        //天,
-        {
-            day = t / 86400
-            hour = t % 86400 / 3600
-            minute = t % 86400 % 3600 / 60
-            r = toDouble(day) + toDouble(hour) + toDouble(minute)
-        } else if (t >= 3600)
-        //时,
-        {
-            hour = t / 3600
-            minute = t % 3600 / 60
-            second = t % 3600 % 60
-            r = toDouble(hour) + toDouble(minute) + toDouble(second)
-        } else if (t >= 60)
-        //分
-        {
-            minute = t / 60
-            second = t % 60
-            r = "00" + toDouble(minute) + toDouble(second)
-        } else {
-            second = t
-            r = "0000" + toDouble(second)
-        }
-        return r
-    }
 
-    fun toDouble(int: Int): String {
-        if (int < 10) {
-            return "0" + int.toString()
-        }
-        return int.toString()
-    }
+
 
     /**
      * view截图并保存到相册

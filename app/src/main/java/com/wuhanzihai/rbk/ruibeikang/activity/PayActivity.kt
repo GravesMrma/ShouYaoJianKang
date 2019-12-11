@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.util.Log
+import android.view.Gravity
 import com.alipay.sdk.app.PayTask
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
@@ -19,6 +20,7 @@ import com.wuhanzihai.rbk.ruibeikang.presenter.PayPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.PayView
 import kotlinx.android.synthetic.main.activity_pay.*
 import org.jetbrains.anko.*
+import per.goweii.anylayer.AnyLayer
 
 class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
     override fun injectComponent() {
@@ -43,6 +45,26 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
         }
     }
 
+
+    private val dialog by lazy {
+        val anyLayer = AnyLayer.with(act)
+                .contentView(R.layout.layout_cancel_order)
+                .backgroundColorRes(R.color.clarity_50)
+                .gravity(Gravity.CENTER)
+                .cancelableOnTouchOutside(true)
+                .cancelableOnClickKeyBack(true)
+                .onClick(R.id.tvCancel) { anyLayer, v ->
+                    anyLayer.dismiss()
+                    startActivity<OrderActivity>()
+                    finish()
+                }
+                .onClick(R.id.tvSure) { anyLayer, v ->
+                    anyLayer.dismiss()
+                }
+        anyLayer
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pay)
@@ -57,6 +79,10 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
     }
 
     private fun initView() {
+        tvTitle.setBackListener {
+            dialog.show()
+
+        }
         tvWeChat.onClick {
             tvWeChat.isSelected = true
             tvAli.isSelected = false
@@ -79,5 +105,11 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
     private fun initData() {
         tvPrice.text = intent.getDoubleExtra("price", 0.00).toString()
         tvMoney.text = intent.getDoubleExtra("price", 0.00).toString()
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+
+        dialog.show()
     }
 }

@@ -10,7 +10,7 @@ import java.net.URLEncoder
 /**
  * Created by wx on 2018/7/10
  */
-class AddQuestionReq(content: String, order_id: String) : BaseReq() {
+class AddQuestionReq(content: String, order_id: Int) : BaseReq() {
     var content = URLEncoder.encode(content, "UTF-8")
     var order_id = order_id
     var time: String = System.currentTimeMillis().toString()

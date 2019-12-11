@@ -19,6 +19,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
+import cn.jpush.android.api.JPushInterface
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.hhjt.baselibrary.common.BaseConstant
@@ -172,6 +173,11 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
         setContentView(R.layout.activity_main)
         StatusBarUtil.setTranslucentForImageView(act, 0, null)
 
+        JPushInterface.setAlias(
+                act,
+                0,
+                "heiheinihao"
+        )
         initView()
 
         initData()

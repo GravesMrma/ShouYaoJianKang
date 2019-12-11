@@ -20,6 +20,12 @@ android {
             // 设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a' //, 'x86', 'x86_64'
         }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "b3aa74fe4a96a9c7ab4784a8", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
     }
 
     signingConfigs {
@@ -120,4 +126,8 @@ dependencies {
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
     //其中latest.release指代最新Bugly NDK版本号，也
+
+    // 推送
+    implementation 'cn.jiguang.sdk:jpush:3.4.1'  // 此处以JPush 3.4.1 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.2.4'  // 此处以JCore 2.2.4 版本为例。
 }

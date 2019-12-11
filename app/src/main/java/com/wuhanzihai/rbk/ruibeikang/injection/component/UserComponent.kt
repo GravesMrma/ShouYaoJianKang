@@ -99,4 +99,10 @@ interface UserComponent {
     fun inject(activity: ApplyCashProcessActivity)
 
     fun inject(activity: DoctorActivity)
+
+    fun inject(activity: ArchivesDetailActivity)
+
+    fun inject(activity: InterrogationRecordActivity)
+
+    fun inject(activity: LogisticsActivity)
 }

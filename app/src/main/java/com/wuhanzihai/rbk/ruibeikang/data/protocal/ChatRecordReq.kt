@@ -12,7 +12,7 @@ import java.net.URLEncoder
  */
 class ChatRecordReq(order_id: Int, status: Int) : BaseReq() {
     private var order_id = order_id
-    private var status = status
+//    private var status = status
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
     private var user_id = LoginUtils.getUserId()

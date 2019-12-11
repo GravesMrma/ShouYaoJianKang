@@ -60,6 +60,10 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.getOrder(req).convert()
     }
 
+    override fun logistics(req: LogisticsReq): Observable<Logistics> {
+        return repository.logistics(req).convert()
+    }
+
     override fun userAdv(): Observable<MineAdv> {
         return repository.userAdv().convert()
     }
@@ -145,8 +149,8 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.doctorList().convert()
     }
 
-    override fun createDoctor(req: AddArchivesReq): Observable<IsRebateBean> {
-        return repository.createDoctor(req).convert()
+    override fun createDoctor(req: AddArchivesReq): Observable<BaseData> {
+        return repository.createDoctor(req).convertT()
     }
 
     override fun deleteDoctor(req: DelArchivesReq): Observable<BaseData> {
@@ -157,8 +161,8 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.deleteRecord(req).convertT()
     }
 
-    override fun editDoctor(req: NoParamIdReq): Observable<IsRebateBean> {
-        return repository.editDoctor(req).convert()
+    override fun editDoctor(req: EditArchivesReq): Observable<BaseData> {
+        return repository.editDoctor(req).convertT()
     }
 
     override fun createQuestion(fileReq: MutableList<File>, req: CreateDoctorReq): Observable<OrderIdBean> {
@@ -231,5 +235,13 @@ class UserServiceImpl @Inject constructor() : UserService {
 
     override fun shareRecord(req: NoParamIdPageReq): Observable<ShareBean> {
         return repository.shareRecord(req).convert()
+    }
+
+    override fun archivesDetail(req: ArchivesDetailReq): Observable<ArchivesDetail> {
+        return repository.archivesDetail(req).convert()
+    }
+
+    override fun doctorDetail(req: NoParamOrderReq): Observable<DoctorDetail> {
+        return repository.doctorDetail(req).convert()
     }
 }

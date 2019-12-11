@@ -7,4 +7,5 @@ interface ChatRoomView : BaseView {
 
     fun onChatResult(result: ChatBean)
 
+    fun onSendSuccess()
 }

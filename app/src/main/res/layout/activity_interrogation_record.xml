@@ -20,34 +20,38 @@
         app:titleText="问诊记录" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvView"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="@dimen/dp19"
-                android:paddingBottom="@dimen/dp119"
-                android:lineSpacingExtra="@dimen/dp5"
-                android:text="首要健康会保存您一年内的病症咨询记录\n同时会对您的病症隐私严格保密"
-                android:textColor="#BCBCBC"
-                android:textSize="@dimen/f12" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp19"
+                    android:paddingBottom="@dimen/dp119"
+                    android:lineSpacingExtra="@dimen/dp5"
+                    android:text="首要健康会保存您一年内的病症咨询记录\n同时会对您的病症隐私严格保密"
+                    android:textColor="#BCBCBC"
+                    android:textSize="@dimen/f12" />
 
-        </LinearLayout>
+            </LinearLayout>
 
+        </android.support.v4.widget.NestedScrollView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

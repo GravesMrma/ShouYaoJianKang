@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp19"
         android:layout_marginBottom="@dimen/dp24"
-        android:text="nan"
         android:textColor="@color/gray_99"
         android:textSize="@dimen/f12"
         app:layout_constraintBottom_toBottomOf="parent"

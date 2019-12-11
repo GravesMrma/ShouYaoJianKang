@@ -43,6 +43,9 @@ interface UserApi {
     @POST("User/order")
     fun getOrder(@Body req: OrderReq): Observable<BaseResp<OrderBean>>
 
+    @POST("User/userexpress")
+    fun logistics(@Body req: LogisticsReq): Observable<BaseResp<Logistics>>
+
     @POST("User/usertost")
     fun userAdv(@Body req: NoParamReq): Observable<BaseResp<MineAdv>>
 
@@ -159,13 +162,13 @@ interface UserApi {
     fun doctorList(@Body req: NoParamIdReq): Observable<BaseResp<MutableList<ArchivesBean>>>
 
     @POST("doctor/mk_person")
-    fun createDoctor(@Body req: AddArchivesReq): Observable<BaseResp<IsRebateBean>>
+    fun createDoctor(@Body req: AddArchivesReq): Observable<BaseData>
 
     @POST("doctor/mk_person")
     fun deleteDoctor(@Body req: DelArchivesReq): Observable<BaseData>
 
     @POST("doctor/mk_person")
-    fun editDoctor(@Body req: NoParamIdReq): Observable<BaseResp<IsRebateBean>>
+    fun editDoctor(@Body req: EditArchivesReq): Observable<BaseData>
 
     @Multipart
     @POST("doctor/mk_questions")
@@ -174,8 +177,9 @@ interface UserApi {
     @POST("doctor/choose_person")
     fun chosePeople(@Body req: ChosePeopleReq): Observable<BaseResp<OrderIdBean>>
 
+    @Multipart
     @POST("doctor/continue_question")
-    fun addQuestion(@Body req: AddQuestionReq): Observable<BaseResp<IsRebateBean>>
+    fun addQuestion(@PartMap maps: HashMap<String, RequestBody>): Observable<BaseResp<IsRebateBean>>
 
     @POST("doctor/records")
     fun doctorRecord(@Body req: NoParamIdReq): Observable<BaseResp<InterrogationBean>>
@@ -188,5 +192,11 @@ interface UserApi {
 
     @POST("doctor/mk_alipay")
     fun payInterrogation(@Body req: PayInterrogationReq): Observable<BaseResp<OrderPayBean>>
+
+    @POST("doctor/person_detail")
+    fun archivesDetail(@Body req: ArchivesDetailReq): Observable<BaseResp<ArchivesDetail>>
+
+    @POST("doctor/get_order_doctor")
+    fun doctorDetail(@Body req: NoParamOrderReq): Observable<BaseResp<DoctorDetail>>
 
 }

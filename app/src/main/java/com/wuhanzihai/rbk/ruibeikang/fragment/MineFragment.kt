@@ -31,8 +31,6 @@ import com.wuhanzihai.rbk.ruibeikang.utils.MyUtils
 import com.yarolegovich.discretescrollview.transform.Pivot
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
 import kotlinx.android.synthetic.main.fragment_mine.*
-import org.jetbrains.anko.act
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -150,7 +148,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         serList.add(MineServiceBean("地址管理", R.mipmap.fw_mid_icon_dzgl))
         serList.add(MineServiceBean("分享赚钱", R.mipmap.fw_mid_icon_smrz))
         serList.add(MineServiceBean("健康档案", R.mipmap.fw_mid_icon_jkda))
-        serList.add(MineServiceBean("兑换中心", R.mipmap.fw_mid_icon_dhzx))
+        serList.add(MineServiceBean("问诊记录", R.mipmap.fw_mid_icon_dhzx))
         serList.add(MineServiceBean("常见问题", R.mipmap.fw_mid_icon_cjwt))
         serList.add(MineServiceBean("电话客服", R.mipmap.fw_mid_icon_zxkf))
         serAdapter = object : BaseQuickAdapter<MineServiceBean, BaseViewHolder>(R.layout.item_mine_service, serList) {
@@ -178,10 +176,10 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
                     }
                 }
                 4 -> startActivity<HealthArchivesActivity>()
-                5 -> startActivity<CouponActivity>()
+                5 -> startActivity<InterrogationRecordActivity>()
                 6 -> startActivity<StandardWebActivity>("title" to "常见问题"
                         , "data" to "http://api.hcjiankang.com/api/Web/article?id=732")
-                7 -> MyUtils.myUtils.callPhone(act, "4000186617")
+                7 -> MyUtils.instance.callPhone(act, "4000186617")
             }
         }
 

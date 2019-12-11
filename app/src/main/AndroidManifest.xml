@@ -163,6 +163,7 @@
         <activity android:name=".activity.HealthInfoActivity" />
         <activity android:name=".activity.DietitianActivity" />
         <activity android:name=".activity.RegisterActivity" />
+        <activity android:name="com.hhjt.baselibrary.zoomable.ImageShowActivity"/>
 
         <service
             android:name=".bluetooth.NotificationService"
@@ -173,6 +174,25 @@
         </service>
         <service android:name=".media.MusicService" />
         <service android:name=".media.MusicOperationService" />
+
+        <service android:name=".push.MyPushService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".push.MyPushReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="com.wuhanzihai.rbk.ruibeikang" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".activity.MainActivity"
