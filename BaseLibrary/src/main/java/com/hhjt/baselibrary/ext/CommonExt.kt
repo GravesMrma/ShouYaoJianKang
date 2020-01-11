@@ -194,7 +194,7 @@ fun SimpleDraweeView.loadImage(path: String) {
     if (Patterns.WEB_URL.matcher(path).matches()) {
         this.controller = getPicController(path)
     } else {
-        this.controller = getPicController(BaseConstant.IMAGE_ADDRESS + path)
+        this.controller = getPicController(BaseConstant.BASE_URL + path)
     }
 }
 

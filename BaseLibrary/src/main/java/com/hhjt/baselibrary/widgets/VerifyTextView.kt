@@ -17,7 +17,6 @@ class VerifyTextView(mContext: Context, attrs: AttributeSet) : TextView(mContext
     init {
         this.text = "发送"
         mHandler = Handler()
-
     }
 
     /*
@@ -28,7 +27,6 @@ class VerifyTextView(mContext: Context, attrs: AttributeSet) : TextView(mContext
         if (mOnVerifyBtnClick != null) {
             mOnVerifyBtnClick!!.onClick()
         }
-
     }
 
     /*

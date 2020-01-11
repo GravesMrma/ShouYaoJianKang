@@ -12,14 +12,12 @@ class BaseConstant {
 
         //本地服务器地址
         const val BASE_URL = "http://api.hcjiankang.com/"
-//        const val BASE_URL = "http://xidebao.xiangmu1.hhjtwl.com"
-//        const val BASE_URL = "http://47.103.70.42:88"
+//        const val BASE_URL = "http://www.hcjiankang.com/"
 
-        const val SERVER_ADDRESS = BASE_URL + "api/"
+//        const val SERVER_ADDRESS = BASE_URL + "api/"
+        const val SERVER_ADDRESS = "http://www.hcjiankang.com/api/"
 
         //        const val IMAGE_ADDRESS = "http://pn9ku8m83.bkt.clouddn.com/"
-        const val IMAGE_ADDRESS = "$BASE_URL/"
-
         //SP表名
         const val TABLE_PREFS = "zhicheng"
 
