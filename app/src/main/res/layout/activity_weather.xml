@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.WeatherActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="位置" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/llWeather"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp5"
+                android:background="@mipmap/pic_weather11"
+                android:orientation="vertical"
+                app:layout_constraintDimensionRatio="2.96"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/black_33"
+                            android:textSize="60sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp25"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvTempDesc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/black_33"
+                                    android:textSize="@dimen/f17"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvTempPM"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/dp17"
+                                    android:layout_marginLeft="@dimen/dp10"
+                                    android:gravity="center"
+                                    android:paddingLeft="@dimen/dp5"
+                                    android:paddingRight="@dimen/dp5"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/f12" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvTempWind"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp5"
+                                android:textColor="@color/gray_66"
+                                android:textSize="@dimen/f13" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/llView1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp10"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/dp7"
+                app:cardElevation="@dimen/dp5"
+                app:layout_constraintDimensionRatio="2.648"
+                app:layout_constraintTop_toBottomOf="@id/llWeather">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivToday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/pic_weather_ic1" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp12"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="今天"
+                                    android:textColor="@color/black_33"
+                                    android:textSize="@dimen/f14" />
+
+                                <TextView
+                                    android:id="@+id/tvAir"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/dp17"
+                                    android:layout_marginLeft="@dimen/dp10"
+                                    android:gravity="center"
+                                    android:paddingLeft="@dimen/dp5"
+                                    android:paddingRight="@dimen/dp5"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/f11" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvTempToday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp16"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f14" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:layout_width="@dimen/dp1"
+                        android:layout_height="@dimen/dp58" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivTomday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/pic_weather_ic2" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp12"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="明天"
+                                    android:textColor="@color/black_33"
+                                    android:textSize="@dimen/f14" />
+
+                                <TextView
+                                    android:id="@+id/tvTomAir"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/dp17"
+                                    android:layout_marginLeft="@dimen/dp10"
+                                    android:gravity="center"
+                                    android:paddingLeft="@dimen/dp5"
+                                    android:paddingRight="@dimen/dp5"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/f11" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvTempTomday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp16"
+                                android:textColor="@color/black_33"
+                                android:textSize="@dimen/f14" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/llView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp10"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/dp7"
+                app:cardElevation="@dimen/dp5"
+                app:layout_constraintTop_toBottomOf="@id/llView1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp15">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15天预报"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/f17"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvChange"
+                            android:layout_width="@dimen/dp68"
+                            android:layout_height="@dimen/dp22"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/sp_green_11_stk"
+                            android:gravity="center"
+                            android:text="换一换"
+                            android:textColor="@color/green_08"
+                            android:textSize="@dimen/f14" />
+
+                    </RelativeLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:layout_marginBottom="@dimen/dp3" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/llView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp30"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/dp7"
+                app:cardElevation="@dimen/dp5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llView2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:text="生活指数"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/f17"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:layout_marginBottom="@dimen/dp3"
+                        android:paddingLeft="@dimen/dp17"
+                        android:paddingRight="@dimen/dp17">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/iv_temp11" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dp7"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="感冒"
+                                        android:textColor="@color/green_08"
+                                        android:textSize="@dimen/f12" />
+
+                                    <TextView
+                                        android:id="@+id/tvTempType1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp6"
+                                        android:textColor="@color/black_33"
+                                        android:textSize="@dimen/f14"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp27"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/iv_temp33" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dp7"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="紫外线"
+                                        android:textColor="@color/green_08"
+                                        android:textSize="@dimen/f12" />
+
+                                    <TextView
+                                        android:id="@+id/tvTempType3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp6"
+                                        android:textColor="@color/black_33"
+                                        android:textSize="@dimen/f14"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:gravity="left"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/iv_temp22" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dp7"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="穿衣"
+                                        android:textColor="@color/green_08"
+                                        android:textSize="@dimen/f12" />
+
+                                    <TextView
+                                        android:id="@+id/tvTempType2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp6"
+                                        android:textColor="@color/black_33"
+                                        android:textSize="@dimen/f14"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="@dimen/dp27"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/iv_temp44" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dp7"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="洗车"
+                                        android:textColor="@color/green_08"
+                                        android:textSize="@dimen/f12" />
+
+                                    <TextView
+                                        android:id="@+id/tvTempType4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp6"
+                                        android:textColor="@color/black_33"
+                                        android:textSize="@dimen/f14"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

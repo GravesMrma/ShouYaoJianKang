@@ -51,6 +51,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
 //        ivImg.loadImage(result.head_pic)
         tvName.text = result.nickname
         lvView.setScore(result.level.toFloat())
+        tvCouponNumber.text = result.usercouponcount.toString()
         when (result.level) {
             1 -> ivLevel.setImageResource(R.mipmap.ic_minelevel1)
             2 -> ivLevel.setImageResource(R.mipmap.ic_minelevel2)

@@ -34,7 +34,7 @@ class DoctorActivity : BaseMvpActivity<DoctorPresenter>(), DoctorView {
         ivHead.loadImage(result.image)
         tvName.text = result.name
         tvHospital.text = "(${result.hospital})"
-        tvJob.text = result.clinic_name + "  " +result.title
+        tvJob.text = result.title + "  " +result.clinic_name  //clinic_name
         val split = result.description.split("   ")
         list.addAll(split)
         adapter.notifyDataChanged()

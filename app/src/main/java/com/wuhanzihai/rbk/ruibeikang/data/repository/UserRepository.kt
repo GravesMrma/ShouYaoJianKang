@@ -59,6 +59,18 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).getOrder(req)
     }
 
+    fun sureOrder(req: NoParamOrderIdReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).sureOrder(req)
+    }
+
+    fun deleteOrder(req: NoParamOrderIdReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).deleteOrder(req)
+    }
+
+    fun closeOrder(req: CloseOrderReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).closeOrder(req)
+    }
+
     fun logistics(req: LogisticsReq): Observable<BaseResp<Logistics>> {
         return RetrofitFactory.instance.create(UserApi::class.java).logistics(req)
     }
@@ -188,8 +200,19 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).shareRecord(req)
     }
 
+    fun rebateRecord(req:NoParamDisIdPageReq): Observable<BaseResp<RebateRecordBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).rebateRecord(req)
+    }
+
+    fun rebateRecord1(): Observable<BaseResp<ApplyCashListDetail>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).rebateRecord1(NoParamIdReq())
+    }
+
 
     //  春雨医生
+    fun getPrice(): Observable<BaseResp<PriceBean>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).getPrice(NoParamReq())
+    }
 
     fun doctorList(): Observable<BaseResp<MutableList<ArchivesBean>>> {
         return RetrofitFactory.instance.create(UserApi::class.java).doctorList(NoParamIdReq())
@@ -244,7 +267,7 @@ class UserRepository @Inject constructor() {
         return RetrofitFactory.instance.create(UserApi::class.java).addQuestion(map)
     }
 
-    fun doctorRecord(req: NoParamIdReq): Observable<BaseResp<InterrogationBean>> {
+    fun doctorRecord(req: NoParamIdPageReq): Observable<BaseResp<InterrogationBean>> {
         return RetrofitFactory.instance.create(UserApi::class.java).doctorRecord(req)
     }
 
@@ -266,5 +289,21 @@ class UserRepository @Inject constructor() {
 
     fun doctorDetail(req: NoParamOrderReq): Observable<BaseResp<DoctorDetail>> {
         return RetrofitFactory.instance.create(UserApi::class.java).doctorDetail(req)
+    }
+
+    fun getCoupons(req: CouponReq): Observable<BaseResp<MutableList<CouponBean>>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).getCoupons(req)
+    }
+
+    fun takeCoupon(req: NoParamIdIdReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).takeCoupon(req)
+    }
+
+    fun getExchangeCoupons(): Observable<BaseResp<MutableList<GoodsCouponBean>>> {
+        return RetrofitFactory.instance.create(UserApi::class.java).getExchangeCoupons(NoParamIdReq())
+    }
+
+    fun takeExchangeCoupons(req: CouponIdReq): Observable<BaseData> {
+        return RetrofitFactory.instance.create(UserApi::class.java).takeExchangeCoupons(req)
     }
 }

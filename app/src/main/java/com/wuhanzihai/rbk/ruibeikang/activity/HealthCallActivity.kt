@@ -53,7 +53,7 @@ class HealthCallActivity : BaseMvpActivity<HealthClassPresenter>(), HealthClassV
     override fun onHealthClassDetailResult(result: HealthClassDetailBean) {
         ivImg.loadImage(result.course_banner)
         tvTitle1.text = result.course_title
-        tvTitle2.text = result.course_title
+//        tvTitle2.text = result.course_title
         tvTitle.text = result.course_title
     }
 

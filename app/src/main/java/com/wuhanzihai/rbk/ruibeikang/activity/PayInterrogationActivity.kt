@@ -11,6 +11,7 @@ import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderIdBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderPayBean
+import com.wuhanzihai.rbk.ruibeikang.data.entity.PriceBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.ChosePeopleReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.PayInterrogationReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
@@ -28,8 +29,9 @@ class PayInterrogationActivity : BaseMvpActivity<InterrogationPresenter>(), Inte
         mPresenter.mView = this
     }
 
-    override fun onCreateQuestion(result: OrderIdBean) {
-
+    override fun onPriceBean(result: PriceBean) {
+        tvMoney.text = "¥${result.price}"
+//        tvMoney1.text = "¥${result.price}"
     }
 
     override fun onPayResult(result: OrderPayBean) {
@@ -39,7 +41,8 @@ class PayInterrogationActivity : BaseMvpActivity<InterrogationPresenter>(), Inte
             uiThread {
                 if (resultMap["resultStatus"].equals("9000")) {
                     toast("支付成功")
-                    startActivity<PayResultActivity>()
+                    startActivity<ChatRoomActivity>("orderId" to order_id)
+
                     finish()
                 } else {
                     toast("支付失败${resultMap["memo"]}")
@@ -56,7 +59,7 @@ class PayInterrogationActivity : BaseMvpActivity<InterrogationPresenter>(), Inte
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
-        order_id = intent.getIntExtra("orderId",0)
+        order_id = intent.getIntExtra("orderId", 0)
 
         initView()
 
@@ -64,12 +67,13 @@ class PayInterrogationActivity : BaseMvpActivity<InterrogationPresenter>(), Inte
     }
 
     private fun initView() {
+        tvAli.isSelected = true
         tvPay.onClick {
             mPresenter.payInterrogation(PayInterrogationReq(order_id))
         }
     }
 
     private fun initData() {
-
+        mPresenter.getPrice()
     }
 }

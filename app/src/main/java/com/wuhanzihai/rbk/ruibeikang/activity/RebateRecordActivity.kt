@@ -5,15 +5,27 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
+import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.data.entity.RebateRecordBean
 import com.wuhanzihai.rbk.ruibeikang.fragment.RebateRecordFragment
+import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
+import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
+import com.wuhanzihai.rbk.ruibeikang.presenter.RebateRecordPresenter
+import com.wuhanzihai.rbk.ruibeikang.presenter.view.RebateRecordView
 import kotlinx.android.synthetic.main.activity_rebate_record.*
 import org.jetbrains.anko.act
 import java.util.*
 import org.jetbrains.anko.startActivity
 
-class RebateRecordActivity : AppCompatActivity() {
+class RebateRecordActivity : BaseMvpActivity<RebateRecordPresenter>() , RebateRecordView {
+
+    override fun injectComponent() {
+        DaggerUserComponent.builder().activityComponent(mActivityComponent)
+                .userModule(UserModule()).build().inject(this)
+        mPresenter.mView = this
+    }
 
     private val mStack = Stack<Fragment>()
 

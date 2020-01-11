@@ -18,13 +18,14 @@
         android:textSize="@dimen/f14" />
 
     <TextView
+        android:id="@+id/tvContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp25"
         android:layout_marginTop="@dimen/dp20"
         android:layout_marginRight="@dimen/dp25"
         android:gravity="center"
-        android:text="请在 23小时59分 内完成支付，\n否则订单将会自动关闭！"
+        android:text="请在23小时59分内完成支付，\n否则订单将会自动关闭！"
         android:textColor="@color/orange"
         android:textSize="@dimen/f11" />
 

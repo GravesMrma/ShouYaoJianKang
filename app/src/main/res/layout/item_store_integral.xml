@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/dp14"
+    android:paddingTop="@dimen/dp25"
+    android:paddingRight="@dimen/dp14"
+    android:paddingBottom="@dimen/dp25">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="抵扣现金"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f15" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_below="@id/tvName"
+        android:text="2019-11-11"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f11" />
+
+    <TextView
+        android:id="@+id/tvIntegral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingTop="@dimen/dp4"
+        android:paddingBottom="@dimen/dp4"
+        android:text="+ 100积分"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f15" />
+
+</RelativeLayout>

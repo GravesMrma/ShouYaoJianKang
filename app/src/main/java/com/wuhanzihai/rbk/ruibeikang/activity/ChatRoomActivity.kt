@@ -9,8 +9,10 @@ import android.support.v7.widget.GridLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hhjt.baselibrary.ext.onClick
@@ -31,6 +33,8 @@ import com.wuhanzihai.rbk.ruibeikang.presenter.view.ChatRoomView
 import com.wuhanzihai.rbk.ruibeikang.widgets.CircleImageView
 import kotlinx.android.synthetic.main.activity_chat_room.*
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemTen
+import com.zhy.view.flowlayout.FlowLayout
+import com.zhy.view.flowlayout.TagAdapter
 import org.devio.takephoto.compress.CompressConfig
 import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.act
@@ -46,17 +50,29 @@ class ChatRoomActivity : BaseTakePhotoActivity<ChatRoomPresenter>(), ChatRoomVie
     }
 
     override fun onChatResult(result: ChatBean) {
-        if (result.status == 2 || result.status == 4) {
+        if (result.status == 2 || result.status == 4 || result.status == 3) {
             if (result.doctor != null) {
                 if (result.doctor.name.isNotEmpty()) {
 //                    clView.visibility = View.VISIBLE
                     ivHead.loadImage(result.doctor.image)
                     tvName.text = result.doctor.name
-                    tvJob.text = result.doctor.title
+                    tvTitle.setTitleText(result.doctor.name)
+                    tvJob.text = result.doctor.hospital
+//                    listTag.addAll(result.doctor.tags)
+                    listTag.clear()
+                    listTag.add(result.doctor.title)
+                    listTag.add(result.doctor.clinic_name)
+                    adapterTag.notifyDataChanged()
+
+                    personId = result.person_id
                     imgUrl = result.doctor.image
+                    tvRemind.text = "${result.remain_time.toInt()}小时或${result.remain_num}次对话后问题关闭"
                 } else {
+                    tvRemind.text = "在线接诊中，平均6分钟内回复"
+                    tvTitle.setTitleText("医生分配中...")
                     ivHead.loadImage("https://test.chunyu.me/media/images/fc7d/8968fe2e5cb5?imageMogr2/thumbnail/150x")
                 }
+
             } else {
                 ivHead.loadImage("https://test.chunyu.me/media/images/fc7d/8968fe2e5cb5?imageMogr2/thumbnail/150x")
             }
@@ -76,7 +92,7 @@ class ChatRoomActivity : BaseTakePhotoActivity<ChatRoomPresenter>(), ChatRoomVie
             rvMsg.scrollToPosition(list.size - 1)
         }
 
-        if (result.status == 2 || result.status == 4) {
+        if (result.status == 2 || result.status == 4 || result.status == 3) {
             if (result.doctor != null) {
                 if (result.doctor.name.isNotEmpty()) {
                     clView.visibility = View.VISIBLE
@@ -92,6 +108,14 @@ class ChatRoomActivity : BaseTakePhotoActivity<ChatRoomPresenter>(), ChatRoomVie
                 getChatRoom()
             }
         }
+        if (result.status == 4) {
+            tvRemind.text = "问题次数已用尽"
+            tvRemind.setBackgroundColor(ContextCompat.getColor(act, R.color.gray_99))
+        }
+        if (result.status == 3) {
+            tvRemind.text = "对话时间已超过24小时"
+            tvRemind.setBackgroundColor(ContextCompat.getColor(act, R.color.gray_99))
+        }
     }
 
     override fun onSendSuccess() {
@@ -102,8 +126,12 @@ class ChatRoomActivity : BaseTakePhotoActivity<ChatRoomPresenter>(), ChatRoomVie
     private lateinit var list: MutableList<MsgBean>
     private lateinit var adapter: BaseMultiItemQuickAdapter<MsgBean, BaseViewHolder>
 
+    private lateinit var listTag: MutableList<String>
+    private lateinit var adapterTag: TagAdapter<String>
+
     private var orderId = 0
     private var stateId = 0
+    private var personId = 0
     private var imgUrl = ""
     private val handler = Handler()
 
@@ -164,7 +192,25 @@ class ChatRoomActivity : BaseTakePhotoActivity<ChatRoomPresenter>(), ChatRoomVie
         rvMsg.adapter = adapter
         rvMsg.addItemDecoration(DividerItemTen(act))
         rvMsg.layoutManager = GridLayoutManager(act, 1)
-        adapter.addHeaderView(layoutInflater.inflate(R.layout.item_head_chat, null))
+        var view = layoutInflater.inflate(R.layout.item_head_chat, null)
+        view.onClick {
+            startActivity<ArchivesDetailActivity>("personId" to 12)
+        }
+        adapter.addHeaderView(view)
+
+        listTag = mutableListOf()
+        adapterTag = object : TagAdapter<String>(listTag) {
+            override fun getView(parent: FlowLayout, position: Int, t: String): View {
+                var tv = LayoutInflater.from(act).inflate(
+                        R.layout.item_doctor_tag,
+                        parent,
+                        false
+                ) as TextView
+                tv.text = t
+                return tv
+            }
+        }
+        tfView.adapter = adapterTag
 
         llView.onClick {
             edContent.clearFocus()
@@ -233,10 +279,11 @@ class ChatRoomActivity : BaseTakePhotoActivity<ChatRoomPresenter>(), ChatRoomVie
             startActivity<DoctorActivity>("orderId" to orderId)
         }
 
-        edContent.addTextChangedListener(object :TextWatcher{
+        edContent.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 tvSend.isSelected = s!!.isNotEmpty()
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })

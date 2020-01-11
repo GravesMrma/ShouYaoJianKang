@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.StoreGoodsActivity">
+
+    <View
+        android:id="@+id/fake_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statusbar_view_height"
+        android:background="@color/white" />
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="全部品项" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <RadioGroup
+        android:id="@+id/mRgRecord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/mRbAll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="服务项目"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDfk"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="优选商品"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbDfh"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="超值套餐"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <com.hhjt.baselibrary.widgets.APSTSViewPager
+        android:id="@+id/vpView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

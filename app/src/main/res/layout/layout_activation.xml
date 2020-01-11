@@ -92,25 +92,26 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tvContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp28"
+                android:layout_marginRight="@dimen/dp28"
                 android:layout_marginTop="@dimen/dp10"
-                android:text="您需要输入会员卡号、激活密码后才能使用APP功能！"
                 android:textColor="@color/gray_99"
-                android:textSize="@dimen/f7"/>
+                android:textSize="@dimen/f10"/>
 
             <Button
                 android:id="@+id/btSure"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp29"
+                android:layout_height="@dimen/dp35"
                 android:layout_marginLeft="@dimen/dp28"
                 android:layout_marginRight="@dimen/dp28"
                 android:layout_marginTop="@dimen/dp25"
                 android:layout_marginBottom="@dimen/dp15"
                 android:text="确定激活"
                 android:textColor="@color/white"
-                android:textSize="@dimen/f10"
+                android:textSize="@dimen/f14"
                 android:background="@drawable/sp_dialog"/>
         </LinearLayout>
 

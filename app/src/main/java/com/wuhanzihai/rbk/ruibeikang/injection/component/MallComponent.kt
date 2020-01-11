@@ -44,4 +44,5 @@ interface MallComponent {
 
     fun inject(activity: SureServiceOrderActivity)
 
+    fun inject(activity: CouponGoodsActivity)
 }

@@ -107,6 +107,8 @@ class MainFragment : BaseMvpFragment<MainFragmentPresenter>(), MainView {
         initView()
 
         initData()
+
+        setAdv()
     }
 
     private fun initView() {
@@ -318,5 +320,56 @@ class MainFragment : BaseMvpFragment<MainFragmentPresenter>(), MainView {
 
     private fun isOpenNotify(): Boolean {
         return NotificationService.isEnabled(act)
+    }
+
+    private fun setAdv() {
+        ivT11.onClick {
+            startActivity<StandardWebActivity>("title" to "上海新虹桥"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=895")
+        }
+        ivT12.onClick {
+            startActivity<StandardWebActivity>("title" to "慈铭博鳌"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=893")
+        }
+        ivT13.onClick {
+            startActivity<StandardWebActivity>("title" to "普陀国际"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=896")
+        }
+        ivT14.onClick {
+            startActivity<StandardWebActivity>("title" to "南太湖生命谷"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=898")
+        }
+        ivT21.onClick {
+            startActivity<StandardWebActivity>("title" to "英国医疗"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=891")
+        }
+        ivT22.onClick {
+            startActivity<StandardWebActivity>("title" to "德国医疗"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=892")
+        }
+        ivT23.onClick {
+            startActivity<StandardWebActivity>("title" to "美国医疗"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=894")
+        }
+        ivT24.onClick {
+            startActivity<StandardWebActivity>("title" to "日本医疗"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=890")
+        }
+        ivT31.onClick {
+            startActivity<StandardWebActivity>("title" to "红花苜蓿"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=134")
+        }
+        ivT32.onClick {
+            startActivity<StandardWebActivity>("title" to "氨糖骨骼"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=131")
+        }
+        ivT33.onClick {
+            startActivity<StandardWebActivity>("title" to "玫瑰果"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=122")
+        }
+        ivT34.onClick {
+            startActivity<StandardWebActivity>("title" to "芦荟"
+                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=123")
+        }
     }
 }

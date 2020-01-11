@@ -46,10 +46,18 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
             mRgRecord.check(R.id.mRbWoman)
         }
         tvBirthday.text = result.birthday
-        tvHeight.text = "${result.heights}cm"
-        tvWeight.text = "${result.weights}Kg"
-        tvXiyan.text = result.smoke + "年"
-        tvDrink.text = result.drink + "年"
+        if (result.heights.isNotEmpty()){
+            tvHeight.text = "${result.heights}cm"
+        }
+        if (result.weights.isNotEmpty()){
+            tvWeight.text = "${result.weights}Kg"
+        }
+        if (result.smoke.isNotEmpty()){
+            tvXiyan.text = result.smoke + "年"
+        }
+        if (result.drink.isNotEmpty()){
+            tvDrink.text = result.drink + "年"
+        }
 
         var list1 = result.msg1.split(",", "，", " ", "/")
         var index1 = mutableSetOf<Int>()
@@ -97,14 +105,14 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
 
         var list5 = result.msg5.split(",", "，", " ", "/") as MutableList
         for (s in list5) {
-            if (s.isEmpty()){
+            if (s.isEmpty()) {
                 list5.remove(s)
             }
         }
         var index5 = mutableSetOf<Int>()
         for (i in this.list5.indices) {
             for (s in list5) {
-                if (!this.list5.contains(s)){
+                if (!this.list5.contains(s)) {
                     this.list5.add(s)
                 }
             }
@@ -121,14 +129,14 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
 
         var list6 = result.msg6.split(",", "，", " ", "/") as MutableList
         for (s in list6) {
-            if (s.isEmpty()){
+            if (s.isEmpty()) {
                 list6.remove(s)
             }
         }
         var index6 = mutableSetOf<Int>()
         for (i in this.list6.indices) {
             for (s in list6) {
-                if (!this.list6.contains(s)){
+                if (!this.list6.contains(s)) {
                     this.list6.add(s)
                 }
             }
@@ -145,14 +153,14 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
 
         var list7 = result.msg7.split(",", "，", " ", "/") as MutableList
         for (s in list7) {
-            if (s.isEmpty()){
+            if (s.isEmpty()) {
                 list7.remove(s)
             }
         }
         var index7 = mutableSetOf<Int>()
         for (i in this.list7.indices) {
             for (s in list7) {
-                if (!this.list7.contains(s)){
+                if (!this.list7.contains(s)) {
                     this.list7.add(s)
                 }
             }
@@ -169,14 +177,14 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
 
         var list8 = result.msg8.split(",", "，", " ", "/") as MutableList
         for (s in list8) {
-            if (s.isEmpty()){
+            if (s.isEmpty()) {
                 list8.remove(s)
             }
         }
         var index8 = mutableSetOf<Int>()
         for (i in this.list8.indices) {
             for (s in list8) {
-                if (!this.list8.contains(s)){
+                if (!this.list8.contains(s)) {
                     this.list8.add(s)
                 }
             }
@@ -193,7 +201,7 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
 
         var list9 = result.msg9.split(",", "，", " ", "/") as MutableList
         for (s in list9) {
-            if (s.isEmpty()){
+            if (s.isEmpty()) {
                 list9.remove(s)
             }
         }
@@ -201,7 +209,7 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
 
         for (i in this.list9.indices) {
             for (s in list9) {
-                if (!this.list9.contains(s)){
+                if (!this.list9.contains(s)) {
                     this.list9.add(s)
                 }
             }
@@ -222,7 +230,7 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
     }
 
     private var personId = 0
-    private lateinit var adapter1:TagAdapter<String>
+    private lateinit var adapter1: TagAdapter<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -237,9 +245,9 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
         initData()
     }
 
-    private var list1 = mutableListOf("不好", "正常", "良好", "优秀")
-    private var list2 = mutableListOf("不好", "正常", "良好", "优秀")
-    private var list3 = mutableListOf("未婚", "已婚", "丁克", "其他")
+    private var list1 = mutableListOf("正常", "异常")
+    private var list2 = mutableListOf("正常", "异常")
+    private var list3 = mutableListOf("未婚", "已婚", "其他")
     private var list4 = mutableListOf("未生育", "备孕期", "怀孕中", "已生育")
     private var list5 = mutableListOf("暂无", "高血压", "糖尿病", "心脏病", "过敏性疾病", "哮喘", "白癜风", "癫痫")
     private var list6 = mutableListOf("暂无", "高血压", "糖尿病", "心脏病", "脑梗", "癌症", "白癜风", "癫痫", "哮喘", "近视")
@@ -309,7 +317,7 @@ class ArchivesDetailActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
                 R.id.mRbMan -> {
                 }
                 R.id.mRbWoman -> {
-                    adapter1.setSelectedList(0,1)
+                    adapter1.setSelectedList(0, 1)
                     adapter1.notifyDataChanged()
                 }
             }

@@ -4,7 +4,8 @@ data class ShoppingCartBean(
     val storeid: Int,
     val storename: String,
     val storetype: Int,
-    val product_list:List<ProductItem>
+    val product_list:List<ProductItem>,
+    var isCheck:Boolean = false
 )
 
 

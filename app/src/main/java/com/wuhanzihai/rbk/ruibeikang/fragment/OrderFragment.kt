@@ -1,6 +1,7 @@
 package com.wuhanzihai.rbk.ruibeikang.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
@@ -13,8 +14,10 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
+import com.hhjt.baselibrary.ext.finish
 import com.hhjt.baselibrary.ext.loadImage
 import com.hhjt.baselibrary.ext.onClick
+import com.hhjt.baselibrary.ext.refresh
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.AfterSaleActivity
@@ -22,10 +25,12 @@ import com.wuhanzihai.rbk.ruibeikang.activity.LogisticsActivity
 import com.wuhanzihai.rbk.ruibeikang.activity.OrderDetailActivity
 import com.wuhanzihai.rbk.ruibeikang.activity.PayActivity
 import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
+import com.wuhanzihai.rbk.ruibeikang.common.showChoseText
 import com.wuhanzihai.rbk.ruibeikang.common.showTextDesc
 import com.wuhanzihai.rbk.ruibeikang.data.entity.Goodslist
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderItem
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.NoParamOrderIdReq
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.OrderReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
@@ -35,6 +40,7 @@ import com.wuhanzihai.rbk.ruibeikang.presenter.view.OrderView
 import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.startActivityForResult
 import org.jetbrains.anko.support.v4.toast
 import per.goweii.anylayer.AnyLayer
 
@@ -47,10 +53,15 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
     }
 
     override fun onOrderResult(result: OrderBean) {
-        srView.finishRefresh()
-        srView.finishLoadMore()
+        srView.finish()
         list.addAll(result.item)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun onOrderDelete() {
+        page = 1
+        list.clear()
+        initData()
     }
 
     private lateinit var list: MutableList<OrderItem>
@@ -139,7 +150,10 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
                         helper.setTextColor(R.id.tvCommit, ContextCompat.getColor(act, R.color.white))
                         helper.getView<TextView>(R.id.tvCommit).setBackgroundResource(R.drawable.sp_orange_14)
                         helper.getView<TextView>(R.id.tvCommit).onClick {
-                            toast("确认收货")
+                            showChoseText(act,"你是否确认收货?","确认收货后订单状态将更改为已完成，商品问题可申请售后"
+                                    ,"确认收货"){
+                                mPresenter.sureOrder(NoParamOrderIdReq(item.order_id))
+                            }
                         }
                     }
                     5 -> {
@@ -154,13 +168,28 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
                         helper.setTextColor(R.id.tvMore, ContextCompat.getColor(act, R.color.gray_99))
                         helper.getView<TextView>(R.id.tvMore).setBackgroundResource(R.drawable.sp_gray_14_stk)
                         helper.getView<TextView>(R.id.tvMore).onClick {
-                            toast("查看物流")
+                            startActivity<LogisticsActivity>("orderId" to item.order_id,
+                                    "storeId" to item.store_id)
                         }
                         helper.setText(R.id.tvCommit, "再次购买")
                         helper.setTextColor(R.id.tvCommit, ContextCompat.getColor(act, R.color.white))
                         helper.getView<TextView>(R.id.tvCommit).setBackgroundResource(R.drawable.sp_orange_14)
                         helper.getView<TextView>(R.id.tvCommit).onClick {
                             toast("再次购买")
+                        }
+                    }
+                    9 -> {
+                        helper.setText(R.id.tvState, "交易关闭")
+                        helper.setTextColor(R.id.tvState, ContextCompat.getColor(act, R.color.orange))
+                        helper.getView<TextView>(R.id.tvCommit).visibility = View.VISIBLE
+                        helper.getView<TextView>(R.id.tvMore).visibility = View.GONE
+                        helper.setText(R.id.tvCommit, "删除订单")
+                        helper.setTextColor(R.id.tvCommit, ContextCompat.getColor(act, R.color.gray_99))
+                        helper.getView<TextView>(R.id.tvCommit).setBackgroundResource(R.drawable.sp_gray_14_stk)
+                        helper.getView<TextView>(R.id.tvCommit).onClick {
+                            showChoseText(act,"确认删除此订单吗") {
+                                mPresenter.deleteOrder(NoParamOrderIdReq(list[helper.layoutPosition].order_id))
+                            }
                         }
                     }
                 }
@@ -198,20 +227,28 @@ class OrderFragment(var status: Int) : BaseMvpFragment<OrderPresenter>(), OrderV
         adapter.emptyView = getEmptyView(act, R.mipmap.empty_order, "暂无订单")
 //        adapter.emptyView = layoutInflater.inflate(R.layout.empty_order_view, null)
         adapter.setOnItemClickListener { _, _, position ->
-            startActivity<OrderDetailActivity>("data" to list[position])
+            startActivityForResult<OrderDetailActivity>(1234,"orderNo" to list[position].order_no)
         }
-        srView.setOnRefreshListener {
+        srView.refresh({
             list.clear()
             page = 1
             initData()
-        }
-        srView.setOnLoadMoreListener {
+        },{
             page++
             initData()
-        }
+        })
+
     }
 
     private fun initData() {
         mPresenter.getOrder(OrderReq(0, status, "", page))
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode ==4321){
+            page = 1
+            list.clear()
+            initData()
+        }
     }
 }

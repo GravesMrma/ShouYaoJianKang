@@ -12,9 +12,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dp80"
-            android:layout_marginLeft="@dimen/dp1"
-            android:layout_marginRight="@dimen/dp1"
+            android:layout_marginTop="@dimen/dp160"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/sp_white_10_t0" />
@@ -28,14 +26,49 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dp90"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tvCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="V2.0.4"
+                android:textSize="@dimen/f19"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="发现新版本！"
+                android:textSize="@dimen/f24"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WIFI下更新不到30秒哦~"
+                android:layout_marginTop="@dimen/dp10"
+                android:textSize="@dimen/f13"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp20"
             android:text="的用户已更新到最新版本"
             android:textColor="@color/black_33"
-            android:textSize="@dimen/f13"
+            android:textSize="@dimen/f15"
             app:layout_constraintLeft_toLeftOf="@id/ivImg"
             app:layout_constraintRight_toRightOf="@id/ivImg"
             app:layout_constraintTop_toBottomOf="@id/ivImg" />
@@ -44,12 +77,13 @@
             android:id="@+id/tvDesc1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp19"
-            android:layout_marginTop="@dimen/dp15"
-            android:layout_marginRight="@dimen/dp19"
+            android:layout_marginLeft="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp25"
+            android:layout_marginRight="@dimen/dp25"
             android:gravity="bottom"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f12"
+            android:lineSpacingExtra="@dimen/dp10"
             app:layout_constraintLeft_toLeftOf="@id/ivImg"
             app:layout_constraintRight_toRightOf="@id/ivImg"
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -57,18 +91,29 @@
         <TextView
             android:id="@+id/tvUpdate"
             android:layout_width="@dimen/dp200"
-            android:layout_height="@dimen/dp34"
-            android:layout_marginTop="@dimen/dp20"
-            android:layout_marginBottom="@dimen/dp20"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp30"
             android:background="@drawable/sp_update"
             android:gravity="center"
             android:text="立即更新"
             android:textColor="@color/white"
-            android:textSize="@dimen/f13"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/f16"
             app:layout_constraintLeft_toLeftOf="@id/ivImg"
             app:layout_constraintRight_toRightOf="@id/ivImg"
             app:layout_constraintTop_toBottomOf="@id/tvDesc1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginBottom="@dimen/dp18"
+            android:text="版本更新后请重新登录APP"
+            android:textColor="#EF7173"
+            android:textSize="@dimen/f14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/ivImg"
+            app:layout_constraintRight_toRightOf="@id/ivImg"
+            app:layout_constraintTop_toBottomOf="@id/tvUpdate" />
 
     </android.support.constraint.ConstraintLayout>
 

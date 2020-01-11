@@ -15,7 +15,7 @@
         android:layout_marginBottom="@dimen/dp13"
         android:background="@mipmap/row_send"
         android:textColor="@color/black_33"
-        android:textSize="@dimen/f12" />
+        android:textSize="@dimen/f14" />
 
     <TextView
         android:id="@+id/tvTime"

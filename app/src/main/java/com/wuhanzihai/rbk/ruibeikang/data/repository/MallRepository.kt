@@ -80,4 +80,12 @@ class MallRepository @Inject constructor() {
     fun singleTravel(req:Int): Observable<BaseResp<TravelBean>> {
         return RetrofitFactory.instance.create(MallApi::class.java).singleTravel(NoParamPageReq(req))
     }
+
+    fun getCartNumber(): Observable<BaseResp<CartNumberBean>> {
+        return RetrofitFactory.instance.create(MallApi::class.java).getCartNumber(NoParamIdReq())
+    }
+
+    fun getCouponGoods(req:CouponGoodsReq): Observable<BaseResp<GoodsResult>> {
+        return RetrofitFactory.instance.create(MallApi::class.java).getCouponGoods(req)
+    }
 }

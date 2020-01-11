@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/dp14"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:maxLines="2"
         android:textColor="@color/black_33"
         android:textSize="@dimen/f15"
         app:layout_constraintHorizontal_weight="260"
@@ -40,6 +40,7 @@
     <TextView
         android:id="@+id/tvDesc"
         android:layout_width="0dp"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp2"
         android:layout_marginRight="@dimen/dp14"

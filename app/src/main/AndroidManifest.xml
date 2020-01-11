@@ -37,8 +37,6 @@
         android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
 
-    <!--android:hardwareAccelerated="false"   硬件加速-->
-
     <application
         android:name=".common.BaseApp"
         android:allowBackup="true"
@@ -48,7 +46,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.LogisticsActivity"></activity>
+        <activity android:name=".activity.CouponGoodsActivity" />
+        <activity android:name=".activity.StoreAppointRecordActivity" />
+        <activity android:name=".activity.StoreProTeacherActivity" />
+        <activity android:name=".activity.StoreAppointDetailActivity" />
+        <activity android:name=".activity.StorePurchaseActivity" />
+        <activity android:name=".activity.StoreIntegralActivity" />
+        <activity android:name=".activity.StoreProjectDetailActivity" />
+        <activity android:name=".activity.StoreArchivesActivity" />
+        <activity android:name=".activity.CommonStoresActivity" />
+        <activity android:name=".activity.StoreGoodsActivity" />
+        <activity android:name=".activity.StoreActivity" />
+        <activity android:name=".activity.WeatherActivity" />
+        <activity android:name=".activity.LogisticsActivity" />
         <activity android:name=".activity.CardStockRecordActivity" />
         <activity android:name=".activity.PayInterrogationActivity" />
         <activity android:name=".activity.ApplyLevelRecordActivity" />
@@ -100,6 +110,18 @@
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wx2c21a8a5abc71e19" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.EditUserInfoActivity" />
         <activity android:name=".activity.SearchDetailActivity" />
         <activity android:name=".activity.ExchangeCouponActivity" />
@@ -148,7 +170,9 @@
         <activity android:name=".activity.SureOrderActivity" />
         <activity android:name=".activity.OrderServiceDetailActivity" />
         <activity android:name=".activity.AfterSaleActivity" />
-        <activity android:name=".activity.OrderActivity" />
+        <activity
+            android:name=".activity.OrderActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.BIMCheckActivity" />
         <activity android:name=".activity.HealthCallActivity" />
         <activity android:name=".activity.HealthHabitsActivity" />
@@ -163,7 +187,7 @@
         <activity android:name=".activity.HealthInfoActivity" />
         <activity android:name=".activity.DietitianActivity" />
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name="com.hhjt.baselibrary.zoomable.ImageShowActivity"/>
+        <activity android:name="com.hhjt.baselibrary.zoomable.ImageShowActivity" />
 
         <service
             android:name=".bluetooth.NotificationService"
@@ -174,8 +198,8 @@
         </service>
         <service android:name=".media.MusicService" />
         <service android:name=".media.MusicOperationService" />
-
-        <service android:name=".push.MyPushService"
+        <service
+            android:name=".push.MyPushService"
             android:enabled="true"
             android:exported="false"
             android:process=":pushcore">
@@ -187,9 +211,10 @@
         <receiver
             android:name=".push.MyPushReceiver"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+
                 <category android:name="com.wuhanzihai.rbk.ruibeikang" />
             </intent-filter>
         </receiver>

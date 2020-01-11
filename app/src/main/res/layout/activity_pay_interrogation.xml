@@ -36,7 +36,7 @@
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="首要专家问诊服务"
+            android:text="首要专家问诊服务(活动价)"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f17"
             android:textStyle="bold" />
@@ -73,7 +73,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="共需支付"
+            android:text="原问诊费"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f15" />
 
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="@string/rmb"
+            android:text="¥6.00"
             android:textColor="@color/orange"
             android:textSize="@dimen/f13" />
 
@@ -100,6 +100,7 @@
 
     <TextView
         android:id="@+id/tvWeChat"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp10"
@@ -117,7 +118,6 @@
         android:textSize="@dimen/f14"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvText2a" />
-
 
     <TextView
         android:id="@+id/tvAli"

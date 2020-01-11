@@ -17,6 +17,7 @@ import com.android.mltcode.blecorelib.mode.SwithMode
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.hhjt.baselibrary.ext.onClick
+import com.hhjt.baselibrary.widgets.ProgressLoading
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.bluetooth.NotificationService
@@ -38,6 +39,8 @@ class BluetoothMenuActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     private lateinit var view: View
     private lateinit var viewText: View
     private var handler = Handler()
+
+//    private lateinit var mLoadingDialog: ProgressLoading
 
 
     val dialog by lazy {
@@ -74,6 +77,7 @@ class BluetoothMenuActivity : AppCompatActivity(), EasyPermissions.PermissionCal
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
+//        mLoadingDialog = ProgressLoading.create(this)
         view = layoutInflater.inflate(R.layout.item_my_dialog, null)
         viewText = layoutInflater.inflate(R.layout.base_dialog_loading_text, null)
 

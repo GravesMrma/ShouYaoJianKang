@@ -35,7 +35,6 @@ class InterrogationActivity : AppCompatActivity() {
     private fun initView() {
         mStack.add(InterrogationFragment())
         mStack.add(InterrogationRecordFragment())
-
         pageAdapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {
                 return mStack[position]
@@ -51,7 +50,6 @@ class InterrogationActivity : AppCompatActivity() {
         }
         vpView.adapter = pageAdapter
         vpView.setNoFocus(false)
-
         vpView.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(p0: Int) {}
             override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {}
@@ -75,11 +73,11 @@ class InterrogationActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     private fun initData() {
-
+        if (intent.getIntExtra("index",-1) == 1){
+            vpView.currentItem = 1
+        }
     }
-
 }

@@ -42,4 +42,8 @@ interface MallService {
 
     fun singleTravel(req:Int): Observable<TravelBean>
 
+    fun getCartNumber(): Observable<CartNumberBean>
+
+    fun getCouponGoods(req:CouponGoodsReq): Observable<GoodsResult>
+
 }

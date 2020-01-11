@@ -64,25 +64,26 @@
                     android:layout_marginLeft="@dimen/dp14"
                     android:layout_marginTop="@dimen/dp14"
                     android:layout_marginRight="@dimen/dp14"
+                    android:layout_marginBottom="@dimen/dp10"
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:text="千叶医生联盟:您的私人健康顾问"
                     android:textColor="@color/black_33"
                     android:textSize="@dimen/f15" />
 
-                <TextView
-                    android:id="@+id/tvTitle2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp14"
-                    android:layout_marginTop="@dimen/dp10"
-                    android:layout_marginRight="@dimen/dp14"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:minLines="2"
-                    android:text="合计6期节目，每期平均2分钟/每月月初定期更新健康专家轮番上阵传授健康秘籍。"
-                    android:textColor="@color/gray_99"
-                    android:textSize="@dimen/f12" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tvTitle2"-->
+                    <!--android:visibility="invisible"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/dp14"-->
+                    <!--android:layout_marginTop="@dimen/dp10"-->
+                    <!--android:layout_marginRight="@dimen/dp14"-->
+                    <!--android:ellipsize="end"-->
+                    <!--android:maxLines="2"-->
+                    <!--android:minLines="2"-->
+                    <!--android:textColor="@color/gray_99"-->
+                    <!--android:textSize="@dimen/f12" />-->
             </LinearLayout>
 
             <LinearLayout

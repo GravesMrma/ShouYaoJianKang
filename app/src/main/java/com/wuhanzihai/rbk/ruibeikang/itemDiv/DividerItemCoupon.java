@@ -27,9 +27,9 @@ public class DividerItemCoupon extends Y_DividerItemDecoration {
     public Y_Divider getDivider(int itemPosition) {
         Y_Divider divider = new Y_DividerBuilder()
                 .setRightSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                        40, 0, 0)
+                        14, 0, 0)
                 .setLeftSideLine(true, ContextCompat.getColor(context, R.color.transparent),
-                        40, 0, 0)
+                        14, 0, 0)
                 .setTopSideLine(true, ContextCompat.getColor(context, R.color.transparent),
                         14, 0, 0)
                 .setBottomSideLine(true, ContextCompat.getColor(context, R.color.transparent),

@@ -78,10 +78,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp18"
                 android:layout_marginLeft="@dimen/dp19"
-                android:paddingLeft="@dimen/dp10"
-                android:paddingRight="@dimen/dp10"
                 android:background="@drawable/sp_goods_tag"
                 android:gravity="center"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:text="会员专享"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/f11"
@@ -107,7 +107,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/dp14"
                 android:gravity="center"
-                android:text="已热销:391"
                 android:textColor="@color/gray_66"
                 android:textSize="@dimen/f11"
                 app:layout_constraintBottom_toBottomOf="@id/tvText"
@@ -136,8 +135,8 @@
 
                 <Space
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,8 +150,8 @@
 
                 <Space
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -166,8 +165,8 @@
 
                 <Space
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -198,39 +197,29 @@
                     android:textSize="@dimen/f12" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvIsCoupon"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp24"
-                    android:gravity="center"
-                    android:text="暂无可领优惠券"
-                    android:textColor="@color/gray_99"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:hint="暂无可领优惠券"
+                    android:textColor="@color/orange"
+                    android:textColorHint="@color/gray_99"
                     android:textSize="@dimen/f11" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvCoupon"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp24"
-                    android:gravity="center"
-                    android:text="满2000减100"
-                    android:textColor="@color/orange"
-                    android:textSize="@dimen/f11"
+                    android:layout_weight="1"
                     android:visibility="gone" />
 
-                <TextView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp14"
-                    android:gravity="center"
-                    android:text="满2000减100"
-                    android:textColor="@color/orange"
-                    android:textSize="@dimen/f11"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/ic_more"
-                    android:gravity="right" />
+                    android:src="@mipmap/ic_more" />
 
             </LinearLayout>
 
@@ -294,8 +283,8 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
-        android:gravity="center_vertical"
         android:background="@color/white"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/fake_status_bar">
 
         <ImageView
@@ -322,8 +311,8 @@
             android:layout_toLeftOf="@id/ivShare"
             android:paddingLeft="@dimen/dp14"
             android:paddingRight="@dimen/dp14"
-            android:visibility="invisible"
-            android:src="@mipmap/ic_collect_goods" />
+            android:src="@mipmap/ic_collect_goods"
+            android:visibility="invisible" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -360,6 +349,19 @@
             android:text="购物车"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f10" />
+
+        <TextView
+            android:id="@+id/tvCartNumber"
+            android:layout_width="@dimen/dp13"
+            android:layout_height="@dimen/dp13"
+            android:layout_alignTop="@id/tvShopCart"
+            android:layout_alignRight="@id/tvShopCart"
+            android:background="@drawable/sp_red_ring"
+            android:gravity="center"
+            android:text="99"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f10"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvBuy"

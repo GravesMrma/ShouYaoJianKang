@@ -26,16 +26,6 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvApplyNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="合伙人:李骁"
-                android:textColor="@color/white"
-                android:textSize="@dimen/f12"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
         </android.support.constraint.ConstraintLayout>
 
         <LinearLayout
@@ -61,7 +51,7 @@
                     android:textSize="@dimen/f14" />
 
                 <TextView
-                    android:id="@+id/tvName"
+                    android:id="@+id/tvSn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp10"
@@ -89,65 +79,65 @@
                     android:id="@+id/rvView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
                     android:orientation="vertical">
 
                 </android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
 
-            <RelativeLayout
+            <View
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp5">
+                android:layout_marginTop="@dimen/dp5"
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="此订单返利比例:"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f14" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="商品合计:"
-                        android:textColor="@color/green_08"
-                        android:textSize="@dimen/f14" />
-
-                    <TextView
-                        android:id="@+id/tvNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:text="¥ 3580"
-                        android:textColor="@color/gray_99"
-                        android:textSize="@dimen/f14" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tvRule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:orientation="horizontal">
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="返利比例:"
-                        android:textColor="@color/green_08"
-                        android:textSize="@dimen/f14" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tvNoNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:text="18%"
-                        android:textColor="@color/gray_99"
-                        android:textSize="@dimen/f14" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:orientation="horizontal">
 
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="返利不含:"
+                    android:textColor="@color/green_08"
+                    android:textSize="@dimen/f14" />
 
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="快递费、商品折扣、优惠券部分"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -155,46 +145,15 @@
                 android:layout_marginTop="@dimen/dp18"
                 android:background="@color/line" />
 
-            <RelativeLayout
-                android:id="@+id/rlViewNum"
+            <TextView
+                android:id="@+id/tvMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp18">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="返利:"
-                        android:textColor="@color/green_08"
-                        android:textSize="@dimen/f14" />
-
-                    <TextView
-                        android:id="@+id/tvYJHNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:text="¥ 644.4"
-                        android:textColor="@color/gray_99"
-                        android:textSize="@dimen/f14" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="未提现"
-                    android:textColor="@color/orange"
-                    android:textSize="@dimen/f14" />
-
-            </RelativeLayout>
-
+                android:layout_marginTop="@dimen/dp19"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/orange"
+                android:textSize="@dimen/f18" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

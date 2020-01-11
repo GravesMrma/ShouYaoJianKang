@@ -139,7 +139,7 @@
                         android:layout_marginLeft="@dimen/dp13"
                         android:layout_marginTop="@dimen/dp13"
                         android:textColor="@color/yellow"
-                        android:textSize="@dimen/f11"
+                        android:textSize="@dimen/f12"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -280,7 +280,7 @@
                             android:layout_height="wrap_content"
                             android:text="3"
                             android:textColor="@color/black_33"
-                            android:textSize="@dimen/f15"
+                            android:textSize="@dimen/f17"
                             android:textStyle="bold" />
 
                         <TextView
@@ -289,7 +289,7 @@
                             android:layout_marginTop="@dimen/dp10"
                             android:text="卡包"
                             android:textColor="@color/black_33"
-                            android:textSize="@dimen/f12" />
+                            android:textSize="@dimen/f13" />
 
                     </LinearLayout>
 
@@ -307,11 +307,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvCouponNumber"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/black_33"
-                            android:textSize="@dimen/f15"
+                            android:textSize="@dimen/f17"
                             android:textStyle="bold" />
 
                         <TextView
@@ -320,7 +321,7 @@
                             android:layout_marginTop="@dimen/dp10"
                             android:text="优惠劵"
                             android:textColor="@color/black_33"
-                            android:textSize="@dimen/f12" />
+                            android:textSize="@dimen/f13" />
 
                     </LinearLayout>
 
@@ -342,7 +343,7 @@
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/black_33"
-                            android:textSize="@dimen/f15"
+                            android:textSize="@dimen/f17"
                             android:textStyle="bold" />
 
                         <TextView
@@ -351,7 +352,7 @@
                             android:layout_marginTop="@dimen/dp10"
                             android:text="收藏"
                             android:textColor="@color/black_33"
-                            android:textSize="@dimen/f12" />
+                            android:textSize="@dimen/f13" />
 
                     </LinearLayout>
 

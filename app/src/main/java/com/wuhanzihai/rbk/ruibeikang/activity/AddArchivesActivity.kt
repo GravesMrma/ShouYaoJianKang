@@ -20,6 +20,7 @@ import com.wuhanzihai.rbk.ruibeikang.widgets.CustomSinglePicker
 import kotlinx.android.synthetic.main.activity_add_archives.*
 import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class AddArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
 
@@ -29,24 +30,11 @@ class AddArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
         mPresenter.mView = this
     }
 
-    override fun onArchivesResult(result: MutableList<ArchivesBean>) {
-
-
-    }
-
     override fun onAddArchivesResult() {
         setResult(4321)
         showTextDesc(act,"添加成功"){
             finish()
         }
-    }
-
-    override fun onDelArchivesResult() {
-
-    }
-
-    override fun onChosePeopleResult(result: OrderIdBean) {
-
     }
 
     private var sex = 1
@@ -75,6 +63,19 @@ class AddArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
             }
         }
         tvCommit.onClick {
+            if (edName.text.isEmpty()){
+                toast("请填写姓名")
+                return@onClick
+            }
+            if (tvGuanxi.text.isEmpty()){
+                toast("请选择与您的关系")
+                return@onClick
+            }
+            if (birthday.isEmpty()){
+                toast("请填写出生日期")
+                return@onClick
+            }
+
             mPresenter.createArchives(AddArchivesReq(edName.text.toString(),
                     birthday,
                     tvGuanxi.text.toString(),

@@ -43,6 +43,15 @@ interface UserApi {
     @POST("User/order")
     fun getOrder(@Body req: OrderReq): Observable<BaseResp<OrderBean>>
 
+    @POST("User/overorder")
+    fun sureOrder(@Body req: NoParamOrderIdReq): Observable<BaseData>
+
+    @POST("User/delorder")
+    fun deleteOrder(@Body req: NoParamOrderIdReq): Observable<BaseData>
+
+    @POST("User/orderrollback")
+    fun closeOrder(@Body req: CloseOrderReq): Observable<BaseData>
+
     @POST("User/userexpress")
     fun logistics(@Body req: LogisticsReq): Observable<BaseResp<Logistics>>
 
@@ -154,9 +163,18 @@ interface UserApi {
     @POST("draw/share")
     fun shareRecord(@Body req: NoParamIdPageReq): Observable<BaseResp<ShareBean>>
 
+    @POST("Agent/directpush")
+    fun rebateRecord(@Body req: NoParamDisIdPageReq): Observable<BaseResp<RebateRecordBean>>
+
+    @POST("draw/draw_record")
+    fun rebateRecord1(@Body req: NoParamIdReq): Observable<BaseResp<ApplyCashListDetail>>
+
     // 分销系统 结束
 
     //春雨医生
+
+    @POST("doctor/records_price")
+    fun getPrice(@Body req: NoParamReq): Observable<BaseResp<PriceBean>>
 
     @POST("doctor/choose_person")
     fun doctorList(@Body req: NoParamIdReq): Observable<BaseResp<MutableList<ArchivesBean>>>
@@ -182,7 +200,7 @@ interface UserApi {
     fun addQuestion(@PartMap maps: HashMap<String, RequestBody>): Observable<BaseResp<IsRebateBean>>
 
     @POST("doctor/records")
-    fun doctorRecord(@Body req: NoParamIdReq): Observable<BaseResp<InterrogationBean>>
+    fun doctorRecord(@Body req: NoParamIdPageReq): Observable<BaseResp<InterrogationBean>>
 
     @POST("doctor/del_records")
     fun deleteRecord(@Body req: NoParamOrderIdReq): Observable<BaseData>
@@ -198,5 +216,18 @@ interface UserApi {
 
     @POST("doctor/get_order_doctor")
     fun doctorDetail(@Body req: NoParamOrderReq): Observable<BaseResp<DoctorDetail>>
+
+    //优惠券
+    @POST("User/usercoupons")
+    fun getCoupons(@Body req: CouponReq): Observable<BaseResp<MutableList<CouponBean>>>
+
+    @POST("user/userrecivecoupon")
+    fun takeCoupon(@Body req: NoParamIdIdReq): Observable<BaseData>
+
+    @POST("Marketing/extendscoupon")
+    fun getExchangeCoupons(@Body req: NoParamIdReq): Observable<BaseResp<MutableList<GoodsCouponBean>>>
+
+    @POST("User/actityrecevecoupon")
+    fun takeExchangeCoupons(@Body req: CouponIdReq): Observable<BaseData>
 
 }

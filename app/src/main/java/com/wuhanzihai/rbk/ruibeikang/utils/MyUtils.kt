@@ -72,10 +72,10 @@ class MyUtils {
             {
                 minute = t / 60
                 second = t % 60
-                r = "00时" + toDouble(minute)+"分" + toDouble(second)+"秒"
+                r = toDouble(minute)+"分" + toDouble(second)+"秒"
             } else {
                 second = t
-                r = "00时00分" + toDouble(second)+"秒"
+                r = toDouble(second)+"秒"
             }
             return r
         }
@@ -105,6 +105,49 @@ class MyUtils {
         return content
     }
 
+
+    fun getWindLevel(wind :Double):String{
+        if (wind in 0.0..0.2){
+            return "无风"
+        }
+        if (wind in 0.3..1.5){
+            return "软风"
+        }
+        if (wind in 1.6..3.3){
+            return "轻风"
+        }
+        if (wind in 3.4..5.4){
+            return "微风"
+        }
+        if (wind in 5.5..7.9){
+            return "和风"
+        }
+        if (wind in 8.0..10.7){
+            return "清风"
+        }
+        if (wind in 10.8..13.8){
+            return "强风"
+        }
+        if (wind in 13.9..17.1){
+            return "劲风"
+        }
+        if (wind in 17.2..20.7){
+            return "大风"
+        }
+        if (wind in 20.8..24.4){
+            return "烈风"
+        }
+        if (wind in 24.5..28.4){
+            return "狂风"
+        }
+        if (wind in 28.5..32.6){
+            return "暴风"
+        }
+        if (wind in 32.7..36.9){
+            return "台风"
+        }
+        return "无风"
+    }
 
 
 

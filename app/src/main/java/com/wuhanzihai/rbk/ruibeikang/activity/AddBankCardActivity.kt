@@ -48,8 +48,8 @@ class AddBankCardActivity : BaseMvpActivity<BankCardPresenter>(), BankCardView {
 
     private fun initView(){
         tvCommit.onClick {
-            if (edName.text.isNotEmpty()&&edCode.text.isNotEmpty()){
-                mPresenter.addBankCard(AddBankCardReq(edName.text.toString(),edCode.text.toString()))
+            if (edName.text.isNotEmpty()&&edCode.text.isNotEmpty()&&edPhone.text.isNotEmpty()){
+                mPresenter.addBankCard(AddBankCardReq(edName.text.toString(),edCode.text.toString(),edPhone.text.toString()))
             }else{
                 toast("请完善信息")
             }

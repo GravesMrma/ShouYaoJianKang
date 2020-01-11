@@ -18,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="健康档案"
-        app:moreText="保存"/>
+        app:moreText="保存"
+        app:titleText="健康档案" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:text="与您的关系"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <TextView
                         android:id="@+id/tvGuanxi"
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:text="姓名"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <EditText
                         android:id="@+id/edName"
@@ -121,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:text="性别"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <RadioGroup
                         android:id="@+id/mRgRecord"
@@ -181,7 +181,7 @@
                         android:layout_height="wrap_content"
                         android:text="出生日期"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <TextView
                         android:id="@+id/tvBirthday"
@@ -202,6 +202,22 @@
                     android:layout_marginRight="@dimen/dp14"
                     android:background="@color/line" />
 
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp13"
+                android:text="以下内容为选填项" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <RelativeLayout
                     android:id="@+id/rlHeight"
                     android:layout_width="match_parent"
@@ -213,7 +229,7 @@
                         android:layout_height="wrap_content"
                         android:text="身高"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <TextView
                         android:id="@+id/tvHeight"
@@ -222,6 +238,7 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
+                        android:hint="请选择身高"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -245,7 +262,7 @@
                         android:layout_height="wrap_content"
                         android:text="体重"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <TextView
                         android:id="@+id/tvWeight"
@@ -254,6 +271,7 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
+                        android:hint="请选择体重"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -261,23 +279,14 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginLeft="@dimen/dp14"
-                    android:layout_marginRight="@dimen/dp14"
-                    android:background="@color/line" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp10"
-                android:background="@color/white"
-                android:orientation="vertical">
+                    android:layout_height="@dimen/dp10"
+                    android:background="@color/main_bg" />
 
                 <RelativeLayout
                     android:id="@+id/rlXiyan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
                     android:padding="@dimen/dp14">
 
                     <TextView
@@ -285,7 +294,7 @@
                         android:layout_height="wrap_content"
                         android:text="吸烟史"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <TextView
                         android:id="@+id/tvXiyan"
@@ -294,6 +303,7 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
+                        android:hint="选择吸烟年限"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -317,7 +327,7 @@
                         android:layout_height="wrap_content"
                         android:text="饮酒史"
                         android:textColor="@color/black_33"
-                        android:textSize="@dimen/f13" />
+                        android:textSize="@dimen/f14" />
 
                     <TextView
                         android:id="@+id/tvDrink"
@@ -326,6 +336,7 @@
                         android:layout_alignParentRight="true"
                         android:drawableRight="@mipmap/ic_more_gray"
                         android:drawablePadding="@dimen/dp10"
+                        android:hint="选择饮酒年限"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f13" />
 
@@ -333,12 +344,10 @@
 
             </LinearLayout>
 
-            <TextView
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/dp13"
-                android:text="以下内容为必选项" />
+                android:layout_height="@dimen/dp10"
+                android:background="@color/main_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -352,7 +361,7 @@
                     android:layout_height="wrap_content"
                     android:text="肝功能"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView1"
@@ -373,14 +382,14 @@
                     android:layout_marginTop="@dimen/dp14"
                     android:text="肾功能"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
-                    app:max_select="0" />
+                    app:max_select="1" />
 
                 <View
                     android:layout_width="match_parent"
@@ -394,14 +403,14 @@
                     android:layout_marginTop="@dimen/dp14"
                     android:text="婚姻状况"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp10"
-                    app:max_select="0" />
+                    app:max_select="1" />
 
                 <View
                     android:layout_width="match_parent"
@@ -415,7 +424,7 @@
                     android:layout_marginTop="@dimen/dp14"
                     android:text="生育状态"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView4"
@@ -438,7 +447,7 @@
                     android:layout_height="wrap_content"
                     android:text="慢性病"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView5"
@@ -458,7 +467,7 @@
                     android:paddingBottom="@dimen/dp8"
                     android:textColor="@color/black_33"
                     android:textColorHint="@color/green_08"
-                    android:textSize="@dimen/f11" />
+                    android:textSize="@dimen/f13" />
 
             </LinearLayout>
 
@@ -475,7 +484,7 @@
                     android:layout_height="wrap_content"
                     android:text="家族病史"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView6"
@@ -495,7 +504,7 @@
                     android:paddingBottom="@dimen/dp8"
                     android:textColor="@color/black_33"
                     android:textColorHint="@color/green_08"
-                    android:textSize="@dimen/f11" />
+                    android:textSize="@dimen/f13" />
 
             </LinearLayout>
 
@@ -512,7 +521,7 @@
                     android:layout_height="wrap_content"
                     android:text="药物过敏"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView7"
@@ -532,7 +541,7 @@
                     android:paddingBottom="@dimen/dp8"
                     android:textColor="@color/black_33"
                     android:textColorHint="@color/green_08"
-                    android:textSize="@dimen/f11" />
+                    android:textSize="@dimen/f13" />
 
             </LinearLayout>
 
@@ -549,7 +558,7 @@
                     android:layout_height="wrap_content"
                     android:text="食物/接触物过敏"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView8"
@@ -569,7 +578,7 @@
                     android:paddingBottom="@dimen/dp8"
                     android:textColor="@color/black_33"
                     android:textColorHint="@color/green_08"
-                    android:textSize="@dimen/f11" />
+                    android:textSize="@dimen/f13" />
 
             </LinearLayout>
 
@@ -586,7 +595,7 @@
                     android:layout_height="wrap_content"
                     android:text="个人习惯"
                     android:textColor="@color/black_33"
-                    android:textSize="@dimen/f13" />
+                    android:textSize="@dimen/f14" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfView9"
@@ -606,7 +615,7 @@
                     android:paddingBottom="@dimen/dp8"
                     android:textColor="@color/black_33"
                     android:textColorHint="@color/green_08"
-                    android:textSize="@dimen/f11" />
+                    android:textSize="@dimen/f13" />
 
             </LinearLayout>
 
@@ -616,8 +625,5 @@
                 android:background="@color/line" />
 
         </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
-
-
 </LinearLayout>

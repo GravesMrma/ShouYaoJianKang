@@ -11,17 +11,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.facebook.drawee.view.SimpleDraweeView
-import com.hhjt.baselibrary.ext.loadImage
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.hhjt.baselibrary.utils.DateUtils
 import com.wuhanzihai.rbk.ruibeikang.R
-import com.wuhanzihai.rbk.ruibeikang.activity.AfterSaleActivity
-import com.wuhanzihai.rbk.ruibeikang.activity.OrderDetailActivity
 import com.wuhanzihai.rbk.ruibeikang.activity.OrderServiceDetailActivity
 import com.wuhanzihai.rbk.ruibeikang.activity.PayActivity
 import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
-import com.wuhanzihai.rbk.ruibeikang.data.entity.Goodslist
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderItem
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.OrderReq

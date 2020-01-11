@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -17,11 +16,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/llView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -29,28 +30,143 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tvL1tag1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="￥"
+                    android:text="@string/rmb"
                     android:textColor="@color/selector_orange_gray"
                     android:textSize="@dimen/f12" />
 
                 <TextView
+                    android:id="@+id/tvCash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
+                    android:layout_marginLeft="@dimen/dp2"
+                    android:text="2"
                     android:textColor="@color/selector_orange_gray"
-                    android:textSize="30sp"
+                    android:textSize="@dimen/f30"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tvL1tag11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp6"
-                android:text="满800减100"
+                android:text="现金抵扣券"
                 android:textColor="@color/selector_orange_gray"
                 android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvL2tag1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rmb"
+                    android:textColor="@color/selector_orange_gray"
+                    android:textSize="@dimen/f12" />
+
+                <TextView
+                    android:id="@+id/tvCoupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp2"
+                    android:text="2"
+                    android:textColor="@color/selector_orange_gray"
+                    android:textSize="@dimen/f30"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp6"
+                android:textColor="@color/selector_orange_gray"
+                android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tvDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:textColor="@color/selector_orange_gray"
+                    android:textSize="@dimen/f30"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvL3tag1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:text="折"
+                    android:textColor="@color/selector_orange_gray"
+                    android:textSize="@dimen/f12" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvL3tag11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp6"
+                android:text="现金折扣券"
+                android:textColor="@color/selector_orange_gray"
+                android:textSize="@dimen/f12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvL4tag1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp5"
+                android:gravity="center"
+                android:text="会员礼品\n抵扣券"
+                android:textColor="@color/selector_orange_gray"
+                android:textSize="@dimen/f21"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -70,10 +186,10 @@
         <View
             android:layout_width="@dimen/dp1"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="@dimen/dp1"
-            android:layout_marginBottom="@dimen/dp1"/>
+            android:layout_marginBottom="@dimen/dp1"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
             android:id="@+id/tvText"
@@ -84,7 +200,6 @@
             android:layout_marginRight="@dimen/dp6"
             android:lineSpacingExtra="@dimen/dp2"
             android:minLines="2"
-            android:text="限购买软骨营养素使用，购买量不超过2瓶"
             android:textColor="@color/black_33"
             android:textSize="@dimen/f11"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -99,7 +214,6 @@
             android:layout_marginTop="@dimen/dp5"
             android:layout_marginRight="@dimen/dp6"
             android:lineSpacingExtra="@dimen/dp2"
-            android:text="2019.7.15-2019.8.15"
             android:textColor="@color/gray_66"
             android:textSize="@dimen/f10"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -111,7 +225,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/lView"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <include layout="@layout/item_line_coupon_v" />
 
@@ -122,8 +236,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp14"
+            android:layout_marginRight="@dimen/dp14"
             android:layout_marginBottom="@dimen/dp5"
+            android:drawableRight="@drawable/selector_open_bg"
+            android:ellipsize="end"
             android:lineSpacingExtra="@dimen/dp2"
+            android:lines="1"
             android:text="使用说明"
             android:textColor="@color/gray_99"
             android:textSize="@dimen/f10"
@@ -162,7 +280,6 @@
                 android:ems="1"
                 android:gravity="center"
                 android:lineSpacingExtra="@dimen/dp5"
-                android:text="立即使用"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/f12" />
 
@@ -170,4 +287,45 @@
 
     </android.support.constraint.ConstraintLayout>
 
+    <RelativeLayout
+        android:id="@+id/rlDesc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="3.6"
+        app:layout_constraintTop_toBottomOf="@id/rlView">
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/gray_99" />
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@color/gray_99" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_99" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp20"
+            android:lineSpacingExtra="@dimen/dp5"
+            android:paddingLeft="@dimen/dp30"
+            android:paddingRight="@dimen/dp30"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f12" />
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

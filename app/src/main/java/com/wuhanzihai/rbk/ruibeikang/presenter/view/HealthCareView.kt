@@ -11,4 +11,6 @@ interface HealthCareView :BaseView {
     fun onGoodsListResult(result: GoodsResult){}
 
     fun onGoodsListClassResult(result:MutableList<Child>){}
+
+    fun onCouponGoodsResult(result: GoodsResult){}
 }

@@ -9,11 +9,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
+import com.hhjt.baselibrary.ext.finish
 import com.hhjt.baselibrary.ext.loadImage
+import com.hhjt.baselibrary.ext.refresh
 import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.GoodsDetailActivity
@@ -42,8 +45,7 @@ class HealthCareFragment(var category_id: Int) : BaseMvpFragment<HealthCarePrese
     }
 
     override fun onGoodsListResult(result: GoodsResult) {
-        srView.finishRefresh()
-        srView.finishLoadMore()
+        srView.finish()
         list.addAll(result.item)
         adapter.notifyDataSetChanged()
     }
@@ -80,35 +82,51 @@ class HealthCareFragment(var category_id: Int) : BaseMvpFragment<HealthCarePrese
                 if (item.is_reservation == 0) {
                     helper.setImageResource(R.id.ivVip,R.mipmap.ic_vip_tag)
                     if (item.sales==0){
-                        if (item.product_id  == 145||
-                                item.product_id  == 146||
+                        if (item.product_id  == 146||
                                 item.product_id  == 147||
-                                item.product_id  == 148){
+                                item.product_id  == 148||
+                                item.product_id  == 152||
+                                item.product_id  == 154||
+                                item.product_id  == 155||
+                                item.product_id  == 156||
+                                item.product_id  == 157||
+                                item.product_id  == 158){
+                            helper.getView<ImageView>(R.id.ivVip).visibility = View.GONE
+                            helper.getView<TextView>(R.id.tvVip).visibility = View.VISIBLE
                             helper.setText(R.id.tvReserve, "${item.counterfeit_sales}人已领取")
                         }else{
+                            helper.getView<ImageView>(R.id.ivVip).visibility = View.VISIBLE
+                            helper.getView<TextView>(R.id.tvVip).visibility = View.GONE
                             helper.setText(R.id.tvReserve, "${item.counterfeit_sales}人已购买")
                         }
                     }else{
-                        if (item.product_id  == 145||
-                                item.product_id  == 146||
+                        if (item.product_id  == 146||
                                 item.product_id  == 147||
-                                item.product_id  == 148){
+                                item.product_id  == 148||
+                                item.product_id  == 152||
+                                item.product_id  == 154||
+                                item.product_id  == 155||
+                                item.product_id  == 156||
+                                item.product_id  == 157||
+                                item.product_id  == 158){
+                            helper.getView<ImageView>(R.id.ivVip).visibility = View.GONE
+                            helper.getView<TextView>(R.id.tvVip).visibility = View.VISIBLE
                             helper.setText(R.id.tvReserve, "${item.sales}人已领取")
                         }else{
+                            helper.getView<ImageView>(R.id.ivVip).visibility = View.VISIBLE
+                            helper.getView<TextView>(R.id.tvVip).visibility = View.GONE
                             helper.setText(R.id.tvReserve, "${item.sales}人已购买")
                         }
                     }
-                    helper.setText(R.id.tvOldPrice, item.original_price)
-                    helper.getView<TextView>(R.id.tvOldPrice).paint.flags = Paint.STRIKE_THRU_TEXT_FLAG; //中划线
-                    helper.getView<TextView>(R.id.tvOldPrice).visibility = View.VISIBLE
                 } else {
                     helper.setImageResource(R.id.ivVip,R.mipmap.ic_dinjzf)
+                    helper.getView<ImageView>(R.id.ivVip).visibility = View.VISIBLE
+                    helper.getView<TextView>(R.id.tvVip).visibility = View.GONE
                     if (item.sales==0){
                         helper.setText(R.id.tvReserve, "${item.counterfeit_sales}人已预订")
                     }else{
                         helper.setText(R.id.tvReserve, "${item.sales}人已预订")
                     }
-                    helper.getView<TextView>(R.id.tvOldPrice).visibility = View.GONE
                 }
             }
         }
@@ -116,7 +134,7 @@ class HealthCareFragment(var category_id: Int) : BaseMvpFragment<HealthCarePrese
         rvView.layoutManager = GridLayoutManager(act, 1)
         rvView.addItemDecoration(DividerItemNews(act))
         adapter.emptyView = getEmptyView(act,"暂无商品,请下拉刷新")
-        adapter.setOnItemClickListener { adapter, view, position ->
+        adapter.setOnItemClickListener { _, _, position ->
             if (list[position].is_reservation == 0){
                 startActivity<GoodsDetailActivity>("id" to list[position].product_id)
             }else{
@@ -124,15 +142,14 @@ class HealthCareFragment(var category_id: Int) : BaseMvpFragment<HealthCarePrese
             }
         }
 
-        srView.setOnRefreshListener {
+        srView.refresh({
             list.clear()
             page = 1
             initData()
-        }
-        srView.setOnLoadMoreListener {
+        },{
             page++
             initData()
-        }
+        })
     }
 
     private fun initData() {

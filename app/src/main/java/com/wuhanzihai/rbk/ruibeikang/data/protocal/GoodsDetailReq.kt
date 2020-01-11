@@ -12,6 +12,7 @@ class GoodsDetailReq(id: Int) : BaseReq() {
     private var id = id
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
+    private var user_id = LoginUtils.getUserId()
 
     init {
         sign = AES.encryptAES(formatParam(this), getKey())

@@ -60,4 +60,19 @@ class HealthCarePresenter @Inject constructor() : BasePresenter<HealthCareView>(
                     }
                 }, lifecycleProvider)
     }
+
+    fun getCouponGoods(req:CouponGoodsReq) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        mallServiceImpl.getCouponGoods(req)
+                .excute(object : BaseSubscriber<GoodsResult>(mView) {
+                    override fun onNext(t:GoodsResult) {
+                        super.onNext(t)
+                        mView.onCouponGoodsResult(t)
+                    }
+                }, lifecycleProvider)
+    }
+
 }

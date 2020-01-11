@@ -20,4 +20,5 @@ data class LoginData(
         var vip_card_id: Int,
         var weight: Int,
         var first_login: Int,
-        var token: String)
+        var token: String,
+        val usercouponcount:Int)

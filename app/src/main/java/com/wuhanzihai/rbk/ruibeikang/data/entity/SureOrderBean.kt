@@ -11,7 +11,8 @@ data class Storedata(
     val storeid: Int,
     val storename: String,
     val storetype: Int,
-    val userstorecoupons: List<Any>
+    val userstorecoupons: List<Any>,
+    var coupons:List<CouponBean>
 )
 
 data class Product(

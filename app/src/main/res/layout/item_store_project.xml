@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/dp14"
+    android:paddingTop="@dimen/dp10"
+    android:paddingRight="@dimen/dp14"
+    android:paddingBottom="@dimen/dp10">
+
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1."
+        android:layout_centerVertical="true"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f13" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp14"
+        android:layout_centerVertical="true"
+        android:text="红蓝光祛痘"
+        android:layout_toRightOf="@id/tvCount"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f13" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingTop="@dimen/dp4"
+        android:paddingBottom="@dimen/dp4"
+        android:text="1.   红蓝光祛痘"
+        android:textColor="@color/black_33"
+        android:textSize="@dimen/f13" />
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.wuhanzihai.rbk.ruibeikang.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -29,6 +30,7 @@ import com.wuhanzihai.rbk.ruibeikang.presenter.view.HealthArchivesView
 import kotlinx.android.synthetic.main.activity_health_archives.*
 import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.startActivityForResult
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -81,7 +83,7 @@ class HealthArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
             adapter.notifyDataSetChanged()
         }
         tvAdd.onClick {
-            startActivity<AddArchivesActivity>()
+            startActivityForResult<AddArchivesActivity>(1234)
         }
 
         list = mutableListOf()
@@ -110,15 +112,7 @@ class HealthArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
         rvView.layoutManager = GridLayoutManager(act, 1)
         rvView.addItemDecoration(DividerItem14_14_14(act))
         adapter.setOnItemClickListener { _, _, position ->
-            startActivity<ArchivesDetailActivity>("personId" to list[position].person_id)
-//            if (!list[position].isCheck) {
-//                for (bean in list) {
-//                    bean.isCheck = false
-//                }
-//                list[position].isCheck = true
-//                personId = list[position].person_id
-//                adapter.notifyDataSetChanged()
-//            }
+            startActivityForResult<ArchivesDetailActivity>(1234,"personId" to list[position].person_id)
         }
         adapter.setOnItemChildClickListener { _, _, position ->
             showChoseText(act, "是否删除该档案？", "健康档案删除后无法恢复请谨慎删除!", "确定") {
@@ -138,5 +132,13 @@ class HealthArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesVie
 
     private fun initData() {
         mPresenter.archivesList()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == 4321) {
+            list.clear()
+            initData()
+        }
     }
 }

@@ -13,4 +13,6 @@ interface InterrogationView : BaseView {
 
     fun onDelRecordResult(){}
 
+    fun onPriceBean(result:PriceBean){}
+
 }

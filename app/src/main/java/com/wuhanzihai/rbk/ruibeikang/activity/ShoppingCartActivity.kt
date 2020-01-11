@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
@@ -54,6 +55,7 @@ class ShoppingCartActivity : BaseMvpActivity<ShoppingCartPresenter>(), ShoppingC
 
     override fun onDoneCartResult() {
         startActivity<SureOrderActivity>("data" to param)
+        finish()
     }
 
     override fun onDoneCartNumResult() {
@@ -78,8 +80,8 @@ class ShoppingCartActivity : BaseMvpActivity<ShoppingCartPresenter>(), ShoppingC
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
         initView()
-
         initData()
+
     }
 
     private fun initView() {
@@ -88,6 +90,16 @@ class ShoppingCartActivity : BaseMvpActivity<ShoppingCartPresenter>(), ShoppingC
         list = mutableListOf()
         adapter = object : BaseQuickAdapter<ShoppingCartBean, BaseViewHolder>(R.layout.item_shopping_cart, list) {
             override fun convert(helper: BaseViewHolder?, item: ShoppingCartBean?) {
+                helper!!.setText(R.id.tvStore, item!!.storename)
+                if (item.storetype == 0) {
+                    helper.getView<ImageView>(R.id.ivTag).visibility = View.GONE
+                    helper.getView<TextView>(R.id.tvTag).visibility = View.VISIBLE
+                } else {
+                    helper.getView<ImageView>(R.id.ivTag).visibility = View.VISIBLE
+                    helper.getView<TextView>(R.id.tvTag).visibility = View.GONE
+                }
+                helper.getView<ImageView>(R.id.ivSelect).isSelected = item.isCheck
+
                 var adapterItem = object : BaseQuickAdapter<ProductItem, BaseViewHolder>(R.layout.item_shopping_cart_item, item!!.product_list) {
                     override fun convert(helper: BaseViewHolder?, item: ProductItem?) {
                         if (item!!.isManager) {
@@ -108,7 +120,7 @@ class ShoppingCartActivity : BaseMvpActivity<ShoppingCartPresenter>(), ShoppingC
                                 .addOnClickListener(R.id.ivAdd)
                     }
                 }
-                helper!!.getView<RecyclerView>(R.id.rvView).run {
+                helper.getView<RecyclerView>(R.id.rvView).run {
                     adapter = adapterItem
                     layoutManager = GridLayoutManager(act, 1)
                 }
@@ -132,6 +144,17 @@ class ShoppingCartActivity : BaseMvpActivity<ShoppingCartPresenter>(), ShoppingC
                         }
                     }
                     adapter.notifyDataSetChanged()
+                }
+
+                helper.setOnClickListener(R.id.ivSelect) {
+                    item.isCheck = !item.isCheck
+                    helper.getView<ImageView>(R.id.ivSelect).isSelected = item.isCheck
+                    for (bean in item.product_list) {
+                        bean.isCheck = item.isCheck
+                    }
+                    adapterItem.notifyDataSetChanged()
+                    checkAllSelect()
+                    getAllMoney()
                 }
             }
         }
@@ -208,12 +231,16 @@ class ShoppingCartActivity : BaseMvpActivity<ShoppingCartPresenter>(), ShoppingC
         for (bean in list) {
             for (item in bean.product_list) {
                 if (!item.isCheck) {
+                    list.first().isCheck = false
+                    adapter.notifyDataSetChanged()
                     tvAllSelect.isSelected = false
                     tvAllSelect.text = "全选"
                     return true
                 }
             }
         }
+        list.first().isCheck = true
+        adapter.notifyDataSetChanged()
         tvAllSelect.isSelected = true
         tvAllSelect.text = "取消全选"
         return false

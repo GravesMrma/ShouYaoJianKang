@@ -10,9 +10,10 @@ import java.net.URLEncoder
 /**
  * Created by wx on 2018/7/10
  */
-class AddBankCardReq(cardname: String, cardnumber: String) : BaseReq() {
+class AddBankCardReq(cardname: String, cardnumber: String, mobile: String) : BaseReq() {
     private var cardname = URLEncoder.encode(cardname,"UTF-8")
     private var cardnumber = cardnumber
+    private val mobile = mobile
     private var time: String = System.currentTimeMillis().toString()
     private var token = LoginUtils.getAuthId()
     private var user_id = LoginUtils.getUserId()

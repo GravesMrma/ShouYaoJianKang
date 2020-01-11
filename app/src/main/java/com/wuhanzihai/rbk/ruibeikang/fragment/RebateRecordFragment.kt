@@ -12,17 +12,46 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.hhjt.baselibrary.common.BaseConstant
+import com.hhjt.baselibrary.ext.finish
+import com.hhjt.baselibrary.ext.refresh
+import com.hhjt.baselibrary.ui.fragment.BaseMvpFragment
+import com.orhanobut.hawk.Hawk
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.common.getEmptyView
+import com.wuhanzihai.rbk.ruibeikang.data.entity.RebateBean
+import com.wuhanzihai.rbk.ruibeikang.data.entity.RebateRecordBean
+import com.wuhanzihai.rbk.ruibeikang.data.entity.RebateRecordItem
+import com.wuhanzihai.rbk.ruibeikang.data.entity.RecordProduct
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.NoParamDisIdPageReq
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.NoParamIdDisIdPageReq
+import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
+import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItem14_14_14
+import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemRebateRecord
+import com.wuhanzihai.rbk.ruibeikang.presenter.RebateRecordPresenter
+import com.wuhanzihai.rbk.ruibeikang.presenter.view.RebateRecordView
+import kotlinx.android.synthetic.main.item_rebate_record_head.view.*
 import kotlinx.android.synthetic.main.fragment_recyclerview.*
 import org.jetbrains.anko.support.v4.act
 
 @SuppressLint("ValidFragment")
-class RebateRecordFragment(var type: Int) : Fragment() {
+class RebateRecordFragment(var type: Int) : BaseMvpFragment<RebateRecordPresenter>(), RebateRecordView {
+    override fun injectComponent() {
+        DaggerUserComponent.builder().activityComponent(mActivityComponent)
+                .userModule(UserModule()).build().inject(this)
+        mPresenter.mView = this
+    }
 
-    private lateinit var list: MutableList<String>
-    private lateinit var adapter: BaseQuickAdapter<String, BaseViewHolder>
+    override fun onRebateRecord(result: RebateRecordBean) {
+        srView.finish()
+        list.addAll(result.item)
+        adapter.notifyDataSetChanged()
+    }
+
+    private lateinit var list: MutableList<RebateRecordItem>
+    private lateinit var adapter: BaseQuickAdapter<RebateRecordItem, BaseViewHolder>
+    private var page = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -39,44 +68,44 @@ class RebateRecordFragment(var type: Int) : Fragment() {
 
     private fun initView() {
         list = mutableListOf()
-        adapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_rebate_profit, list) {
-            override fun convert(helper: BaseViewHolder?, item: String?) {
-                if (type == 1) {
-                    helper!!.setText(R.id.tvText1, "健康电蒸锅")
-                            .setText(R.id.tvText2, "花碗米")
-                            .setText(R.id.tvState, "未提现")
-                            .setText(R.id.tvNum, "¥ 3580.0")
-                            .setText(R.id.tvNoNum, "21%")
-                            .setText(R.id.tvYJHNum, "¥ 751.8")
-                            .setText(R.id.tvApplyNumber, "合伙人:李骁")
-                    helper.getView<TextView>(R.id.tvState).setTextColor(ContextCompat.getColor(act, R.color.orange))
-
-                    helper.getView<RecyclerView>(R.id.rvView).run {
-                        adapter = object :BaseQuickAdapter<String,BaseViewHolder>(R.layout.item_rebate_profit_item, mutableListOf()){
-                            override fun convert(helper: BaseViewHolder?, item: String?) {
-
-                            }
+        adapter = object : BaseQuickAdapter<RebateRecordItem, BaseViewHolder>(R.layout.item_rebate_profit, list) {
+            override fun convert(helper: BaseViewHolder?, item: RebateRecordItem?) {
+                helper!!.setText(R.id.tvTime, "${item!!.paid_time}")
+                        .setText(R.id.tvSn, item!!.order_no)
+                        .setText(R.id.tvMoney, "返利金额: ¥ ${item.currentagent_money}")
+                        .setText(R.id.tvRule,"${item.currentagent_prop}%")
+                helper.getView<RecyclerView>(R.id.rvView).run {
+                    adapter = object :BaseQuickAdapter<RecordProduct,BaseViewHolder>(R.layout.item_rebate_profit_item, item.product){
+                        override fun convert(helper: BaseViewHolder?, item: RecordProduct?) {
+                            helper!!.setText(R.id.tvText,item!!.goodsname)
+                                    .setText(R.id.tvNumber,"x${item.pro_num}")
                         }
-                        layoutManager = GridLayoutManager(act, 1, RecyclerView.HORIZONTAL, false)
                     }
-                } else {
-                    helper!!.setText(R.id.tvText1, "空气净化器")
-                            .setText(R.id.tvText2, "暖宫宝")
-                            .setText(R.id.tvState, "未提现")
-                            .setText(R.id.tvState, "未提现")
-                            .setText(R.id.tvNum, "¥ 2780.0")
-                            .setText(R.id.tvNoNum, "18%")
-                            .setText(R.id.tvYJHNum, "¥ 500.4")
-                            .setText(R.id.tvApplyNumber, "合伙人:王丽")
-                    helper.getView<TextView>(R.id.tvState).setTextColor(ContextCompat.getColor(act, R.color.orange))
+                    layoutManager = GridLayoutManager(act, 1)
                 }
             }
         }
         rvView.adapter = adapter
         rvView.layoutManager = GridLayoutManager(act, 1)
-        rvView.addItemDecoration(DividerItem14_14_14(act))
+        rvView.addItemDecoration(DividerItemRebateRecord(act))
         adapter.emptyView = getEmptyView(act,R.mipmap.empty_colloect,"暂无商品返利~")
+        var headView = layoutInflater.inflate(R.layout.item_rebate_record_head,null)
+        val data = Hawk.get<RebateBean>(BaseConstant.REBATE_INFO)
+        headView.tvName.text = data.g_name
+        headView.rvRule1.text = "${data.default_direct_product}%"
+        headView.rvRule2.text = "${data.default_indirect_product}%"
+        adapter.addHeaderView(headView)
+        srView.refresh({
+            page = 1
+            list.clear()
+            initData()
+        },{
+            page++
+            initData()
+        })
     }
 
-    private fun initData() {}
+    private fun initData() {
+        mPresenter.rebateRecord(NoParamDisIdPageReq(page))
+    }
 }

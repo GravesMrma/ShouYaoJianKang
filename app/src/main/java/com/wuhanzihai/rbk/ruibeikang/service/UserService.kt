@@ -30,6 +30,12 @@ interface UserService {
 
     fun getOrder(req: OrderReq): Observable<OrderBean>
 
+    fun sureOrder(req: NoParamOrderIdReq): Observable<BaseData>
+
+    fun deleteOrder(req: NoParamOrderIdReq): Observable<BaseData>
+
+    fun closeOrder(req: CloseOrderReq): Observable<BaseData>
+
     fun logistics(req: LogisticsReq): Observable<Logistics>
 
     fun userAdv(): Observable<MineAdv>
@@ -88,7 +94,7 @@ interface UserService {
 
     fun addQuestion(fileReq: MutableList<File>,req: AddQuestionReq): Observable<IsRebateBean>
 
-    fun doctorRecord(req: NoParamIdReq): Observable<InterrogationBean>
+    fun doctorRecord(req: NoParamIdPageReq): Observable<InterrogationBean>
 
     fun chatRecord(req: ChatRecordReq): Observable<ChatBean>
 
@@ -122,4 +128,17 @@ interface UserService {
 
     fun doctorDetail(req:NoParamOrderReq): Observable<DoctorDetail>
 
+    fun getPrice(): Observable<PriceBean>
+
+    fun rebateRecord(req:NoParamDisIdPageReq): Observable<RebateRecordBean>
+
+    fun rebateRecord1(req:NoParamIdReq): Observable<ApplyCashListDetail>
+
+    fun getCoupons(req:CouponReq): Observable<MutableList<CouponBean>>
+
+    fun takeCoupon(req:NoParamIdIdReq): Observable<BaseData>
+
+    fun getExchangeCoupons(): Observable<MutableList<GoodsCouponBean>>
+
+    fun takeExchangeCoupons(req: CouponIdReq): Observable<BaseData>
 }

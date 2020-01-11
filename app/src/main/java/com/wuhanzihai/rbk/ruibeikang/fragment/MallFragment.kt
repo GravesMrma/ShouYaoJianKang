@@ -46,14 +46,23 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         mPresenter.mView = this
     }
 
-    private val dialog by lazy {
-        val anyLayer =
-                AnyLayer.with(act)
-                        .contentView(R.layout.layout_mall_adv)
-                        .gravity(Gravity.CENTER)
-                        .backgroundResource(R.color.clarity_40)
-                        .cancelableOnTouchOutside(true)
-        anyLayer
+//    private val dialog by lazy {
+//        val anyLayer =
+//                AnyLayer.with(act)
+//                        .contentView(R.layout.layout_mall_adv)
+//                        .gravity(Gravity.CENTER)
+//                        .backgroundResource(R.color.clarity_40)
+//                        .cancelableOnTouchOutside(true)
+//        anyLayer
+//    }
+
+    override fun onCartNumberResult(result: CartNumberBean) {
+        if (result.count > 0) {
+            tvCartNumber.visibility = View.VISIBLE
+            tvCartNumber.text = "${result.count}"
+        } else {
+            tvCartNumber.visibility = View.GONE
+        }
     }
 
     override fun onMallIndexResult(result: MallBean) {
@@ -88,10 +97,10 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 
         tvAdv.startSlide(result.proadcast.item as MutableList<String>)
 
-        if (!AppPrefsUtils.getBoolean(BaseConstant.MALL_ADV)) {
-            dialog.show()
-            AppPrefsUtils.putBoolean(BaseConstant.MALL_ADV, true)
-        }
+//        if (!AppPrefsUtils.getBoolean(BaseConstant.MALL_ADV)) {
+//            dialog.show()
+//            AppPrefsUtils.putBoolean(BaseConstant.MALL_ADV, true)
+//        }
     }
 
     private lateinit var menuList: MutableList<MallGoodsItem>
@@ -184,15 +193,15 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
                 }
             }
         }
-        rvMallCate.adapter = adapterCate
-        rvMallCate.layoutManager = GridLayoutManager(act, 2)
-        rvMallCate.addItemDecoration(DividerItemMallCate(act))
-        adapterCate.setOnItemClickListener { _, _, position ->
-            startActivity<HealthCareActivity>(
-                    "fatherId" to listCate[position].pid
-                    , "childId" to listCate[position].id
-                    , "title" to "细胞营养素")
-        }
+//        rvMallCate.adapter = adapterCate
+//        rvMallCate.layoutManager = GridLayoutManager(act, 2)
+//        rvMallCate.addItemDecoration(DividerItemMallCate(act))
+//        adapterCate.setOnItemClickListener { _, _, position ->
+//            startActivity<HealthCareActivity>(
+//                    "fatherId" to listCate[position].pid
+//                    , "childId" to listCate[position].id
+//                    , "title" to "细胞营养素")
+//        }
 
         list = mutableListOf()
         dividerItemMallItem = DividerItemMallItem(act)
@@ -229,8 +238,12 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
         ivToCart.onClick {
             startActivity<ShoppingCartActivity>()
         }
-        tvCellular.onClick {
-            startActivity<HealthCareActivity>("fatherId" to 1, "title" to "细胞营养素")
+//        tvCellular.onClick {
+//            startActivity<HealthCareActivity>("fatherId" to 1, "title" to "细胞营养素")
+//        }
+        ivCellular.onClick {
+            startActivity<HealthCareActivity>("fatherId" to 27,
+                    "childId" to 36, "title" to "健康生活")
         }
         cHealCall.onClick {
             startActivity<HealthClassActivity>()
@@ -266,10 +279,14 @@ class MallFragment : BaseMvpFragment<MallPresenter>(), MallView {
 //        }
 
 
-
     }
 
     private fun initData() {
         mPresenter.mallIndex()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mPresenter.getCartNumber()
     }
 }

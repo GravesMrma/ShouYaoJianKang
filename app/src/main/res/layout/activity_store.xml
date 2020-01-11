@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.StoreActivity">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivImg"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1.76"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/llView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp2"
+                android:layout_marginRight="@dimen/dp12"
+                android:background="@drawable/sp_gray_17"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/dp34"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp16"
+                android:paddingRight="@dimen/dp16"
+                app:layout_constraintTop_toBottomOf="@id/ivImg"
+                app:layout_goneMarginTop="@dimen/dp10">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_mall_rev" />
+
+                <View
+                    android:layout_width="@dimen/dp1"
+                    android:layout_height="@dimen/dp10"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginRight="@dimen/dp12"
+                    android:background="@color/line" />
+
+                <com.wuhanzihai.rbk.ruibeikang.widgets.SlideTextView
+                    android:id="@+id/tvAdv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_66"
+                    android:textSize="@dimen/f12" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp14"
+                android:paddingTop="@dimen/dp21"
+                android:paddingRight="@dimen/dp14"
+                android:paddingBottom="@dimen/dp23"
+                app:layout_constraintTop_toBottomOf="@id/llView">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/ic_store1"
+                    android:drawablePadding="@dimen/dp2"
+                    android:gravity="center"
+                    android:text="门店环境"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f12" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/ic_store2"
+                    android:drawablePadding="@dimen/dp2"
+                    android:gravity="center"
+                    android:text="预约项目"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f12" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/ic_store3"
+                    android:drawablePadding="@dimen/dp2"
+                    android:gravity="center"
+                    android:text="我的档案"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f12" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/ic_store4"
+                    android:drawablePadding="@dimen/dp2"
+                    android:gravity="center"
+                    android:text="全部品项"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f12" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/vline"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp10"
+                android:background="@color/main_bg"
+                app:layout_constraintTop_toBottomOf="@id/llMenu" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cdView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dp14"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/dp7"
+                app:cardElevation="@dimen/dp7"
+                app:layout_constraintDimensionRatio="1.95"
+                app:layout_constraintTop_toBottomOf="@id/vline">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:paddingBottom="@dimen/dp23">
+
+                    <TextView
+                        android:id="@+id/tvText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp17"
+                        android:drawableLeft="@mipmap/ic_date"
+                        android:drawablePadding="@dimen/dp10"
+                        android:gravity="center"
+                        android:text="我的预约"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="@dimen/dp63"
+                        android:layout_height="@dimen/dp20"
+                        android:background="@drawable/sp_black_10"
+                        android:gravity="center"
+                        android:text="电话客服"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintBottom_toBottomOf="@id/tvText1"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvText1" />
+
+                    <RelativeLayout
+                        android:id="@+id/llItem1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp24"
+                        app:layout_constraintTop_toBottomOf="@id/tvText1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="项目:"
+                                android:textColor="@color/orange"
+                                android:textSize="@dimen/f12" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp10"
+                                android:text="小气泡皮肤护理超值套餐..."
+                                android:textColor="@color/gray_66"
+                                android:textSize="@dimen/f12" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="技师:"
+                                android:textColor="@color/orange"
+                                android:textSize="@dimen/f12" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp10"
+                                android:text="小气泡"
+                                android:textColor="@color/gray_66"
+                                android:textSize="@dimen/f12" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/llItem2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp14"
+                        app:layout_constraintTop_toBottomOf="@id/llItem1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="项目:"
+                                android:textColor="@color/orange"
+                                android:textSize="@dimen/f12" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp10"
+                                android:text="小气泡皮肤护理超值套餐..."
+                                android:textColor="@color/gray_66"
+                                android:textSize="@dimen/f12" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="技师:"
+                                android:textColor="@color/orange"
+                                android:textSize="@dimen/f12" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp10"
+                                android:text="小气泡"
+                                android:textColor="@color/gray_66"
+                                android:textSize="@dimen/f12" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/vline1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:background="@color/line"
+                        app:layout_constraintTop_toBottomOf="@id/llItem2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="如需取消预约，请联系美容师或者门店客服人员！"
+                        android:textColor="@color/gray_66"
+                        android:textSize="@dimen/f12"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:id="@+id/vline3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp10"
+                android:background="@color/main_bg"
+                app:layout_constraintTop_toBottomOf="@id/cdView" />
+
+            <LinearLayout
+                android:id="@+id/llView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp22"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/vline3">
+
+                <ImageView
+                    android:layout_width="@dimen/dp9"
+                    android:layout_height="@dimen/dp18"
+                    android:src="@drawable/sp_green_9_l" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp8"
+                    android:drawableLeft="@drawable/sp_green_9_l"
+                    android:text="优选推荐"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f17"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp22"
+                android:background="#F8F9FD"
+                app:layout_constraintTop_toBottomOf="@id/llView3" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

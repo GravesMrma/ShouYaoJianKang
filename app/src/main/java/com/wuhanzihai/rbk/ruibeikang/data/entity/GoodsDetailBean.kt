@@ -65,6 +65,7 @@ data class GoodsDetailBean(
         val uv: Int,
         val warranty: String,
         val sku: List<SkuItem>,
+        val couponlist:List<GoodsCouponBean>,
         val propertydata: List<PropertydataItem>
 )
 
@@ -104,7 +105,7 @@ data class PropertydatavalueItem(
 
 data class GoodsBuyBean(
 //        val activity: List<Any>,
-//        val couponslist: List<Any>,
+        val coupons: List<CouponBean>,
         val postage: Int,
         val product: ProductBean
 //        val useradress: Useradress

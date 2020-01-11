@@ -28,6 +28,8 @@ class LogisticsActivity : BaseMvpActivity<LogisticsPresenter>(),LogisticsView {
     }
 
     override fun onLogisticsResult(result: Logistics) {
+        tvCompany.text = "物流公司:${result.code}"
+        tvCode.text = "物流单号:${result.no}"
         list.addAll(result.data)
         adapter.notifyDataSetChanged()
     }

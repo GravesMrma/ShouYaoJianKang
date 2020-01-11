@@ -102,6 +102,10 @@ fun setOnBannerListener(context: Context, bannerEntity: BannerEntity) {
                 }
             }
         }
+        11 -> context.startActivity<InterrogationActivity>()
+        12 -> context.startActivity<CouponActivity>()
+//        12 -> context.startActivity<StandardWebActivity>("title" to "专家问诊"
+//                , "data" to "http://www.hcjiankang.com/androidimg/wenzheng.html")
     }
 }
 

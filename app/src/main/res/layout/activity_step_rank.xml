@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.StepRankActivity">
 
-
-
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/ivBg"
         android:layout_width="match_parent"

@@ -105,4 +105,14 @@ interface UserComponent {
     fun inject(activity: InterrogationRecordActivity)
 
     fun inject(activity: LogisticsActivity)
+
+    fun inject(activity: RebateRecordActivity)
+
+    fun inject(fragment: RebateRecordFragment)
+
+    fun inject(fragment: CouponFragment)
+
+    fun inject(activity: ExchangeCouponActivity)
+
+    fun inject(fragment: ExchangeCouponFragment)
 }

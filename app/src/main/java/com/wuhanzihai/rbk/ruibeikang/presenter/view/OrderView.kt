@@ -5,5 +5,12 @@ import com.wuhanzihai.rbk.ruibeikang.data.entity.*
 
 interface OrderView : BaseView {
 
-    fun onOrderResult(result: OrderBean)
+    fun onOrderResult(result: OrderBean){}
+
+    fun onOrderSure(){}
+
+    fun onOrderDelete(){}
+
+    fun onOrderClose(){}
+
 }

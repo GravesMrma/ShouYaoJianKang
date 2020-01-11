@@ -8,10 +8,15 @@ interface GoodsDetailView : BaseView {
 
     fun onGoodsDetailResult(result: GoodsDetailBean)
 
+    fun onGoodsDetailResultRe(result: GoodsDetailBean){}
+
     fun onAddCartResult()
 
     fun onShoppingCartListResult(result: MutableList<ShoppingCartBean>) {}
 
     fun onBuyResult(result: GoodsBuyBean) {}
 
+    fun onCartNumberResult(result: CartNumberBean) {}
+
+    fun onTakeCouponResult() {}
 }

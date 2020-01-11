@@ -82,7 +82,7 @@ class ShareHealthActivity : AppCompatActivity() {
 
 //用 WXWebpageObject 对象初始化一个 WXMediaMessage 对象
         val msg = WXMediaMessage(webpage)
-        msg.title = " 首要健康大补贴,首要会员299元,立领3880元健康家电"
+        msg.title = "马云:下一个风口【大健康】，首要健康APP启动3.88亿巨额补贴！"
         msg.description = "怕生病,上首要健康APP,管吃、管睡、管运动、管情绪、管健康"
 
         bitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_share_money)

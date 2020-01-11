@@ -22,8 +22,8 @@
 
     <RadioGroup
         android:id="@+id/mRgRecord"
-        android:layout_width="@dimen/dp105"
-        android:layout_height="@dimen/dp24"
+        android:layout_width="@dimen/dp112"
+        android:layout_height="@dimen/dp27"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/tvTitle"
         app:layout_constraintLeft_toLeftOf="@id/tvTitle"
@@ -41,7 +41,7 @@
             android:gravity="center"
             android:text="问诊"
             android:textColor="@color/selector_green_white_check"
-            android:textSize="@dimen/f12" />
+            android:textSize="@dimen/f16" />
 
         <RadioButton
             android:id="@+id/mRbUsed"
@@ -53,7 +53,7 @@
             android:gravity="center"
             android:text="记录"
             android:textColor="@color/selector_green_white_check"
-            android:textSize="@dimen/f12" />
+            android:textSize="@dimen/f16" />
 
     </RadioGroup>
 

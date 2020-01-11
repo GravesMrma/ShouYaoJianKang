@@ -19,4 +19,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/line"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@mipmap/ic_more_gray"
+        android:text="退换货说明"
+        android:textColor="@color/gray_66"
+        android:textSize="@dimen/f14"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/line"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@mipmap/ic_more_gray"
+        android:text="选择售后方式"
+        android:textColor="@color/gray_66"
+        android:textSize="@dimen/f14"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="退货"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="换货"/>
+
 </LinearLayout>

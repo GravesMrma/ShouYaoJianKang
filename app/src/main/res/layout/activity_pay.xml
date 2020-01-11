@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp10"
-            android:text="请在尽快完成支付 "
+            android:text="请在尽快完成支付"
             android:textColor="@color/white"
             android:textSize="@dimen/f12" />
 
@@ -106,7 +106,6 @@
         android:id="@+id/tvWeChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_marginLeft="@dimen/dp14"
         android:layout_marginTop="@dimen/dp10"
         android:layout_marginRight="@dimen/dp14"
@@ -211,7 +210,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp14"
             android:paddingBottom="@dimen/dp2"
-            android:text="￥"
+            android:text="@string/rmb"
             android:textColor="@color/orange"
             android:textSize="@dimen/f11"
             app:layout_constraintBottom_toBottomOf="@id/tvMoney"

@@ -61,9 +61,16 @@ interface MallApi {
     @POST("ShoppingMall/searchproduct")
     fun searchGoods(@Body req: SearchReq): Observable<BaseResp<GoodsResult>>
 
-
     @POST("ShoppingMall/travelreview")
     fun singleTravel(@Body req: NoParamPageReq): Observable<BaseResp<TravelBean>>
+
+    @POST("Cart/countcart")
+    fun getCartNumber(@Body req: NoParamIdReq): Observable<BaseResp<CartNumberBean>>
+
+    @POST("Marketing/coupondata")
+    fun getCouponGoods(@Body req: CouponGoodsReq): Observable<BaseResp<GoodsResult>>
+
+
 
 //    @POST("ShoppingMall/productcategorylist")
 //    fun xibaoyingyang1(@Body req: GoodsReq): Observable<BaseResp<GoodsResult>>
@@ -76,5 +83,6 @@ interface MallApi {
 //
 //    @POST("ShoppingMall/productcategorylist")
 //    fun xibaoyingyang4(@Body req: GoodsReq): Observable<BaseResp<GoodsResult>>
+
 
 }

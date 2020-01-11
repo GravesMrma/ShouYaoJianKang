@@ -16,6 +16,7 @@ import com.hhjt.baselibrary.utils.DensityUtils
 import com.hhjt.baselibrary.utils.KeyboardUtil
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.activity.ArchivesActivity
+import com.wuhanzihai.rbk.ruibeikang.activity.StandardWebActivity
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderIdBean
 import com.wuhanzihai.rbk.ruibeikang.data.protocal.CreateDoctorReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
@@ -87,11 +88,16 @@ class InterrogationFragment : BaseTakePhotoFragment<InterrogationPresenter>(), I
         })
 
         tvCommit.onClick {
-            if (edContent.text.isNotEmpty()) {
+            if (edContent.text.length>=10) {
                 mPresenter.createQuestion(imgs, CreateDoctorReq(edContent.text.toString()))
             } else {
-                toast("请填写信息")
+                toast("病情描述不少于10个字")
             }
+        }
+
+        tvInfo.onClick {
+            startActivity<StandardWebActivity>("title" to "拍照规则"
+                    , "data" to "http://api.hcjiankang.com/api/Web/article?id=818")
         }
     }
 

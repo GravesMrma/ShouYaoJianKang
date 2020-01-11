@@ -82,4 +82,12 @@ class MallServiceImpl @Inject constructor() : MallService {
     override fun singleTravel(req: Int): Observable<TravelBean> {
         return repository.singleTravel(req).convert()
     }
+
+    override fun getCartNumber(): Observable<CartNumberBean> {
+        return repository.getCartNumber().convert()
+    }
+
+    override fun getCouponGoods(req: CouponGoodsReq): Observable<GoodsResult> {
+        return repository.getCouponGoods(req).convert()
+    }
 }

@@ -56,7 +56,6 @@ class MusicService : Service() {
     }
 
     private fun startForeground() {
-        Log.d("消息通知", "")
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val intent1 = Intent(baseContext, MusicOperationService::class.java)

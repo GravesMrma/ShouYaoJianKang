@@ -82,6 +82,11 @@ class ArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
     private fun initView() {
         tvTitle.setMoreTextAction {
             edit = !edit
+            if (edit){
+                tvTitle.setMoreTextContext("完成")
+            }else{
+                tvTitle.setMoreTextContext("编辑")
+            }
             adapter.notifyDataSetChanged()
         }
 
@@ -128,7 +133,7 @@ class ArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
         }
 
         tvAdd.onClick {
-            startActivityForResult<AddArchivesActivity>(1234)
+            startActivityForResult<AddArchivesActivity>(3333)
         }
 
         tvNext.onClick {
@@ -144,8 +149,8 @@ class ArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
             list.clear()
             initData()
         }, {
-            page++
-            initData()
+//            page++
+//            initData()
         })
     }
 
@@ -154,6 +159,7 @@ class ArchivesActivity : BaseMvpActivity<ArchivesPresenter>(), ArchivesView {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == 4321) {
             list.clear()
             initData()

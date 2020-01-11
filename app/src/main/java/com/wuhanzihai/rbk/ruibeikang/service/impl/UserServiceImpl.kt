@@ -60,6 +60,18 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.getOrder(req).convert()
     }
 
+    override fun sureOrder(req: NoParamOrderIdReq): Observable<BaseData> {
+        return repository.sureOrder(req).convertT()
+    }
+
+    override fun deleteOrder(req: NoParamOrderIdReq): Observable<BaseData> {
+        return repository.deleteOrder(req).convertT()
+    }
+
+    override fun closeOrder(req: CloseOrderReq): Observable<BaseData> {
+        return repository.closeOrder(req).convertT()
+    }
+
     override fun logistics(req: LogisticsReq): Observable<Logistics> {
         return repository.logistics(req).convert()
     }
@@ -177,7 +189,7 @@ class UserServiceImpl @Inject constructor() : UserService {
         return repository.addQuestion(fileReq,req).convert()
     }
 
-    override fun doctorRecord(req: NoParamIdReq): Observable<InterrogationBean> {
+    override fun doctorRecord(req: NoParamIdPageReq): Observable<InterrogationBean> {
         return repository.doctorRecord(req).convert()
     }
 
@@ -243,5 +255,33 @@ class UserServiceImpl @Inject constructor() : UserService {
 
     override fun doctorDetail(req: NoParamOrderReq): Observable<DoctorDetail> {
         return repository.doctorDetail(req).convert()
+    }
+
+    override fun getPrice(): Observable<PriceBean> {
+        return repository.getPrice().convert()
+    }
+
+    override fun rebateRecord(req: NoParamDisIdPageReq): Observable<RebateRecordBean> {
+        return repository.rebateRecord(req).convert()
+    }
+
+    override fun rebateRecord1(req: NoParamIdReq): Observable<ApplyCashListDetail> {
+        return repository.rebateRecord1().convert()
+    }
+
+    override fun getCoupons(req: CouponReq): Observable<MutableList<CouponBean>> {
+        return repository.getCoupons(req).convert()
+    }
+
+    override fun takeCoupon(req: NoParamIdIdReq): Observable<BaseData> {
+        return repository.takeCoupon(req).convertT()
+    }
+
+    override fun getExchangeCoupons(): Observable<MutableList<GoodsCouponBean>> {
+        return repository.getExchangeCoupons().convert()
+    }
+
+    override fun takeExchangeCoupons(req: CouponIdReq): Observable<BaseData> {
+        return repository.takeExchangeCoupons(req).convertT()
     }
 }

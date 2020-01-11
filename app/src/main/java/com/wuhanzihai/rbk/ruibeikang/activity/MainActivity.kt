@@ -1,9 +1,14 @@
 package com.wuhanzihai.rbk.ruibeikang.activity
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Criteria
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -56,8 +61,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startService
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.toast
 import per.goweii.anylayer.AnyLayer
+import pub.devrel.easypermissions.EasyPermissions
 
 class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, MainView {
 
@@ -71,10 +78,15 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
         GlobalBaseInfo.setBaseInfo(result)
         AppPrefsUtils.putString(BaseConstant.BRACELET_ID, result.mobile)
         if (result.is_activation != 1) {
+            val title = "您需要输入会员<font color=#FFA200>卡号</font>、激活<font color=#FFA200>密码</font>后<br>才能使用APP功能！"
+            actDialog.getView<TextView>(R.id.tvContent).text = Html.fromHtml(title)
             actDialog.show()
         } else {
             actDialog.dismiss()
             mPresenter.isRebate()
+//            if (!AppPrefsUtils.getBoolean(BaseConstant.MALL_ADV)) {
+//                AppPrefsUtils.putBoolean(BaseConstant.MALL_ADV, true)
+//            }
         }
     }
 
@@ -82,6 +94,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
         if (result.code == 1) {
             toast("激活成功")
             actDialog.dismiss()
+            dialog.show()
             mPresenter.getVersion()
             mPresenter.getUserInfo()
         } else {
@@ -93,8 +106,9 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
         if (result.version != getLocalVersion()) {
             force = result.force
             download_url = result.url
-            val title = "<font color=#F5A31E>89%</font>的用户已更新到最新版本<font color=#F5A31E>V.${result.version}</font>"
+            val title = "<font color=#EC4043>89%</font>的用户已更新到最新版本<font color=#EC4043>V${result.version}</font>"
             updateDialog.getView<TextView>(R.id.tvTitle).text = Html.fromHtml(title)
+            updateDialog.getView<TextView>(R.id.tvCode).text = "V${result.version}"
             val split = result.info.split(";")
             var desc = ""
             for (i in 0..split.size - 1) {
@@ -128,7 +142,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
                 .cancelableOnTouchOutside(false)
                 .cancelableOnClickKeyBack(false)
                 .onClick(R.id.rlExit) { AnyLayer, v ->
-                    LoginUtils.saveLoginStatus(false,"")
+                    LoginUtils.saveLoginStatus(false, "")
                     startActivity<LoginActivity>()
                     finish()
                 }
@@ -140,6 +154,24 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
                                 , AnyLayer.getView<EditText>(R.id.edPwd).text.toString()))
                     }
                 }
+        anyLayer
+    }
+
+    private val dialog by lazy {
+        val anyLayer =
+                AnyLayer.with(act)
+                        .contentView(R.layout.layout_main_adv)
+                        .gravity(Gravity.CENTER)
+                        .backgroundResource(R.color.clarity_40)
+                        .cancelableOnTouchOutside(false)
+                        .onClick(R.id.ivImg) { anyLayer, _ ->
+                            startActivity<HealthCareActivity>("fatherId" to 27,
+                                    "childId" to 36, "title" to "健康生活")
+                            anyLayer.dismiss()
+                        }
+                        .onClick(R.id.ivClose) { anyLayer, v ->
+                            anyLayer.dismiss()
+                        }
         anyLayer
     }
 
@@ -219,9 +251,9 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
         }.registerInBus(this)
 
         Bus.observe<MainFragmentEvent>().subscribe {
-            if (it.index == -1){
+            if (it.index == -1) {
                 finish()
-            }else{
+            } else {
                 jumpFragment(it.index)
             }
         }.registerInBus(this)

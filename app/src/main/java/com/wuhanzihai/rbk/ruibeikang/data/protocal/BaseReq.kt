@@ -12,7 +12,6 @@ open class BaseReq {
         var str = gson.toJson(obj)
         str = str.replace("\\{".toRegex(), "").replace("\\}".toRegex(), "").replace("\"", "")
                 .replace(":", "=").replace(",", "&")
-        Log.e("qianmmm",str)
         return str
     }
 

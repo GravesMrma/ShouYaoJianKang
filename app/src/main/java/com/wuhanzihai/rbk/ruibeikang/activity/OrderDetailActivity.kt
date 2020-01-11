@@ -1,10 +1,12 @@
 package com.wuhanzihai.rbk.ruibeikang.activity
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.view.Gravity
 import android.view.View
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
@@ -13,15 +15,20 @@ import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
 import com.jaeger.library.StatusBarUtil
 import com.wuhanzihai.rbk.ruibeikang.R
+import com.wuhanzihai.rbk.ruibeikang.common.showChoseText
 import com.wuhanzihai.rbk.ruibeikang.data.entity.Goodslist
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderItem
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.CloseOrderReq
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.NoParamOrderIdReq
+import com.wuhanzihai.rbk.ruibeikang.data.protocal.OrderReq
 import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerUserComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.UserModule
 import com.wuhanzihai.rbk.ruibeikang.itemDiv.DividerItemOrderDetailItem
 import com.wuhanzihai.rbk.ruibeikang.presenter.OrderPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.OrderView
 import com.wuhanzihai.rbk.ruibeikang.utils.MyUtils
+import com.wuhanzihai.rbk.ruibeikang.widgets.CustomSinglePicker
 import kotlinx.android.synthetic.main.activity_order_detail.*
 import org.jetbrains.anko.act
 import org.jetbrains.anko.startActivity
@@ -37,10 +44,6 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
         mPresenter.mView = this
     }
 
-    override fun onOrderResult(result: OrderBean) {
-
-    }
-
     private val dialog by lazy {
         val anyLayer = AnyLayer.with(act)
                 .contentView(R.layout.layout_cancel_order)
@@ -50,19 +53,35 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
                 .cancelableOnClickKeyBack(true)
                 .onClick(R.id.tvCancel) { anyLayer, v ->
                     anyLayer.dismiss()
-
                 }
                 .onClick(R.id.tvSure) { anyLayer, v ->
-                    startActivity<PayActivity>("data" to data.order_id.toString()
-                            , "price" to data.sub_total.toDouble())
+                    startActivity<PayActivity>("data" to orderId.toString()
+                            , "price" to price)
                     anyLayer.dismiss()
                 }
         anyLayer
     }
 
+    override fun onOrderResult(result: OrderBean) {
+        if (result.totle == 1) {
+            refresh(result.item.first())
+        }
+    }
+
+    override fun onOrderClose() {
+        setResult(4321)
+        finish()
+    }
+
+    override fun onOrderSure() {
+        initData()
+    }
+
 
     private lateinit var list: MutableList<Goodslist>
     private lateinit var adapter: BaseQuickAdapter<Goodslist, BaseViewHolder>
+    private var orderId = 0
+    private var price = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,19 +110,25 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
         rvView.addItemDecoration(DividerItemOrderDetailItem(act))
     }
 
-    private lateinit var data: OrderItem
+    private lateinit var order_no: String
     private fun initData() {
-        data = intent.getSerializableExtra("data") as OrderItem
+        order_no = intent.getStringExtra("orderNo")
+        mPresenter.getOrder(OrderReq(0, 0, order_no, 1))
+    }
+
+    private fun refresh(data: OrderItem) {
+        orderId = data.order_id
+        price = data.sub_total.toDouble()
         tvName.text = data.address_user
         tvPhone.text = data.address_tel
         tvAddress.text = data.address
 
         tvOrderSn.text = data.order_no
-        tvOrderTime.text = SimpleDateFormat("yyyy-MM-dd HH:mm").format(Date(data.add_time.toLong()*1000))
+        tvOrderTime.text = SimpleDateFormat("yyyy-MM-dd HH:mm").format(Date(data.add_time.toLong() * 1000))
         tvOrderQB.text = "完成支付才能获取健康币哦！"
         tvOrderPay.text = "支付宝支付"
         tvOrderWay.text = "快递配送"
-        tvOrderMoeny.text = "¥"+data.total
+        tvOrderMoeny.text = "¥" + data.total
         tvMoney.text = data.total
         tvOrderKdMoeny.text = (data.total.toDouble() - data.sub_total.toDouble()).toString()
 
@@ -113,12 +138,15 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
                 clBg.setBackgroundColor(ContextCompat.getColor(act, R.color.orderbg1))
                 ivState.setImageResource(R.mipmap.ic_stateorder3)
                 tvText.text = "请尽快完成支付!"
-                tvText1.text = "还剩${MyUtils.parseTimeSeconds(3600512)}订单失效"
+                index = data.order_paid_expire - (System.currentTimeMillis()/ 1000).toInt()
+                countTime()
                 tvOrderLeft.setBackgroundResource(R.drawable.sp_gray_14_stk)
                 tvOrderLeft.text = "取消订单"
                 tvOrderLeft.setTextColor(ContextCompat.getColor(act, R.color.gray_66))
                 tvOrderLeft.onClick {
-                    dialog.show()
+                    CustomSinglePicker(act){
+                        mPresenter.closeOrder(CloseOrderReq(orderId,it))
+                    }.setData(mutableListOf("商品选错了","信息填写错误,重新购买","暂时不想购买","商品断货","其他原因")).setIsLoop(false).show()
                 }
                 tvOrderRight.setBackgroundResource(R.drawable.sp_orange_14)
                 tvOrderRight.text = "去支付"
@@ -185,13 +213,17 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
                 tvOrderLeft.text = "查看物流"
                 tvOrderLeft.setTextColor(ContextCompat.getColor(act, R.color.gray_66))
                 tvOrderLeft.onClick {
-                    toast("查看物流")
+                    startActivity<LogisticsActivity>("orderId" to data.order_id,
+                            "storeId" to data.store_id)
                 }
                 tvOrderRight.setBackgroundResource(R.drawable.sp_orange_14)
                 tvOrderRight.text = "确认收货"
                 tvOrderRight.setTextColor(ContextCompat.getColor(act, R.color.white))
                 tvOrderRight.onClick {
-                    toast("确认收货")
+                    showChoseText(act,"你是否确认收货?","确认收货后订单状态将更改为已完成，商品问题可申请售后"
+                    ,"确认收货"){
+                        mPresenter.sureOrder(NoParamOrderIdReq(orderId))
+                    }
                 }
             }
             5 -> {
@@ -211,7 +243,8 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
                 tvOrderLeft.text = "查看物流"
                 tvOrderLeft.setTextColor(ContextCompat.getColor(act, R.color.gray_66))
                 tvOrderLeft.onClick {
-                    toast("查看物流")
+                    startActivity<LogisticsActivity>("orderId" to data.order_id,
+                            "storeId" to data.store_id)
                 }
                 tvOrderRight.setBackgroundResource(R.drawable.sp_orange_14)
                 tvOrderRight.text = "再次购买"
@@ -237,7 +270,8 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
                 tvOrderLeft.text = "查看物流"
                 tvOrderLeft.setTextColor(ContextCompat.getColor(act, R.color.gray_66))
                 tvOrderLeft.onClick {
-                    toast("查看物流")
+                    startActivity<LogisticsActivity>("orderId" to data.order_id,
+                            "storeId" to data.store_id)
                 }
                 tvOrderRight.setBackgroundResource(R.drawable.sp_orange_14)
                 tvOrderRight.text = "再次购买"
@@ -247,9 +281,28 @@ class OrderDetailActivity : BaseMvpActivity<OrderPresenter>(), OrderView {
                 }
             }
         }
+        list.clear()
         list.addAll(data.goodslist)
         adapter.notifyDataSetChanged()
     }
 
+    private val handler = Handler()
 
+    private var index = 0
+
+    private var runnable = Runnable {
+        countTime()
+    }
+
+    private fun countTime(){
+        index--
+        tvText1.text = "还剩${MyUtils.parseTimeSeconds(index)}订单失效"
+        dialog.getView<TextView>(R.id.tvContent).text = "请在 ${MyUtils.parseTimeSeconds(index)} 内完成支付，\n否则订单将会自动关闭！"
+        handler.postDelayed(runnable,1000)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(runnable)
+    }
 }

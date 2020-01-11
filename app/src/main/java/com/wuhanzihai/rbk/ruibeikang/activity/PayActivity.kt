@@ -6,10 +6,14 @@ import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.Gravity
+import android.widget.TextView
 import com.alipay.sdk.app.PayTask
+import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.ui.activity.BaseMvpActivity
 import com.jaeger.library.StatusBarUtil
+import com.tencent.mm.opensdk.modelpay.PayReq
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.wuhanzihai.rbk.ruibeikang.R
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderDetailBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.OrderPayBean
@@ -18,6 +22,7 @@ import com.wuhanzihai.rbk.ruibeikang.injection.component.DaggerMallComponent
 import com.wuhanzihai.rbk.ruibeikang.injection.module.MallModule
 import com.wuhanzihai.rbk.ruibeikang.presenter.PayPresenter
 import com.wuhanzihai.rbk.ruibeikang.presenter.view.PayView
+import com.wuhanzihai.rbk.ruibeikang.utils.MyUtils
 import kotlinx.android.synthetic.main.activity_pay.*
 import org.jetbrains.anko.*
 import per.goweii.anylayer.AnyLayer
@@ -30,17 +35,36 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
     }
 
     override fun onPayResult(result: OrderPayBean) {
-        doAsync {
-            val resultMap: Map<String, String> = PayTask(act).payV2(result.order_string, true)
-            Log.e("支付信息", resultMap.toString())
-            uiThread {
-                if (resultMap["resultStatus"].equals("9000")) {
-                    toast("支付成功")
-                    startActivity<PayResultActivity>()
-                    finish()
-                } else {
-                    toast("支付失败${resultMap["memo"]}")
+        if (intent.getDoubleExtra("price", 0.00) == 0.0){
+            toast("支付成功")
+            startActivity<PayResultActivity>()
+            finish()
+        }else{
+            if(tvAli.isSelected){
+                doAsync {
+                    val resultMap: Map<String, String> = PayTask(act).payV2(result.order_string, true)
+                    Log.e("支付信息", resultMap.toString())
+                    uiThread {
+                        if (resultMap["resultStatus"].equals("9000")) {
+                            toast("支付成功")
+                            startActivity<PayResultActivity>()
+                            finish()
+                        } else {
+                            toast("支付失败${resultMap["memo"]}")
+                        }
+                    }
                 }
+            }
+            if(tvWeChat.isSelected){
+                var request =  PayReq()
+                request.appId = result.appId
+                request.partnerId = result.partnerid
+                request.prepayId= result.prepayid
+                request.packageValue = result.`package`
+                request.nonceStr= result.noncestr
+                request.timeStamp= result.timestamp
+                request.sign= result.sign
+                api.sendReq(request)
             }
         }
     }
@@ -64,6 +88,12 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
         anyLayer
     }
 
+
+    private val api by lazy {
+        val api = WXAPIFactory.createWXAPI(act,BaseConstant.APP_WXID,true)
+        api.registerApp(BaseConstant.APP_WXID)
+        api
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,9 +125,18 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
 
         tvPay.onClick {
             if (tvAli.isSelected) {
-                mPresenter.payOrder(PayOrderReq(intent.getStringExtra("data")))
-            } else {
-                toast("暂时不支持微信支付")
+                if (intent.getDoubleExtra("price", 0.00) == 0.0){
+                    mPresenter.payOrder(PayOrderReq(intent.getStringExtra("data"),"userpay"))
+                }else{
+                    mPresenter.payOrder(PayOrderReq(intent.getStringExtra("data"),"alipay"))
+                }
+            }
+            if (tvWeChat.isSelected) {
+                if (intent.getDoubleExtra("price", 0.00) == 0.0){
+                    mPresenter.payOrder(PayOrderReq(intent.getStringExtra("data"),"userpay"))
+                }else{
+                    mPresenter.payOrder(PayOrderReq(intent.getStringExtra("data"),"wxpay"))
+                }
             }
         }
     }
@@ -105,11 +144,31 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
     private fun initData() {
         tvPrice.text = intent.getDoubleExtra("price", 0.00).toString()
         tvMoney.text = intent.getDoubleExtra("price", 0.00).toString()
+        index = 3600
+        countTime()
     }
 
     override fun onBackPressed() {
-//        super.onBackPressed()
-
         dialog.show()
+    }
+
+    private val handler = Handler()
+
+    private var index = 0
+
+    private var runnable = Runnable {
+        countTime()
+    }
+
+    private fun countTime(){
+        index--
+        tvTime.text = "请在${MyUtils.parseTimeSeconds(index)}内完成支付"
+        dialog.getView<TextView>(R.id.tvContent).text = "请在${MyUtils.parseTimeSeconds(index)}内完成支付，\n否则订单将会自动关闭！"
+        handler.postDelayed(runnable,1000)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(runnable)
     }
 }

@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFECCC"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingTop="@dimen/dp7"
+        android:paddingRight="@dimen/dp14"
+        android:paddingBottom="@dimen/dp7">
+
+        <ImageView
+            android:id="@+id/ivSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selector_check" />
+
+        <TextView
+            android:id="@+id/tvTag"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp18"
+            android:layout_marginLeft="@dimen/dp14"
+            android:background="@drawable/sp_orange_9"
+            android:gravity="center"
+            android:text="自营"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f10" />
+
+        <ImageView
+            android:id="@+id/ivTag"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:scaleType="center"
+            android:src="@mipmap/ic_cart_store" />
+
+        <TextView
+            android:id="@+id/tvStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp14"
+            android:lines="1"
+            android:text="平台自营 / 厂商直供"
+            android:textColor="@color/black_33"
+            android:textSize="@dimen/f14" />
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

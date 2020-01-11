@@ -50,12 +50,12 @@ class InterrogationPresenter @Inject constructor() : BasePresenter<Interrogation
     }
 
 
-    fun doctorRecord() {
+    fun doctorRecord(page:Int) {
         if (!checkNetWork()) {
             return
         }
         mView.showLoading()
-        userServiceImpl.doctorRecord(NoParamIdReq())
+        userServiceImpl.doctorRecord(NoParamIdPageReq(page))
                 .excute(object : BaseSubscriber<InterrogationBean>(mView) {
                     override fun onNext(t: InterrogationBean) {
                         super.onNext(t)
@@ -75,6 +75,21 @@ class InterrogationPresenter @Inject constructor() : BasePresenter<Interrogation
                     override fun onNext(t: BaseData) {
                         super.onNext(t)
                         mView.onDelRecordResult()
+                    }
+                }, lifecycleProvider)
+    }
+
+
+    fun getPrice() {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        userServiceImpl.getPrice()
+                .excute(object : BaseSubscriber<PriceBean>(mView) {
+                    override fun onNext(t: PriceBean) {
+                        super.onNext(t)
+                        mView.onPriceBean(t)
                     }
                 }, lifecycleProvider)
     }

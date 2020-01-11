@@ -74,8 +74,8 @@ class IndirectFragment: BaseMvpFragment<DirectPresenter>(), DirectView {
         adapter = object : BaseQuickAdapter<DirectItem, BaseViewHolder>(R.layout.item_indirect, list) {
             override fun convert(helper: BaseViewHolder?, item: DirectItem?) {
                 helper!!.setText(R.id.tvTime, "关联时间  ${item!!.create_time.substring(0,10)}")
-                        .setText(R.id.tvApplyNumber, "${item.g_name}: ${item.nickname}")
-                        .setText(R.id.tvName, item.mobile)
+                        .setText(R.id.tvApplyNumber, "${item.g_name}")
+                        .setText(R.id.tvName, "${item.mobile.substring(0,4)}****${item.mobile.substring(8)}")
                         .setText(R.id.tvNumber, item.card_no)
                         .setText(R.id.tvYJHNum,  item.stock.toString())
                         .setText(R.id.tvWJHNum,  item.userdirectcount.toString())

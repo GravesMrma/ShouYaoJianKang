@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ExchangeCouponActivity">
+    android:background="@color/white"
+    tools:context="com.wuhanzihai.rbk.ruibeikang.activity.CouponActivity">
 
     <View
         android:id="@+id/fake_status_bar"
@@ -15,6 +16,7 @@
         android:background="@color/white" />
 
     <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
@@ -25,9 +27,118 @@
         android:layout_height="1px"
         android:background="@color/line"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvView"
+    <RadioGroup
+        android:id="@+id/mRgRecord"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:visibility="gone"
+        android:layout_height="@dimen/dp45"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <RadioButton
+            android:id="@+id/mRbAll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="待领取"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbNor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="未使用"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbUsed"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="已使用"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+        <RadioButton
+            android:id="@+id/mRbOver"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableBottom="@drawable/selector_coin_indicator"
+            android:drawablePadding="@dimen/dp9"
+            android:gravity="bottom|center_horizontal"
+            android:text="已过期"
+            android:textColor="@color/selector_attention_doctor"
+            android:textSize="@dimen/f15" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line"/>
+
+    <com.hhjt.baselibrary.widgets.APSTSViewPager
+        android:id="@+id/vpView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:visibility="gone"
+        android:background="@color/line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp47"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/f16"
+            android:textColor="@color/green_08"
+            android:text="健康币兑券"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="@dimen/dp30"
+            android:background="@color/green_08"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/f16"
+            android:textColor="@color/green_08"
+            android:text="优惠券规则"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+    </LinearLayout>
 
 </LinearLayout>

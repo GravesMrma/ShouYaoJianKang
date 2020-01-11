@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.StoreArchivesActivity">
+
+    <com.hhjt.baselibrary.widgets.TemplateTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="我的档案" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp14">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp77"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/sp_gray_10"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥ 52000"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:text="充值总额"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_weight="1"
+                    android:background="@drawable/sp_gray_10"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥ 38219"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:text="已用总额"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/sp_gray_10"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥ 13780"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f15"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:text="可用总额"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/f12" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp24"
+                android:text="充值项目"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/f14"
+                android:textStyle="bold" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp14"
+                android:background="@drawable/sp_store_bg1"
+                android:padding="@dimen/dp24">
+
+                <ImageView
+                    android:id="@+id/ivImg0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_empty_by"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:text="您还没有充值信息，请电话咨询门店是否已录入"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14"
+                    app:layout_constraintBottom_toBottomOf="@id/ivImg0"
+                    app:layout_constraintLeft_toRightOf="@id/ivImg0"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivImg0" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp14"
+                android:background="@drawable/sp_store_bg1"
+                android:padding="@dimen/dp24">
+
+                <ImageView
+                    android:id="@+id/ivImg1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_face_by"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvName1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:text="超值面部保养钻石年卡"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14"
+                    app:layout_constraintLeft_toRightOf="@id/ivImg1"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivImg1" />
+
+                <TextView
+                    android:id="@+id/tvPro1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12个项目"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f12"
+                    app:layout_constraintBottom_toBottomOf="@id/ivImg1"
+                    app:layout_constraintLeft_toLeftOf="@id/tvName1" />
+
+                <TextView
+                    android:id="@+id/tvNum1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:text="12个项目"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f12"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPro1"
+                    app:layout_constraintLeft_toRightOf="@id/tvPro1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_more_ring"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp14"
+                android:background="@drawable/sp_store_bg1"
+                android:padding="@dimen/dp24">
+
+                <ImageView
+                    android:id="@+id/ivImg2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_skin_by"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvName2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp17"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:text="皮肤补水超值白金卡，仅限徐东店使用"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14"
+                    app:layout_constraintLeft_toRightOf="@id/ivImg2"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivImg2" />
+
+                <TextView
+                    android:id="@+id/tvPro2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12个项目"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f12"
+                    app:layout_constraintBottom_toBottomOf="@id/ivImg2"
+                    app:layout_constraintLeft_toLeftOf="@id/tvName2" />
+
+                <TextView
+                    android:id="@+id/tvNum2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:text="12个项目"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f12"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPro2"
+                    app:layout_constraintLeft_toRightOf="@id/tvPro2" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_more_ring"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp23"
+                android:paddingTop="@dimen/dp12"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_storearc1"
+                    android:drawablePadding="@dimen/dp14"
+                    android:gravity="center"
+                    android:text="充值人"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="文字"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp12"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_storearc2"
+                    android:drawablePadding="@dimen/dp14"
+                    android:gravity="center"
+                    android:text="绑定手机"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@mipmap/ic_more_gray"
+                    android:drawablePadding="@dimen/dp12"
+                    android:gravity="center"
+                    android:text="文字"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp12"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_storearc3"
+                    android:drawablePadding="@dimen/dp14"
+                    android:gravity="center"
+                    android:text="会员等级"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="文字"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp12"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_storearc4"
+                    android:drawablePadding="@dimen/dp14"
+                    android:gravity="center"
+                    android:text="单次购买"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@mipmap/ic_more_gray"
+                    android:drawablePadding="@dimen/dp12"
+                    android:gravity="center"
+                    android:text="文字"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp12"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_storearc5"
+                    android:drawablePadding="@dimen/dp14"
+                    android:gravity="center"
+                    android:text="用户积分"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@mipmap/ic_more_gray"
+                    android:drawablePadding="@dimen/dp12"
+                    android:gravity="center"
+                    android:text="文字"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp12"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_storearc6"
+                    android:drawablePadding="@dimen/dp14"
+                    android:gravity="center"
+                    android:text="客服电话"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/f14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@mipmap/ic_more_gray"
+                    android:drawablePadding="@dimen/dp12"
+                    android:gravity="center"
+                    android:text="文字"
+                    android:textColor="@color/black_33"
+                    android:textSize="@dimen/f14" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

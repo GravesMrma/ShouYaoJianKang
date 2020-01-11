@@ -10,8 +10,9 @@ import java.net.URLEncoder
 /**
  * Created by wx on 2018/7/10
  */
-class CommitBuyGoodsReq(product_id: Int, sku_id: Int,address_id: Int,postage: Int,remark:String) : BaseReq() {
+class CommitBuyGoodsReq(product_id: Int, sku_id: Int,address_id: Int,postage: Int,remark:String,coupons:String) : BaseReq() {
     private var address_id = address_id
+    private var coupons = coupons
     private var postage = postage
     private var product_id = product_id
     private var remark = remark

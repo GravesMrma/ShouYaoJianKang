@@ -7,6 +7,7 @@ import com.hhjt.baselibrary.ext.excute
 import com.hhjt.baselibrary.presenter.BasePresenter
 import com.hhjt.baselibrary.rx.BaseData
 import com.hhjt.baselibrary.rx.BaseSubscriber
+import com.wuhanzihai.rbk.ruibeikang.data.entity.CartNumberBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.GoodsDetailBean
 import com.wuhanzihai.rbk.ruibeikang.data.entity.LoginData
 import com.wuhanzihai.rbk.ruibeikang.data.entity.MallBean
@@ -40,15 +41,16 @@ class MallPresenter @Inject constructor() : BasePresenter<MallView>() {
                 }, lifecycleProvider)
     }
 
-    fun goodsDetail(goodsDetailReq: GoodsDetailReq) {
+    fun getCartNumber() {
         if (!checkNetWork()) {
             return
         }
-        mView.showLoading()
-        mallServiceImpl.goodsDetail(goodsDetailReq)
-                .excute(object : BaseSubscriber<GoodsDetailBean>(mView) {
-                    override fun onNext(t: GoodsDetailBean) {
+//        mView.showLoading()
+        mallServiceImpl.getCartNumber()
+                .excute(object : BaseSubscriber<CartNumberBean>(mView) {
+                    override fun onNext(t: CartNumberBean) {
                         super.onNext(t)
+                        mView.onCartNumberResult(t)
                     }
                 }, lifecycleProvider)
     }

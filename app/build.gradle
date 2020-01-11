@@ -22,9 +22,9 @@ android {
         }
 
         manifestPlaceholders = [
-                JPUSH_PKGNAME : applicationId,
+                JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "b3aa74fe4a96a9c7ab4784a8", //JPush 上注册的包名对应的 Appkey.
-                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
 
@@ -70,6 +70,11 @@ android {
     repositories {
         flatDir {
             dirs 'libs'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
         }
     }
 }

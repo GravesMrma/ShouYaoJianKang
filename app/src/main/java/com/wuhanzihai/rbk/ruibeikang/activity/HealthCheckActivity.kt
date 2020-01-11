@@ -33,10 +33,9 @@ class HealthCheckActivity : AppCompatActivity() {
 
     private fun initView() {
         list = mutableListOf()
-        list.add("http://www.hcjiankang.com/androidimg/ic_health1.png")
-        list.add("http://www.hcjiankang.com/androidimg/ic_health2.png")
-        list.add("http://www.hcjiankang.com/androidimg/ic_health3.png")
-        list.add("http://www.hcjiankang.com/androidimg/ic_health4.png")
+        list.add("http://www.hcjiankang.com/androidimg/ic_health11.png")
+        list.add("http://www.hcjiankang.com/androidimg/ic_health22.png")
+        list.add("http://www.hcjiankang.com/androidimg/ic_health33.png")
         adapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_image,list){
             override fun convert(helper: BaseViewHolder?, item: String?) {
                 helper!!.getView<SimpleDraweeView>(R.id.ivImg).loadImage(item!!)
@@ -47,18 +46,16 @@ class HealthCheckActivity : AppCompatActivity() {
         rvView.addItemDecoration(DividerItem12_10_12(act))
         adapter.setOnItemClickListener { _, _, position ->
             when(position){
+
                 0->{
-                    startActivity<QuestionActivity>()
-                }
-                1->{
                     startActivity<BodyFatActivity>()
                 }
-                2->{
+                1->{
                     startActivity<BIMCheckActivity>(
                             "type" to 1
                     )
                 }
-                3->{
+                2->{
                     startActivity<BIMCheckActivity>(
                             "type" to 2
                     )

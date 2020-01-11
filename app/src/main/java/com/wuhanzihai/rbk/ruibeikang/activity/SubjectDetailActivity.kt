@@ -23,7 +23,6 @@ class SubjectDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject_detail)
 
-
         initView()
 
         initData()
