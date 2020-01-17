@@ -356,20 +356,20 @@ class MainFragment : BaseMvpFragment<MainFragmentPresenter>(), MainView {
                     , "data" to BaseConstant.BASE_URL + "api/Web/article?id=890")
         }
         ivT31.onClick {
-            startActivity<StandardWebActivity>("title" to "红花苜蓿"
-                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=134")
+            startActivity<HealthCareActivity>("fatherId" to 27,
+                    "childId" to 35, "title" to "健康医疗")
         }
         ivT32.onClick {
-            startActivity<StandardWebActivity>("title" to "氨糖骨骼"
-                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=131")
+            startActivity<HealthCareActivity>("fatherId" to 27,
+                    "childId" to 35, "title" to "健康医疗")
         }
         ivT33.onClick {
-            startActivity<StandardWebActivity>("title" to "玫瑰果"
-                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=122")
+            startActivity<HealthCareActivity>("fatherId" to 27,
+                    "childId" to 35, "title" to "健康医疗")
         }
         ivT34.onClick {
-            startActivity<StandardWebActivity>("title" to "芦荟"
-                    , "data" to BaseConstant.BASE_URL + "api/Web/article?id=123")
+            startActivity<HealthCareActivity>("fatherId" to 27,
+                    "childId" to 35, "title" to "健康医疗")
         }
     }
 }

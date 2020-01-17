@@ -10,6 +10,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
@@ -95,6 +96,15 @@ class SureOrderBuyActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderVie
                         .onClick(R.id.ivClose) { anyLayer, v ->
                             anyLayer.dismiss()
                         }
+                        .onClick(R.id.tvNoUser) { anyLayer, v ->
+                            coupon = ""
+                            couponId = ""
+                            allMoney = oldAllMoney
+                            tvMoney11.text = "${allMoney}"
+                            tvMoney.text = "${allMoney}"
+                            tvCoupon.text = "${listCoupon.size} 张可用优惠券"
+                            anyLayer.dismiss()
+                        }
         anyLayer
     }
 
@@ -170,7 +180,10 @@ class SureOrderBuyActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderVie
                     } else {
                         helper.getView<RelativeLayout>(R.id.rlDesc).visibility = View.GONE
                     }
+                    helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
                 }
+                helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
+
             }
         }
         dialogCoupon.getView<RecyclerView>(R.id.rvView).adapter = adapterCoupon
@@ -178,19 +191,17 @@ class SureOrderBuyActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderVie
         dialogCoupon.getView<RecyclerView>(R.id.rvView).addItemDecoration(DividerItemCoupon(act))
         adapterCoupon.emptyView = getEmptyView(act, "暂无可用优惠券")
         adapterCoupon.setOnItemClickListener { _, _, position ->
-
-
             when (listCoupon[position].type) {
                 1 -> {
-                    if (listCoupon[position].face_money.toDouble()>oldAllMoney){
-                        showTextDesc(act,"不符合使用条件")
+                    if (listCoupon[position].face_money.toDouble() > oldAllMoney) {
+                        showTextDesc(act, "不符合使用条件")
                         return@setOnItemClickListener
                     }
                     coupon = "现金抵扣券 ¥" + listCoupon[position].face_money.replace(".00", "")
                 }
                 2 -> {
-                    if (listCoupon[position].face_money.toDouble()>oldAllMoney){
-                        showTextDesc(act,"不符合使用条件")
+                    if (listCoupon[position].face_money.toDouble() > oldAllMoney) {
+                        showTextDesc(act, "不符合使用条件")
                         return@setOnItemClickListener
                     }
                     coupon = "满${listCoupon[position].limit_money.replace(".00", "")}减${listCoupon[position].face_money.replace(".00", "")}"
@@ -214,7 +225,7 @@ class SureOrderBuyActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderVie
                 1 -> {
                     allMoney = oldAllMoney - listCoupon[position].face_money.toDouble()
                 }
-                4-> allMoney = 0.0
+                4 -> allMoney = 0.0
             }
 
             tvMoney11.text = "${allMoney}"
@@ -245,7 +256,7 @@ class SureOrderBuyActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderVie
                         , intent.getIntExtra("skuId", -1)
                         , adrId
                         , 0
-                        , "noremaker",couponId))
+                        , "noremaker", couponId, data.product.number))
             }
         }
     }
@@ -256,8 +267,9 @@ class SureOrderBuyActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderVie
         tvName1.text = data.product.name
         tvSpec.text = data.product.intro
         tvPrice.text = data.product.price
-        tvMoney11.text = data.product.price
-        tvMoney.text = data.product.price
+        tvMoney11.text = "${data.product.price.toDouble() * data.product.number.toInt()}"
+        tvMoney.text = "${data.product.price.toDouble() * data.product.number.toInt()}"
+        tvNumber.text = "x${data.product.number}"
         oldAllMoney = data.product.price.toDouble()
         listCoupon.addAll(data.coupons)
         tvCoupon.text = "${listCoupon.size} 张可用优惠券"

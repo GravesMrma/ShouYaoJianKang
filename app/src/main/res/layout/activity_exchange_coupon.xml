@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="优惠券兑换中心"/>
+        app:titleText="优惠券领取中心"/>
 
     <View
         android:layout_width="match_parent"

@@ -95,8 +95,8 @@ data class PropertydataItem(
 
 data class PropertydatavalueItem(
         val pts_id: Int,
-        val pid: Int,
-        val vid: Int,
+        val pid: String,
+        val vid: String,
         val pname: String,
         val valname: String,
         val is_color: Int

@@ -300,21 +300,21 @@ class WeatherActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks
                     var data = gson.fromJson(result, WeatherBean::class.java)
                     var hour = SimpleDateFormat("HH").format(Date(System.currentTimeMillis())).toInt()
 
-                    if (hour < 6 || hour > 17) {
+                    if (hour < 6 || hour > 16) {
                         llWeather.background = ContextCompat.getDrawable(act, R.mipmap.pic_weather33)
                         tvTemp.setTextColor(ContextCompat.getColor(act,R.color.white))
                         tvTempDesc.setTextColor(ContextCompat.getColor(act,R.color.white))
                         tvTempPM.setTextColor(ContextCompat.getColor(act,R.color.white))
                         tvTempWind.setTextColor(ContextCompat.getColor(act,R.color.white))
                     }
-                    if (hour in 6..11) {
+                    if (hour in 6..10) {
                         llWeather.background = ContextCompat.getDrawable(act, R.mipmap.pic_weather11)
                         tvTemp.setTextColor(ContextCompat.getColor(act,R.color.black_33))
                         tvTempDesc.setTextColor(ContextCompat.getColor(act,R.color.black_33))
                         tvTempPM.setTextColor(ContextCompat.getColor(act,R.color.black_33))
                         tvTempWind.setTextColor(ContextCompat.getColor(act,R.color.black_33))
                     }
-                    if (hour in 12..17) {
+                    if (hour in 11..16) {
                         llWeather.background = ContextCompat.getDrawable(act, R.mipmap.pic_weather22)
                         tvTemp.setTextColor(ContextCompat.getColor(act,R.color.black_33))
                         tvTempDesc.setTextColor(ContextCompat.getColor(act,R.color.black_33))

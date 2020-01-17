@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hhjt.baselibrary.common.BaseConstant
@@ -41,13 +42,21 @@ class RebateActivity : BaseMvpActivity<RebatePresenter>(), RebateView {
         Hawk.put(BaseConstant.REBATE_INFO, result)
         LoginUtils.saveRebateId(result.agent_id)
         tvName.text = result.g_name
+        tvName1.text = "用户：${result.g_name}"
         tvMoney1.text = "¥" + result.money
+
+        if (result.dg_id == 0) {
+            clTwo.visibility = View.VISIBLE
+        }else{
+            clOne.visibility = View.VISIBLE
+        }
         srView.finish()
     }
 
     override fun onUserInfoResult(result: LoginData) {
         srView.finish()
         ivHead.loadImage(result.head_pic)
+        ivHead1.loadImage(result.head_pic)
     }
 
     override fun onCashDetailResult(result: CashDetailBean) {
@@ -82,16 +91,21 @@ class RebateActivity : BaseMvpActivity<RebatePresenter>(), RebateView {
             when (position) {
                 0 -> startActivity<CardStockActivity>()  //  号段申请
                 1 -> startActivity<MyTeamActivity>() //  我的团队
-                2 -> startActivity<DirectlySuperiorActivity>() // 我的上级
+                2 -> startActivity<ShareHealthActivity>()  //分享赚钱
+//                2 -> startActivity<DirectlySuperiorActivity>() // 我的上级
                 3 -> startActivity<RebateRecordActivity>() //商品返利
                 4 -> startActivity<ApplyCashRecordActivity>()  //提现明细
-                5 -> {
-                    startActivity<ApplyLevelActivity>() // 等级申请
-                }
-                6 -> startActivity<ShareHealthActivity>()  //分享赚钱
-                7 -> startActivity<ShareRecordActivity>()  //分享记录
+//                5 ->  startActivity<ApplyLevelActivity>() // 等级申请
+                5 -> startActivity<ShareRecordActivity>()  //分享记录
 //                8 -> startActivity<ApplyCardActivity>()  //制卡申请
             }
+        }
+
+        rlViewl.onClick {
+            startActivity<ShareHealthActivity>()
+        }
+        rlView2.onClick {
+            startActivity<ShareRecordActivity>()
         }
 
 //        startActivity<StandardWebActivity>("title" to "返利规则"
@@ -116,13 +130,13 @@ class RebateActivity : BaseMvpActivity<RebatePresenter>(), RebateView {
     }
 
     private fun initData() {
-        list.add(RebateItem(R.mipmap.ic_rebate1, "卡号库存"))
-        list.add(RebateItem(R.mipmap.ic_rebate2, "我的团队"))
-        list.add(RebateItem(R.mipmap.ic_rebate3, "直属上级"))
+        list.add(RebateItem(R.mipmap.ic_rebate1, "礼包库存"))
+        list.add(RebateItem(R.mipmap.ic_rebate2, "我的客户"))
+        list.add(RebateItem(R.mipmap.ic_rebate7, "分享赚钱"))
+//        list.add(RebateItem(R.mipmap.ic_rebate3, "直属上级"))
         list.add(RebateItem(R.mipmap.ic_rebate4, "商品返利"))
         list.add(RebateItem(R.mipmap.ic_rebate5, "提现明细"))
-        list.add(RebateItem(R.mipmap.ic_rebate6, "等级申请"))
-        list.add(RebateItem(R.mipmap.ic_rebate7, "分享赚钱"))
+//        list.add(RebateItem(R.mipmap.ic_rebate6, "等级申请"))
         list.add(RebateItem(R.mipmap.ic_rebate8, "分享记录"))
 //        list.add(RebateItem(R.mipmap.ic_rebate9, "制卡申请"))
         adapter.notifyDataSetChanged()

@@ -34,17 +34,18 @@
         android:textSize="@dimen/f12" />
 
     <TextView
-        android:id="@+id/mRgRecord"
+        android:id="@+id/tvNumber"
         android:layout_width="@dimen/dp175"
-        android:layout_height="@dimen/dp40"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp14"
-        android:background="@drawable/sp_orange_7"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/sp_card_stk"
         android:gravity="center"
-        android:text="默认申请 70 张"
-        android:textColor="@color/white"
-        android:textSize="@dimen/f13"
-        android:orientation="horizontal">
+        android:text="200"
+        android:padding="@dimen/dp10"
+        android:textColor="@color/black_33"
+        android:textColorHint="@color/gray_99"
+        android:textSize="@dimen/f12" >
 
     </TextView>
 

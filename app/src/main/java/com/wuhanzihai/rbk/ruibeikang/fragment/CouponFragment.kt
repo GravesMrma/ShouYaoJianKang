@@ -188,7 +188,9 @@ class CouponFragment(var type: Int) : BaseMvpFragment<CouponPresenter>(), Coupon
                     } else {
                         helper.getView<RelativeLayout>(R.id.rlDesc).visibility = View.GONE
                     }
+                    helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
                 }
+                helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
 
                 helper.setOnClickListener(R.id.lView) {
                     if (type == 1) {

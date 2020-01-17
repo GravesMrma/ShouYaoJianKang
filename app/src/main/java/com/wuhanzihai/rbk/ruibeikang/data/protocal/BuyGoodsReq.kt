@@ -10,7 +10,8 @@ import java.net.URLEncoder
 /**
  * Created by wx on 2018/7/10
  */
-class BuyGoodsReq(product_id: Int, sku_id: Int) : BaseReq() {
+class BuyGoodsReq(product_id: Int, sku_id: Int, number: Int) : BaseReq() {
+    private var number = number
     private var product_id = product_id
     private var sku_id = sku_id
     private var time: String = System.currentTimeMillis().toString()

@@ -165,8 +165,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
                         .backgroundResource(R.color.clarity_40)
                         .cancelableOnTouchOutside(false)
                         .onClick(R.id.ivImg) { anyLayer, _ ->
-                            startActivity<HealthCareActivity>("fatherId" to 27,
-                                    "childId" to 36, "title" to "健康生活")
+                            startActivity<CouponActivity>()
                             anyLayer.dismiss()
                         }
                         .onClick(R.id.ivClose) { anyLayer, v ->
@@ -208,7 +207,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), View.OnClickListener, Mai
         JPushInterface.setAlias(
                 act,
                 0,
-                "heiheinihao"
+                "eodeceshi"
         )
         initView()
 

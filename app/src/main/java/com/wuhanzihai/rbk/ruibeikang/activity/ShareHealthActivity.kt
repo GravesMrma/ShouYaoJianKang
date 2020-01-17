@@ -4,11 +4,15 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.view.Gravity
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.hhjt.baselibrary.common.BaseConstant
 import com.hhjt.baselibrary.ext.onClick
 import com.hhjt.baselibrary.utils.LoginUtils
 import com.jaeger.library.StatusBarUtil
+import com.just.agentweb.AgentWeb
 import com.orhanobut.hawk.Hawk
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage
@@ -20,6 +24,7 @@ import com.wuhanzihai.rbk.ruibeikang.utils.JavaUtils
 import kotlinx.android.synthetic.main.activity_share_health.*
 import okhttp3.*
 import org.jetbrains.anko.act
+import org.jetbrains.anko.startActivity
 import per.goweii.anylayer.AnyLayer
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -30,7 +35,8 @@ class ShareHealthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share_health)
-        StatusBarUtil.setTranslucentForImageView(act, 0, null)
+        StatusBarUtil.setLightMode(act)
+        StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
         initView()
 
@@ -38,11 +44,18 @@ class ShareHealthActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        ivBack.onClick {
-            finish()
+        AgentWeb.with(this)
+                .setAgentWebParent(llView as LinearLayout, LinearLayout.LayoutParams(-1, -1) as ViewGroup.LayoutParams)
+                .useDefaultIndicator()
+                .createAgentWeb()
+                .ready()
+                .go("http://api.hcjiankang.com/api/Web/article?id=860")
+
+        btCommit1.onClick {
+            startActivity<CouponActivity>()
         }
 
-        ivShare.onClick {
+        btCommit.onClick {
             dialog.show()
         }
     }
@@ -82,8 +95,8 @@ class ShareHealthActivity : AppCompatActivity() {
 
 //用 WXWebpageObject 对象初始化一个 WXMediaMessage 对象
         val msg = WXMediaMessage(webpage)
-        msg.title = "马云:下一个风口【大健康】，首要健康APP启动3.88亿巨额补贴！"
-        msg.description = "怕生病,上首要健康APP,管吃、管睡、管运动、管情绪、管健康"
+        msg.title = "299元成为首要健康会员即可获得万元健康大礼"
+        msg.description = "此链接为首要健康平台官方发布，每一项会员权益均为真实有效！"
 
         bitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_share_money)
         val baos = ByteArrayOutputStream()

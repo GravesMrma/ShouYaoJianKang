@@ -22,9 +22,9 @@ public class ViewPagerIndicatorGuide implements ViewPager.OnPageChangeListener {
     private int size;
     private int img1 = R.drawable.sp_greens_indicator, img2 = R.drawable.sp_green_indicator;
     private List<ImageView> dotViewLists = new ArrayList<>();
-    private TextView tvEnter;
+    private ImageView tvEnter;
 
-    public ViewPagerIndicatorGuide(Context context, LinearLayout dotLayout, int size,TextView tvEnter) {
+    public ViewPagerIndicatorGuide(Context context, LinearLayout dotLayout, int size,ImageView tvEnter) {
         this.size = size;
         this.tvEnter = tvEnter;
 
@@ -33,8 +33,8 @@ public class ViewPagerIndicatorGuide implements ViewPager.OnPageChangeListener {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
             //为小圆点左右添加间距
-            params.leftMargin = 5;
-            params.rightMargin = 5;
+            params.leftMargin = 20;
+            params.rightMargin = 20;
             //手动给小圆点一个大小
 //            params.height = imgSize;
 //            params.width = imgSize;

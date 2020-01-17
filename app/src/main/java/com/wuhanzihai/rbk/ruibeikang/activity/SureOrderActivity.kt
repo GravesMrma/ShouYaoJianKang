@@ -54,7 +54,7 @@ class SureOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderView {
         list.addAll(result.storedata)
         adapter.notifyDataSetChanged()
         for (product in result.storedata.first().product_list) {
-            allMoney += product.price.toDouble()
+            allMoney += product.price.toDouble() * product.number
         }
         oldAllMoney = allMoney
         tvMoney.text = "${allMoney}"
@@ -115,6 +115,14 @@ class SureOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderView {
                         .onClick(R.id.ivClose) { anyLayer, v ->
                             anyLayer.dismiss()
                         }
+                        .onClick(R.id.tvNoUser) { anyLayer, v ->
+                            coupon = ""
+                            couponId = ""
+                            allMoney = oldAllMoney
+                            tvMoney.text = "${allMoney}"
+                            adapter.notifyDataSetChanged()
+                            anyLayer.dismiss()
+                        }
         anyLayer
     }
 
@@ -158,7 +166,10 @@ class SureOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderView {
 
                 if (coupon.isEmpty()) {
                     if (item!!.coupons.isEmpty()) {
+
                     } else {
+                        helper.getView<TextView>(R.id.tvCoupon).visibility = View.VISIBLE
+                        helper.getView<TextView>(R.id.tvTextCoupon).visibility = View.GONE
                         helper.setText(R.id.tvCoupon, "${item.coupons.size} 张可用优惠券")
                     }
                 } else {
@@ -237,7 +248,9 @@ class SureOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderView {
                     } else {
                         helper.getView<RelativeLayout>(R.id.rlDesc).visibility = View.GONE
                     }
+                    helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
                 }
+                helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
             }
         }
         dialogCoupon.getView<RecyclerView>(R.id.rvView).adapter = adapterCoupon
@@ -254,7 +267,7 @@ class SureOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrderView {
                     coupon = "满${listCoupon[position].limit_money.replace(".00", "")}减${listCoupon[position].face_money.replace(".00", "")}"
                 }
                 3 -> {
-                    coupon = "现金折扣券 " + listCoupon[position].face_money.replace(".00", "" +"折")
+                    coupon = "现金折扣券 " + listCoupon[position].face_money.replace(".00", "" + "折")
                 }
                 4 -> {
                     coupon = "会员礼品抵扣券"

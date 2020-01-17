@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -96,7 +96,7 @@
                                             android:gravity="center"
                                             android:paddingLeft="@dimen/dp5"
                                             android:paddingRight="@dimen/dp5"
-                                            android:textColor="@color/white"
+                                            android:textColor="@color/black_33"
                                             android:textSize="@dimen/f12" />
                                     </LinearLayout>
 
@@ -467,7 +467,7 @@
                         android:layout_marginLeft="@dimen/dp17"
                         android:layout_marginTop="@dimen/dp12"
                         android:drawableLeft="@drawable/sp_green_9_l"
-                        android:text="专家问诊"
+                        android:text="分享健康赚好礼"
                         android:textColor="@color/black_33"
                         android:textSize="@dimen/f17"
                         android:textStyle="bold"

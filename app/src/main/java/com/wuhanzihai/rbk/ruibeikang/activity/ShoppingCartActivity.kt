@@ -251,7 +251,7 @@ class ShoppingCartActivity : BaseMvpActivity<ShoppingCartPresenter>(), ShoppingC
         for (cartBean in list) {
             for (item in cartBean.product_list) {
                 if (item.isCheck) {
-                    allMoney += item.original_price.toDouble()
+                    allMoney += item.original_price.toDouble() * item.number
                 }
             }
         }

@@ -18,9 +18,27 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleText="我的团队"
+        app:titleText="我的客户"
         app:moreText="返利规则"
         app:canBack="true"/>
+
+    <com.wuhanzihai.rbk.ruibeikang.widgets.MarqueeTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFECCC"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:paddingLeft="@dimen/dp14"
+        android:paddingTop="@dimen/dp8"
+        android:paddingRight="@dimen/dp14"
+        android:paddingBottom="@dimen/dp8"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="根据国家《网络安全法》规定，用户手机、详细购物信息等相关隐私禁止向第三方透露，敬请谅解"
+        android:textColor="@color/orange" />
+
 
     <RadioGroup
         android:id="@+id/mRgRecord"

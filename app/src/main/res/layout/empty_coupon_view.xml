@@ -25,7 +25,7 @@
             android:textColor="@color/gray_99"
             android:textSize="@dimen/f14"
             android:layout_marginTop="@dimen/dp10"
-            android:text="暂无可兑换优惠券"/>
+            android:text="暂无可领取优惠券"/>
 
     </LinearLayout>
 

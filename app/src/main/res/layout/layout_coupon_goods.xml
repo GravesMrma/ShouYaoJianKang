@@ -16,9 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:padding="@dimen/dp14"
-            android:text="暂不使用"
-            android:textColor="@color/orange"
+            android:text="下滑查看更多"
+            android:textColor="@color/black_33"
             android:textSize="@dimen/f12" />
 
         <ImageView

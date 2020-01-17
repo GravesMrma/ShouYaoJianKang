@@ -123,13 +123,13 @@ class MyUtils {
             return "和风"
         }
         if (wind in 8.0..10.7){
-            return "清风"
+            return "劲风"
         }
         if (wind in 10.8..13.8){
             return "强风"
         }
         if (wind in 13.9..17.1){
-            return "劲风"
+            return "疾风"
         }
         if (wind in 17.2..20.7){
             return "大风"

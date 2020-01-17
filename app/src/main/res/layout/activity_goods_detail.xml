@@ -223,6 +223,13 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/ivShaBi"
+                app:layout_constraintTop_toTopOf="@id/llView1"
+                app:layout_constraintBottom_toBottomOf="@id/llView1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
             <View
                 android:id="@+id/vLine"
                 android:layout_width="match_parent"

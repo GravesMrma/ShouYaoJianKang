@@ -57,18 +57,18 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
             }
             if(tvWeChat.isSelected){
                 var request =  PayReq()
-                request.appId = result.appId
+                request.appId = result.appid
+                request.nonceStr= result.noncestr
+                request.packageValue = result.`package`
                 request.partnerId = result.partnerid
                 request.prepayId= result.prepayid
-                request.packageValue = result.`package`
-                request.nonceStr= result.noncestr
-                request.timeStamp= result.timestamp
                 request.sign= result.sign
+                request.timeStamp= result.timestamp
                 api.sendReq(request)
+                finish()
             }
         }
     }
-
 
     private val dialog by lazy {
         val anyLayer = AnyLayer.with(act)
@@ -90,8 +90,8 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
 
 
     private val api by lazy {
-        val api = WXAPIFactory.createWXAPI(act,BaseConstant.APP_WXID,true)
-        api.registerApp(BaseConstant.APP_WXID)
+        val api = WXAPIFactory.createWXAPI(act,null)
+//        api.registerApp(BaseConstant.APP_WXID)
         api
     }
 
@@ -101,7 +101,7 @@ class PayActivity : BaseMvpActivity<PayPresenter>(), PayView {
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
-        tvAli.isSelected = true
+        tvWeChat.isSelected = true
 
         initView()
 

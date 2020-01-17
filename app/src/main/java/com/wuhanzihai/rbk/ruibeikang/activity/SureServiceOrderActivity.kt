@@ -48,6 +48,7 @@ class SureServiceOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrde
             tvTag.visibility = View.GONE
         }
     }
+
     override fun onCommitOrderResult(result: OrderDetailBean) {
         var data = ""
         for (s in result.orderlist) {
@@ -78,13 +79,13 @@ class SureServiceOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrde
         tvPay.onClick {
             if (adrId == 0) {
                 showTextDesc(act, "请先添加收货地址")
-            }else{
+            } else {
                 mPresenter.commitBuyGoods(CommitBuyGoodsReq(
                         intent.getIntExtra("product_id", -1)
                         , intent.getIntExtra("skuId", -1)
                         , adrId
                         , 0
-                        , "noremaker",""))
+                        , "noremaker", "", data.product.number))
             }
         }
 
@@ -99,8 +100,9 @@ class SureServiceOrderActivity : BaseMvpActivity<SureOrderPresenter>(), SureOrde
         }
     }
 
+    private lateinit var data: GoodsBuyBean
     private fun initData() {
-        var data = intent.getSerializableExtra("data") as GoodsBuyBean
+        data = intent.getSerializableExtra("data") as GoodsBuyBean
         ivImg.loadImage(data.product.image)
         tvSerName.text = data.product.name
         tvSpec.text = data.product.intro

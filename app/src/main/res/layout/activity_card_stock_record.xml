@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="卡号库存申请记录" />
+        app:titleText="礼包库存申请记录" />
 
     <TextView
         android:layout_width="match_parent"

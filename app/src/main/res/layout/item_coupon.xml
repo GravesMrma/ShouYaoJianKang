@@ -201,7 +201,7 @@
             android:lineSpacingExtra="@dimen/dp2"
             android:minLines="2"
             android:textColor="@color/black_33"
-            android:textSize="@dimen/f11"
+            android:textSize="@dimen/f12"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/lView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -234,10 +234,10 @@
         <TextView
             android:id="@+id/tvText1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp24"
             android:layout_marginLeft="@dimen/dp14"
             android:layout_marginRight="@dimen/dp14"
-            android:layout_marginBottom="@dimen/dp5"
+            android:gravity="center_vertical"
             android:drawableRight="@drawable/selector_open_bg"
             android:ellipsize="end"
             android:lineSpacingExtra="@dimen/dp2"
@@ -253,7 +253,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp14"
-            android:layout_marginBottom="@dimen/dp3"
             app:layout_constraintBottom_toTopOf="@id/tvText1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/lView">

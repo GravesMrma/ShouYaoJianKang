@@ -46,6 +46,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.ShareHealthOneActivity"></activity>
         <activity android:name=".activity.CouponGoodsActivity" />
         <activity android:name=".activity.StoreAppointRecordActivity" />
         <activity android:name=".activity.StoreProTeacherActivity" />
@@ -237,6 +238,23 @@
         <meta-data
             android:name="BUGLY_APP_CHANNEL"
             android:value="shouyaojiank" />
+
+        <receiver
+            android:name=".push.MyActionReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" /> <!-- 开机广播 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" /> <!-- 网络状态改变广播 -->
+
+                <category android:name="com.wuhanzihai.rbk.ruibeikang" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

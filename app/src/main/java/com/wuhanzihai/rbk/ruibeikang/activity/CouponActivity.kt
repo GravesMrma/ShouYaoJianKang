@@ -23,10 +23,6 @@ class CouponActivity : AppCompatActivity() {
         StatusBarUtil.setLightMode(act)
         StatusBarUtil.setColorNoTranslucent(act, ContextCompat.getColor(act, R.color.white))
 
-        tvTitle.setMoreTextAction {
-            startActivity<ExchangeCouponActivity>()
-        }
-
         initView()
         initData()
     }

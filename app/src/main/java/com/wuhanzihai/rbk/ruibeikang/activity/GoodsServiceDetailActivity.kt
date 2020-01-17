@@ -106,7 +106,7 @@ class GoodsServiceDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), Good
         settings.displayZoomControls = true //隐藏原生的缩放控件
 
         tvBuy.onClick {
-            mPresenter.buyGoods(BuyGoodsReq(result.product_id, 0))
+            mPresenter.buyGoods(BuyGoodsReq(result.product_id, 0,1))
         }
 
         ivBack.onClick {

@@ -299,7 +299,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                 }
 
                 if (item.most_have > item.usercouponcount) {
-                    helper.setText(R.id.tvState, "立即兑换")
+                    helper.setText(R.id.tvState, "立即领取")
                     helper.setTextColor(R.id.tvState, ContextCompat.getColor(act, R.color.orange))
                             .setTextColor(R.id.tvL1tag1, ContextCompat.getColor(act, R.color.orange))
                             .setTextColor(R.id.tvCash, ContextCompat.getColor(act, R.color.orange))
@@ -317,7 +317,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                         mPresenter.takeExchangeCoupons(CouponIdReq(list[helper.layoutPosition].coupon_id))
                     }
                 } else {
-                    helper.setText(R.id.tvState, "已兑换")
+                    helper.setText(R.id.tvState, "已领取")
                     helper.setTextColor(R.id.tvState, ContextCompat.getColor(act, R.color.gray_99))
                             .setTextColor(R.id.tvL1tag1, ContextCompat.getColor(act, R.color.gray_99))
                             .setTextColor(R.id.tvCash, ContextCompat.getColor(act, R.color.gray_99))
@@ -340,6 +340,8 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                         helper.getView<RelativeLayout>(R.id.rlDesc).visibility = View.GONE
                     }
                 }
+                helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
+
             }
         }
         dialogCoupon.getView<RecyclerView>(R.id.rvView).adapter = adapter
@@ -356,7 +358,10 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         }
         rvCoupon.adapter = adapterCouponTag
         rvCoupon.layoutManager = GridLayoutManager(act, 1, RecyclerView.HORIZONTAL, false)
-
+        ivShaBi.onClick {
+            dialogCoupon.show()
+            this.adapter.notifyDataSetChanged()
+        }
         tvAddCart.onClick {
             // 是否是实物商品
             isBuy = false
@@ -381,22 +386,20 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         tvBuy.onClick {
             // 先判断有没有规格  如果有规格
             isBuy = true
-            if (result.propertydata != null) {
-                if (result.propertydata.isNotEmpty()) {
-                    if (skuId == 0) {
-                        dialog.show()
-                    } else {
-                        mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId))
-                    }
-                } else {
-                    mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId))
-                }
-            } else {
-                mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId))
-            }
-        }
-        llView1.onClick {
-            //            startActivity<CouponActivity>()
+            dialog.show()
+
+//            if (result.propertydata != null) {
+//                if (result.propertydata.isNotEmpty()) {
+//                    if (skuId == 0) {
+//                    } else {
+//                        mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId))
+//                    }
+//                } else {
+//                    mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId))
+//                }
+//            } else {
+//                mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId))
+//            }
         }
         ivBack.onClick {
             finish()
@@ -445,9 +448,9 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
         mPresenter.getCartNumber()
     }
 
-    private lateinit var colorAdapter: TagAdapter<PropertydataItem>
-    private lateinit var colorList: MutableList<PropertydataItem>
-    private var colorId = 0
+    private lateinit var colorAdapter: TagAdapter<PropertydatavalueItem>
+    private lateinit var colorList: MutableList<PropertydatavalueItem>
+    private var colorId = ""
     private var colorName = ""
 
     private lateinit var sizeAdapter: TagAdapter<PropertydatavalueItem>
@@ -458,85 +461,97 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     private lateinit var skuAdapter: TagAdapter<SkuItem>
     private lateinit var skuList: MutableList<SkuItem>
     private var skuId = 0
+    private var number  = 0
 
     private val dialog by lazy {
         var view = layoutInflater.inflate(R.layout.layout_specs, null)
         view.tvPrice.text = result.price
         if (result.image.isNotEmpty()) view.ivImg.loadImage(result.image.first())
 
-        view.tvStock.text = "库存: ${result.price}件"
+        view.tvStock.text = "库存: ${result.quantity}件"
         colorList = mutableListOf()
-        colorList.addAll(result.propertydata)
-        colorAdapter = object : TagAdapter<PropertydataItem>(colorList) {
-            override fun getView(parent: FlowLayout, position: Int, t: PropertydataItem): View {
-                var tv = LayoutInflater.from(act).inflate(
-                        R.layout.item_spces_tag,
-                        parent,
-                        false
-                ) as TextView
-                tv.text = t.name
-                return tv
-            }
-        }
-        view.rvView1.adapter = colorAdapter
-
-        view.rvView1.setOnTagClickListener { _, position, parent ->
-            colorId = colorList[position].pid
-            colorName = colorList[position].name
-            for (item in result.sku) {
-                Log.e("测试", item.properties + "aaaa" + "${colorId}:${sizeId}")
-                if (item.properties == "${colorId}:${sizeId}") {
-                    skuId = item.sku_id
-                    view.tvPrice.text = item.price
-                    view.tvSpecs.text = "$colorName - $sizeName"
-                    view.ivImg.loadImage(item.skuimg)
+        if (result.propertydata != null){
+            colorList.addAll(result.propertydata.first().propertydatavalue)
+            view.tvSpecs1.text = result.propertydata.first().name
+            colorAdapter = object : TagAdapter<PropertydatavalueItem>(colorList) {
+                override fun getView(parent: FlowLayout, position: Int, t: PropertydatavalueItem): View {
+                    var tv = LayoutInflater.from(act).inflate(
+                            R.layout.item_spces_tag,
+                            parent,
+                            false
+                    ) as TextView
+                    tv.text = t.valname
+                    return tv
                 }
             }
-            return@setOnTagClickListener false
-        }
-        sizeList = mutableListOf()
-        sizeList.addAll(colorList.first().propertydatavalue)
-        sizeAdapter = object : TagAdapter<PropertydatavalueItem>(sizeList) {
-            override fun getView(parent: FlowLayout, position: Int, t: PropertydatavalueItem): View {
-                var tv = LayoutInflater.from(act).inflate(
-                        R.layout.item_spces_tag,
-                        parent,
-                        false
-                ) as TextView
-                tv.text = t.valname
-                return tv
-            }
-        }
-        view.rvView2.adapter = sizeAdapter
-        view.rvView2.setOnTagClickListener { _, position, parent ->
-            sizeId = sizeList[position].vid
-            sizeName = sizeList[position].valname
-            Log.e("测试ID", sizeId.toString())
-            for (item in result.sku) {
-                Log.e("测试", item.properties + "aaaa" + "${colorId}:${sizeId}")
-                if (item.properties == "${colorId}:${sizeId}") {
-                    skuId = item.sku_id
-                    view.tvPrice.text = item.price
-                    view.tvSpecs.text = "$colorName - $sizeName"
-                    view.ivImg.loadImage(item.skuimg)
+            view.rvView1.adapter = colorAdapter
+            view.rvView1.setOnTagClickListener { _, position, parent ->
+                colorId = colorList[position].vid
+                colorName = colorList[position].valname
+                for (item in result.sku) {
+                    if (item.properties == "${result.propertydata.first().pid}:${colorId}") {
+                        skuId = item.sku_id
+                        view.tvPrice.text = item.price
+                        view.tvSpecs.text = "$colorName"
+                        view.ivImg.loadImage(item.skuimg)
+                    }
                 }
+                return@setOnTagClickListener false
             }
-            return@setOnTagClickListener false
+//            sizeList = mutableListOf()
+//            sizeList.addAll(colorList.first().propertydatavalue)
+//            sizeAdapter = object : TagAdapter<PropertydatavalueItem>(sizeList) {
+//                override fun getView(parent: FlowLayout, position: Int, t: PropertydatavalueItem): View {
+//                    var tv = LayoutInflater.from(act).inflate(
+//                            R.layout.item_spces_tag,
+//                            parent,
+//                            false
+//                    ) as TextView
+//                    tv.text = t.valname
+//                    return tv
+//                }
+//            }
+//            view.rvView2.adapter = sizeAdapter
+//            view.rvView2.setOnTagClickListener { _, position, parent ->
+//                sizeId = sizeList[position].vid
+//                sizeName = sizeList[position].valname
+//                Log.e("测试ID", sizeId.toString())
+//                for (item in result.sku) {
+//                    Log.e("测试", item.properties + "aaaa" + "${colorId}:${sizeId}")
+//                    if (item.properties == "${colorId}:${sizeId}") {
+//                        skuId = item.sku_id
+//                        view.tvPrice.text = item.price
+//                        view.tvSpecs.text = "$colorName - $sizeName"
+//                        view.ivImg.loadImage(item.skuimg)
+//                    }
+//                }
+//                return@setOnTagClickListener false
+//            }
+//            skuList = mutableListOf()
+//            skuAdapter = object : TagAdapter<SkuItem>(skuList) {
+//                override fun getView(parent: FlowLayout, position: Int, t: SkuItem): View {
+//                    var tv = LayoutInflater.from(act).inflate(
+//                            R.layout.item_spces_tag,
+//                            parent,
+//                            false
+//                    ) as TextView
+//                    tv.text = t.point_price
+//                    return tv
+//                }
+//            }
+//            view.rvView3.adapter = skuAdapter
+        }
+        view.ivReduce.onClick {
+            if (view.tvNum.text.toString().toInt()>1){
+                view.tvNum.text = "${view.tvNum.text.toString().toInt() - 1}"
+            }
         }
 
-        skuList = mutableListOf()
-        skuAdapter = object : TagAdapter<SkuItem>(skuList) {
-            override fun getView(parent: FlowLayout, position: Int, t: SkuItem): View {
-                var tv = LayoutInflater.from(act).inflate(
-                        R.layout.item_spces_tag,
-                        parent,
-                        false
-                ) as TextView
-                tv.text = t.point_price
-                return tv
+        view.ivAdd.onClick {
+            if (view.tvNum.text.toString().toInt()<10){
+                view.tvNum.text = "${view.tvNum.text.toString().toInt() + 1}"
             }
         }
-        view.rvView3.adapter = skuAdapter
 
         val anyLayer =
                 AnyLayer.with(act)
@@ -549,27 +564,35 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
                                 AnimHelper.startBottomAlphaInAnim(target, 350)
                                 return 350
                             }
-
                             override fun outAnim(target: View?): Long {
                                 AnimHelper.startBottomOutAnim(target, 350)
                                 return 350
                             }
                         })
                         .onClick(R.id.btCommit) { anyLayer, v ->
-                            if (colorId == 0 || sizeId == 0) {
-                                toast("请选择规格")
-                            } else {
-                                for (item in result.sku) {
-                                    if (item.properties == "${colorId}:${sizeId}") {
-                                        skuId = item.sku_id
-                                        if (isBuy) {
-                                            mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId))
-                                        } else {
-                                            mPresenter.addCart(AddCartReq(result.product_id, skuId))
-                                        }
+                            if (result.propertydata != null){
+                                if (colorId.isEmpty() ) {
+                                    toast("请选择规格")
+                                } else {
+                                    if (isBuy) {
+                                        mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId,view.tvNum.text.toString().toInt()))
+                                    } else {
+                                        mPresenter.addCart(AddCartReq(result.product_id, skuId))
                                     }
+//                                    for (item in result.sku) {
+//                                        if (item.properties == "${colorId}:${sizeId}") {
+//                                            skuId = item.sku_id
+//
+//                                        }
+//                                    }
+                                    anyLayer.dismiss()
                                 }
-                                anyLayer.dismiss()
+                            }else{
+                                if (isBuy) {
+                                    mPresenter.buyGoods(BuyGoodsReq(result.product_id, skuId,view.tvNum.text.toString().toInt()))
+                                } else {
+                                    mPresenter.addCart(AddCartReq(result.product_id, skuId))
+                                }
                             }
                         }
                         .onClick(R.id.ivClose) { anyLayer, v ->
@@ -607,7 +630,7 @@ class GoodsDetailActivity : BaseMvpActivity<GoodsDetailPresenter>(), GoodsDetail
     private val dialogCoupon by lazy {
         val anyLayer =
                 AnyLayer.with(act)
-                        .contentView(R.layout.layout_coupon)
+                        .contentView(R.layout.layout_coupon_goods)
                         .gravity(Gravity.BOTTOM)
                         .backgroundResource(R.color.clarity_40)
                         .cancelableOnTouchOutside(true)

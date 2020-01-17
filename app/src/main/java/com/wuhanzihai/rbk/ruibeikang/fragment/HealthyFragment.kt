@@ -165,13 +165,13 @@ class HealthyFragment : BaseMvpFragment<HealthFragmentPresenter>(), HealthFragme
                     var data = gson.fromJson(result, WeatherBean::class.java)
                     var hour = SimpleDateFormat("HH").format(Date(System.currentTimeMillis())).toInt()
 
-                    if (hour < 6 || hour > 17) {
+                    if (hour < 6 || hour > 16) {
                         llWeather.background = ContextCompat.getDrawable(act, R.mipmap.pic_weather3)
                     }
-                    if (hour in 6..11) {
+                    if (hour in 6..10) {
                         llWeather.background = ContextCompat.getDrawable(act, R.mipmap.pic_weather1)
                     }
-                    if (hour in 12..17) {
+                    if (hour in 11..16) {
                         llWeather.background = ContextCompat.getDrawable(act, R.mipmap.pic_weather2)
                     }
 
@@ -262,10 +262,10 @@ class HealthyFragment : BaseMvpFragment<HealthFragmentPresenter>(), HealthFragme
         ivZjList = mutableListOf()
         ivZj.setImageLoader(FrescoBannerLoader(true))
                 .start()
-        ivZj.setOnBannerListener { setOnBannerListener(act, ivZjList[it]) }
-//        ivZj.onClick {
-//            startActivity<InterrogationActivity>()
-//        }
+//        ivZj.setOnBannerListener { setOnBannerListener(act, ivZjList[it]) }
+        ivZj.onClick {
+            startActivity<ShareHealthActivity>()
+        }
 
         llWeather.onClick {
             startActivity<WeatherActivity>()
@@ -372,7 +372,7 @@ class HealthyFragment : BaseMvpFragment<HealthFragmentPresenter>(), HealthFragme
         }
     }
 
-    // 以下代码 仅供参考 切忌勿改的 否则会直接导致你的智商出BUG
+    // 以下代码 仅供参考 切忌勿改的 否则会直接导致你的智商出BUG  傻逼代码 ！！！
     private var imgs = mutableListOf<String>()
 
     private fun initData() {

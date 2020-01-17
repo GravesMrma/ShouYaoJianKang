@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="卡号库存" />
+        app:titleText="礼包库存" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp14"
-                    android:text="我的卡号库存"
+                    android:text="我的礼包库存"
                     android:textColor="@color/black_33"
                     android:textSize="@dimen/f17"
                     app:layout_constraintBottom_toBottomOf="@id/ivImg"
@@ -118,7 +118,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/dp12"
-                                android:text="什么是卡号库存？"
+                                android:text="什么是礼包库存？"
                                 android:textColor="@color/orange"
                                 android:textSize="@dimen/f17" />
 
@@ -164,7 +164,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/dp12"
-                                android:text="拥有卡号库存有什么好处？"
+                                android:text="礼包库存是如何扣减与购买的？"
                                 android:textColor="@color/orange"
                                 android:textSize="@dimen/f17" />
 
@@ -177,98 +177,6 @@
                             android:layout_marginTop="@dimen/dp15"
                             android:textColor="@color/gray_99"
                             android:textSize="@dimen/f12" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp1"
-                        android:layout_marginTop="@dimen/dp15"
-                        android:background="@color/line" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp15"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="@dimen/dp22"
-                                android:layout_height="@dimen/dp22"
-                                android:background="@drawable/sp_card_ring"
-                                android:gravity="center"
-                                android:text="3"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/f15" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/dp12"
-                                android:text="如何获得卡号库存？"
-                                android:textColor="@color/orange"
-                                android:textSize="@dimen/f17" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/tvText33"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp15"
-                            android:text=""
-                            android:textSize="@dimen/f12" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp1"
-                        android:layout_marginTop="@dimen/dp15"
-                        android:background="@color/line" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp15"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="@dimen/dp22"
-                                android:layout_height="@dimen/dp22"
-                                android:background="@drawable/sp_card_ring"
-                                android:gravity="center"
-                                android:text="4"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/f15" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/dp12"
-                                android:text="卡号库存的扣减与购买:"
-                                android:textColor="@color/orange"
-                                android:textSize="@dimen/f17" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/tvText44"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp15"
-                            android:text=""
-                            android:textSize="@dimen/f12" />
-
                     </LinearLayout>
 
                 </LinearLayout>

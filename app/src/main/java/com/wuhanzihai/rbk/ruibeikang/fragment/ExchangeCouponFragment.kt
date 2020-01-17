@@ -56,7 +56,7 @@ class ExchangeCouponFragment() : BaseMvpFragment<CouponPresenter>(), CouponView 
         page = 1
         list.clear()
         initData()
-        showTextDesc(act,"兑换成功")
+        showTextDesc(act, "领取成功")
     }
 
     private lateinit var list: MutableList<GoodsCouponBean>
@@ -95,16 +95,16 @@ class ExchangeCouponFragment() : BaseMvpFragment<CouponPresenter>(), CouponView 
                 when (item.type) {
                     1 -> {
                         llView1.visibility = View.VISIBLE
-                        helper.setText(R.id.tvCash, item.face_money.replace(".00",""))
+                        helper.setText(R.id.tvCash, item.face_money.replace(".00", ""))
                     }
                     2 -> {
                         llView2.visibility = View.VISIBLE
-                        helper.setText(R.id.tvCoupon, item.face_money.replace(".00",""))
-                                .setText(R.id.tvLimit, "满${item.limit_money.replace(".00","")}减${item.face_money.replace(".00","")}")
+                        helper.setText(R.id.tvCoupon, item.face_money.replace(".00", ""))
+                                .setText(R.id.tvLimit, "满${item.limit_money.replace(".00", "")}减${item.face_money.replace(".00", "")}")
                     }
                     3 -> {
                         llView3.visibility = View.VISIBLE
-                        helper.setText(R.id.tvDiscount, item.face_money.replace(".00",""))
+                        helper.setText(R.id.tvDiscount, item.face_money.replace(".00", ""))
                     }
                     4 -> {
                         llView4.visibility = View.VISIBLE
@@ -112,8 +112,8 @@ class ExchangeCouponFragment() : BaseMvpFragment<CouponPresenter>(), CouponView 
                     }
                 }
 
-                if (item.most_have > item.usercouponcount){
-                    helper.setText(R.id.tvState, "立即兑换")
+                if (item.most_have > item.usercouponcount) {
+                    helper.setText(R.id.tvState, "立即领取")
                     helper.setTextColor(R.id.tvState, ContextCompat.getColor(act, R.color.orange))
                             .setTextColor(R.id.tvL1tag1, ContextCompat.getColor(act, R.color.orange))
                             .setTextColor(R.id.tvCash, ContextCompat.getColor(act, R.color.orange))
@@ -126,12 +126,12 @@ class ExchangeCouponFragment() : BaseMvpFragment<CouponPresenter>(), CouponView 
                             .setTextColor(R.id.tvL3tag11, ContextCompat.getColor(act, R.color.orange))
                             .setTextColor(R.id.tvL4tag1, ContextCompat.getColor(act, R.color.orange))
 
-                    helper.setBackgroundRes(R.id.rlView,R.mipmap.ic_coupon_bg)
+                    helper.setBackgroundRes(R.id.rlView, R.mipmap.ic_coupon_bg)
                     helper.setOnClickListener(R.id.tvState) {
                         mPresenter.takeExchangeCoupons(CouponIdReq(list[helper.layoutPosition].coupon_id))
                     }
-                }else{
-                    helper.setText(R.id.tvState, "已兑换")
+                } else {
+                    helper.setText(R.id.tvState, "已领取")
                     helper.setTextColor(R.id.tvState, ContextCompat.getColor(act, R.color.gray_99))
                             .setTextColor(R.id.tvL1tag1, ContextCompat.getColor(act, R.color.gray_99))
                             .setTextColor(R.id.tvCash, ContextCompat.getColor(act, R.color.gray_99))
@@ -143,7 +143,7 @@ class ExchangeCouponFragment() : BaseMvpFragment<CouponPresenter>(), CouponView 
                             .setTextColor(R.id.tvL3tag1, ContextCompat.getColor(act, R.color.gray_99))
                             .setTextColor(R.id.tvL3tag11, ContextCompat.getColor(act, R.color.gray_99))
                             .setTextColor(R.id.tvL4tag1, ContextCompat.getColor(act, R.color.gray_99))
-                    helper.setBackgroundRes(R.id.rlView,R.mipmap.ic_coupon_bg_s)
+                    helper.setBackgroundRes(R.id.rlView, R.mipmap.ic_coupon_bg_s)
                 }
 
                 helper.setOnClickListener(R.id.tvText1) {
@@ -153,7 +153,9 @@ class ExchangeCouponFragment() : BaseMvpFragment<CouponPresenter>(), CouponView 
                     } else {
                         helper.getView<RelativeLayout>(R.id.rlDesc).visibility = View.GONE
                     }
+                    helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
                 }
+                helper.getView<TextView>(R.id.tvText1).isSelected = item.isShow
             }
         }
         rvView.adapter = adapter

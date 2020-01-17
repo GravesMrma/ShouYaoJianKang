@@ -30,7 +30,7 @@
         android:id="@+id/tvTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/sp_red_order_ring"
+        android:background="@drawable/sp_orange_order_ring"
         android:gravity="center"
         android:minWidth="@dimen/dp14"
         android:paddingLeft="@dimen/dp4"

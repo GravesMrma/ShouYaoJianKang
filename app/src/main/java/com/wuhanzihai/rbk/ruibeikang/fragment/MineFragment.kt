@@ -149,7 +149,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
         serList.add(MineServiceBean("地址管理", R.mipmap.fw_mid_icon_dzgl))
         serList.add(MineServiceBean("分享赚钱", R.mipmap.fw_mid_icon_smrz))
         serList.add(MineServiceBean("健康档案", R.mipmap.fw_mid_icon_jkda))
-        serList.add(MineServiceBean("问诊记录", R.mipmap.fw_mid_icon_dhzx))
+        serList.add(MineServiceBean("领券中心", R.mipmap.ic_shabi1))
         serList.add(MineServiceBean("常见问题", R.mipmap.fw_mid_icon_cjwt))
         serList.add(MineServiceBean("电话客服", R.mipmap.fw_mid_icon_zxkf))
         serAdapter = object : BaseQuickAdapter<MineServiceBean, BaseViewHolder>(R.layout.item_mine_service, serList) {
@@ -177,7 +177,7 @@ class MineFragment : BaseMvpFragment<MinePresenter>(), MineView {
                     }
                 }
                 4 -> startActivity<HealthArchivesActivity>()
-                5 -> startActivity<InterrogationRecordActivity>()
+                5 -> startActivity<ExchangeCouponActivity>()
                 6 -> startActivity<StandardWebActivity>("title" to "常见问题"
                         , "data" to "http://api.hcjiankang.com/api/Web/article?id=732")
                 7 -> MyUtils.instance.callPhone(act, "4000186617")

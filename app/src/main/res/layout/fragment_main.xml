@@ -342,7 +342,7 @@
                     android:paddingBottom="@dimen/dp14"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lSport">
+                    app:layout_constraintTop_toBottomOf="@id/lShabi2">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -434,7 +434,7 @@
                     android:paddingBottom="@dimen/dp14"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lShabi1">
+                    app:layout_constraintTop_toBottomOf="@id/lShabi3">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -526,7 +526,7 @@
                     android:paddingBottom="@dimen/dp14"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lShabi2">
+                    app:layout_constraintTop_toBottomOf="@id/lSport">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -615,7 +615,7 @@
                     android:orientation="vertical"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lShabi3">
+                    app:layout_constraintTop_toBottomOf="@id/lShabi1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -789,7 +789,6 @@
                     </android.support.constraint.ConstraintLayout>
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:id="@+id/lTest"

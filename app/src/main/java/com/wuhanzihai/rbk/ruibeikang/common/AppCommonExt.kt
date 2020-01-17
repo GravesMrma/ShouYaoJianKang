@@ -103,7 +103,17 @@ fun setOnBannerListener(context: Context, bannerEntity: BannerEntity) {
             }
         }
         11 -> context.startActivity<InterrogationActivity>()
-        12 -> context.startActivity<CouponActivity>()
+        12 -> context.startActivity<ExchangeCouponActivity>()
+        13 -> {
+            var result = Hawk.get<IsRebateBean>(BaseConstant.ISREBATE_DATA)
+            if (result != null) {
+                if (result.is_agent == 2) {
+                    context.startActivity<RebateAuthActivity>()
+                } else {
+                    context.startActivity<ShareHealthActivity>()
+                }
+            }
+        }
 //        12 -> context.startActivity<StandardWebActivity>("title" to "专家问诊"
 //                , "data" to "http://www.hcjiankang.com/androidimg/wenzheng.html")
     }
